@@ -147,19 +147,31 @@ The model constructs a line and passes it to the view.  This line is then displa
 
 
 // User types “fd 50” into the View.
+
 // Let X = 40, Y = 70, and bearing = 180° (down).
+
 String userInput = “fd 50”;
+
 myController.getInput(userInput);
 
+
 myParser.parseInput(this, userInput);
+
 // Parser must know which controller to return to.
+
 myController.runCommand(new ForwardCommand(50));
+
 myModel.updateModel(command);
+
 // The command is stored in some variable at this point.
 
+
 Line drawing = new Line(xPrevious, yPrevious, xCurrent, yCurrent); // 40, 70, 40, 20
+
 // There will be private methods for calculating where to draw lines, etc.
+
 myView.updateView(drawing); // This will likely be passed as an array/queue of lines.
+
 
 
 Possible JUnit test for the Parser class:
