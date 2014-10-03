@@ -146,6 +146,49 @@ Upon execution of the method, the model checks the color of the pen and whether 
 The model constructs a line and passes it to the view.  This line is then displayed to the user.
 
 
+// User types “fd 50” into the View.
+// Let X = 40, Y = 70, and bearing = 180° (down).
+String userInput = “fd 50”; myController.getInput(userInput);
+
+myParser.parseInput(this, userInput); // Parser must know which controller to return to.
+myController.runCommand(new ForwardCommand(50)); myModel.updateModel(command);
+// The command is stored in some variable at this point.
+
+Line drawing = new Line(xPrevious, yPrevious, xCurrent, yCurrent); // 40, 70, 40, 20
+// There will be private methods for calculating where to draw lines, etc.
+myView.updateView(drawing); // This will likely be passed as an array/queue of lines.
+
+
+Possible JUnit test for the Parser class:
+
+@Test
+public void testParser(){
+// The following is intended to be solely conceptual.
+Parser testParse = new Parser();
+Exception e = testParse.parseInput("fd 27 23");
+assertThat(e.getMessage(), containsString("Command fd takes 1 argument(s)"));
+e = testParse.parseInput("fd");
+assertThat(e.getMessage(), containsString("Command fd takes 1 argument(s)"));
+e = testParse.parseInput("+ 3 7 1");
+assertThat(e.getMessage(), containsString("Command + takes 2 argument(s)"));
+e = testParse.parseInput("+ + + +");
+assertThat(e.getMessage(), containsString("Command + takes s argument(s)"));
+e = testParse.parseInput("xyftkjplp");
+assertThat(e.getMessage(), containsString("Invalid input"));
+e = testParse.parseInput("fd sum 67 21 ]");
+assertThat(e.getMessage(), containsString("Invalid syntax"));
+Command com = testParse.parseInput("fd 50");
+FowardCommand forCom = new ForwardCommand();
+assertArrayEquals(com.getClass(), forCom.getClass());
+com = testParse.parseInput("sum 12 12");
+SumCommand sumCom = new SumCommand();
+assertArrayEquals(com.getClass(), sumCom.getClass());
+com = testParse.parseInput("ifelse less 17 sum 12 6 fd 77 home");
+HomeCommand homeCom = new HomeCommand();
+assertArrayEquals(com.getClass(), homeCom.getClass());
+}
+
+
 
 Alternate Designs:
 
