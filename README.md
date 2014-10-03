@@ -5,6 +5,9 @@ SLogo
 
 Provides a development environment that supports users to write SLogo programs.
 
+For a much cleaner version of this document, see SLogoPlan.docx.
+
+
 Design Goals:
 The primary goal of this design process is to intelligently break up the program into modules/sub-modules in such a way that additional Logo commands/command structures can be easily implemented to extend program functionality. The program is split into three modules: front-end, model-view-controller, and back-end. The front-end will be the grouping of classes that are responsible for the user interface, receiving user inputs, and presenting appropriate program outputs to the user. The model-view-controller will be the grouping of classes that are responsible for retaining the state of the program (within the model), calling on the back-end to parse the user inputs and then updating the model with the parsed commands (via the controller), and finally presenting the updated model through the view (which is pushed to the front-end). The back-end is the grouping of classes responsible for parsing the user input commands and returning a parsed, processed, standardized, and formatted command structure that is executable by the controller. It also will contain the classes that hold the different commands, math operations, etc. The back-end classes will be further modularized in order to maximize flexibility and extensibility, allowing for easy implementation of additional commands, operations, and command structures. The user inputs received by the User Interface is passed onto the controller in the form of commands. The controller passes the command to the parser which processes the input command string and returns a formatted structure of commands to the controller. Then controller then executes the commands and updates the state of the model. When the model is updated, the view is called to update its state as well. As the view is updated its new state is reflected in the User Interface thus the user is presented the updated state.
 
@@ -177,30 +180,63 @@ myView.updateView(drawing); // This will likely be passed as an array/queue of l
 Possible JUnit test for the Parser class:
 
 @Test
+
 public void testParser(){
+
 // The following is intended to be solely conceptual.
+
 Parser testParse = new Parser();
+
 Exception e = testParse.parseInput("fd 27 23");
+
 assertThat(e.getMessage(), containsString("Command fd takes 1 argument(s)"));
+
+
 e = testParse.parseInput("fd");
+
 assertThat(e.getMessage(), containsString("Command fd takes 1 argument(s)"));
+
+
 e = testParse.parseInput("+ 3 7 1");
+
 assertThat(e.getMessage(), containsString("Command + takes 2 argument(s)"));
+
+
 e = testParse.parseInput("+ + + +");
+
 assertThat(e.getMessage(), containsString("Command + takes s argument(s)"));
+
+
 e = testParse.parseInput("xyftkjplp");
+
 assertThat(e.getMessage(), containsString("Invalid input"));
+
+
 e = testParse.parseInput("fd sum 67 21 ]");
+
 assertThat(e.getMessage(), containsString("Invalid syntax"));
+
+
 Command com = testParse.parseInput("fd 50");
+
 FowardCommand forCom = new ForwardCommand();
+
 assertArrayEquals(com.getClass(), forCom.getClass());
+
+
 com = testParse.parseInput("sum 12 12");
+
 SumCommand sumCom = new SumCommand();
+
 assertArrayEquals(com.getClass(), sumCom.getClass());
+
+
 com = testParse.parseInput("ifelse less 17 sum 12 6 fd 77 home");
+
 HomeCommand homeCom = new HomeCommand();
+
 assertArrayEquals(com.getClass(), homeCom.getClass());
+
 }
 
 
