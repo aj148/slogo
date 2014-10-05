@@ -2,32 +2,29 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.application.Application;
 import javafx.stage.Stage;
 
+
 /**
- * Main GUI class that instantiates the stage. It can instantiate multiple ViewPanels,
- * with each ViewPanel having its own Controller and Model.
+ * Provides the main User Interface presented to the User. Implements various Panes(children of
+ * Nodes) which provide additional functionality and behavior. Presents the state of the program to
+ * the user and allows input from the user through the Pane implementations.
  * 
- * @author Team 14
+ * @author Arihant Jain
+ * @author Jesse Ling
+ *
  */
-public class UserInterface extends Application {
-    
+public class UserInterface {
+
     private List<ViewPanel> myViews = new ArrayList<ViewPanel>();
 
-    @Override
-    public void start (Stage stage) {
-        ViewPanel newView = new ViewPanel();
-        myViews.add(newView);
-    }
-    
     /**
-     * Main method to launch the application.
+     * Creates the structure of the User Interface and populates the structure accordingly with
+     * Panes.
      * 
-     * @param args : Standard arguments
+     * @param s Stage of the Program
      */
-    public static void main(String[] args){
-        launch(args);
+    public void initiate (Stage s) {
+        myViews.add(new ViewPanel());
     }
 }
