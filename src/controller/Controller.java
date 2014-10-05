@@ -15,7 +15,7 @@ import commands.Command;
  * 
  * @author Team 14
  */
-public class Controller extends MasterController {
+public class Controller {
     
     ViewPanel myView;
     Model myModel;
@@ -39,10 +39,9 @@ public class Controller extends MasterController {
      * 
      * @param input : User input string from the ViewPanel.
      */
-    @SuppressWarnings("static-access")
     public void getInput(String input){
         Collection<Command> commandsToExecute = new ArrayDeque<Command>();
-        commandsToExecute.addAll(super.myParser.parseInput(input));
+        commandsToExecute.addAll(MasterController.myParser.parseInput(input));
         for(Command com : commandsToExecute){
             
             // This is hard-coded for now.
