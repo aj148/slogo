@@ -42,7 +42,7 @@ public class UserInterface {
         s.setTitle("SLogo");
         BorderPane root = new BorderPane();
         PaneController pb = new PaneController();
-        root=pb.populate(root);
+        root = pb.populate(root);
         Scene scene = new Scene(root, DEFAULT_DIMENSIONS.width, DEFAULT_DIMENSIONS.height);
         s.setScene(scene);
         s.show();

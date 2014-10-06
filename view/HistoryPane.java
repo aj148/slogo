@@ -2,6 +2,8 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
@@ -9,7 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 
-public class HistoryPane extends Pane {
+public class HistoryPane extends Pane implements Observable {
 
     private List<String> myHistory;
     private ScrollPane myScrollPane;
@@ -33,6 +35,18 @@ public class HistoryPane extends Pane {
     public BorderPane addPane (BorderPane p) {
         p.setRight(myScrollPane);
         return p;
+    }
+
+    @Override
+    public void addListener (InvalidationListener arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void removeListener (InvalidationListener arg0) {
+        // TODO Auto-generated method stub
+        
     }
 
 }
