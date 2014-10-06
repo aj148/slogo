@@ -8,7 +8,7 @@ import java.util.Map;
 import parser.Parser;
 
 /**
- * Superclass to contain the Parser and a set of executable commands.
+ * Class to contain the Parser and a set of executable commands.
  * This information is used by Controller subclasses.
  * 
  * @author Team 14

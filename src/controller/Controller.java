@@ -39,7 +39,6 @@ public class Controller {
      * 
      * @param input : User input string from the ViewPanel.
      */
-    @SuppressWarnings("static-access")
     public void getInput(String input){
         Collection<Command> commandsToExecute = new ArrayDeque<Command>();
         commandsToExecute.addAll(MasterController.myParser.parseInput(input));

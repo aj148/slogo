@@ -81,6 +81,7 @@ public class Parser {
     }
 
     private Collection<Command> throwError (Exception e) {
+
         Collection<Command> error = new ArrayDeque<Command>();
         error.add(new ErrorCommand());
         return error;
