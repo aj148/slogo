@@ -1,8 +1,14 @@
 package commands;
 
-public class Command {
+public abstract class Command {
     
     public Command(){
         
     }
+    
+    abstract public int getNumParameters();
+    
+    abstract public void setParameters();
+    
+    abstract public double exectueCommand();
 }

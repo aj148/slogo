@@ -1,13 +1,18 @@
 package parser;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Stack;
 
 import commands.Command;
 import commands.ErrorCommand;
 import commands.HomeCommand;
+import commands.OneInputCommand;
+import commands.TwoInputCommand;
 import controller.MasterController;
 
 /**
@@ -45,38 +50,58 @@ public class Parser {
                 }
             }
         }
-        
-        while(!commandStack.isEmpty()){
-            //if we do sum a b
-            String commandName = commandStack.pop();
-            Class cl;
-            Constructor cons;
+
+        while (!commandStack.isEmpty()) {
+            // String commandName = commandStack.pop();
+            String commandName = "ProductCommand";
+            Class<?> cl;
             Command command;
             try {
                 cl = Class.forName(commandName);
-                try {
-                    cons = cl.getConstructor(Integer.TYPE, Integer.TYPE);
-                    command = (Command) cons.newInstance(parameterStack.pop(), parameterStack.pop());
-                    //execute sum and stores int result to a variable
-                    //put the result in to parameter stack
-                    
-                    
-                } catch (Exception e) {
-                    return throwError(e);
-                } 
+                if (cl.getSuperclass().getName() == "TurtleCommand") {
+                    try {
+                        command = (Command) cl.getConstructor().newInstance();
+                        if (command.getNumParameters() == 0) {
+                            commandsToExecute.add(command);
+                        }
+                        if (command.getNumParameters() == 1) {
+                            ((OneInputCommand) command).setParameters(parameterStack.pop());
+                            commandsToExecute.add(command);
+                        }
+                        if (command.getNumParameters() == 2) {
+                            ((TwoInputCommand) command).setParameters(parameterStack.pop(),
+                                    parameterStack.pop());
+                            commandsToExecute.add(command);
+                        }
+                    } catch (Exception e) {
+                        return throwError(e);
+                    }
+                }
+
+                else if (cl.getSuperclass().getName() != "TurtleCommand") {
+                    try {
+                        command = (Command) cl.getConstructor().newInstance();
+                        if (command.getNumParameters() == 1) {
+                            ((OneInputCommand) command).setParameters(parameterStack.pop());
+                            parameterStack.add(command.exectueCommand());
+                        }
+                        if (command.getNumParameters() == 2) {
+                            ((TwoInputCommand) command).setParameters(parameterStack.pop(),
+                                    parameterStack.pop());
+                            parameterStack.add(command.exectueCommand());
+                        }
+
+                    } catch (Exception e) {
+                        return throwError(e);
+                    }
+                }
+
             } catch (ClassNotFoundException e) {
                 return throwError(e);
             }
-            
-            
-            
-            if(commandStack.size() == 1){ //or command that is popped out of commandStack extends NoInputCommand class
-                commandsToExecute.add(command);
-            }
-            
+
         }
-        
-        
+
         return commandsToExecute;
     }
 
