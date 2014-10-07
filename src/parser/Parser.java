@@ -83,12 +83,12 @@ public class Parser {
                         command = (Command) cl.getConstructor().newInstance();
                         if (command.getNumParameters() == 1) {
                             ((OneInputCommand) command).setParameters(parameterStack.pop());
-                            parameterStack.add(command.exectueCommand());
+                            parameterStack.add(command.executeCommand());
                         }
                         if (command.getNumParameters() == 2) {
                             ((TwoInputCommand) command).setParameters(parameterStack.pop(),
                                     parameterStack.pop());
-                            parameterStack.add(command.exectueCommand());
+                            parameterStack.add(command.executeCommand());
                         }
 
                     } catch (Exception e) {

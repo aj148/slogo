@@ -10,5 +10,5 @@ public abstract class Command {
     
     abstract public void setParameters();
     
-    abstract public double exectueCommand();
+    abstract public double executeCommand();
 }
