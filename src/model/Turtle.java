@@ -3,8 +3,8 @@ package model;
 import java.util.Collection;
 import java.util.Observable;
 
+import view.ViewPanel;
 import commands.Command;
-
 import javafx.geometry.Point2D;
 
 public class Turtle extends Observable {

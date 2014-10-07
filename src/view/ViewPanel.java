@@ -1,5 +1,8 @@
 package view;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import model.Model;
 import commands.Command;
 import controller.Controller;
@@ -9,7 +12,7 @@ import controller.Controller;
  * 
  * @author Team 14
  */
-public class ViewPanel {
+public class ViewPanel implements Observer{
     
     private Controller myController;
     
@@ -45,4 +48,10 @@ public class ViewPanel {
     public void updateView(){
         
     }
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
 }
