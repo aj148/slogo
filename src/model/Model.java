@@ -2,8 +2,8 @@ package model;
 
 import java.util.Collection;
 
+import commands.TurtleCommand;
 import view.ViewPanel;
-import commands.Command;
 
 /**
  * Class that contains the basic information of what needs to be displayed in the GUI,
@@ -15,6 +15,7 @@ import commands.Command;
 public class Model {
     
     private ViewPanel myView;
+    private Turtle myTurtle;
     
     /**
      * Constructor method called from ViewPanel.java
@@ -23,14 +24,18 @@ public class Model {
      */
     public Model(ViewPanel view){
         myView = view;
+        myTurtle = new Turtle(0, 0, myView);
     }
     
     /**
      * Method to update the model with the commands passed from the Controller.
      * 
-     * @param commandsToExecute : Collection of commands to execute.
+     * @param commandsToExecute
+     *            : Collection of commands to execute.
      */
-    public void updateModel(Collection<Command> commandsToExecute){
-        myView.updateView();
+    public void updateModel(Collection<TurtleCommand> commandsToExecute) {
+        for(TurtleCommand command : commandsToExecute){
+            myTurtle.updateTurtle(command);
+        }
     }
 }

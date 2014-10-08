@@ -1,8 +1,6 @@
 package commands;
 
-public abstract class OneInputCommand extends Command {
+public abstract interface OneInputCommand {
     
-    public OneInputCommand(){
-        
-    }
+    public abstract void setParameters(double parameterOne);
 }

@@ -1,8 +1,6 @@
 package commands;
 
-public abstract class ZeroInputCommand extends Command {
+public abstract interface ZeroInputCommand {
     
-    public ZeroInputCommand(){
-        
-    }
+    public abstract void setParameters();
 }

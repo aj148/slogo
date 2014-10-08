@@ -1,8 +1,6 @@
 package commands;
 
-public abstract class TwoInputCommand extends Command {
-    
-    public TwoInputCommand(){
-        
-    }
+public abstract interface TwoInputCommand {
+
+    public abstract void setParameters(double parameterOne, double parameterTwo);
 }

@@ -15,7 +15,7 @@ import parser.Parser;
  */
 public class MasterController {
     
-    protected static Parser myParser;
+    protected Parser myParser;
     public static Map<String, String> myCommandMap;
     private final String resources = "resources.languages/";
     
@@ -29,17 +29,18 @@ public class MasterController {
         while(enumerator.hasMoreElements()){
             String command = (String) enumerator.nextElement();
             String[] inputs = language.getString(command).split(",");
-            command = command + "Command";
+            command = "commands." + command + "Command";
             for(String input : inputs){
                 myCommandMap.put(input, command);
             }
         }
-        for(String key : myCommandMap.keySet()){
-            System.out.println(key + " -> " + myCommandMap.get(key));
-        }
+//        for(String key : myCommandMap.keySet()){
+//            System.out.println(key + " -> " + myCommandMap.get(key));
+//        }
     }
     
     public static void main(String[] args){
-        new MasterController("English");
+        MasterController test = new MasterController("English");
+        test.myParser.parseInput("fd sum 3 5");
     }
 }
