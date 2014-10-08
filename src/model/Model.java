@@ -6,9 +6,9 @@ import commands.TurtleCommand;
 import view.ViewPanel;
 
 /**
- * Class that contains the basic information of what needs to be displayed in the GUI,
- * including data related to the turtle (current position, pen color, pen up/down).
- * The Model is always updated before the ViewPanel is updated.
+ * Class that contains the basic information of what needs to be displayed in
+ * the GUI, including data related to the turtle (current position, pen color,
+ * pen up/down). The Model is always updated before the ViewPanel is updated.
  * 
  * @author Team 14
  */

@@ -13,6 +13,7 @@ public class ForwardCommand extends TurtleCommand implements OneInputCommand {
     
     @Override
     public void executeCommand (Turtle turtle) {
+        System.out.println(myParameterOne);
         // This doesn't work yet. Apparently.
     }
     
