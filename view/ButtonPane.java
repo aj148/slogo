@@ -8,7 +8,7 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 
 
-public class ButtonPane extends Pane implements Observable {
+public class ButtonPane extends Pane {
 
     private ToolBar myToolBar;
 
@@ -18,8 +18,8 @@ public class ButtonPane extends Pane implements Observable {
         myToolBar.getItems().add(btn1);
         createPropertiesMenu();
     }
-    
-    public void createPropertiesMenu(){
+
+    public void createPropertiesMenu () {
         ComboBox properties = new ComboBox();
         Button btn2 = new Button("Test");
         properties.getItems().addAll(btn2);
@@ -30,18 +30,6 @@ public class ButtonPane extends Pane implements Observable {
     public BorderPane addPane (BorderPane p) {
         p.setTop(myToolBar);
         return p;
-    }
-
-    @Override
-    public void addListener (InvalidationListener arg0) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void removeListener (InvalidationListener arg0) {
-        // TODO Auto-generated method stub
-
     }
 
 }

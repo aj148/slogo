@@ -11,7 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 
-public class HistoryPane extends Pane implements Observable {
+public class HistoryPane extends Pane {
 
     private List<String> myHistory;
     private ScrollPane myScrollPane;
@@ -35,18 +35,6 @@ public class HistoryPane extends Pane implements Observable {
     public BorderPane addPane (BorderPane p) {
         p.setRight(myScrollPane);
         return p;
-    }
-
-    @Override
-    public void addListener (InvalidationListener arg0) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void removeListener (InvalidationListener arg0) {
-        // TODO Auto-generated method stub
-        
     }
 
 }
