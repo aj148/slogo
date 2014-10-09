@@ -1,6 +1,6 @@
 package commands;
 
-public class ErrorCommand extends ZeroInputCommand implements NonTurtleCommand {
+public class ErrorCommand extends ZeroInputCommand {
 
     @Override
     public double executeCommand () {

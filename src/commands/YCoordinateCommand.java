@@ -1,5 +1,11 @@
 package commands;
 
-public class YCoordinateCommand extends ZeroInputCommand {
+import model.Turtle;
 
+public class YCoordinateCommand extends ZeroInputCommand implements TurtleCommand {
+    
+    @Override
+    public double executeCommand (Turtle turtle) {
+        return turtle.myPoint.getY();
+    }
 }

@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Map;
 
@@ -15,8 +16,9 @@ import parser.Parser;
  */
 public class MasterController {
     
-    protected Parser myParser;
+    public static Random myRandom = new Random();
     public static Map<String, String> myCommandMap;
+    protected static Parser myParser;
     private final String resources = "resources.languages/";
     
     public MasterController(String lang){

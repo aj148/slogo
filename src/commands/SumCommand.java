@@ -1,6 +1,6 @@
 package commands;
 
-public class SumCommand extends TwoInputCommand implements NonTurtleCommand {
+public class SumCommand extends TwoInputCommand {
 
     @Override
     public double executeCommand() {

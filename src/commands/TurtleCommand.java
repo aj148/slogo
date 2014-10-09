@@ -4,5 +4,5 @@ import model.Turtle;
 
 public abstract interface TurtleCommand {
     
-    public abstract void executeCommand(Turtle turtle);
+    public abstract double executeCommand(Turtle turtle);
 }

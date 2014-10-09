@@ -6,5 +6,6 @@ public class QuotientCommand extends TwoInputCommand {
     public double executeCommand() {
         return myParameterOne / myParameterTwo;
         // Beware of DIVIDE BY ZERO errors.
+        // That's an ArithmeticException.
     }
 }

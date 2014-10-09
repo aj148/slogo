@@ -1,5 +1,11 @@
 package commands;
 
-public class HeadingCommand extends ZeroInputCommand {
+import model.Turtle;
 
+public class HeadingCommand extends ZeroInputCommand implements TurtleCommand {
+
+    @Override
+    public double executeCommand (Turtle turtle) {
+        return turtle.myHeading;
+    }
 }

@@ -10,26 +10,21 @@ import javafx.scene.paint.Color;
 public class Turtle extends Observable {
     
     public Point2D myPoint;
-    private double myHeading;
-    private int isPenUp;
-    private int isInvisible;
-    private Color myColor;
+    public double myHeading;
+    public int isPenDown;
+    public int isShowing;
+    public Color myColor;
     
     public Turtle(int x, int y, ViewPanel view) {
         myPoint = new Point2D(x, y);
         myHeading = 0;
-        isPenUp = 0;
-        isInvisible = 0;
+        isPenDown = 1;
+        isShowing = 1;
         myColor = new Color(0.0, 0.0, 0.0, 1.0);
         addObserver(view);
     }
     
     public void updateTurtle(TurtleCommand command) {
-        try{
-            command.executeCommand(Turtle.this);
-        }
-        catch(Exception e) {
-            System.out.println("This is an error that will be fixed");
-        }
+    	command.executeCommand(Turtle.this);
     }
 }
