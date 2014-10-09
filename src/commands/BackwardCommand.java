@@ -4,9 +4,11 @@ import model.Turtle;
 
 public class BackwardCommand extends OneInputCommand implements TurtleCommand {
     
-    @Override
+	@Override
     public double executeCommand (Turtle turtle) {
-        // Still to be completed.
+        double x = -myParameterOne * Math.sin(turtle.myHeading);
+        double y = -myParameterOne * Math.cos(turtle.myHeading);
+        turtle.myPoint = turtle.myPoint.add(x, y);
         return myParameterOne;
     }
 }

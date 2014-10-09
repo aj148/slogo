@@ -7,4 +7,8 @@ public abstract class Command {
     public double executeCommand () {
         return 0;
     }
+    
+    public String getClassName(){
+		return this.getClass().getName();
+    }
 }

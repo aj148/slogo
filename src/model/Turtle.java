@@ -26,5 +26,7 @@ public class Turtle extends Observable {
     
     public void updateTurtle(TurtleCommand command) {
     	command.executeCommand(Turtle.this);
+    	setChanged();
+    	notifyObservers();
     }
 }

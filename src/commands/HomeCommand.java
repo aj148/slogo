@@ -7,8 +7,9 @@ public class HomeCommand extends ZeroInputCommand implements TurtleCommand {
 	
 	@Override
 	public double executeCommand(Turtle turtle) {
-		// Still to be completed.
+		double x = turtle.myPoint.getX();
+        double y = turtle.myPoint.getY();
 		turtle.myPoint = new Point2D(0, 0);
-		return 0;
+		return Math.sqrt((x*x) + (y*y));
 	}
 }
