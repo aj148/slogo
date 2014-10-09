@@ -5,18 +5,21 @@ import java.util.Observer;
 
 public class CommandString extends Observable{
 
-    private String command;
+    private String myCommand;
     
     public CommandString(Observer o){
         addObserver(o);
-        command = "";
+        myCommand = "";
     }
     
     public void setCommand(String s){
-        command = s;
+        myCommand = s;
         setChanged();
         notifyObservers();
     }
     
+    public String getCommand(){
+        return myCommand;
+    }
     
 }
