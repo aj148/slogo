@@ -2,12 +2,13 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.layout.BorderPane;
 
 
-public class PaneController implements Observable{
+public class PaneController implements Observer {
     List<Pane> myPanes = new ArrayList<Pane>();
 
     public PaneController () {
@@ -24,14 +25,8 @@ public class PaneController implements Observable{
     }
 
     @Override
-    public void addListener (InvalidationListener arg0) {
+    public void update (java.util.Observable arg0, Object arg1) {
         // TODO Auto-generated method stub
-        
-    }
 
-    @Override
-    public void removeListener (InvalidationListener arg0) {
-        // TODO Auto-generated method stub
-        
     }
 }
