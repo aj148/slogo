@@ -1,6 +1,15 @@
 package commands;
 
-public abstract interface OneInputCommand {
+public abstract class OneInputCommand extends Command {
     
-    public abstract void setParameters(double parameterOne);
+    public double myParameterOne;
+    
+    public void setParameters(double parameterOne){
+        myParameterOne = parameterOne;
+    }
+    
+    @Override
+    public int getNumParameters(){
+        return 1;
+    }
 }

@@ -1,6 +1,6 @@
 package commands;
 
-public abstract class NonTurtleCommand extends Command {
+public abstract interface NonTurtleCommand {
     
     public abstract double executeCommand();
 }

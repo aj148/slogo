@@ -41,6 +41,6 @@ public class MasterController {
     
     public static void main(String[] args){
         MasterController test = new MasterController("English");
-        test.myParser.parseInput("fd sum 3 5");
+        test.myParser.parseInput("fd sum 44.5 sum 2 sum 8.6 64.9");
     }
 }

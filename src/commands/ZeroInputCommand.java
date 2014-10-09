@@ -1,6 +1,9 @@
 package commands;
 
-public abstract interface ZeroInputCommand {
+public abstract class ZeroInputCommand extends Command {
     
-    public abstract void setParameters();
+    @Override
+    public int getNumParameters(){
+        return 0;
+    }
 }

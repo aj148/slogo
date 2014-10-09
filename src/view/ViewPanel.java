@@ -45,16 +45,8 @@ public class ViewPanel implements Observer {
      * This method should alter the view according to the commands that were just executed
      * in the backend (specifically in the model associated with this particular view).
      */
-
-    @Override
-    public void update (Observable o, Object arg) {
-        // TODO Auto-generated method stub
-        
-    }
-
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
 	}
 }

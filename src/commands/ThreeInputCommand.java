@@ -1,6 +1,19 @@
 package commands;
 
-public abstract interface ThreeInputCommand {
+public abstract class ThreeInputCommand extends Command {
     
-    public abstract void setParameters(double parameterOne, double parameterTwo, double parameterThree);
+    public double myParameterOne;
+    public double myParameterTwo;
+    public double myParameterThree;
+    
+    public void setParameters(double parameterOne, double parameterTwo, double parameterThree){
+        myParameterOne = parameterOne;
+        myParameterTwo = parameterTwo;
+        myParameterThree = parameterThree;
+    }
+    
+    @Override
+    public int getNumParameters(){
+        return 3;
+    }
 }

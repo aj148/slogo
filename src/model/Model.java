@@ -2,6 +2,7 @@ package model;
 
 import java.util.Collection;
 
+import commands.Command;
 import commands.TurtleCommand;
 import view.ViewPanel;
 
@@ -30,12 +31,11 @@ public class Model {
     /**
      * Method to update the model with the commands passed from the Controller.
      * 
-     * @param commandsToExecute
-     *            : Collection of commands to execute.
+     * @param commandsToExecute : Collection of commands to execute.
      */
-    public void updateModel(Collection<TurtleCommand> commandsToExecute) {
-        for(TurtleCommand command : commandsToExecute){
-            myTurtle.updateTurtle(command);
+    public void updateModel(Collection<Command> commandsToExecute) {
+        for(Command command : commandsToExecute){
+            myTurtle.updateTurtle((TurtleCommand)command);
         }
     }
 }

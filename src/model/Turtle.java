@@ -8,13 +8,13 @@ import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
 public class Turtle extends Observable {
-
+    
     public Point2D myPoint;
     private double myHeading;
     private int isPenUp;
     private int isInvisible;
     private Color myColor;
-
+    
     public Turtle(int x, int y, ViewPanel view) {
         myPoint = new Point2D(x, y);
         myHeading = 0;

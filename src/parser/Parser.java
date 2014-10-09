@@ -58,7 +58,7 @@ public class Parser {
             Command command;
             try {
                 cl = Class.forName(commandName);
-                if (cl.getSuperclass().getName() == "commands.TurtleCommand") {
+                if (cl.getInterfaces()[0].getName() == "commands.TurtleCommand") {
                     try {
                         command = (Command) cl.getConstructor().newInstance();
                         System.out.println(command.getNumParameters());
@@ -83,7 +83,7 @@ public class Parser {
                         return throwError(e);
                     }
                 }
-                else if (cl.getSuperclass().getName() != "commands.TurtleCommand") {
+                else if (cl.getInterfaces()[0].getName() != "commands.TurtleCommand") {
                     try {
                         command = (Command) cl.getConstructor().newInstance();
                         if (command.getNumParameters() == 1) {

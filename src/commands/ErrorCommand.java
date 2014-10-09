@@ -1,14 +1,10 @@
 package commands;
 
-public class ErrorCommand extends Command implements ZeroInputCommand {
+public class ErrorCommand extends ZeroInputCommand implements NonTurtleCommand {
 
     @Override
-    public void setParameters () {
-        // Code this.
-    }
-
-    @Override
-    public int getNumParameters () {
+    public double executeCommand () {
+        // This hasn't been coded yet.
         return 0;
     }
 }
