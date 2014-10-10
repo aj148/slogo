@@ -4,6 +4,7 @@ import java.util.Observer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -39,6 +40,9 @@ public class HistoryPane extends Pane implements Observer {
                     myCommandString.setCommand(s, 1);
                 }
             });
+        }
+        else if (myCommandString.getType() == 2) {
+            myHistoryDisplay.getChildren().add(new Label(myCommandString.getCommand()));
         }
     }
 

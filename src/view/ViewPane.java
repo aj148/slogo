@@ -33,19 +33,10 @@ public class ViewPane extends Pane implements Observer {
         Image image = new Image(getClass().getResourceAsStream("LogoTurtle2.png"));
         myDraw.drawTurtle(myCanvas.getGraphicsContext2D(), image, 180, 90);
         myDraw.drawLine(gc, 200, 200, 200, 120);
-        //myDraw.drawLine(gc, 0, -50, 50, -50);
+        // myDraw.drawLine(gc, 0, -50, 50, -50);
     }
 
-    /**
-     * Called upon when the state of a turtle changes using Observable. Utilizes the Draw class to
-     * draw an new line
-     * and then to update the graphical representation stored in the canvas to reflect the turtles
-     * updated state. Then pushes the updated canvas to the User Interface to update the output
-     * displayed to the user.
-     *
-     * @param c Canvas containing the graphical representation
-     */
-    public void updateView (Canvas c) {
+    public void updateView () {
 
     }
 

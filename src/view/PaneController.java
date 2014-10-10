@@ -23,14 +23,13 @@ public class PaneController implements Observer {
      * CommandString containing the current command to be passed to the backend.
      */
     private CommandString myCommand = new CommandString(this);
-    private CommandString mySettings = new CommandString(this);
 
     /**
      * Constructor. Adds Panes to myPanes.
      */
     public PaneController () {
         myPanes.add(new ViewPane());
-        myPanes.add(new ButtonPane(mySettings));
+        myPanes.add(new ButtonPane(myCommand));
         myPanes.add(new HistoryPane(myCommand));
         myPanes.add(new InputPane(myCommand));
     }
@@ -47,6 +46,10 @@ public class PaneController implements Observer {
             bp = p.addPane(bp);
         }
         return bp;
+    }
+
+    public void showError (String s) {
+        myCommand.setCommand(s, 2);
     }
 
     /**
