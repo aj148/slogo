@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -61,6 +62,14 @@ public class ButtonPane extends Pane {
 
     private Button makeButton (String property, EventHandler<ActionEvent> handler) {
         Button result = new Button();
+        String label = property;
+        result.setText(label);
+        result.setOnAction(handler);
+        return result;
+    }
+    
+    private ToggleButton makeToggleButton (String property, EventHandler<ActionEvent> handler) {
+        ToggleButton result = new ToggleButton();
         String label = property;
         result.setText(label);
         result.setOnAction(handler);
