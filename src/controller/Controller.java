@@ -2,10 +2,10 @@ package controller;
 
 import java.util.ArrayDeque;
 import java.util.Collection;
-
 import model.Model;
-import view.ViewPanel;
+import view.ViewPane;
 import commands.Command;
+
 
 /**
  * Communicates between the View, the Parser, and the Model. The Controller accepts
@@ -16,21 +16,21 @@ import commands.Command;
  * @author Team 14
  */
 public class Controller {
-    
-    ViewPanel myView;
+
+    ViewPane myView;
     Model myModel;
-    
+
     /**
      * Constructor method called from ViewPanel.java
      * 
      * @param view : The ViewPanel that called this constructor.
      * @param model : The Model constructed by said ViewPanel.
      */
-    public Controller(ViewPanel view, Model model){
+    public Controller (ViewPane view, Model model) {
         myView = view;
         myModel = model;
     }
-    
+
     /**
      * Accepts a string from the ViewPanel, parses it using a static parser in the
      * MasterController class, and searches the returned collection of commands for
@@ -39,22 +39,23 @@ public class Controller {
      * 
      * @param input : User input string from the ViewPanel.
      */
-    public void getInput(String input){
+    public void getInput (String input) {
         Collection<Command> commandsToExecute = new ArrayDeque<Command>();
         commandsToExecute.addAll(MasterController.myParser.parseInput(input));
-        for(Command com : commandsToExecute){
-            
+        for (Command com : commandsToExecute) {
+
             // This is hard-coded for now.
             boolean isErrorCommand = false;
-            
-            if(isErrorCommand){
-                myView.showError(com);
+
+            if (isErrorCommand) {
+                // myView.showError(com); //Show Error is in the PaneController. Reminder to fix
+                // this
                 return;
             }
         }
         runCommand(commandsToExecute);
     }
-    
+
     /**
      * Passes the commands to the Model to execute.
      * 

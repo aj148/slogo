@@ -3,8 +3,6 @@ package parser;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Stack;
-
-import view.ViewPanel;
 import model.Turtle;
 import commands.Command;
 import commands.ErrorCommand;
@@ -13,6 +11,7 @@ import commands.ThreeInputCommand;
 import commands.TurtleCommand;
 import commands.TwoInputCommand;
 import controller.MasterController;
+
 
 /**
  * This class is used to convert a string to a collection of commands to
@@ -36,14 +35,17 @@ public class Parser {
             if (MasterController.myCommandMap.containsKey(input)) {
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     return throwError(e);
                 }
-            } else {
+            }
+            else {
                 try {
                     double parameter = Double.parseDouble(input);
                     parameterStack.add(parameter);
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     return throwError(e);
                 }
             }
@@ -63,36 +65,40 @@ public class Parser {
                     }
                     if (command.getNumParameters() == 2) {
                         ((TwoInputCommand) command).setParameters(parameterStack.pop(),
-                                parameterStack.pop());
+                                                                  parameterStack.pop());
                     }
                     if (command.getNumParameters() == 3) {
                         ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
-                                parameterStack.pop(), parameterStack.pop());
+                                                                    parameterStack.pop(),
+                                                                    parameterStack.pop());
                     }
                     if (cl.getInterfaces().length > 0
-                            && cl.getInterfaces()[0].getName().equals("commands.TurtleCommand")) {
+                        && cl.getInterfaces()[0].getName().equals("commands.TurtleCommand")) {
                         commandsToExecute.add(command);
-                    } else {
+                    }
+                    else {
                         parameterStack.add(command.executeCommand());
                     }
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     return throwError(e);
                 }
-            } catch (ClassNotFoundException e) {
+            }
+            catch (ClassNotFoundException e) {
                 return throwError(e);
             }
 
         }
-        //I need to throw an error for this case
-        //"fd sum 5 sum 5 3 3"
-        if(parameterStack.size() >0){
+        // I need to throw an error for this case
+        // "fd sum 5 sum 5 3 3"
+        if (parameterStack.size() > 0) {
             System.out.println("whatwhatwhat");
         }
-//        for (Command command : commandsToExecute) {
-//            System.out.println(command.getClass().toString());
-//            Turtle turtle = new Turtle(0, 0, new ViewPanel());
-//            turtle.updateTurtle((TurtleCommand) command);
-//        }
+        // for (Command command : commandsToExecute) {
+        // System.out.println(command.getClass().toString());
+        // Turtle turtle = new Turtle(0, 0, new ViewPanel());
+        // turtle.updateTurtle((TurtleCommand) command);
+        // }
         return commandsToExecute;
     }
 

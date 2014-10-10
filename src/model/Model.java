@@ -1,10 +1,10 @@
 package model;
 
 import java.util.Collection;
-
 import commands.Command;
 import commands.TurtleCommand;
-import view.ViewPanel;
+import view.ViewPane;
+
 
 /**
  * Class that contains the basic information of what needs to be displayed in
@@ -14,28 +14,28 @@ import view.ViewPanel;
  * @author Team 14
  */
 public class Model {
-    
-    private ViewPanel myView;
+
+    private ViewPane myView;
     private Turtle myTurtle;
-    
+
     /**
      * Constructor method called from ViewPanel.java
      * 
      * @param view : The ViewPanel that called this constructor.
      */
-    public Model(ViewPanel view){
+    public Model (ViewPane view) {
         myView = view;
         myTurtle = new Turtle(0, 0, myView);
     }
-    
+
     /**
      * Method to update the model with the commands passed from the Controller.
      * 
      * @param commandsToExecute : Collection of commands to execute.
      */
-    public void updateModel(Collection<Command> commandsToExecute) {
-        for(Command command : commandsToExecute){
-            myTurtle.updateTurtle((TurtleCommand)command);
+    public void updateModel (Collection<Command> commandsToExecute) {
+        for (Command command : commandsToExecute) {
+            myTurtle.updateTurtle((TurtleCommand) command);
         }
     }
 }

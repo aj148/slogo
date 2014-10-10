@@ -1,33 +1,44 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javafx.application.Application;
 import javafx.stage.Stage;
+import java.awt.Dimension;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+
 
 /**
- * Main GUI class that instantiates the stage. It can instantiate multiple ViewPanels,
- * with each ViewPanel having its own Controller and Model.
- * 
- * @author Team 14
+ * Provides the main User Interface presented to the User. Implements various Panes(children of
+ * Nodes) which provide additional functionality and behavior. Presents the state of the program to
+ * the user and allows input from the user through the Pane implementations.
+ *
+ * @author Arihant Jain
+ * @author Jesse Ling
+ *
  */
-public class UserInterface extends Application {
-    
-    private List<ViewPanel> myViews = new ArrayList<ViewPanel>();
+public class UserInterface {
+    public static final Dimension DEFAULT_DIMENSIONS = new Dimension(800, 600);
 
-    @Override
-    public void start (Stage stage) {
-        ViewPanel newView = new ViewPanel();
-        myViews.add(newView);
+    private Stage myStage;
+
+    public UserInterface (Stage s) {
+        myStage = s;
+        initiate(myStage);
     }
-    
+
     /**
-     * Main method to launch the application.
-     * 
-     * @param args : Standard arguments
+     * Creates the structure of the User Interface and populates the structure accordingly with
+     * Panes.
+     *
+     * @param s Stage of the Program
      */
-    public static void main(String[] args){
-        launch(args);
+    public void initiate (Stage s) {
+        s.setTitle("SLogo");
+        BorderPane root = new BorderPane();
+        PaneController pb = new PaneController();
+        root = pb.populate(root);
+        Scene scene = new Scene(root, DEFAULT_DIMENSIONS.width, DEFAULT_DIMENSIONS.height);
+        s.setScene(scene);
+        s.show();
+
     }
 }
