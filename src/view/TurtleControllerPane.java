@@ -5,10 +5,10 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class TurtleControllerPane extends Pane {
-	 	private HBox myHbox = new HBox();
+	 	private VBox myVbox = new VBox();
 	 	private TextField myMoveTextField = new TextField();
 	 	private TextField myAngleTextField = new TextField();
 	    private CommandString myCommandString;
@@ -26,7 +26,7 @@ public class TurtleControllerPane extends Pane {
 	        moveButton = makeButton("Forward", event ->move());
 	        myAngleTextField.setPrefColumnCount(5);
 	        angleButton = makeButton("Right (deg)", event ->angle());
-	        myHbox.getChildren().addAll(myAngleTextField, angleButton, myMoveTextField, moveButton);
+	        myVbox.getChildren().addAll(myAngleTextField, angleButton, myMoveTextField, moveButton);
 	    }
 	 
 	
@@ -53,7 +53,7 @@ public class TurtleControllerPane extends Pane {
 	@Override
 	public BorderPane addPane(BorderPane p) {
 		// TODO Auto-generated method stub
-		p.setLeft(myHbox);
+		p.setLeft(myVbox);
         return p;
 	}
 	
