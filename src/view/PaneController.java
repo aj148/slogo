@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import controller.Controller;
+import controller.MasterController;
 import javafx.scene.layout.BorderPane;
 
 
@@ -23,12 +25,16 @@ public class PaneController implements Observer {
      * CommandString containing the current command to be passed to the backend.
      */
     private CommandString myCommand = new CommandString(this);
+    private ViewPane myView = new ViewPane();
+    private Controller myController = new Controller(myView);
+    private MasterController myMasterController;
 
     /**
      * Constructor. Adds Panes to myPanes.
      */
     public PaneController () {
-        myPanes.add(new ViewPane());
+        myMasterController = new MasterController("English");
+        myPanes.add(myView);
         myPanes.add(new ButtonPane(myCommand));
         myPanes.add(new HistoryPane(myCommand));
         myPanes.add(new InputPane(myCommand));
@@ -59,7 +65,9 @@ public class PaneController implements Observer {
     @Override
     public void update (Observable obs, Object arg1) {
         String s = myCommand.getCommand().toLowerCase();
+        // String s = "forward 50";
         System.out.println(s);
+        myController.getInput(s);
     }
 
 }

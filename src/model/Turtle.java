@@ -1,14 +1,15 @@
 package model;
 
-import java.util.Observable;
 import view.ViewPane;
 import commands.TurtleCommand;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
 
-public class Turtle extends Observable {
+public class Turtle {
 
+    private static final double PI = 3.1415927;
+    private ViewPane myView;
     private Point2D myPoint;
     private double myHeading;
     private double isPenDown;
@@ -21,23 +22,30 @@ public class Turtle extends Observable {
         isPenDown = 1;
         isShowing = 1;
         myColor = new Color(0.0, 0.0, 0.0, 1.0);
-        addObserver(view);
+        myView = view;
     }
 
     public void updateTurtle (TurtleCommand command) {
         command.executeCommand(Turtle.this);
-        observeHelper();
+        // observeHelper();
+        myView.updateView(this);
     }
 
     public double updatePosition (double forward) {
-        double x = forward * Math.sin(myHeading);
-        double y = forward * Math.cos(myHeading);
+        double radians=toRadians(myHeading);
+        double x = forward * Math.sin(radians);
+        double y = forward * Math.cos(radians)*-1;
         myPoint = myPoint.add(x, y);
         return Math.abs(forward);
     }
 
+    private double toRadians(double degrees)
+    {
+        return degrees*PI/180.0;
+    }
     public double updateHeading (double degree) {
         myHeading += degree;
+        myHeading=myHeading%360;
         return degree;
     }
 
@@ -93,9 +101,19 @@ public class Turtle extends Observable {
         return -1;
     }
 
-    private void observeHelper () {
-        setChanged();
-        notifyObservers();
+    public Point2D getLocation () {
+        return myPoint;
     }
 
+    public double getPenStatus () {
+        return isPenDown;
+    }
+
+    public double getShowing () {
+        return isShowing;
+    }
+
+    public Color getPenColor () {
+        return myColor;
+    }
 }

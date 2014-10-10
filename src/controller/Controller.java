@@ -26,9 +26,9 @@ public class Controller {
      * @param view : The ViewPanel that called this constructor.
      * @param model : The Model constructed by said ViewPanel.
      */
-    public Controller (ViewPane view, Model model) {
+    public Controller (ViewPane view) {
         myView = view;
-        myModel = model;
+        myModel = new Model(view);
     }
 
     /**
