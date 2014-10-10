@@ -11,8 +11,7 @@ import controller.Controller;
  * using Observable. Calls on the Draw class to update the graphical representation stored in View
  * when the status of a turtle changes.
  *
- * @author Arihant Jain
- * @author Jesse
+ * @author Team 14
  *
  */
 public class ViewPanel {
