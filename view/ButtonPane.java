@@ -2,28 +2,37 @@ package view;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 
 
 public class ButtonPane extends Pane {
 
-    private ToolBar myToolBar;
-
+    private final ToolBar myToolBar;
+    private ComboBox myComboBox;
+    private Button backgroundColorButton;
+    private Button penColorButton;
+    private CommandString myCommandString;
+    private String myCurrent;
+    
+    
     public ButtonPane () {
         myToolBar = new ToolBar();
-        Button btn1 = new Button("Test");
-        myToolBar.getItems().add(btn1);
         createPropertiesMenu();
     }
 
     public void createPropertiesMenu () {
-        ComboBox properties = new ComboBox();
-        Button btn2 = new Button("Test");
-        properties.getItems().addAll(btn2);
-        myToolBar.getItems().add(properties);
+        ComboBox myComboBox = new ComboBox();
+        
+        backgroundColorButton = makeButton("Background Color", event -> backgroundColor());
+        penColorButton = makeButton("Pen Color", event -> changePenColor());
+        myComboBox.getItems().addAll(backgroundColorButton, penColorButton);
+        myToolBar.getItems().add(myComboBox);
     }
 
     @Override
@@ -31,5 +40,33 @@ public class ButtonPane extends Pane {
         p.setTop(myToolBar);
         return p;
     }
+    
+    // makes a button using either an image or a label
+ 	/**
+ 	 * @param property
+ 	 * @param handler
+ 	 * @return Button 
+ 	 */
+ 	private Button makeButton (String property, EventHandler<ActionEvent> handler) {
+ 		Button result = new Button();
+ 		String label = property;
+ 		result.setText(label);
+ 		result.setOnAction(handler);
+ 		return result;
+ 	}
 
+    
+    
+
+    public void backgroundColor(){
+    	myCurrent = "black";
+    	myCommandString.setCommand(myCurrent);
+        System.out.println(myCurrent);
+    	
+    }
+    public void changePenColor(){
+    	System.out.println("black");
+    	
+    }
+    
 }

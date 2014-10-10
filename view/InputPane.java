@@ -1,11 +1,14 @@
 package view;
 
 import javafx.beans.InvalidationListener;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+
 
 
 public class InputPane extends Pane {
@@ -15,6 +18,7 @@ public class InputPane extends Pane {
     private TextField myTextField;
     private String myCurrent;
     private CommandString myCommandString;
+
 
     public InputPane (CommandString cs) {
         myCurrent = "";
@@ -26,7 +30,7 @@ public class InputPane extends Pane {
         myTextField.setPrefColumnCount(60);
         Button submit = new Button("Submit");
         submit.setOnAction(event -> submit());
-        myHBox.getChildren().addAll(myScrollPane, submit);
+     
     }
 
     private void submit () {
@@ -34,6 +38,21 @@ public class InputPane extends Pane {
         myCommandString.setCommand(myCurrent);
         System.out.println(myCurrent);
     }
+   
+    
+    // makes a button using either an image or a label
+ 	/**
+ 	 * @param property
+ 	 * @param handler
+ 	 * @return Button 
+ 	 */
+ 	private Button makeButton (String property, EventHandler<ActionEvent> handler) {
+ 		Button result = new Button();
+ 		String label = property;
+ 		result.setText(label);
+ 		result.setOnAction(handler);
+ 		return result;
+ 	}
 
     @Override
     public BorderPane addPane (BorderPane p) {
