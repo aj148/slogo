@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.canvas.Canvas;
@@ -18,7 +19,8 @@ import javafx.scene.paint.Color;
  *
  */
 public class ViewPane extends Pane implements Observer {
-    private Canvas myCanvas = new Canvas(400, 400);
+    public static final int DEFAULT_DIMENSION = 500;
+    private Canvas myCanvas = new Canvas(DEFAULT_DIMENSION, DEFAULT_DIMENSION);
     private Draw myDraw = new Draw();
 
     /**
@@ -26,13 +28,11 @@ public class ViewPane extends Pane implements Observer {
      */
     public ViewPane () {
         GraphicsContext gc = myCanvas.getGraphicsContext2D();
-        gc.setFill(Color.LIGHTBLUE);
         gc.setStroke(Color.BLACK);
-        gc.fillRect(0, 0, 400, 400);
-
-        Image image = new Image(getClass().getResourceAsStream("LogoTurtle2.png"));
-        myDraw.drawTurtle(myCanvas.getGraphicsContext2D(), image, 180, 90);
-        myDraw.drawLine(gc, 200, 200, 200, 120);
+        myDraw.drawBackground(myCanvas, Color.LIGHTBLUE);
+        // Image image = new Image(getClass().getResourceAsStream("LogoTurtle2.png"));
+        // myDraw.drawTurtle(myCanvas.getGraphicsContext2D(), image, 180, 90);
+        // myDraw.drawLine(gc, 200, 200, 200, 120);
         // myDraw.drawLine(gc, 0, -50, 50, -50);
     }
 

@@ -45,7 +45,7 @@ public class ButtonPane extends Pane {
 
     public void backgroundColor () {
         myCurrent = "black";
-        myCommandString.setCommand(myCurrent);
+        myCommandString.setCommand(myCurrent, 0);
         System.out.println(myCurrent);
 
     }
