@@ -38,6 +38,7 @@ public class PaneController implements Observer {
         myPanes.add(new ButtonPane(myCommand));
         myPanes.add(new HistoryPane(myCommand));
         myPanes.add(new InputPane(myCommand));
+        myPanes.add(new TurtleControllerPane(myCommand));
     }
 
     /**
