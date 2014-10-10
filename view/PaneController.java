@@ -18,11 +18,11 @@ public class PaneController implements Observer {
     /**
      * Contains all Panes in the User Interface
      */
-    List<Pane> myPanes = new ArrayList<Pane>();
+    private List<Pane> myPanes = new ArrayList<Pane>();
     /**
      * CommandString containing the current command to be passed to the backend.
      */
-    CommandString myCommand = new CommandString(this);
+    private CommandString myCommand = new CommandString(this);
 
     /**
      * Constructor. Adds Panes to myPanes.
