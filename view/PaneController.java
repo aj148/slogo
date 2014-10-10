@@ -53,7 +53,7 @@ public class PaneController implements Observer {
      */
     @Override
     public void update (Observable obs, Object arg1) {
-        System.out.println(myCommand.getCommand());
+//        System.out.println(myCommand.getCommand());
     }
 
 }
