@@ -1,13 +1,7 @@
 package view;
 
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 

@@ -1,9 +1,11 @@
 package view;
 
-import javafx.scene.canvas.Canvas; 
-import model.Model;
-import commands.Command;
-import controller.Controller;
+import java.util.Observable;
+import java.util.Observer;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 
 
 /**
@@ -14,31 +16,16 @@ import controller.Controller;
  * @author Team 14
  *
  */
-public class ViewPanel {
-    private Controller myController;
+public class ViewPane extends Pane implements Observer {
+    private Canvas myCanvas = new Canvas(100, 100);
+    private Draw myDraw = new Draw();
 
     /**
      * Constructor method called from UserInterface.java
      */
-    public ViewPanel () {
-        myController = new Controller(this, new Model(this));
-    }
-
-    /**
-     * This method should actually take a string typed into the view by the user.
-     */
-    @SuppressWarnings("unused")
-    private void sendInput () {
-        String input = "fd 50";
-        myController.getInput(input);
-    }
-
-    /**
-     * This method should display an error in the view based on the ErrorCommand.
-     *
-     * @param error : An ErrorCommand containing the specifics error.
-     */
-    public void showError (Command error) {
+    public ViewPane () {
+        Image image = new Image(getClass().getResourceAsStream("LogoTurtle2.png"));
+        myDraw.drawTurtle(myCanvas.getGraphicsContext2D(), image, 0, 0);
     }
 
     /**
@@ -51,5 +38,18 @@ public class ViewPanel {
      * @param c Canvas containing the graphical representation
      */
     public void updateView (Canvas c) {
+
+    }
+
+    @Override
+    public void update (Observable arg0, Object arg1) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public BorderPane addPane (BorderPane p) {
+        p.setCenter(myCanvas);
+        return p;
     }
 }

@@ -1,16 +1,21 @@
 package view;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 
 /**
  * Draws a line between two points.
  *
- * @author Arihant Jain
- * @author Jesse
+ * @author Team 14
  *
  */
 public class Draw {
+
+    public void drawTurtle (GraphicsContext gc, Image image, double x1, double y1) {
+        gc.drawImage(image, x1, y1);
+    }
+
     /**
      * Draws a line between two points onto the GraphicsContext from a canvas.
      *

@@ -23,12 +23,14 @@ public class PaneController implements Observer {
      * CommandString containing the current command to be passed to the backend.
      */
     private CommandString myCommand = new CommandString(this);
+    private CommandString mySettings = new CommandString(this);
 
     /**
      * Constructor. Adds Panes to myPanes.
      */
     public PaneController () {
-        myPanes.add(new ButtonPane());
+        myPanes.add(new ViewPane());
+        myPanes.add(new ButtonPane(mySettings));
         myPanes.add(new HistoryPane(myCommand));
         myPanes.add(new InputPane(myCommand));
     }
@@ -53,7 +55,8 @@ public class PaneController implements Observer {
      */
     @Override
     public void update (Observable obs, Object arg1) {
-//        System.out.println(myCommand.getCommand());
+        String s = myCommand.getCommand().toLowerCase();
+        System.out.println(s);
     }
 
 }
