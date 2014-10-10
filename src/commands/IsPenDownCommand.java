@@ -6,6 +6,6 @@ public class IsPenDownCommand extends ZeroInputCommand implements TurtleCommand 
 
     @Override
     public double executeCommand (Turtle turtle) {
-        return turtle.isPenDown;
+        return turtle.changePen(-1.0);
     }
 }

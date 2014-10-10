@@ -6,7 +6,6 @@ public class ShowTurtleCommand extends ZeroInputCommand implements TurtleCommand
 	
 	@Override
 	public double executeCommand(Turtle turtle) {
-		turtle.isShowing = 1;
-		return 1;
+		return turtle.changeVisibility(1.0);
 	}
 }

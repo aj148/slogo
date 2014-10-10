@@ -6,7 +6,6 @@ public class HideTurtleCommand extends ZeroInputCommand implements TurtleCommand
 	
 	@Override
 	public double executeCommand(Turtle turtle) {
-		turtle.isShowing = 0;
-		return 0;
+		return turtle.changeVisibility(0.0);
 	}
 }

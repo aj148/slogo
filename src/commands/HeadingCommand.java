@@ -6,6 +6,6 @@ public class HeadingCommand extends ZeroInputCommand implements TurtleCommand {
 
     @Override
     public double executeCommand (Turtle turtle) {
-        return turtle.myHeading;
+        return turtle.getHeading();
     }
 }

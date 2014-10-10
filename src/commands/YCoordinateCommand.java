@@ -6,6 +6,6 @@ public class YCoordinateCommand extends ZeroInputCommand implements TurtleComman
     
     @Override
     public double executeCommand (Turtle turtle) {
-        return turtle.myPoint.getY();
+        return turtle.getXOrY(1);
     }
 }
