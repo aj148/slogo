@@ -25,6 +25,7 @@ public class Draw {
      * @param x2 New X Pixel Coordinate
      * @param y2 New Y Pixel Coordinate
      */
-    public void drawLine (GraphicsContext gc, int x1, int y1, int x2, int y2) {
+    public void drawLine (GraphicsContext gc, double x1, double y1, double x2, double y2) {
+        gc.strokeLine(x1, y1, x2, y2);
     }
 }
