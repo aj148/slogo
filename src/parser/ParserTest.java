@@ -18,27 +18,27 @@ public class ParserTest {
         
         Parser testParse = new Parser();
         Collection<Command> commandsToExecute = testParse.parseInput("fd 27 23");
-        assertEquals(commandsToExecute.remove(new ErrorCommand()), true);
+        assertEquals(commandsToExecute.remove(new ErrorCommand("Error: Invalid input.")), true);
         assertEquals(commandsToExecute.isEmpty(), true);
         
         commandsToExecute = testParse.parseInput("fd");
-        assertEquals(commandsToExecute.remove(new ErrorCommand()), true);
+        assertEquals(commandsToExecute.remove(new ErrorCommand("Error: Invalid input.")), true);
         assertEquals(commandsToExecute.isEmpty(), true);
         
         commandsToExecute = testParse.parseInput("+ 3 7 1");
-        assertEquals(commandsToExecute.remove(new ErrorCommand()), true);
+        assertEquals(commandsToExecute.remove(new ErrorCommand("Error: Invalid input.")), true);
         assertEquals(commandsToExecute.isEmpty(), true);
         
         commandsToExecute = testParse.parseInput("+ + + +");
-        assertEquals(commandsToExecute.remove(new ErrorCommand()), true);
+        assertEquals(commandsToExecute.remove(new ErrorCommand("Error: Invalid input.")), true);
         assertEquals(commandsToExecute.isEmpty(), true);
         
         commandsToExecute = testParse.parseInput("xyftkjplp");
-        assertEquals(commandsToExecute.remove(new ErrorCommand()), true);
+        assertEquals(commandsToExecute.remove(new ErrorCommand("Error: Invalid input.")), true);
         assertEquals(commandsToExecute.isEmpty(), true);
         
         commandsToExecute = testParse.parseInput("fd sum 67 21 ]");
-        assertEquals(commandsToExecute.remove(new ErrorCommand()), true);
+        assertEquals(commandsToExecute.remove(new ErrorCommand("Error: Invalid input.")), true);
         assertEquals(commandsToExecute.isEmpty(), true);
 
         commandsToExecute = testParse.parseInput("fd 50");

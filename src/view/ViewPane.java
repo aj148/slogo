@@ -2,6 +2,7 @@ package view;
 
 import java.util.Observable;
 import java.util.Observer;
+
 import model.Turtle;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -45,4 +46,8 @@ public class ViewPane extends Pane {
         p.setCenter(myCanvas);
         return p;
     }
+
+	public void showError(String displayMessage) {
+		System.out.println(displayMessage);
+	}
 }

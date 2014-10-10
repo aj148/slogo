@@ -18,7 +18,7 @@ public class MasterController {
 
     public static Random myRandom = new Random();
     public static Map<String, String> myCommandMap;
-    protected static Parser myParser;
+    protected Parser myParser;
     private final String resources = "resources.languages/";
 
     public MasterController (String lang) {

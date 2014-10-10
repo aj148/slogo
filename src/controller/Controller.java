@@ -1,10 +1,11 @@
 package controller;
 
-import java.util.ArrayDeque;
-import java.util.Collection;
+import java.util.Stack;
+
 import model.Model;
 import view.ViewPane;
 import commands.Command;
+import commands.ErrorCommand;
 
 
 /**
@@ -39,19 +40,13 @@ public class Controller {
      * 
      * @param input : User input string from the ViewPanel.
      */
-    public void getInput (String input) {
-        Collection<Command> commandsToExecute = new ArrayDeque<Command>();
-        commandsToExecute.addAll(MasterController.myParser.parseInput(input));
-        for (Command com : commandsToExecute) {
-
-            // This is hard-coded for now.
-            boolean isErrorCommand = false;
-
-            if (isErrorCommand) {
-                // myView.showError(com); //Show Error is in the PaneController. Reminder to fix
-                // this
-                return;
-            }
+    public void getInput(String input){
+    	MasterController master = new MasterController("English");
+        Stack<Command> commandsToExecute = master.myParser.parseInput(input);
+        if(!commandsToExecute.isEmpty() && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")){
+        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
+        	myView.showError(error.displayMessage());
+        	return;
         }
         runCommand(commandsToExecute);
     }
@@ -61,7 +56,7 @@ public class Controller {
      * 
      * @param commandsToExecute : The commands to execute.
      */
-    private void runCommand (Collection<Command> commandsToExecute) {
+    private void runCommand (Stack<Command> commandsToExecute) {
         myModel.updateModel(commandsToExecute);
     }
 }

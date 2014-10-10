@@ -1,14 +1,10 @@
 package parser;
 
-import java.util.ArrayDeque;
-import java.util.Collection;
 import java.util.Stack;
-import model.Turtle;
 import commands.Command;
 import commands.ErrorCommand;
 import commands.OneInputCommand;
 import commands.ThreeInputCommand;
-import commands.TurtleCommand;
 import commands.TwoInputCommand;
 import controller.MasterController;
 
@@ -27,8 +23,8 @@ public class Parser {
      * @param input : String to parse.
      * @return Collection of commands to execute.
      */
-    public Collection<Command> parseInput (String parseInput) {
-        Collection<Command> commandsToExecute = new Stack<Command>();
+    public Stack<Command> parseInput (String parseInput) {
+        Stack<Command> commandsToExecute = new Stack<Command>();
         Stack<String> commandStack = new Stack<String>();
         Stack<Double> parameterStack = new Stack<Double>();
         for (String input : parseInput.split(" ")) {
@@ -50,12 +46,10 @@ public class Parser {
                 }
             }
         }
-
         while (!commandStack.isEmpty()) {
             String commandName = commandStack.pop();
             Class<?> cl;
             Command command;
-
             try {
                 cl = Class.forName(commandName);
                 try {
@@ -92,7 +86,7 @@ public class Parser {
         // I need to throw an error for this case
         // "fd sum 5 sum 5 3 3"
         if (parameterStack.size() > 0) {
-            System.out.println("whatwhatwhat");
+            return throwError(new Exception());
         }
         // for (Command command : commandsToExecute) {
         // System.out.println(command.getClass().toString());
@@ -102,10 +96,9 @@ public class Parser {
         return commandsToExecute;
     }
 
-    private Collection<Command> throwError (Exception e) {
-
-        Collection<Command> error = new ArrayDeque<Command>();
-        error.add(new ErrorCommand());
+    private Stack<Command> throwError (Exception e) {
+        Stack<Command> error = new Stack<Command>();
+        error.add(new ErrorCommand("Error: Invalid input."));
         return error;
     }
 }

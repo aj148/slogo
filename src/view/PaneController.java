@@ -66,8 +66,6 @@ public class PaneController implements Observer {
     @Override
     public void update (Observable obs, Object arg1) {
         String s = myCommand.getCommand().toLowerCase();
-        // String s = "forward 50";
-        System.out.println(s);
         myController.getInput(s);
     }
 
