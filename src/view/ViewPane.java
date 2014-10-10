@@ -30,10 +30,9 @@ public class ViewPane extends Pane implements Observer {
         GraphicsContext gc = myCanvas.getGraphicsContext2D();
         gc.setStroke(Color.BLACK);
         myDraw.drawBackground(myCanvas, Color.LIGHTBLUE);
-        // Image image = new Image(getClass().getResourceAsStream("LogoTurtle2.png"));
-        // myDraw.drawTurtle(myCanvas.getGraphicsContext2D(), image, 180, 90);
-        // myDraw.drawLine(gc, 200, 200, 200, 120);
-        // myDraw.drawLine(gc, 0, -50, 50, -50);
+        Image image = new Image(getClass().getResourceAsStream("LogoTurtle2.png"));
+        myDraw.drawTurtle(myCanvas, image, 0, 0);
+        myDraw.drawLine(myCanvas, 0, 0, 0, -50);
     }
 
     public void updateView () {

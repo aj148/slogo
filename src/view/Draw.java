@@ -20,7 +20,8 @@ public class Draw {
     }
 
     public void drawTurtle (Canvas c, Image image, double x1, double y1) {
-        // gc.drawImage(image, x1, y1);
+        c.getGraphicsContext2D().drawImage(image, x1 + (c.getWidth() / 2) - 21,
+                                           y1 + (c.getWidth() / 2) - 21);
     }
 
     /**
@@ -33,6 +34,7 @@ public class Draw {
      * @param y2 New Y Pixel Coordinate
      */
     public void drawLine (Canvas c, double x1, double y1, double x2, double y2) {
-        // gc.strokeLine(x1, y1, x2, y2);
+        c.getGraphicsContext2D().strokeLine(x1 + (c.getWidth() / 2), y1 + (c.getWidth() / 2),
+                                            x2 + (c.getWidth() / 2), y2 + (c.getWidth() / 2));
     }
 }
