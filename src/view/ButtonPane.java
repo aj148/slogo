@@ -3,6 +3,8 @@ package view;
 
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,11 +16,13 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 
 
 public class ButtonPane extends Pane {
-
+	private WebView myPage;
     private final ToolBar myToolBar = new ToolBar();
     private ComboBox<Button> myComboBox = new ComboBox();
     private HBox myHbox = new HBox();
@@ -30,6 +34,7 @@ public class ButtonPane extends Pane {
     private ColorPicker colorPicker;
     private File file;
     private ColorPicker colorPicker2;
+    private WebEngine webEngine;
 
     public ButtonPane (CommandString cs) {
         myCommandString = cs;
@@ -104,6 +109,7 @@ public class ButtonPane extends Pane {
          System.out.println(myCurrent);
     }
     public void help(){
-    	
+    	 String url = "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php";
+    	 myPage.getEngine().load(url.toString());
     }
 }
