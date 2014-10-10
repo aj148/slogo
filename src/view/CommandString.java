@@ -18,6 +18,7 @@ public class CommandString extends Observable {
      * String containing the current command
      */
     private String myCommand;
+    private int myType;
 
     /**
      * Constructor that adds an observer
@@ -34,8 +35,9 @@ public class CommandString extends Observable {
      * 
      * @param s String representing the current command
      */
-    public void setCommand (String s) {
+    public void setCommand (String s, int t) {
         myCommand = s;
+        myType = t;
         setChanged();
         notifyObservers();
     }
@@ -47,6 +49,10 @@ public class CommandString extends Observable {
      */
     public String getCommand () {
         return myCommand;
+    }
+
+    public int getType () {
+        return myType;
     }
 
 }

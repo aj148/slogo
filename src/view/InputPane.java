@@ -40,10 +40,10 @@ public class InputPane extends Pane {
 
     /**
      * Submits the current command by updating the CommandString with the String contained by the
-     * TextField. Then clear the field in preperation for the next command.
+     * TextField. Then clear the field in preparation for the next command.
      */
     private void submit () {
-        myCommandString.setCommand(myTextField.getText());
+        myCommandString.setCommand(myTextField.getText(), 1);
         myTextField.clear();
     }
 

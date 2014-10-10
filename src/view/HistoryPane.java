@@ -30,14 +30,16 @@ public class HistoryPane extends Pane implements Observer {
     }
 
     public void addHistoryItem (String s) {
-        Hyperlink link = new Hyperlink(s);
-        myHistoryDisplay.getChildren().add(link);
-        link.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle (ActionEvent e) {
-                myCommandString.setCommand(s);
-            }
-        });
+        if (myCommandString.getType() == 1) {
+            Hyperlink link = new Hyperlink(s);
+            myHistoryDisplay.getChildren().add(link);
+            link.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle (ActionEvent e) {
+                    myCommandString.setCommand(s, 1);
+                }
+            });
+        }
     }
 
     @Override
