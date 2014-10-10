@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
  *
  */
 public class Draw {
-
+    
     public void drawBackground (Canvas c, Color clr) {
         c.getGraphicsContext2D().setFill(clr);
         c.getGraphicsContext2D().fillRect(0, 0, c.getWidth(), c.getHeight());

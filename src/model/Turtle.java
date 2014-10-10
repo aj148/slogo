@@ -1,5 +1,6 @@
 package model;
 
+import view.Draw;
 import view.ViewPane;
 import commands.TurtleCommand;
 import javafx.geometry.Point2D;
@@ -15,6 +16,7 @@ public class Turtle {
     private double isPenDown;
     private double isShowing;
     private Color myColor;
+    private Draw myDraw = new Draw();
 
     public Turtle (int x, int y, ViewPane view) {
         myPoint = new Point2D(x, y);
