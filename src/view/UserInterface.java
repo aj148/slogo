@@ -1,9 +1,9 @@
 package view;
 
+import javafx.stage.Stage;
 import java.awt.Dimension;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 
 /**
@@ -32,7 +32,6 @@ public class UserInterface {
      * @param s Stage of the Program
      */
     public void initiate (Stage s) {
-        // myViews.add(new ViewPanel());
         s.setTitle("SLogo");
         BorderPane root = new BorderPane();
         PaneController pb = new PaneController();

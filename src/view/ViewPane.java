@@ -2,6 +2,9 @@ package view;
 
 import java.util.Observable;
 import java.util.Observer;
+
+import model.Turtle;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -17,10 +20,11 @@ import javafx.scene.paint.Color;
  * @author Team 14
  *
  */
-public class ViewPane extends Pane implements Observer {
+public class ViewPane extends Pane {
     public static final int DEFAULT_DIMENSION = 500;
     private Canvas myCanvas = new Canvas(DEFAULT_DIMENSION, DEFAULT_DIMENSION);
     private Draw myDraw = new Draw();
+    private Point2D myCurrentPoint = new Point2D(0, 0);
 
     /**
      * Constructor method called from UserInterface.java
@@ -29,19 +33,12 @@ public class ViewPane extends Pane implements Observer {
         GraphicsContext gc = myCanvas.getGraphicsContext2D();
         gc.setStroke(Color.BLACK);
         myDraw.drawBackground(myCanvas, Color.LIGHTBLUE);
-        Image image = new Image(getClass().getResourceAsStream("LogoTurtle2.png"));
-        myDraw.drawTurtle(myCanvas, image, 0, 0);
-        myDraw.drawLine(myCanvas, 0, 0, 0, -50);
+        // Image image = new Image(getClass().getResourceAsStream("LogoTurtle2.png"));
     }
 
-    public void updateView () {
-
-    }
-
-    @Override
-    public void update (Observable arg0, Object arg1) {
-        // TODO Auto-generated method stub
-
+    public void updateView (Turtle t) {
+        myDraw.drawLine(myCanvas, myCurrentPoint, t.getLocation());
+        myCurrentPoint = t.getLocation();
     }
 
     @Override
@@ -49,4 +46,8 @@ public class ViewPane extends Pane implements Observer {
         p.setCenter(myCanvas);
         return p;
     }
+
+	public void showError(String displayMessage) {
+		System.out.println(displayMessage);
+	}
 }
