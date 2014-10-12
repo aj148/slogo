@@ -2,10 +2,10 @@ package commands;
 
 public abstract class TwoInputCommand extends Command {
     
-    public double myParameterOne;
-    public double myParameterTwo;
+    public Command myParameterOne;
+    public Command myParameterTwo;
     
-    public void setParameters(double parameterOne, double parameterTwo){
+    public void setParameters(Command parameterOne, Command parameterTwo){
         myParameterOne = parameterOne;
         myParameterTwo = parameterTwo;
     }

@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import java.util.Map;
 import parser.Parser;
 
-
 /**
  * Class to contain the Parser and a set of executable commands.
  * This information is used by Controller subclasses.
@@ -18,6 +17,7 @@ public class MasterController {
 
     public static Random myRandom = new Random();
     public static Map<String, String> myCommandMap;
+    public static Map<String, Double> myVariableMap;
     protected Parser myParser;
     private final String resources = "resources.languages/";
 
