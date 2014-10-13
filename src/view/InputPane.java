@@ -35,7 +35,9 @@ public class InputPane extends Pane {
         myTextField.setOnKeyPressed(new SubmitHandler());
         Button submit = new Button("Submit");
         submit.setOnAction(event -> submit());
-        myHBox.getChildren().addAll(myScrollPane, submit);
+        Button save = new Button("Save");
+        save.setOnAction(event -> save());
+        myHBox.getChildren().addAll(myScrollPane, submit, save);
     }
 
     /**
@@ -43,8 +45,18 @@ public class InputPane extends Pane {
      * TextField. Then clear the field in preparation for the next command.
      */
     private void submit () {
-        myCommandString.setCommand(myTextField.getText(), 1);
-        myTextField.clear();
+        if (!myTextField.getText().equals("")) {
+            myCommandString.setCommand(myTextField.getText(), Constants.COMMAND);
+            myTextField.clear();
+        }
+    }
+
+    private void save () {
+        if (!myTextField.getText().equals("")) {
+            myCommandString.setCommand(myTextField.getText(), Constants.USER_DEFINE);
+            myTextField.clear();
+        }
+
     }
 
     @Override

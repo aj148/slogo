@@ -1,11 +1,17 @@
 package view;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,19 +26,13 @@ import javafx.stage.FileChooser;
 
 
 public class ButtonPane extends Pane {
-    private WebView myPage;
     private final ToolBar myToolBar = new ToolBar();
     private ComboBox<Button> myComboBox = new ComboBox();
     private HBox myHbox = new HBox();
-    private Button toggleReferenceGrid;
-    private Button Help;
-    private Button myChooseFileButton;
     private CommandString myCommandString;
     private String myCurrent;
-    private ColorPicker colorPicker;
-    private File file;
-    private ColorPicker colorPicker2;
-    private WebEngine webEngine;
+    private ColorPicker myColorPicker;
+    private ColorPicker myColorPicker2;
 
     public ButtonPane (CommandString cs) {
         myCommandString = cs;
@@ -40,14 +40,16 @@ public class ButtonPane extends Pane {
     }
 
     public void createPropertiesMenu () {
-        colorPicker = makeColorPicker("Background Color", event -> backgroundColor());
-
-        colorPicker2 = makeColorPicker("Pen Color", event -> changePenColor());
-        toggleReferenceGrid = makeButton("Toggle Grid", event -> toggleGrid());
-        Help = makeButton("Help", event -> help());
-        myChooseFileButton = makeButton("Choose Image", event -> doChoose());
-        myHbox.getChildren().addAll(colorPicker, colorPicker2, toggleReferenceGrid, Help,
-                                    myChooseFileButton);
+        myColorPicker = makeColorPicker("Background Color", event -> backgroundColor());
+        myColorPicker2 = makeColorPicker("Pen Color", event -> changePenColor());
+        Button toggleReferenceGrid = makeButton("Toggle Grid", event -> toggleGrid());
+        Button help = makeButton("Help", event -> help());
+        ChoiceBox languages =
+                new ChoiceBox(FXCollections.observableArrayList("English", "中文", "Français",
+                                                                "Italiano", "Português", "русский"));
+        myHbox.getChildren().addAll(new Label("Background"), myColorPicker, new Label("Pen"),
+                                    myColorPicker2, toggleReferenceGrid, languages,
+                                    help);
         myToolBar.getItems().add(myHbox);
     }
 
@@ -71,18 +73,6 @@ public class ButtonPane extends Pane {
         result.setText(label);
         result.setOnAction(handler);
         return result;
-    }
-
-    private void doChoose () {
-        final Label labelFile = new Label();
-        FileChooser fileChooser = new FileChooser();
-        // Set extension filter
-        FileChooser.ExtensionFilter extFilter =
-                new FileChooser.ExtensionFilter("Image Files (*.png)", "*.png");
-        fileChooser.getExtensionFilters().add(extFilter);
-        // Show open file dialog
-        file = fileChooser.showOpenDialog(null);
-        labelFile.setText(file.getPath());
     }
 
     private ColorPicker makeColorPicker (String property, EventHandler<ActionEvent> handler) {
@@ -111,7 +101,7 @@ public class ButtonPane extends Pane {
     }
 
     public void changeColor (String myType) {
-        Color c = colorPicker.getValue();
+        Color c = myColorPicker.getValue();
         System.out.println("New Color's RGB = " + c.getRed() + " " + c.getGreen() + " " +
                            c.getBlue());
         myCurrent = myType + c.toString();
@@ -122,6 +112,14 @@ public class ButtonPane extends Pane {
     public void help () {
         String url =
                 "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php";
-        myPage.getEngine().load(url.toString());
+        try {
+            java.awt.Desktop.getDesktop().browse(new URI(url));
+        }
+        catch (IOException e) {
+            System.out.println("IO Exception When Opening Help Page");
+        }
+        catch (URISyntaxException e) {
+            System.out.println("Help Page URL Formatted Incorrectly");
+        }
     }
 }

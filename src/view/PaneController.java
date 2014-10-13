@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 import controller.Controller;
 import controller.MasterController;
+import view.Constants;
 import javafx.scene.layout.BorderPane;
 
 
@@ -56,7 +57,7 @@ public class PaneController implements Observer {
     }
 
     public void showError (String s) {
-        myCommand.setCommand(s, 2);
+        myCommand.setCommand(s, Constants.ERROR);
     }
 
     /**
@@ -66,7 +67,10 @@ public class PaneController implements Observer {
     @Override
     public void update (Observable obs, Object arg1) {
         String s = myCommand.getCommand().toLowerCase();
-        myController.getInput(s);
+        if (myCommand.getType() != Constants.USER_DEFINE) {
+            myController.getInput(s);
+
+        }
     }
 
 }

@@ -19,36 +19,49 @@ import javafx.scene.layout.VBox;
  */
 public class HistoryPane extends Pane implements Observer {
 
-    private ScrollPane myScrollPane = new ScrollPane();
+    private VBox myRoot = new VBox();
+    private ScrollPane myHistoryScroll = new ScrollPane();
+    private ScrollPane mySavedScroll = new ScrollPane();
     private VBox myHistoryDisplay = new VBox();
+    private VBox mySavedDisplay = new VBox();
     private CommandString myCommandString;
 
     public HistoryPane (CommandString cs) {
         myCommandString = cs;
         myCommandString.addObserver(this);
-        myScrollPane.setContent(myHistoryDisplay);
-        myScrollPane.setPrefWidth(200);
+        myHistoryScroll.setContent(myHistoryDisplay);
+        myHistoryScroll.setPrefWidth(200);
+        mySavedScroll.setContent(mySavedDisplay);
+        mySavedScroll.setPrefWidth(200);
+        myRoot.getChildren().addAll(new Label("Command History"), myHistoryScroll,
+                                    new Label("User-Defined Commands"), mySavedScroll);
     }
 
     public void addHistoryItem (String s) {
-        if (myCommandString.getType() == 1) {
+        if (myCommandString.getType() == Constants.COMMAND ||
+            myCommandString.getType() == Constants.USER_DEFINE) {
             Hyperlink link = new Hyperlink(s);
-            myHistoryDisplay.getChildren().add(link);
+            if (myCommandString.getType() == Constants.COMMAND) {
+                myHistoryDisplay.getChildren().add(link);
+            }
+            else {
+                mySavedDisplay.getChildren().add(link);
+            }
             link.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle (ActionEvent e) {
-                    myCommandString.setCommand(s, 1);
+                    myCommandString.setCommand(s, Constants.COMMAND);
                 }
             });
         }
-        else if (myCommandString.getType() == 2) {
+        else if (myCommandString.getType() == Constants.ERROR) {
             myHistoryDisplay.getChildren().add(new Label(myCommandString.getCommand()));
         }
     }
 
     @Override
     public BorderPane addPane (BorderPane p) {
-        p.setRight(myScrollPane);
+        p.setRight(myRoot);
         return p;
     }
 
