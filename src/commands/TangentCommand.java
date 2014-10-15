@@ -4,7 +4,12 @@ public class TangentCommand extends OneInputCommand {
     
     @Override
     public double executeCommand() {
-        return Math.tan(myParameterOne);
-        // Beware of DIVIDE BY ZERO errors. impossible to divide by 0 in this class so... False! It is!
+    	try{
+    		return Math.tan(myParameterOne.executeCommand());
+    	}
+    	catch(ArithmeticException e){
+    		System.out.println("Exception caught in TangentCommand: DIVIDE BY ZERO");
+    		return 0;
+    	}
     }
 }

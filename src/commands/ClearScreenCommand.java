@@ -1,6 +1,5 @@
 package commands;
 
-import javafx.geometry.Point2D;
 import model.Turtle;
 
 public class ClearScreenCommand extends ZeroInputCommand implements TurtleCommand {

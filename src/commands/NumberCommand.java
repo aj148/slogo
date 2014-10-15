@@ -1,20 +1,15 @@
 package commands;
 
-public class NumberCommand extends Command {
+public class NumberCommand extends ZeroInputCommand {
 	
 	private double myParameter;
 	
-	public void setParameters(double parameter){
+	public NumberCommand(double parameter){
 		myParameter = parameter;
 	}
 	
 	@Override
 	public double executeCommand(){
 		return myParameter;
-	}
-
-	@Override
-	public int getNumParameters() {
-		return 1;
 	}
 }

@@ -4,8 +4,12 @@ public class QuotientCommand extends TwoInputCommand {
     
     @Override
     public double executeCommand() {
-        return myParameterOne / myParameterTwo;
-        // Beware of DIVIDE BY ZERO errors.
-        // That's an ArithmeticException.
+    	try{
+    		return myParameterOne.executeCommand() / myParameterTwo.executeCommand();
+    	}
+    	catch(ArithmeticException e){
+    		System.out.println("Exception caught in QuotientCommand: DIVIDE BY ZERO");
+    		return 0;
+    	}
     }
 }

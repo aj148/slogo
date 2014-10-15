@@ -4,6 +4,6 @@ public class SumCommand extends TwoInputCommand {
 
     @Override
     public double executeCommand() {
-        return myParameterOne + myParameterTwo;
+        return myParameterOne.executeCommand() + myParameterTwo.executeCommand();
     }
 }

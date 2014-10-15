@@ -4,7 +4,12 @@ public class RemainderCommand extends TwoInputCommand {
     
     @Override
     public double executeCommand() {
-        return myParameterOne % myParameterTwo;
-        // Beware of DIVIDE BY ZERO errors. if parametertwo is zero you'll get an error
+    	try{
+    		return myParameterOne.executeCommand() % myParameterTwo.executeCommand();
+    	}
+        catch(ArithmeticException e){
+        	System.out.println("Exception caught in RemainderCommand: DIVIDE BY ZERO");
+    		return 0;
+        }
     }
 }

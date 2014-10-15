@@ -4,6 +4,6 @@ public class NotEqualCommand extends TwoInputCommand {
 
 	@Override
 	public double executeCommand() {
-		return (myParameterOne == myParameterTwo) ? 0 : 1;
+		return (myParameterOne.executeCommand() == myParameterTwo.executeCommand()) ? 0 : 1;
 	}
 }

@@ -1,8 +1,8 @@
 package parser;
 
 import java.util.Stack;
+
 import commands.Command;
-import commands.ErrorCommand;
 import commands.OneInputCommand;
 import commands.ThreeInputCommand;
 import commands.TwoInputCommand;
@@ -54,18 +54,18 @@ public class Parser {
                 cl = Class.forName(commandName);
                 try {
                     command = (Command) cl.getConstructor().newInstance();
-                    if (command.getNumParameters() == 1) {
-                        ((OneInputCommand) command).setParameters(parameterStack.pop());
-                    }
-                    if (command.getNumParameters() == 2) {
-                        ((TwoInputCommand) command).setParameters(parameterStack.pop(),
-                                                                  parameterStack.pop());
-                    }
-                    if (command.getNumParameters() == 3) {
-                        ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
-                                                                    parameterStack.pop(),
-                                                                    parameterStack.pop());
-                    }
+//                    if (command.getNumParameters() == 1) {
+//                        ((OneInputCommand) command).setParameters(parameterStack.pop());
+//                    }
+//                    if (command.getNumParameters() == 2) {
+//                        ((TwoInputCommand) command).setParameters(parameterStack.pop(),
+//                                                                  parameterStack.pop());
+//                    }
+//                    if (command.getNumParameters() == 3) {
+//                        ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
+//                                                                    parameterStack.pop(),
+//                                                                    parameterStack.pop());
+//                    }
                     if (cl.getInterfaces().length > 0
                         && cl.getInterfaces()[0].getName().equals("commands.TurtleCommand")) {
                         commandsToExecute.add(command);
@@ -98,7 +98,7 @@ public class Parser {
 
     private Stack<Command> throwError (Exception e) {
         Stack<Command> error = new Stack<Command>();
-        error.add(new ErrorCommand("Error: Invalid input."));
+//        error.add(new ErrorCommand("Error: Invalid input."));
         return error;
     }
 }

@@ -4,6 +4,6 @@ public class ArcTangentCommand extends OneInputCommand {
     
     @Override
     public double executeCommand() {
-        return Math.atan(myParameterOne);
+        return Math.atan(myParameterOne.executeCommand());
     }
 }

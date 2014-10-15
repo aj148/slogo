@@ -6,6 +6,6 @@ public class ForwardCommand extends OneInputCommand implements TurtleCommand {
 	
     @Override
     public double executeCommand (Turtle turtle) {
-        return turtle.updatePosition(myParameterOne);
+        return turtle.updatePosition(myParameterOne.executeCommand());
     }
 }

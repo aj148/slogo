@@ -4,6 +4,6 @@ public class CosineCommand extends OneInputCommand {
     
     @Override
     public double executeCommand() {
-        return Math.cos(myParameterOne);
+        return Math.cos(myParameterOne.executeCommand());
     }
 }

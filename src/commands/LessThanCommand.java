@@ -4,6 +4,6 @@ public class LessThanCommand extends TwoInputCommand {
 
 	@Override
 	public double executeCommand() {
-		return (myParameterOne < myParameterTwo) ? 1 : 0;
+		return (myParameterOne.executeCommand() < myParameterTwo.executeCommand()) ? 1 : 0;
 	}
 }

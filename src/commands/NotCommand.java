@@ -4,6 +4,6 @@ public class NotCommand extends OneInputCommand {
 
 	@Override
 	public double executeCommand() {
-		return (myParameterOne != 0) ? 0 : 1;
+		return (myParameterOne.executeCommand() != 0) ? 0 : 1;
 	}
 }

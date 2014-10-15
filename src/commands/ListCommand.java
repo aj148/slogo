@@ -5,7 +5,11 @@ import java.util.List;
 
 public class ListCommand extends Command {
 	
-	private List<Command> myParameters = new ArrayList<Command>();
+	private List<Command> myParameters;
+	
+	public ListCommand(){
+		myParameters = new ArrayList<Command>();
+	}
 	
 	public void setParameters(Command parameter){
 		myParameters.add(parameter);
@@ -13,15 +17,15 @@ public class ListCommand extends Command {
 	
 	@Override
 	public double executeCommand() {
-		double total = 0;
+		double finalEx = 0;
 		for(Command parameter : myParameters){
-			total += parameter.executeCommand();
+			finalEx = parameter.executeCommand();
 		}
-		return total;
+		return finalEx;
 	}
 
 	@Override
 	public int getNumParameters() {
-		return 0;
+		return myParameters.size();
 	}
 }

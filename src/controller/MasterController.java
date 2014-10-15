@@ -24,9 +24,9 @@ public class MasterController {
     public MasterController (String lang) {
         myParser = new Parser();
         myCommandMap = new HashMap<String, String>();
-
+        myVariableMap = new HashMap<String, Double>();
         ResourceBundle language = ResourceBundle.getBundle(resources + lang);
-
+        
         Enumeration<String> enumerator = language.getKeys();
         while (enumerator.hasMoreElements()) {
             String command = (String) enumerator.nextElement();

@@ -6,6 +6,6 @@ public class LeftCommand extends OneInputCommand implements TurtleCommand {
 	
 	@Override
 	public double executeCommand(Turtle turtle) {
-		return turtle.updateHeading(-myParameterOne);
+		return turtle.updateHeading(-myParameterOne.executeCommand());
 	}
 }

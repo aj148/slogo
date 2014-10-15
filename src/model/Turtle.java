@@ -1,6 +1,5 @@
 package model;
 
-import view.Draw;
 import view.ViewPane;
 import commands.TurtleCommand;
 import javafx.geometry.Point2D;
@@ -16,7 +15,6 @@ public class Turtle {
     private double isPenDown;
     private double isShowing;
     private Color myColor;
-    private Draw myDraw = new Draw();
 
     public Turtle (int x, int y, ViewPane view) {
         myPoint = new Point2D(x, y);
@@ -34,20 +32,19 @@ public class Turtle {
     }
 
     public double updatePosition (double forward) {
-        double radians=toRadians(myHeading);
+        double radians = toRadians(myHeading);
         double x = forward * Math.sin(radians);
         double y = forward * Math.cos(radians)*-1;
         myPoint = myPoint.add(x, y);
         return Math.abs(forward);
     }
 
-    private double toRadians(double degrees)
-    {
+    private double toRadians(double degrees) {
         return degrees*PI/180.0;
     }
     public double updateHeading (double degree) {
         myHeading += degree;
-        myHeading=myHeading%360;
+        myHeading = myHeading % 360;
         return degree;
     }
 
@@ -61,13 +58,14 @@ public class Turtle {
         return toReturn;
     }
 
-    public double towards (Point2D point) {
-        double x = point.getX() - myPoint.getX();
-        double y = point.getY() - myPoint.getY();
-        double oldHeading = myHeading;
-        double newHeading = Math.atan(x / y);
+    public double towards (double x, double y) {
+    	// This is faulty. Very faulty.
+        double deltaX = x - myPoint.getX();
+        double deltaY = y - myPoint.getY();
+        double oldHeading = toRadians(myHeading);
+        double newHeading = Math.atan(deltaX / deltaY);
         myHeading = newHeading;
-        return oldHeading - newHeading;
+        return oldHeading - toRadians(newHeading);
     }
 
     public double setXAndY (double x, double y) {

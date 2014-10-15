@@ -6,6 +6,12 @@ public class RandomCommand extends OneInputCommand {
     
     @Override
     public double executeCommand() {
-        return (double)MasterController.myRandom.nextInt((int)myParameterOne);
+    	try{
+    		return (double)MasterController.myRandom.nextInt((int)myParameterOne.executeCommand());
+    	}
+    	catch(IllegalArgumentException e){
+    		System.out.println("Exception caught in RandomCommand: ZERO OR LESS");
+    		return 0;
+    	}
     }
 }
