@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ForCommand extends TwoInputCommand {
 	
+	
 	@Override
     public double executeCommand() {
     	double start=((Command) ((ListCommand) myParameterOne).getList().get(1)).executeCommand();
@@ -17,4 +18,6 @@ public class ForCommand extends TwoInputCommand {
     	}
     	return toReturn;
     }
+	
+
 }
