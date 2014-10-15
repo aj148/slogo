@@ -5,7 +5,6 @@ import java.util.Stack;
 import model.Model;
 import view.ViewPane;
 import commands.Command;
-import commands.ErrorCommand;
 
 
 /**
