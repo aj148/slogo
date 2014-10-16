@@ -11,6 +11,7 @@ public class ListCommand extends Command {
 		myParameters = new ArrayList<Command>();
 	}
 	
+	
 	public void setParameters(Command parameter){
 		myParameters.add(parameter);
 	}
@@ -27,5 +28,10 @@ public class ListCommand extends Command {
 	@Override
 	public int getNumParameters() {
 		return myParameters.size();
+	}
+	
+	public List getList()
+	{
+		return myParameters;
 	}
 }
