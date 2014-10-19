@@ -27,6 +27,7 @@ public class Model {
     public Model (ViewPane view) {
         myView = view;
         myTurtle = new Turtle(0, 0, myView, 0.0);
+        myBackground=Color.WHITE;
     }
 
     /**
