@@ -8,7 +8,6 @@ import commands.ThreeInputCommand;
 import commands.TwoInputCommand;
 import controller.MasterController;
 
-
 /**
  * This class is used to convert a string to a collection of commands to
  * execute.
@@ -20,28 +19,27 @@ public class Parser {
     /**
      * Parses a string input and constructs a collection of executable commands.
      * 
-     * @param input : String to parse.
+     * @param input
+     *            : String to parse.
      * @return Collection of commands to execute.
      */
+    String listStart = "[";
+    String listEnd = "]";
+
     public Stack<Command> parseInput (String parseInput) {
         Stack<Command> commandsToExecute = new Stack<Command>();
         Stack<String> commandStack = new Stack<String>();
-        Stack<Double> parameterStack = new Stack<Double>();
+        Stack<Command> parameterStack = new Stack<Command>();
         for (String input : parseInput.split(" ")) {
-            if (MasterController.myCommandMap.containsKey(input)) {
+            if (MasterController.myCommandMap.containsKey(input)) { // make sure
+                                                                    // to
+                                                                    // include
+                                                                    // "[" and
+                                                                    // "]" in
+                                                                    // myCommandMap
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
-                }
-                catch (Exception e) {
-                    return throwError(e);
-                }
-            }
-            else {
-                try {
-                    double parameter = Double.parseDouble(input);
-                    parameterStack.add(parameter);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     return throwError(e);
                 }
             }
@@ -54,51 +52,32 @@ public class Parser {
                 cl = Class.forName(commandName);
                 try {
                     command = (Command) cl.getConstructor().newInstance();
-//                    if (command.getNumParameters() == 1) {
-//                        ((OneInputCommand) command).setParameters(parameterStack.pop());
-//                    }
-//                    if (command.getNumParameters() == 2) {
-//                        ((TwoInputCommand) command).setParameters(parameterStack.pop(),
-//                                                                  parameterStack.pop());
-//                    }
-//                    if (command.getNumParameters() == 3) {
-//                        ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
-//                                                                    parameterStack.pop(),
-//                                                                    parameterStack.pop());
-//                    }
-                    if (cl.getInterfaces().length > 0
-                        && cl.getInterfaces()[0].getName().equals("commands.TurtleCommand")) {
-                        commandsToExecute.add(command);
+                    if (command.getNumParameters() == 1) {
+                        ((OneInputCommand) command).setParameters(parameterStack.pop());
                     }
-                    else {
-                        parameterStack.add(command.executeCommand());
+                    if (command.getNumParameters() == 2) {
+                        ((TwoInputCommand) command).setParameters(parameterStack.pop(),
+                                parameterStack.pop());
                     }
-                }
-                catch (Exception e) {
+                    if (command.getNumParameters() == 3) {
+                        ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
+                                parameterStack.pop(), parameterStack.pop());
+                    }
+                    parameterStack.add(command);
+                } catch (Exception e) {
                     return throwError(e);
                 }
-            }
-            catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException e) {
                 return throwError(e);
             }
 
         }
-        // I need to throw an error for this case
-        // "fd sum 5 sum 5 3 3"
-        if (parameterStack.size() > 0) {
-            return throwError(new Exception());
-        }
-        // for (Command command : commandsToExecute) {
-        // System.out.println(command.getClass().toString());
-        // Turtle turtle = new Turtle(0, 0, new ViewPanel());
-        // turtle.updateTurtle((TurtleCommand) command);
-        // }
-        return commandsToExecute;
+        return parameterStack;
     }
 
     private Stack<Command> throwError (Exception e) {
         Stack<Command> error = new Stack<Command>();
-//        error.add(new ErrorCommand("Error: Invalid input."));
+        // error.add(new ErrorCommand("Error: Invalid input."));
         return error;
     }
 }
