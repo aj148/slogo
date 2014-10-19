@@ -6,7 +6,7 @@ public class DoTimesCommand extends TwoInputCommand {
 	
 	@Override
     public double executeCommand(Turtle turtle) {
-    	ListCommand A = new ListCommand();
+    	ListCommand A=new ListCommand();
     	A.setParameters((VariableCommand) myParameterOne);
     	A.setParameters(new NumberCommand(0));
     	A.setParameters(new NumberCommand(5));

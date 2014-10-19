@@ -2,9 +2,9 @@ package model;
 
 import java.util.Collection;
 
+import javafx.scene.paint.Color;
 import commands.Command;
 import view.ViewPane;
-
 
 /**
  * Class that contains the basic information of what needs to be displayed in
@@ -17,6 +17,7 @@ public class Model {
 
     private ViewPane myView;
     private Turtle myTurtle;
+    private Color myBackground;
 
     /**
      * Constructor method called from ViewPanel.java
@@ -25,7 +26,7 @@ public class Model {
      */
     public Model (ViewPane view) {
         myView = view;
-        myTurtle = new Turtle(0, 0, myView);
+        myTurtle = new Turtle(0, 0, myView, 0.0);
     }
 
     /**
