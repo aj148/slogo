@@ -36,11 +36,11 @@ public class Parser {
         Stack<Command> tempParameterStack = new Stack<Command>();
         boolean isListCommand = false;
         for (String input : parseInput.split(" ")) {
-
             if (MasterController.myCommandMap.containsKey(input)) {
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     return throwError(e);
                 }
             }
@@ -81,15 +81,14 @@ public class Parser {
                                     tempParameterStack.pop(), tempParameterStack.pop());
                         }
                         tempParameterStack.add(command);
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e) {
                         throwError(e);
                     }
-
                 }
                 catch (ClassNotFoundException e) {
                     return throwError(e);
                 }
-
             }
             else {
                 Class<?> cl;
@@ -125,7 +124,7 @@ public class Parser {
     }
 
     private void getStack (String commandName, Stack<Command> parameterStack) {
-
+    	return;
     }
 
     private Stack<Command> emptyStack (Stack<Command> commandStack) {
