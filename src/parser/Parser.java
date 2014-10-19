@@ -31,12 +31,8 @@ public class Parser {
         Stack<String> commandStack = new Stack<String>();
         Stack<Command> parameterStack = new Stack<Command>();
         for (String input : parseInput.split(" ")) {
-            if (MasterController.myCommandMap.containsKey(input)) { // make sure
-                                                                    // to
-                                                                    // include
-                                                                    // "[" and
-                                                                    // "]" in
-                                                                    // myCommandMap
+
+            if (MasterController.myCommandMap.containsKey(input)) { 
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
                 } catch (Exception e) {
