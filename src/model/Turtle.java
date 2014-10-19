@@ -15,14 +15,17 @@ public class Turtle {
     private double isPenDown;
     private double isShowing;
     private Color myColor;
+    private double mySize;
+    private double myID;
 
-    public Turtle (int x, int y, ViewPane view) {
+    public Turtle (int x, int y, ViewPane view, double ID) {
         myPoint = new Point2D(x, y);
         myHeading = 0;
         isPenDown = 1;
         isShowing = 1;
         myColor = new Color(0.0, 0.0, 0.0, 1.0);
         myView = view;
+        myID=ID;
     }
 
     public void updateTurtle (TurtleCommand command) {
@@ -37,6 +40,12 @@ public class Turtle {
         double y = forward * Math.cos(radians)*-1;
         myPoint = myPoint.add(x, y);
         return Math.abs(forward);
+    }
+    
+    public double setPenSize(double size)
+    {
+    	mySize=size;
+    	return size;
     }
 
     private double toRadians(double degrees) {
