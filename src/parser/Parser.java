@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Stack;
 
 import commands.Command;
+import commands.ListCommand;
 import commands.OneInputCommand;
 import commands.ThreeInputCommand;
 import commands.TwoInputCommand;
@@ -51,9 +52,15 @@ public class Parser {
                 continue;
             }
             if (commandName.equals(listEnd)) {
+                ListCommand listCommand = new ListCommand();
+                while(!tempParameterStack.empty()){
+                    listCommand.setParameters(tempParameterStack.pop());
+                }
+                parameterStack.add(listCommand);
                 isListCommand = false;
                 listCommandStack = emptyStack(listCommandStack);
                 tempParameterStack = emptyStack(tempParameterStack);
+                continue;
             }
             if (isListCommand) {
                 Class<?> cl;
@@ -82,33 +89,33 @@ public class Parser {
                     return throwError(e);
                 }
 
-            }
-
-            Class<?> cl;
-            Command command;
-            try {
-                cl = Class.forName(commandName);
+            } else {
+                Class<?> cl;
+                Command command;
                 try {
-                    command = (Command) cl.getConstructor().newInstance();
-                    if (command.getNumParameters() == 1) {
-                        ((OneInputCommand) command).setParameters(parameterStack.pop());
+                    cl = Class.forName(commandName);
+                    try {
+                        command = (Command) cl.getConstructor().newInstance();
+                        if (command.getNumParameters() == 1) {
+                            ((OneInputCommand) command).setParameters(parameterStack.pop());
+                        }
+                        if (command.getNumParameters() == 2) {
+                            ((TwoInputCommand) command).setParameters(parameterStack.pop(),
+                                    parameterStack.pop());
+                        }
+                        if (command.getNumParameters() == 3) {
+                            ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
+                                    parameterStack.pop(), parameterStack.pop());
+                        }
+                        parameterStack.add(command);
+                    } catch (Exception e) {
+                        return throwError(e);
                     }
-                    if (command.getNumParameters() == 2) {
-                        ((TwoInputCommand) command).setParameters(parameterStack.pop(),
-                                parameterStack.pop());
-                    }
-                    if (command.getNumParameters() == 3) {
-                        ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
-                                parameterStack.pop(), parameterStack.pop());
-                    }
-                    parameterStack.add(command);
-                } catch (Exception e) {
+                } catch (ClassNotFoundException e) {
                     return throwError(e);
                 }
-            } catch (ClassNotFoundException e) {
-                return throwError(e);
-            }
 
+            }
         }
         return parameterStack;
     }
@@ -116,9 +123,9 @@ public class Parser {
     private void getStack (String commandName, Stack<Command> parameterStack) {
 
     }
-    
-    private Stack<Command> emptyStack(Stack<Command> commandStack){
-        while(!commandStack.empty()){
+
+    private Stack<Command> emptyStack (Stack<Command> commandStack) {
+        while (!commandStack.empty()) {
             commandStack.pop();
         }
         return commandStack;
