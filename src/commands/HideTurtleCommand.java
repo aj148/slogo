@@ -2,7 +2,7 @@ package commands;
 
 import model.Turtle;
 
-public class HideTurtleCommand extends ZeroInputCommand implements TurtleCommand {
+public class HideTurtleCommand extends ZeroInputCommand {
 	
 	@Override
 	public double executeCommand(Turtle turtle) {

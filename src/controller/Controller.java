@@ -5,7 +5,6 @@ import java.util.Stack;
 import model.Model;
 import view.ViewPane;
 import commands.Command;
-import commands.ErrorCommand;
 
 
 /**
@@ -44,8 +43,8 @@ public class Controller {
     	MasterController master = new MasterController("English");
         Stack<Command> commandsToExecute = master.myParser.parseInput(input);
         if(!commandsToExecute.isEmpty() && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")){
-        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
-        	myView.showError(error.displayMessage());
+//        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
+//        	myView.showError(error.displayMessage());
         	return;
         }
         runCommand(commandsToExecute);

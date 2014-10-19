@@ -1,7 +1,8 @@
 package model;
 
 import view.ViewPane;
-import commands.TurtleCommand;
+
+import commands.Command;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
@@ -25,7 +26,7 @@ public class Turtle {
         myView = view;
     }
 
-    public void updateTurtle (TurtleCommand command) {
+    public void updateTurtle (Command command) {
         command.executeCommand(Turtle.this);
         // observeHelper();
         myView.updateView(this);

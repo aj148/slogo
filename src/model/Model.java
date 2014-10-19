@@ -1,8 +1,8 @@
 package model;
 
 import java.util.Collection;
+
 import commands.Command;
-import commands.TurtleCommand;
 import view.ViewPane;
 
 
@@ -35,7 +35,7 @@ public class Model {
      */
     public void updateModel (Collection<Command> commandsToExecute) {
         for (Command command : commandsToExecute) {
-            myTurtle.updateTurtle((TurtleCommand) command);
+            myTurtle.updateTurtle(command);
         }
     }
 }

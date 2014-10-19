@@ -70,9 +70,9 @@ public class Parser {
                         && cl.getInterfaces()[0].getName().equals("commands.TurtleCommand")) {
                         commandsToExecute.add(command);
                     }
-                    else {
-                        parameterStack.add(command.executeCommand());
-                    }
+//                    else {
+//                        parameterStack.add(command.executeCommand());
+//                    }
                 }
                 catch (Exception e) {
                     return throwError(e);

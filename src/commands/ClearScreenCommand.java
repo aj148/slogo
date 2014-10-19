@@ -2,7 +2,7 @@ package commands;
 
 import model.Turtle;
 
-public class ClearScreenCommand extends ZeroInputCommand implements TurtleCommand {
+public class ClearScreenCommand extends ZeroInputCommand {
 	
 	@Override
 	public double executeCommand(Turtle turtle) {

@@ -2,10 +2,10 @@ package commands;
 
 import model.Turtle;
 
-public class SetTowardsCommand extends TwoInputCommand implements TurtleCommand {
+public class SetTowardsCommand extends TwoInputCommand {
 	
 	@Override
 	public double executeCommand(Turtle turtle) {
-		return turtle.towards(myParameterOne.executeCommand(), myParameterTwo.executeCommand());
+		return turtle.towards(myParameterOne.executeCommand(turtle), myParameterTwo.executeCommand(turtle));
 	}
 }

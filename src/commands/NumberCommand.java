@@ -1,5 +1,7 @@
 package commands;
 
+import model.Turtle;
+
 public class NumberCommand extends ZeroInputCommand {
 	
 	private double myParameter;
@@ -9,7 +11,7 @@ public class NumberCommand extends ZeroInputCommand {
 	}
 	
 	@Override
-	public double executeCommand(){
+	public double executeCommand(Turtle turtle){
 		return myParameter;
 	}
 }

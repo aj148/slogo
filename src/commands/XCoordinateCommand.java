@@ -2,7 +2,7 @@ package commands;
 
 import model.Turtle;
 
-public class XCoordinateCommand extends ZeroInputCommand implements TurtleCommand {
+public class XCoordinateCommand extends ZeroInputCommand {
     
     @Override
     public double executeCommand (Turtle turtle) {

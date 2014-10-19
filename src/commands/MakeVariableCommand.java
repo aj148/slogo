@@ -1,12 +1,13 @@
 package commands;
 
+import model.Turtle;
 import controller.MasterController;
 
 public class MakeVariableCommand extends TwoInputCommand {
 	
 	@Override
-    public double executeCommand() {
-		double value = myParameterTwo.executeCommand();
+    public double executeCommand(Turtle turtle) {
+		double value = myParameterTwo.executeCommand(turtle);
 		try{
 			VariableCommand variable = (VariableCommand)myParameterOne;
 			String variableName = variable.getVariableName();

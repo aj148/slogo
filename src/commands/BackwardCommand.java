@@ -2,10 +2,10 @@ package commands;
 
 import model.Turtle;
 
-public class BackwardCommand extends OneInputCommand implements TurtleCommand {
+public class BackwardCommand extends OneInputCommand {
     
 	@Override
     public double executeCommand (Turtle turtle) {
-        return turtle.updatePosition(-myParameterOne.executeCommand());
+        return turtle.updatePosition(-myParameterOne.executeCommand(turtle));
     }
 }

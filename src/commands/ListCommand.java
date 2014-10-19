@@ -3,6 +3,8 @@ package commands;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Turtle;
+
 public class ListCommand extends Command {
 	
 	private List<Command> myParameters;
@@ -15,11 +17,15 @@ public class ListCommand extends Command {
 		myParameters.add(parameter);
 	}
 	
+	public List<Command> getParameters(){
+		return myParameters;
+	}
+	
 	@Override
-	public double executeCommand() {
+	public double executeCommand(Turtle turtle) {
 		double finalEx = 0;
 		for(Command parameter : myParameters){
-			finalEx = parameter.executeCommand();
+			finalEx = parameter.executeCommand(turtle);
 		}
 		return finalEx;
 	}
