@@ -6,7 +6,9 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
+
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,6 +21,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -28,6 +31,7 @@ import javafx.stage.FileChooser;
 public class ButtonPane extends Pane {
     private final ToolBar myToolBar = new ToolBar();
     private ComboBox<Button> myComboBox = new ComboBox();
+    private VBox myVbox = new VBox();
     private HBox myHbox = new HBox();
     private CommandString myCommandString;
     private String myCurrent;
@@ -51,11 +55,14 @@ public class ButtonPane extends Pane {
                                     myColorPicker2, toggleReferenceGrid, languages,
                                     help);
         myToolBar.getItems().add(myHbox);
+        myVbox.getChildren().add(myToolBar);
+        WorkspaceTabs workspace = new WorkspaceTabs();
+        myVbox.getChildren().add(workspace.getWorkspace());
     }
 
     @Override
     public BorderPane addPane (BorderPane p) {
-        p.setTop(myToolBar);
+        p.setTop(myVbox);
         return p;
     }
 
@@ -110,8 +117,7 @@ public class ButtonPane extends Pane {
     }
 
     public void help () {
-        String url =
-                "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php";
+        String url = Constants.HELP_URL;
         try {
             java.awt.Desktop.getDesktop().browse(new URI(url));
         }
