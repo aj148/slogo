@@ -17,7 +17,7 @@ import javafx.scene.layout.HBox;
  * @author Team14
  *
  */
-public class InputPane extends Pane {
+public class InputPane extends PaneModule {
     private HBox myHBox = new HBox();
     private ScrollPane myScrollPane = new ScrollPane();
     private TextField myTextField = new TextField();
@@ -28,7 +28,7 @@ public class InputPane extends Pane {
      *
      * @param cs CommandString containing the String that represents the current command
      */
-    public InputPane (CommandString cs, LanguageController ls) {
+    public InputPane (CommandString cs) {
         myCommandString = cs;
         myScrollPane.setContent(myTextField);
         myTextField.setPrefColumnCount(60);

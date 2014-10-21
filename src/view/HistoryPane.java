@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
  * @author Team 14
  *
  */
-public class HistoryPane extends Pane implements Observer {
+public class HistoryPane extends PaneModule implements Observer {
 
     private VBox myRoot = new VBox();
     private ScrollPane myHistoryScroll = new ScrollPane();

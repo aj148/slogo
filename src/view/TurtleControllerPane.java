@@ -13,7 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
-public class TurtleControllerPane extends Pane {
+public class TurtleControllerPane extends PaneModule {
 	private VBox myVbox = new VBox();
 	private TextField myMoveTextField = new TextField();
 	private TextField myAngleTextField = new TextField();

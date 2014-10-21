@@ -20,7 +20,7 @@ import javafx.scene.paint.Color;
  * @author Team 14
  *
  */
-public class ViewPane extends Pane {
+public class ViewPane extends PaneModule {
     public static final int DEFAULT_DIMENSION = 500;
     private Canvas myCanvas = new Canvas(DEFAULT_DIMENSION, DEFAULT_DIMENSION);
     private Draw myDraw = new Draw();

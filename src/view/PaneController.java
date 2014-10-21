@@ -21,7 +21,7 @@ public class PaneController implements Observer {
     /**
      * Contains all Panes in the User Interface
      */
-    private List<Pane> myPanes = new ArrayList<Pane>();
+    private List<PaneModule> myPanes = new ArrayList<PaneModule>();
     /**
      * CommandString containing the current command to be passed to the backend.
      */
@@ -51,7 +51,7 @@ public class PaneController implements Observer {
      * @return BorderPane with Panes configured and populated.
      */
     public BorderPane populate (BorderPane bp) {
-        for (Pane p : myPanes) {
+        for (PaneModule p : myPanes) {
             bp = p.addPane(bp);
         }
         return bp;

@@ -10,7 +10,7 @@ import javafx.scene.layout.BorderPane;
  * @author Team 14
  *
  */
-public abstract class Pane {
+public abstract class PaneModule {
 
     /**
      * Adds Pane to BorderPane.
