@@ -1,11 +1,11 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class ArcTangentCommand extends OneInputCommand {
     
     @Override
-    public double executeCommand(Turtle turtle) {
-        return Math.atan(myParameterOne.executeCommand(turtle));
+    public double executeCommand(Model model) {
+        return Math.atan(myParameterOne.executeCommand(model));
     }
 }

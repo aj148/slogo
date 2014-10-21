@@ -1,10 +1,10 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class SetPenSizeCommand extends OneInputCommand {
-	public double executeCommand(Turtle turtle)
-	{
-		return turtle.setPenSize(myParameterOne.executeCommand(turtle));
+	
+	public double executeCommand(Model model) {
+		return model.setPenSize(myParameterOne.executeCommand(model));
 	}
 }

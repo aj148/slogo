@@ -1,11 +1,11 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class GreaterThanCommand extends TwoInputCommand {
 
 	@Override
-	public double executeCommand(Turtle turtle) {
-		return (myParameterOne.executeCommand(turtle) > myParameterTwo.executeCommand(turtle)) ? 1 : 0;
+	public double executeCommand(Model model) {
+		return (myParameterOne.executeCommand(model) > myParameterTwo.executeCommand(model)) ? 1 : 0;
 	}
 }

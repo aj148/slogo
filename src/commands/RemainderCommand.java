@@ -1,13 +1,13 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class RemainderCommand extends TwoInputCommand {
     
     @Override
-    public double executeCommand(Turtle turtle) {
+    public double executeCommand(Model model) {
     	try{
-    		return myParameterOne.executeCommand(turtle) % myParameterTwo.executeCommand(turtle);
+    		return myParameterOne.executeCommand(model) % myParameterTwo.executeCommand(model);
     	}
         catch(ArithmeticException e){
         	System.out.println("Exception caught in RemainderCommand: DIVIDE BY ZERO");

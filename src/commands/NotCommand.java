@@ -1,11 +1,11 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class NotCommand extends OneInputCommand {
 
 	@Override
-	public double executeCommand(Turtle turtle) {
-		return (myParameterOne.executeCommand(turtle) != 0) ? 0 : 1;
+	public double executeCommand(Model model) {
+		return (myParameterOne.executeCommand(model) != 0) ? 0 : 1;
 	}
 }

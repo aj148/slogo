@@ -1,11 +1,11 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class SetTowardsCommand extends TwoInputCommand {
 	
 	@Override
-	public double executeCommand(Turtle turtle) {
-		return turtle.towards(myParameterOne.executeCommand(turtle), myParameterTwo.executeCommand(turtle));
+	public double executeCommand(Model model) {
+		return model.towards(myParameterOne.executeCommand(model), myParameterTwo.executeCommand(model));
 	}
 }

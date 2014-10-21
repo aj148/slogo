@@ -1,11 +1,11 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class PenDownCommand extends ZeroInputCommand {
 	
 	@Override
-	public double executeCommand(Turtle turtle) {
-		return turtle.changePen(1.0);
+	public double executeCommand(Model model) {
+		return model.changePen(1.0);
 	}
 }

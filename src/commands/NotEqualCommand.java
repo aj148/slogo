@@ -1,11 +1,11 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class NotEqualCommand extends TwoInputCommand {
 
 	@Override
-	public double executeCommand(Turtle turtle) {
-		return (myParameterOne.executeCommand(turtle) == myParameterTwo.executeCommand(turtle)) ? 0 : 1;
+	public double executeCommand(Model model) {
+		return (myParameterOne.executeCommand(model) == myParameterTwo.executeCommand(model)) ? 0 : 1;
 	}
 }

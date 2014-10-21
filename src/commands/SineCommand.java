@@ -1,11 +1,11 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class SineCommand extends OneInputCommand {
     
     @Override
-    public double executeCommand(Turtle turtle) {
-        return Math.sin(myParameterOne.executeCommand(turtle));
+    public double executeCommand(Model model) {
+        return Math.sin(myParameterOne.executeCommand(model));
     }
 }

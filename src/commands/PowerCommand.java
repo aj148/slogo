@@ -1,11 +1,11 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class PowerCommand extends TwoInputCommand {
     
     @Override
-    public double executeCommand(Turtle turtle) {
-        return Math.pow(myParameterOne.executeCommand(turtle), myParameterTwo.executeCommand(turtle));
+    public double executeCommand(Model model) {
+        return Math.pow(myParameterOne.executeCommand(model), myParameterTwo.executeCommand(model));
     }
 }

@@ -3,6 +3,7 @@ package view;
 import java.util.Observable;
 import java.util.Observer;
 
+import model.Model;
 import model.Turtle;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -36,9 +37,9 @@ public class ViewPane extends Pane {
         // Image image = new Image(getClass().getResourceAsStream("LogoTurtle2.png"));
     }
 
-    public void updateView (Turtle t) {
-        myDraw.drawLine(myCanvas, myCurrentPoint, t.getLocation());
-        myCurrentPoint = t.getLocation();
+    public void updateView (Model m) {
+        myDraw.drawLine(myCanvas, myCurrentPoint, m.getLocation());
+        myCurrentPoint = m.getLocation();
     }
 
     @Override

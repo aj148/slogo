@@ -1,20 +1,20 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 import controller.MasterController;
 
 public class ForCommand extends TwoInputCommand {
 	
 	@Override
-    public double executeCommand(Turtle turtle) {
+    public double executeCommand(Model model) {
 		String variable = ((VariableCommand) ((ListCommand) myParameterOne).getParameters().get(0)).getVariableName();
-    	int start = (int)((Command) ((ListCommand) myParameterOne).getParameters().get(1)).executeCommand(turtle);
-    	int end = (int)((Command) ((ListCommand) myParameterOne).getParameters().get(2)).executeCommand(turtle);
-    	int increment = (int)((Command) ((ListCommand) myParameterOne).getParameters().get(3)).executeCommand(turtle);
+    	double start = ((Command) ((ListCommand) myParameterOne).getParameters().get(1)).executeCommand(model);
+    	double end = ((Command) ((ListCommand) myParameterOne).getParameters().get(2)).executeCommand(model);
+    	double increment = ((Command) ((ListCommand) myParameterOne).getParameters().get(3)).executeCommand(model);
     	double toReturn = 0;
     	for(double i = start; i < end; i += increment) {
     		MasterController.myVariableMap.put(variable, i);
-    		toReturn = myParameterTwo.executeCommand(turtle);
+    		toReturn = myParameterTwo.executeCommand(model);
     	}
     	MasterController.myVariableMap.remove(variable);
     	return toReturn;

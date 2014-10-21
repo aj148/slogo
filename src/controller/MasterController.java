@@ -2,11 +2,16 @@ package controller;
 
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
-// import java.util.regex.Pattern;
+import java.util.regex.Pattern;
+
+
+
 
 import javafx.scene.paint.Color;
 import model.Turtle;
@@ -26,7 +31,7 @@ public class MasterController {
     public static Map<Integer, Color> myColorMap;
     public static Map<String, String> myCommandMap;
     public static Map<String, Double> myVariableMap;
-    public static Map<String, String> myRegularExpressions;
+    public static Map<String, Pattern> myRegularExpressions;
     protected Parser myParser;
     private final String resources = "resources.languages/";
 
@@ -35,28 +40,31 @@ public class MasterController {
         myColorMap = new HashMap<Integer, Color>();
         myCommandMap = new HashMap<String, String>();
         myVariableMap = new HashMap<String, Double>();
-        myRegularExpressions = new HashMap<String, String>();
+        myRegularExpressions = new HashMap<String, Pattern>();
         ResourceBundle language = ResourceBundle.getBundle(resources + lang);
-        // String[] expressions = {"Comment", "Constant", "Variable", "Command", "ListStart", "ListEnd", "GroupStart", "GroupEnd"};
-        
+        Set<String> expressions = constructSet();
         Enumeration<String> enumerator = language.getKeys();
         while (enumerator.hasMoreElements()) {
             String command = (String) enumerator.nextElement();
-            // Pattern p = Pattern.compile(" ");
-            
             String[] inputs = language.getString(command).split(",");
-            command = "commands." + command + "Command";
-            for (String input : inputs) {
-                myCommandMap.put(input, command);
+            if(expressions.contains(command)){
+            	myRegularExpressions.put(command, Pattern.compile(inputs[0]));
+            }
+            else{
+            	command = "commands." + command + "Command";
+            	for (String input : inputs) {
+            		myCommandMap.put(input, command);
+            	}
             }
         }
     }
     
-    public static void main(String[] args){
-    	MasterController doge = new MasterController("English");
-    	Stack<Command> test = doge.myParser.parseInput("fd 50");
-    	Turtle turtle = new Turtle(0, 0, new ViewPane(), 0);
-    	test.pop().executeCommand(turtle);
-    	System.out.println(turtle.getXOrY(1));
-    }
+    private Set<String> constructSet() {
+		Set<String> expressionSet = new HashSet<String>();
+		String[] expressionArray = {"Comment", "Constant", "Variable", "Command", "ListStart", "ListEnd", "GroupStart", "GroupEnd"};
+		for(String item : expressionArray){
+			expressionSet.add(item);
+		}
+		return expressionSet;
+	}
 }

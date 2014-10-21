@@ -3,7 +3,7 @@ package commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Turtle;
+import model.Model;
 
 public class ListCommand extends Command {
 	
@@ -14,7 +14,7 @@ public class ListCommand extends Command {
 	}
 	
 	
-	public void setParameters(Command parameter){
+	public void addParameter(Command parameter){
 		myParameters.add(parameter);
 	}
 	
@@ -23,10 +23,10 @@ public class ListCommand extends Command {
 	}
 	
 	@Override
-	public double executeCommand(Turtle turtle) {
+	public double executeCommand(Model model) {
 		double finalEx = 0;
 		for(Command parameter : myParameters){
-			finalEx = parameter.executeCommand(turtle);
+			finalEx = parameter.executeCommand(model);
 		}
 		return finalEx;
 	}
@@ -36,8 +36,7 @@ public class ListCommand extends Command {
 		return myParameters.size();
 	}
 	
-	public List getList()
-	{
+	public List<Command> getList(){
 		return myParameters;
 	}
 }

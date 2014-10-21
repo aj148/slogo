@@ -1,6 +1,5 @@
 package parser;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Stack;
 
 import commands.Command;
@@ -21,15 +20,14 @@ public class Parser {
     /**
      * Parses a string input and constructs a collection of executable commands.
      * 
-     * @param input
-     *            : String to parse.
+     * @param input : String to parse.
      * @return Collection of commands to execute.
      */
     String listStart = "[";
     String listEnd = "]";
 
     public Stack<Command> parseInput (String parseInput) {
-        Stack<Command> commandsToExecute = new Stack<Command>();
+        // Stack<Command> commandsToExecute = new Stack<Command>();
         Stack<String> commandStack = new Stack<String>();
         Stack<Command> parameterStack = new Stack<Command>();
         Stack<Command> listCommandStack = new Stack<Command>();
@@ -54,7 +52,7 @@ public class Parser {
             if (commandName.equals(listEnd)) {
                 ListCommand listCommand = new ListCommand();
                 while(!tempParameterStack.empty()){
-                    listCommand.setParameters(tempParameterStack.pop());
+                    listCommand.addParameter(tempParameterStack.pop());
                 }
                 parameterStack.add(listCommand);
                 isListCommand = false;
@@ -123,9 +121,9 @@ public class Parser {
         return parameterStack;
     }
 
-    private void getStack (String commandName, Stack<Command> parameterStack) {
-    	return;
-    }
+//    private void getStack (String commandName, Stack<Command> parameterStack) {
+//    	return;
+//    }
 
     private Stack<Command> emptyStack (Stack<Command> commandStack) {
         while (!commandStack.empty()) {

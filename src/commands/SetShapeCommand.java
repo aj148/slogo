@@ -2,7 +2,7 @@ package commands;
 
 import model.Model;
 
-public class MakeUserInstructionCommand extends ThreeInputCommand {
+public class SetShapeCommand extends OneInputCommand {
 	
 	@Override
     public double executeCommand(Model model) {

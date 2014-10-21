@@ -1,12 +1,13 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class ClearScreenCommand extends ZeroInputCommand {
 	
 	@Override
-	public double executeCommand(Turtle turtle) {
-		return turtle.setXAndY(0.0, 0.0);
-		// Need signal to clear screen. 
+	public double executeCommand(Model model) {
+		// Need signal to clear screen still.
+		Command a = new HomeCommand();
+		return a.executeCommand(model);
 	}
 }

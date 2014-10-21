@@ -1,14 +1,14 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 import controller.MasterController;
 
 public class RandomCommand extends OneInputCommand {
     
     @Override
-    public double executeCommand(Turtle turtle) {
+    public double executeCommand(Model model) {
     	try{
-    		return (double)MasterController.myRandom.nextInt((int)myParameterOne.executeCommand(turtle));
+    		return (double)MasterController.myRandom.nextInt((int)myParameterOne.executeCommand(model));
     	}
     	catch(IllegalArgumentException e){
     		System.out.println("Exception caught in RandomCommand: ZERO OR LESS");

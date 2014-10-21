@@ -17,9 +17,9 @@ public class Turtle {
 	/*
 	 * private Color myColor; private double mySize;
 	 */
-	private double myID;
+	private int myID;
 
-	public Turtle(int x, int y, ViewPane view, double ID) {
+	public Turtle(int x, int y, ViewPane view, int ID) {
 		myPoint = new Point2D(x, y);
 		myHeading = 0;
 		isShowing = 1;
@@ -27,11 +27,19 @@ public class Turtle {
 		myID = ID;
 		myPen = new Pen();
 	}
-
-	public void updateTurtle(Command command) {
-		command.executeCommand(Turtle.this);
-		// observeHelper();
-		myView.updateView(this);
+	
+	@Override
+	public int hashCode(){
+		return myID;
+	}
+	
+	@Override
+	public boolean equals(Object o){
+		if(o == null || this.getClass() != o.getClass()){
+			return false;
+		}
+		Turtle obj = (Turtle) o;
+		return this.myID == obj.myID;
 	}
 
 	public double updatePosition(double forward) {

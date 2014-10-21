@@ -1,19 +1,20 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
+import controller.MasterController;
 
 public class DoTimesCommand extends TwoInputCommand {
 	
 	@Override
-    public double executeCommand(Turtle turtle) {
-    	ListCommand A=new ListCommand();
-    	A.setParameters((VariableCommand) myParameterOne);
-    	A.setParameters(new NumberCommand(0));
-    	A.setParameters(new NumberCommand(5));
-    	A.setParameters(new NumberCommand(1));
-    	ForCommand B = new ForCommand();
-    	B.setParameters(A, (ListCommand) myParameterTwo);
-    	double toReturn = B.executeCommand(turtle);
+    public double executeCommand(Model model) {
+		String variable = ((VariableCommand) ((ListCommand) myParameterOne).getParameters().get(0)).getVariableName();
+    	double limit = ((Command) ((ListCommand) myParameterOne).getParameters().get(1)).executeCommand(model);
+    	double toReturn = 0;
+    	for(double i = 0; i < limit; i += 1) {
+    		MasterController.myVariableMap.put(variable, i);
+    		toReturn = myParameterTwo.executeCommand(model);
+    	}
+    	MasterController.myVariableMap.remove(variable);
     	return toReturn;
     }
 }

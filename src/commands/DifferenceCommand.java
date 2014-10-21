@@ -1,11 +1,11 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
 public class DifferenceCommand extends TwoInputCommand {
     
     @Override
-    public double executeCommand(Turtle turtle) {
-        return myParameterOne.executeCommand(turtle) - myParameterTwo.executeCommand(turtle);
+    public double executeCommand(Model model) {
+        return myParameterOne.executeCommand(model) - myParameterTwo.executeCommand(model);
     }
 }
