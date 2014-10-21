@@ -28,7 +28,7 @@ public class InputPane extends Pane {
      *
      * @param cs CommandString containing the String that represents the current command
      */
-    public InputPane (CommandString cs) {
+    public InputPane (CommandString cs, LanguageController ls) {
         myCommandString = cs;
         myScrollPane.setContent(myTextField);
         myTextField.setPrefColumnCount(60);

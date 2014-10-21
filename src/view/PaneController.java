@@ -29,6 +29,7 @@ public class PaneController implements Observer {
     private ViewPane myView = new ViewPane();
     private Controller myController = new Controller(myView);
     private MasterController myMasterController;
+    private LanguageController myLanguageController = new LanguageController();
 
     /**
      * Constructor. Adds Panes to myPanes.
@@ -68,8 +69,9 @@ public class PaneController implements Observer {
     public void update (Observable obs, Object arg1) {
         String s = myCommand.getCommand().toLowerCase();
         if (myCommand.getType() != Constants.USER_DEFINE) {
-            myController.getInput(s);
-
+        	String com = myLanguageController.translateCommand(s);
+        	com = com.toLowerCase();
+            myController.getInput(com);
         }
     }
 

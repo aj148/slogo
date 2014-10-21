@@ -41,6 +41,7 @@ public class ButtonPane extends Pane {
     public ButtonPane (CommandString cs) {
         myCommandString = cs;
         createPropertiesMenu();
+        
     }
 
     public void createPropertiesMenu () {
