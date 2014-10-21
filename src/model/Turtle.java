@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 public class Turtle {
 
-	private static final double PI = 3.1415927;
+	private static final double PI = Math.PI;
 	private ViewPane myView;
 	private Point2D myPoint;
 	private double myHeading;
