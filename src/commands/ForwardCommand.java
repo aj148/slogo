@@ -1,12 +1,12 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 
 public class ForwardCommand extends OneInputCommand {
 	
     @Override
-    public double executeCommand (Turtle turtle) {
+    public double executeCommand (Model model) {
     	System.out.println("Executing ForwardCommand.");
-        return turtle.updatePosition(myParameterOne.executeCommand(turtle));
+        return turtle.updatePosition(myParameterOne.executeCommand(null));
     }
 }

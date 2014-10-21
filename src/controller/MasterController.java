@@ -56,7 +56,7 @@ public class MasterController {
     	MasterController doge = new MasterController("English");
     	Stack<Command> test = doge.myParser.parseInput("fd 50");
     	Turtle turtle = new Turtle(0, 0, new ViewPane(), 0);
-    	test.pop().executeCommand(turtle);
+    	test.pop().executeCommand(null);
     	System.out.println(turtle.getXOrY(1));
     }
 }

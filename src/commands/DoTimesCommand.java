@@ -1,11 +1,11 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 
 public class DoTimesCommand extends TwoInputCommand {
 	
 	@Override
-    public double executeCommand(Turtle turtle) {
+    public double executeCommand(Model model) {
     	ListCommand A=new ListCommand();
     	A.setParameters((VariableCommand) myParameterOne);
     	A.setParameters(new NumberCommand(0));
@@ -13,7 +13,7 @@ public class DoTimesCommand extends TwoInputCommand {
     	A.setParameters(new NumberCommand(1));
     	ForCommand B = new ForCommand();
     	B.setParameters(A, (ListCommand) myParameterTwo);
-    	double toReturn = B.executeCommand(turtle);
+    	double toReturn = B.executeCommand(null);
     	return toReturn;
     }
 }

@@ -1,14 +1,14 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 
 public class IfElseCommand extends ThreeInputCommand {
 	
 	@Override
-    public double executeCommand(Turtle turtle) {
-    	if(myParameterOne.executeCommand(turtle) != 0){
-    		return myParameterTwo.executeCommand(turtle);
+    public double executeCommand(Model model) {
+    	if(myParameterOne.executeCommand(null) != 0){
+    		return myParameterTwo.executeCommand(null);
     	}
-    	return myParameterThree.executeCommand(turtle);
+    	return myParameterThree.executeCommand(null);
     }
 }

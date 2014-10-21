@@ -1,11 +1,11 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 
 public class HideTurtleCommand extends ZeroInputCommand {
 	
 	@Override
-	public double executeCommand(Turtle turtle) {
+	public double executeCommand(Model model) {
 		return turtle.changeVisibility(0.0);
 	}
 }

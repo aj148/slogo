@@ -14,9 +14,6 @@ public class Turtle {
 	private double myHeading;
 	private double isShowing;
 	private Pen myPen;
-	/*
-	 * private Color myColor; private double mySize;
-	 */
 	private double myID;
 
 	public Turtle(int x, int y, ViewPane view, double ID) {
@@ -28,8 +25,8 @@ public class Turtle {
 		myPen = new Pen();
 	}
 
-	public void updateTurtle(Command command) {
-		command.executeCommand(Turtle.this);
+	public void updateTurtle(Command command, Model model) {
+		command.executeCommand(null);
 		// observeHelper();
 		myView.updateView(this);
 	}

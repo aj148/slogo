@@ -1,12 +1,11 @@
 package commands;
 
-import model.Turtle;
-
+import model.Model;
 public abstract class Command {
 	
     public abstract int getNumParameters();
     
-    public double executeCommand(Turtle turtle) {
+    public double executeCommand(Model model) {
     	return 0;
     }
     

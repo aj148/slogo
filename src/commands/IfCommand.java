@@ -1,13 +1,13 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 
 public class IfCommand extends TwoInputCommand {
 	
 	@Override
-    public double executeCommand(Turtle turtle) {
-    	if(myParameterOne.executeCommand(turtle) != 0){
-    		return myParameterTwo.executeCommand(turtle);
+    public double executeCommand(Model model) {
+    	if(myParameterOne.executeCommand(null) != 0){
+    		return myParameterTwo.executeCommand(null);
     	}
     	return 0;
     }

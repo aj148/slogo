@@ -1,11 +1,11 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 
 public class SumCommand extends TwoInputCommand {
 
     @Override
-    public double executeCommand(Turtle turtle) {
-        return myParameterOne.executeCommand(turtle) + myParameterTwo.executeCommand(turtle);
+    public double executeCommand(Model model) {
+        return myParameterOne.executeCommand(null) + myParameterTwo.executeCommand(null);
     }
 }

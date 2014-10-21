@@ -1,11 +1,11 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 
 public class MinusCommand extends OneInputCommand {
     
     @Override
-    public double executeCommand(Turtle turtle) {
-        return -myParameterOne.executeCommand(turtle);
+    public double executeCommand(Model model) {
+        return -myParameterOne.executeCommand(null);
     }
 }

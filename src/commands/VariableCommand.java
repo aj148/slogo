@@ -1,6 +1,6 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 import controller.MasterController;
 
 public class VariableCommand extends ZeroInputCommand {
@@ -16,7 +16,7 @@ public class VariableCommand extends ZeroInputCommand {
 	}
 	
 	@Override
-	public double executeCommand(Turtle turtle){
+	public double executeCommand(Model model){
 		if(MasterController.myVariableMap.containsKey(myParameter)){
 			return MasterController.myVariableMap.get(myParameter);
 		}

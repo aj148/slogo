@@ -1,9 +1,8 @@
 package commands;
+import model.Model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Turtle;
 
 public class ListCommand extends Command {
 	
@@ -23,10 +22,10 @@ public class ListCommand extends Command {
 	}
 	
 	@Override
-	public double executeCommand(Turtle turtle) {
+	public double executeCommand(Model model) {
 		double finalEx = 0;
 		for(Command parameter : myParameters){
-			finalEx = parameter.executeCommand(turtle);
+			finalEx = parameter.executeCommand(null);
 		}
 		return finalEx;
 	}

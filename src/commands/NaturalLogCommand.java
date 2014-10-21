@@ -1,12 +1,12 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 
 public class NaturalLogCommand extends OneInputCommand {
     
     @Override
-    public double executeCommand(Turtle turtle) {
-    	Double value = Math.log(myParameterOne.executeCommand(turtle));
+    public double executeCommand(Model model) {
+    	Double value = Math.log(myParameterOne.executeCommand(null));
     	if(value.toString().equals("NaN") || value.toString().equals("-Infinity")){
     		System.out.println("Problem in NaturalLogCommand: " + value.toString());
     		return 0;

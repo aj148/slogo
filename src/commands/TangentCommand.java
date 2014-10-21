@@ -1,13 +1,13 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 
 public class TangentCommand extends OneInputCommand {
     
     @Override
-    public double executeCommand(Turtle turtle) {
+    public double executeCommand(Model model) {
     	try{
-    		return Math.tan(myParameterOne.executeCommand(turtle));
+    		return Math.tan(myParameterOne.executeCommand(null));
     	}
     	catch(ArithmeticException e){
     		System.out.println("Exception caught in TangentCommand: DIVIDE BY ZERO");

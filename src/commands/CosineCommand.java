@@ -1,11 +1,11 @@
 package commands;
+import model.Model;
 
-import model.Turtle;
 
 public class CosineCommand extends OneInputCommand {
     
     @Override
-    public double executeCommand(Turtle turtle) {
-        return Math.cos(myParameterOne.executeCommand(turtle));
+    public double executeCommand(Model model) {
+        return Math.cos(myParameterOne.executeCommand(null));
     }
 }

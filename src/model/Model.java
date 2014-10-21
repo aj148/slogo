@@ -37,7 +37,7 @@ public class Model {
      */
     public void updateModel (Collection<Command> commandsToExecute) {
         for (Command command : commandsToExecute) {
-            myTurtle.updateTurtle(command);
+            myTurtle.updateTurtle(command, this);
         }
     }
 }
