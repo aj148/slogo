@@ -37,9 +37,11 @@ public class ButtonPane extends Pane {
     private String myCurrent;
     private ColorPicker myColorPicker;
     private ColorPicker myColorPicker2;
+    private LanguageController myLanguageController;
 
-    public ButtonPane (CommandString cs) {
+    public ButtonPane (CommandString cs, LanguageController ls) {
         myCommandString = cs;
+        myLanguageController = ls;
         createPropertiesMenu();
         
     }
@@ -49,11 +51,8 @@ public class ButtonPane extends Pane {
         myColorPicker2 = makeColorPicker("Pen Color", event -> changePenColor());
         Button toggleReferenceGrid = makeButton("Toggle Grid", event -> toggleGrid());
         Button help = makeButton("Help", event -> help());
-        ChoiceBox languages =
-                new ChoiceBox(FXCollections.observableArrayList("English", "中文", "Français",
-                                                                "Italiano", "Português", "русский"));
         myHbox.getChildren().addAll(new Label("Background"), myColorPicker, new Label("Pen"),
-                                    myColorPicker2, toggleReferenceGrid, languages,
+                                    myColorPicker2, toggleReferenceGrid,myLanguageController.makeMenu(),
                                     help);
         myToolBar.getItems().add(myHbox);
         myVbox.getChildren().add(myToolBar);
