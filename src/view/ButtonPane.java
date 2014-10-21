@@ -28,7 +28,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 
 
-public class ButtonPane extends Pane {
+public class ButtonPane extends PaneModule {
     private final ToolBar myToolBar = new ToolBar();
     private ComboBox<Button> myComboBox = new ComboBox();
     private VBox myVbox = new VBox();

@@ -17,7 +17,8 @@ import javafx.scene.layout.HBox;
  * @author Team14
  *
  */
-public class InputPane extends Pane {
+
+public class InputPane extends PaneModule {
 	private HBox myHBox = new HBox();
 	private ScrollPane myScrollPane = new ScrollPane();
 	private TextField myTextField = new TextField();
