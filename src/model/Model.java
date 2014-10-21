@@ -1,11 +1,14 @@
 package model;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 import javafx.scene.paint.Color;
+
 import commands.Command;
 import view.ViewPane;
+
 /**
  * Class that contains the basic information of what needs to be displayed in
  * the GUI, including data related to the turtle (current position, pen color,
@@ -14,10 +17,12 @@ import view.ViewPane;
  * @author Team 14
  */
 public class Model {
+	
     private ViewPane myView;
     private Color myBackground;
     private Set<Turtle> myFullList;
     private TurtleListManager myManager;
+    
     /**
      * Constructor method called from ViewPanel.java
      * 
@@ -29,6 +34,7 @@ public class Model {
         myManager = new TurtleListManager(myFullList);
         myBackground = Color.WHITE;
     }
+    
     /**
      * Method to update the model with the commands passed from the Controller.
      * 
@@ -40,8 +46,8 @@ public class Model {
             myView.updateView(this);
         }
     }
-    public TurtleListManager getManager()
-    {
+    
+    public TurtleListManager getManager() {
     	return myManager;
     }
 }

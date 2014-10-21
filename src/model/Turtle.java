@@ -14,11 +14,12 @@ public class Turtle {
 	private double myHeading;
 	private double isShowing;
 	private Pen myPen;
+	
 	/*
 	 * private Color myColor; private double mySize;
 	 */
 	private int myID;
-
+	
 	public Turtle(int x, int y, ViewPane view, int ID) {
 		myPoint = new Point2D(x, y);
 		myHeading = 0;

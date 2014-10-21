@@ -1,9 +1,9 @@
 package commands;
 
+import model.Model;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Model;
 
 public class ListCommand extends Command {
 	
@@ -12,7 +12,6 @@ public class ListCommand extends Command {
 	public ListCommand(){
 		myParameters = new ArrayList<Command>();
 	}
-	
 	
 	public void addParameter(Command parameter){
 		myParameters.add(parameter);
