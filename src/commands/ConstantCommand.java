@@ -2,11 +2,11 @@ package commands;
 import model.Model;
 
 
-public class NumberCommand extends ZeroInputCommand {
+public class ConstantCommand extends ZeroInputCommand {
 	
 	private double myParameter;
 	
-	public NumberCommand(double parameter){
+	public ConstantCommand(double parameter){
 		myParameter = parameter;
 	}
 	

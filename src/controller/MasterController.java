@@ -27,7 +27,7 @@ public class MasterController {
     public static Map<String, String> myCommandMap;
     public static Map<String, Double> myVariableMap;
     public static Map<String, String> myRegularExpressions;
-    protected Parser myParser;
+    protected static Parser myParser;
     private final String resources = "resources.languages/";
 
     public MasterController (String lang) {
@@ -54,9 +54,7 @@ public class MasterController {
     
     public static void main(String[] args){
     	MasterController doge = new MasterController("English");
-    	Stack<Command> test = doge.myParser.parseInput("fd 50");
-    	Turtle turtle = new Turtle(0, 0, new ViewPane(), 0);
-    	test.pop().executeCommand(null);
-    	System.out.println(turtle.getXOrY(1));
+    	String test = "fd [ sum 10 10 ]";
+    	MasterController.myParser.parseInput(test);
     }
 }

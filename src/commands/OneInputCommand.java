@@ -12,4 +12,8 @@ public abstract class OneInputCommand extends Command {
     public int getNumParameters(){
         return 1;
     }
+    
+    public Command getParamerter(){
+        return myParameterOne;
+    }
 }
