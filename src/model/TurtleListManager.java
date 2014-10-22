@@ -16,14 +16,14 @@ public class TurtleListManager {
 		new Stack<Set<Turtle>>();
 	}
 
-	public void add(Set<Integer> newList) {
-		Set<Turtle> a = new HashSet<Turtle>();
-		newList.forEach(e -> a.add(new ArrayList<Turtle>(mySet).get(e)));
-		myStack.add(a);
+	public void add(Set<Turtle> newSet) {
+		myStack.add(newSet);
 	}
 
-	public void regulateDepth() {
-		myStack.pop();
+	public void regulateDepth(int finalLength) {
+		while (getStackLength()!=finalLength) {
+			myStack.pop();
+		}
 	}
 
 	public void addTurtle(int ID, ViewPane view) {
@@ -32,5 +32,13 @@ public class TurtleListManager {
 
 	public Set<Turtle> getCurrentList() {
 		return myStack.lastElement();
+	}
+
+	public Set<Turtle> getFullList() {
+		return mySet;
+	}
+
+	public int getStackLength() {
+		return myStack.size();
 	}
 }
