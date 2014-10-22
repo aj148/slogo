@@ -1,7 +1,7 @@
 package parser;
 
 import java.util.regex.Pattern;
-
+import java.lang.reflect.InvocationTargetException;
 import java.util.Stack;
 
 import commands.Command;
@@ -25,21 +25,18 @@ public class Parser {
     /**
      * Parses a string input and constructs a collection of executable commands.
      * 
-     * @param input : String to parse.
+     * @param input
+     *            : String to parse.
      * @return Collection of commands to execute.
      */
-    String listStart = "[";
-    String listEnd = "]";
+    private Stack<String> commandStack = new Stack<String>();
 
     public Stack<Command> parseInput (String parseInput) {
-        // Stack<Command> commandsToExecute = new Stack<Command>();
-        Stack<String> commandStack = new Stack<String>();
+        Stack<Command> commandsToExecute = new Stack<Command>();
+        // Stack<String> commandStack = new Stack<String>();
         Stack<Command> parameterStack = new Stack<Command>();
-        Stack<Command> listCommandStack = new Stack<Command>();
-        Stack<Command> tempParameterStack = new Stack<Command>();
-        boolean isListCommand = false;
         for (String input : parseInput.split(" ")) {
-
+            System.out.println(input);
             if (MasterController.myCommandMap.containsKey(input)) {
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
@@ -47,114 +44,106 @@ public class Parser {
                     return throwError(e);
                 }
             }
-            if (Pattern.matches("-??[0-9]+.??[0-9]*", input)) {
-                commandStack.add(input);
-            }
-            if (Pattern.matches(":[a-zA-Z]+", input)) {
+            if (Pattern.matches("-??[0-9]+.??[0-9]*", input) | Pattern.matches(":[a-zA-Z]+", input)) {
                 commandStack.add(input);
             }
         }
         while (!commandStack.isEmpty()) {
             String commandName = commandStack.pop();
-            if (commandName.equals("commands.ListEndCommand")) {
-                isListCommand = true;
-                continue;
-            }
-            if (commandName.equals("commands.ListStartCommand")) {
-                ListCommand listCommand = new ListCommand();
-                while(!tempParameterStack.empty()){
-                    listCommand.addParameter(tempParameterStack.pop());
-                }
-                parameterStack.add(listCommand);
-                isListCommand = false;
-                listCommandStack = emptyStack(listCommandStack);
-                tempParameterStack = emptyStack(tempParameterStack);
-                continue;
-            }
-            if (isListCommand) {
-                if (Pattern.matches("-??[0-9]+.??[0-9]*", commandName)) {
-                    tempParameterStack.add(new ConstantCommand(Double.parseDouble(commandName)));
-                } else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
-                    tempParameterStack.add(new VariableCommand(commandName.substring(1)));
-                } else {
-                    Class<?> cl;
-                    Command command;
-                    try {
-                        cl = Class.forName(commandName);
-                        try {
-                            command = (Command) cl.getConstructor().newInstance();
-                            if (command.getNumParameters() == 1) {
-                                ((OneInputCommand) command).setParameters(tempParameterStack.pop());
-                            }
-                            if (command.getNumParameters() == 2) {
-                                ((TwoInputCommand) command).setParameters(tempParameterStack.pop(),
-                                        tempParameterStack.pop());
-                            }
-                            if (command.getNumParameters() == 3) {
-                                ((ThreeInputCommand) command).setParameters(
-                                        tempParameterStack.pop(), tempParameterStack.pop(),
-                                        tempParameterStack.pop());
-                            }
-                            tempParameterStack.add(command);
-                        } catch (Exception e) {
-                            throwError(e);
-                        }
-
-                    } catch (ClassNotFoundException e) {
-                        return throwError(e);
-                    }
-                }
-                System.out.println(tempParameterStack.peek());
-                System.out.println(tempParameterStack.size());
+            // check whether the string is constants, variables, list command,
+            // or commands
+            if (Pattern.matches("-??[0-9]+.??[0-9]*", commandName)) {
+                parameterStack.add(new ConstantCommand(Double.parseDouble(commandName)));
+            } else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
+                parameterStack.add(new VariableCommand(commandName.substring(1)));
+            } else if (commandName.equals("commands.ListEndCommand")) {
+                parameterStack.add(makeListCommand(commandStack));
             } else {
-                if (Pattern.matches("-??[0-9]+.??[0-9]*", commandName)) {
-                    parameterStack.add(new ConstantCommand(Double.parseDouble(commandName)));
-                } else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
-                    parameterStack.add(new VariableCommand(commandName.substring(1)));
-                } else {
-                    Class<?> cl;
-                    Command command;
+                Class<?> cl;
+                Command command;
+                try {
+                    cl = Class.forName(commandName);
                     try {
-                        cl = Class.forName(commandName);
-                        try {
-                            command = (Command) cl.getConstructor().newInstance();
-                            if (command.getNumParameters() == 1) {
-                                ((OneInputCommand) command).setParameters(parameterStack.pop());
-                            }
-                            if (command.getNumParameters() == 2) {
-                                ((TwoInputCommand) command).setParameters(parameterStack.pop(),
-                                        parameterStack.pop());
-                            }
-                            if (command.getNumParameters() == 3) {
-                                ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
-                                        parameterStack.pop(), parameterStack.pop());
-                            }
-                            parameterStack.add(command);
-                        } catch (Exception e) {
-                            return throwError(e);
+                        command = (Command) cl.getConstructor().newInstance();
+                        if (command.getNumParameters() == 1) {
+                            ((OneInputCommand) command).setParameters(parameterStack.pop());
                         }
-                    } catch (ClassNotFoundException e) {
+                        if (command.getNumParameters() == 2) {
+                            ((TwoInputCommand) command).setParameters(parameterStack.pop(),
+                                    parameterStack.pop());
+                        }
+                        if (command.getNumParameters() == 3) {
+                            ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
+                                    parameterStack.pop(), parameterStack.pop());
+                        }
+                        parameterStack.add(command);
+                    } catch (Exception e) {
                         return throwError(e);
                     }
+                } catch (ClassNotFoundException e) {
+                    return throwError(e);
+                }
 
+            }
+        }
+        System.out.println("---");
+        ForwardCommand temp = (ForwardCommand) parameterStack.pop();
+        ListCommand temp2 = (ListCommand) temp.getParamerter();
+        System.out.println(temp);
+        System.out.println(temp.getParamerter());
+        System.out.println(temp2.getParameters());
+        System.out.println("---");
+        return parameterStack;
+    }
+
+    private Command makeListCommand (Stack<String> commandStack) {
+        Stack<Command> tempParameterStack = new Stack<Command>();
+        boolean inListCommand = true;
+        while (!commandStack.isEmpty() & inListCommand) {
+            String commandName = commandStack.pop();
+            if(commandName.equals("commands.ListStartCommand")){
+                inListCommand = false;
+                continue;
+            }
+            if (Pattern.matches("-??[0-9]+.??[0-9]*", commandName)) {
+                tempParameterStack.add(new ConstantCommand(Double.parseDouble(commandName)));
+            } else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
+                tempParameterStack.add(new VariableCommand(commandName.substring(1)));
+            } else if (commandName.equals("commands.ListEndCommand")) {
+                tempParameterStack.add(makeListCommand(commandStack));
+            } else {
+                Class<?> cl;
+                Command command;
+                try {
+                    cl = Class.forName(commandName);
+                    try {
+                        command = (Command) cl.getConstructor().newInstance();
+                        if (command.getNumParameters() == 1) {
+                            ((OneInputCommand) command).setParameters(tempParameterStack.pop());
+                        }
+                        if (command.getNumParameters() == 2) {
+                            ((TwoInputCommand) command).setParameters(tempParameterStack.pop(),
+                                    tempParameterStack.pop());
+                        }
+                        if (command.getNumParameters() == 3) {
+                            ((ThreeInputCommand) command).setParameters(tempParameterStack.pop(),
+                                    tempParameterStack.pop(), tempParameterStack.pop());
+                        }
+                        tempParameterStack.add(command);
+                    } catch (Exception e) {
+                        
+                    }
+                } catch (ClassNotFoundException e) {
+                    
                 }
             }
         }
-         System.out.println("---");
-         ForwardCommand temp = (ForwardCommand) parameterStack.pop();
-         System.out.println(temp);
-//         System.out.println(temp.getParameter());
-//         System.out.println(temp.getParameter().getNumParameters());
-         System.out.println("---");
-    }
-
-    private Stack<Command> emptyStack (Stack<Command> commandStack) {
-        while (!commandStack.empty()) {
-            commandStack.pop();
+        ListCommand listCommand = new ListCommand();
+        while(!tempParameterStack.empty()){
+            listCommand.addParameter(tempParameterStack.pop());
         }
-        return commandStack;
+        return listCommand;
     }
-
     private Stack<Command> throwError (Exception e) {
         Stack<Command> error = new Stack<Command>();
         // error.add(new ErrorCommand("Error: Invalid input."));
