@@ -10,5 +10,6 @@ public class SetPenSizeCommand extends OneInputCommand {
 		for(Turtle a : model.getManager().getCurrentList()){
 			toReturn = a.setPenSize(myParameterOne.executeCommand(model));
 		}
-		return toReturn;	}
+		return toReturn;
+	}
 }

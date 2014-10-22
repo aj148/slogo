@@ -11,5 +11,6 @@ public class ShowTurtleCommand extends ZeroInputCommand {
 		for(Turtle a : model.getManager().getCurrentList()){
 			toReturn = a.changeVisibility(1.0);
 		}
-		return toReturn;	}
+		return toReturn;
+	}
 }

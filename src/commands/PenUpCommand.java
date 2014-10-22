@@ -11,5 +11,6 @@ public class PenUpCommand extends ZeroInputCommand {
 		for(Turtle a : model.getManager().getCurrentList()){
 			toReturn = a.changePen(1.0);
 		}
-		return toReturn;	}
+		return toReturn;
+	}
 }

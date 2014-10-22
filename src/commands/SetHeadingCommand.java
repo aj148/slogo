@@ -11,5 +11,6 @@ public class SetHeadingCommand extends OneInputCommand {
 		for(Turtle a : model.getManager().getCurrentList()){
 			toReturn = a.setHeading(myParameterOne.executeCommand(model));
 		}
-		return toReturn;	}
+		return toReturn;
+	}
 }

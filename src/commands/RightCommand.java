@@ -9,8 +9,7 @@ public class RightCommand extends OneInputCommand {
 	public double executeCommand(Model model) {
 		double toReturn = 0;
 		for (Turtle a : model.getManager().getCurrentList()) {
-			toReturn = a.updateHeading(
-					myParameterOne.executeCommand(model));
+			toReturn = a.updateHeading(myParameterOne.executeCommand(model));
 		}
 		return toReturn;
 	}
