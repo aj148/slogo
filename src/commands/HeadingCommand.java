@@ -7,10 +7,11 @@ public class HeadingCommand extends ZeroInputCommand {
 	
 	@Override
 	public double executeCommand (Model model) {
-		double last = 0;
+		double toReturn = 0;
 		for(Turtle a : model.getManager().getCurrentList()){
-			last = a.getHeading();
+			toReturn = a.getHeading();
+			break;
 		}
-		return last;
+		return toReturn;
 	}
 }

@@ -46,8 +46,16 @@ public class Model {
             myView.updateView(this);
         }
     }
+    public ViewPane getView()
+    {
+    	return myView;
+    }
     
     public TurtleListManager getManager() {
     	return myManager;
+    }
+    public void setBackgroundColor(Color color)
+    {
+    	myBackground=color;
     }
 }

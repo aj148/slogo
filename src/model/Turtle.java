@@ -14,13 +14,13 @@ public class Turtle {
 	private double myHeading;
 	private double isShowing;
 	private Pen myPen;
-	
+
 	/*
 	 * private Color myColor; private double mySize;
 	 */
-	private int myID;
-	
-	public Turtle(int x, int y, ViewPane view, int ID) {
+	private double myID;
+
+	public Turtle(int x, int y, ViewPane view, double ID) {
 		myPoint = new Point2D(x, y);
 		myHeading = 0;
 		isShowing = 1;
@@ -28,15 +28,10 @@ public class Turtle {
 		myID = ID;
 		myPen = new Pen();
 	}
-	
+
 	@Override
-	public int hashCode(){
-		return myID;
-	}
-	
-	@Override
-	public boolean equals(Object o){
-		if(o == null || this.getClass() != o.getClass()){
+	public boolean equals(Object o) {
+		if (o == null || this.getClass() != o.getClass()) {
 			return false;
 		}
 		Turtle obj = (Turtle) o;
@@ -134,5 +129,9 @@ public class Turtle {
 
 	public Color getPenColor() {
 		return myPen.getColor();
+	}
+
+	public double getID() {
+		return myID;
 	}
 }
