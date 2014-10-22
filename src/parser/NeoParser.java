@@ -131,7 +131,7 @@ public class NeoParser {
     
     public static void main(String[] args){
     	MasterController doge = new MasterController("English");
-    	List<Command> commands = MasterController.myParser.parseInput("   pd [ fd 50 bk 10 [ rt 10 :k -_-' lt 2 ] home ] pu   ");
+    	List<Command> commands = MasterController.myParser.parseInput("fd [ fd sum [ sum 10 10 ] 10 ]");
     	System.out.println(commands.size());
     	for(Command command : commands){
     		System.out.println(command.getClassName());
