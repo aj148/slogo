@@ -54,7 +54,7 @@ public class MasterController {
     
     public static void main(String[] args){
         MasterController doge = new MasterController("English");
-        String test = "fd [ fd [ sum 10 10 ] sum 10 ]";
+        String test = "fd [ fd sum [ sum 10 10 ] 10 ]";
         MasterController.myParser.parseInput(test);
     }
 }

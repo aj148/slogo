@@ -19,4 +19,11 @@ public abstract class TwoInputCommand extends Command {
     public int getNumParameters(){
         return 2;
     }
+    
+    public Command getParameterOne(){
+        return myParameterOne;
+    }
+    public Command getParameterTwo(){
+        return myParameterTwo;
+    }
 }
