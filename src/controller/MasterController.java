@@ -42,19 +42,17 @@ public class MasterController {
         myVariableMap = new HashMap<String, Double>();
         myRegularExpressions = new HashMap<String, Pattern>();
         ResourceBundle language = ResourceBundle.getBundle(resources + lang);
-//        Set<String> expressions = constructSet();
+        // String[] expressions = {"Comment", "Constant", "Variable", "Command", "ListStart", "ListEnd", "GroupStart", "GroupEnd"};
+        
         Enumeration<String> enumerator = language.getKeys();
         while (enumerator.hasMoreElements()) {
             String command = (String) enumerator.nextElement();
+            // Pattern p = Pattern.compile(" ");
+            
             String[] inputs = language.getString(command).split(",");
-//            if(expressions.contains(command)){
-//            	myRegularExpressions.put(command, Pattern.compile(inputs[0]));
-//            }
-//            else{
-            	command = "commands." + command + "Command";
-            	for (String input : inputs) {
-            		myCommandMap.put(input, command);
-//            	}
+            command = "commands." + command + "Command";
+            for (String input : inputs) {
+                myCommandMap.put(input, command);
             }
         }
     }

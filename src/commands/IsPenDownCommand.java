@@ -7,10 +7,11 @@ public class IsPenDownCommand extends ZeroInputCommand {
 
     @Override
     public double executeCommand (Model model) {
-        double last = 0;
+    	double toReturn = 0;
 		for(Turtle a : model.getManager().getCurrentList()){
-			last = a.changePen(-1.0);
+			toReturn = a.getPenStatus();
+			break;
 		}
-		return last;
+		return toReturn;
     }
 }
