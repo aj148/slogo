@@ -1,8 +1,7 @@
 package parser;
 
-import java.util.regex.Pattern;
 import java.util.Stack;
-
+import java.util.regex.Pattern;
 import commands.Command;
 import commands.ConstantCommand;
 import commands.ForwardCommand;
@@ -34,7 +33,6 @@ public class Parser {
     public Stack<Command> parseInput (String parseInput) {
         Stack<Command> parameterStack = new Stack<Command>();
         for (String input : parseInput.split(" ")) {
-            System.out.println(input);
             if (MasterController.myCommandMap.containsKey(input)) {
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
@@ -104,6 +102,7 @@ public class Parser {
 
     private Command makeListCommand (Stack<String> commandStack) {
         Stack<Command> tempParameterStack = new Stack<Command>();
+        ListCommand listCommand = new ListCommand();
         boolean inListCommand = true;
         while (!commandStack.isEmpty() & inListCommand) {
             String commandName = commandStack.pop();
@@ -114,12 +113,12 @@ public class Parser {
             Command newCommand = getCommand(commandName, tempParameterStack);
             tempParameterStack.add(newCommand);
         }
-        ListCommand listCommand = new ListCommand();
         while(!tempParameterStack.empty()){
             listCommand.addParameter(tempParameterStack.pop());
         }
         return listCommand;
     }
+    
     private Stack<Command> throwError (Exception e) {
         Stack<Command> error = new Stack<Command>();
         return error;
