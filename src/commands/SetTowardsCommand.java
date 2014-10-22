@@ -11,5 +11,6 @@ public class SetTowardsCommand extends TwoInputCommand {
 		for(Turtle a : model.getManager().getCurrentList()){
 			toReturn = a.towards(myParameterOne.executeCommand(model), myParameterTwo.executeCommand(model));
 		}
-		return toReturn;	}
+		return toReturn;
+	}
 }

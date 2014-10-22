@@ -11,5 +11,6 @@ public class YCoordinateCommand extends ZeroInputCommand {
 		for(Turtle a : model.getManager().getCurrentList()){
 			toReturn = a.getXOrY(1);
 		}
-		return toReturn;    }
+		return toReturn;
+	}
 }

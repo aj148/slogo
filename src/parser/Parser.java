@@ -20,7 +20,7 @@ import controller.MasterController;
  * @author Team 14
  */
 public class Parser {
-
+	
     /**
      * Parses a string input and constructs a collection of executable commands.
      * 
@@ -36,7 +36,8 @@ public class Parser {
             if (MasterController.myCommandMap.containsKey(input)) {
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     return throwError(e);
                 }
             }
@@ -49,7 +50,6 @@ public class Parser {
             Command newCommand = getCommand(commandName, parameterStack);
             parameterStack.add(newCommand);
         }
-        
         System.out.println("---");
         ForwardCommand temp = (ForwardCommand) parameterStack.pop();
         ListCommand temp2 = (ListCommand) temp.getParamerter();
@@ -69,11 +69,14 @@ public class Parser {
     private Command getCommand (String commandName, Stack<Command> parameterStack){
         if (Pattern.matches("-??[0-9]+.??[0-9]*", commandName)) {
             return new ConstantCommand(Double.parseDouble(commandName));
-        } else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
+        }
+        else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
             return new VariableCommand(commandName.substring(1));
-        } else if (commandName.equals("commands.ListEndCommand")) {
+        }
+        else if (commandName.equals("commands.ListEndCommand")) {
             return makeListCommand(commandStack);
-        } else {
+        }
+        else {
             Class<?> cl;
             Command command;
             try {
@@ -92,9 +95,13 @@ public class Parser {
                                 parameterStack.pop(), parameterStack.pop());
                     }
                     return command;
-                } catch (Exception e) {
                 }
-            } catch (ClassNotFoundException e) {
+                catch (Exception e) {
+                	
+                }
+            }
+            catch (ClassNotFoundException e) {
+            	
             }
         }
         return null;

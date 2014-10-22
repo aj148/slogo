@@ -10,30 +10,26 @@ import model.Turtle;
 import model.TurtleListManager;
 
 public class TellCommand extends OneInputCommand {
-	//still need to write new turtle thing
+	
 	@Override
 	public double executeCommand(Model model){
-		TurtleListManager temp= model.getManager();
+		TurtleListManager temp = model.getManager();
 		double toReturn = 0;
-		Set<Turtle> tellSet=new HashSet<Turtle>();
-		List<Turtle> fullList=new ArrayList<Turtle>(temp.getFullList());
-		List<Command> turtlesToAdd=((ListCommand) myParameterOne).getList();
-		boolean exists=false;
-		for(Command a: turtlesToAdd)
-		{
+		Set<Turtle> tellSet = new HashSet<Turtle>();
+		List<Turtle> fullList = new ArrayList<Turtle>(temp.getFullList());
+		List<Command> turtlesToAdd = ((ListCommand) myParameterOne).getList();
+		boolean exists = false;
+		for(Command a: turtlesToAdd) {
 			exists=false;
-			toReturn=a.executeCommand(model);
-			for(Turtle b: fullList)
-			{
-				if(toReturn==b.getID())
-				{
+			toReturn = a.executeCommand(model);
+			for(Turtle b: fullList) {
+				if(toReturn == b.getID()) {
 					tellSet.add(b);
-					exists=true;
+					exists = true;
 					break;
 				}
 			}
-			if(!exists)
-			{
+			if(!exists) {
 				temp.getFullList().add(new Turtle(0, 0, model.getView(), toReturn));
 			}
 		}

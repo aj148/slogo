@@ -1,8 +1,5 @@
 package commands;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import model.Model;
 import model.Turtle;
 
