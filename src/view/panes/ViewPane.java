@@ -1,9 +1,12 @@
-package view;
+package view.panes;
 
 import java.util.List;
 import java.util.ArrayList;
 
-import javafx.geometry.Point2D;
+
+import view.Draw;
+import model.Turtle;
+:import javafx.geometry.Point2D;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;

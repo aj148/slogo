@@ -3,7 +3,7 @@ package controller;
 import java.util.Stack;
 
 import model.Model;
-import view.ViewPane;
+import view.panes.ViewPane;
 import commands.Command;
 import commands.ErrorCommand;
 

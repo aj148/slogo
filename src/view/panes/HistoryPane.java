@@ -1,6 +1,9 @@
-package view;
+package view.panes;
 
 import java.util.Observer;
+
+import view.CommandString;
+import view.Constants;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Hyperlink;

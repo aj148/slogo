@@ -1,4 +1,4 @@
-package view;
+package view.panes;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,6 +6,10 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+
+import view.CommandString;
+import view.Constants;
+import view.LanguageController;
 
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 
@@ -37,9 +41,11 @@ public class ButtonPane extends PaneModule {
     private String myCurrent;
     private ColorPicker myColorPicker;
     private ColorPicker myColorPicker2;
+    private LanguageController myLanguageController;
 
-    public ButtonPane (CommandString cs) {
+    public ButtonPane (CommandString cs, LanguageController ls) {
         myCommandString = cs;
+        myLanguageController = ls;
         createPropertiesMenu();
         
     }
@@ -49,11 +55,8 @@ public class ButtonPane extends PaneModule {
         myColorPicker2 = makeColorPicker("Pen Color", event -> changePenColor());
         Button toggleReferenceGrid = makeButton("Toggle Grid", event -> toggleGrid());
         Button help = makeButton("Help", event -> help());
-        ChoiceBox languages =
-                new ChoiceBox(FXCollections.observableArrayList("English", "中文", "Français",
-                                                                "Italiano", "Português", "русский"));
         myHbox.getChildren().addAll(new Label("Background"), myColorPicker, new Label("Pen"),
-                                    myColorPicker2, toggleReferenceGrid, languages,
+                                    myColorPicker2, toggleReferenceGrid,myLanguageController.makeMenu(),
                                     help);
         myToolBar.getItems().add(myHbox);
         myVbox.getChildren().add(myToolBar);
