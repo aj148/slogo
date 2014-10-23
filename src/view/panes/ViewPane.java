@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import view.Draw;
 import model.Turtle;
-:import javafx.geometry.Point2D;
+import javafx.geometry.Point2D;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
