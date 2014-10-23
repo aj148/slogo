@@ -31,105 +31,97 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 
-
 public class ButtonPane extends PaneModule {
-    private final ToolBar myToolBar = new ToolBar();
-    private ComboBox<Button> myComboBox = new ComboBox();
-    private VBox myVbox = new VBox();
-    private HBox myHbox = new HBox();
-    private CommandString myCommandString;
-    private String myCurrent;
-    private ColorPicker myColorPicker;
-    private ColorPicker myColorPicker2;
-    private LanguageController myLanguageController;
+	private final ToolBar myToolBar = new ToolBar();
+	private ComboBox<Button> myComboBox = new ComboBox();
+	private VBox myVbox = new VBox();
+	private HBox myHbox = new HBox();
+	private CommandString myCommandString;
+	private String myCurrent;
+	private ColorPicker myColorPicker;
+	private LanguageController myLanguageController;
 
-    public ButtonPane (CommandString cs, LanguageController ls) {
-        myCommandString = cs;
-        myLanguageController = ls;
-        createPropertiesMenu();
-        
-    }
+	public ButtonPane(CommandString cs, LanguageController ls) {
+		myCommandString = cs;
+		myLanguageController = ls;
+		createPropertiesMenu();
 
-    public void createPropertiesMenu () {
-        myColorPicker = makeColorPicker("Background Color", event -> backgroundColor());
-        myColorPicker2 = makeColorPicker("Pen Color", event -> changePenColor());
-        Button toggleReferenceGrid = makeButton("Toggle Grid", event -> toggleGrid());
-        Button help = makeButton("Help", event -> help());
-        myHbox.getChildren().addAll(new Label("Background"), myColorPicker, new Label("Pen"),
-                                    myColorPicker2, toggleReferenceGrid,myLanguageController.makeMenu(),
-                                    help);
-        myToolBar.getItems().add(myHbox);
-        myVbox.getChildren().add(myToolBar);
-        WorkspaceTabs workspace = new WorkspaceTabs();
-        myVbox.getChildren().add(workspace.getWorkspace());
-    }
+	}
 
-    @Override
-    public BorderPane addPane (BorderPane p) {
-        p.setTop(myVbox);
-        return p;
-    }
+	public void createPropertiesMenu() {
+		myColorPicker = makeColorPicker("Background Color",
+				event -> backgroundColor());
+		Button toggleReferenceGrid = makeButton("Toggle Grid",
+				event -> toggleGrid());
+		Button help = makeButton("Help", event -> help());
+		myHbox.getChildren().addAll(new Label("Background"), myColorPicker,
+				toggleReferenceGrid, myLanguageController.makeMenu(), help);
+		myToolBar.getItems().add(myHbox);
+		myVbox.getChildren().add(myToolBar);
+		WorkspaceTabs workspace = new WorkspaceTabs();
+		myVbox.getChildren().add(workspace.getWorkspace());
+	}
 
-    private Button makeButton (String property, EventHandler<ActionEvent> handler) {
-        Button result = new Button();
-        String label = property;
-        result.setText(label);
-        result.setOnAction(handler);
-        return result;
-    }
+	@Override
+	public BorderPane addPane(BorderPane p) {
+		p.setTop(myVbox);
+		return p;
+	}
 
-    private ToggleButton makeToggleButton (String property, EventHandler<ActionEvent> handler) {
-        ToggleButton result = new ToggleButton();
-        String label = property;
-        result.setText(label);
-        result.setOnAction(handler);
-        return result;
-    }
+	private Button makeButton(String property, EventHandler<ActionEvent> handler) {
+		Button result = new Button();
+		String label = property;
+		result.setText(label);
+		result.setOnAction(handler);
+		return result;
+	}
 
-    private ColorPicker makeColorPicker (String property, EventHandler<ActionEvent> handler) {
-        ColorPicker result = new ColorPicker();
-        result.setOnAction(handler);
-        result.getStyleClass().add("split-button");
-        result.setPromptText(property);
-        return result;
-    }
+	private ToggleButton makeToggleButton(String property,
+			EventHandler<ActionEvent> handler) {
+		ToggleButton result = new ToggleButton();
+		String label = property;
+		result.setText(label);
+		result.setOnAction(handler);
+		return result;
+	}
 
-    public void backgroundColor () {
-        String myType = "Background Color ";
-        changeColor(myType);
+	private ColorPicker makeColorPicker(String property,
+			EventHandler<ActionEvent> handler) {
+		ColorPicker result = new ColorPicker();
+		result.setOnAction(handler);
+		result.getStyleClass().add("split-button");
+		result.setPromptText(property);
+		return result;
+	}
 
-    }
+	public void backgroundColor() {
+		String myType = "Background Color ";
+		changeColor(myType);
 
-    public void toggleGrid () {
+	}
 
-    }
+	public void toggleGrid() {
 
-    public void changePenColor () {
+	}
 
-        String myType = "Pen Color ";
-        changeColor(myType);
 
-    }
+	public void changeColor(String myType) {
+		Color c = myColorPicker.getValue();
+		System.out.println("New Color's RGB = " + c.getRed() + " "
+				+ c.getGreen() + " " + c.getBlue());
+		myCurrent = myType + c.toString();
+		myCommandString.setCommand(myCurrent, 0);
+		System.out.println(myCurrent);
+	}
 
-    public void changeColor (String myType) {
-        Color c = myColorPicker.getValue();
-        System.out.println("New Color's RGB = " + c.getRed() + " " + c.getGreen() + " " +
-                           c.getBlue());
-        myCurrent = myType + c.toString();
-        myCommandString.setCommand(myCurrent, 0);
-        System.out.println(myCurrent);
-    }
-
-    public void help () {
-        String url = Constants.HELP_URL;
-        try {
-            java.awt.Desktop.getDesktop().browse(new URI(url));
-        }
-        catch (IOException e) {
-            System.out.println("IO Exception When Opening Help Page");
-        }
-        catch (URISyntaxException e) {
-            System.out.println("Help Page URL Formatted Incorrectly");
-        }
-    }
+	public void help() {
+		String url = Constants.HELP_URL;
+		try {
+			java.awt.Desktop.getDesktop().browse(new URI(url));
+		} catch (IOException e) {
+			System.out.println("IO Exception When Opening Help Page");
+		} catch (URISyntaxException e) {
+			System.out.println("Help Page URL Formatted Incorrectly");
+		}
+	}
 }

@@ -16,7 +16,7 @@ import javafx.scene.layout.BorderPane;
  *
  */
 public class UserInterface {
-    public static final Dimension DEFAULT_DIMENSIONS = new Dimension(800, 600);
+    public static final Dimension DEFAULT_DIMENSIONS = new Dimension(820, 620);
 
     private Stage myStage;
 

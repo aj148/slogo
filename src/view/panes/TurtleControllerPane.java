@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -37,9 +38,9 @@ public class TurtleControllerPane extends PaneModule {
 		Button chooseFileButton = makeButton("Choose Image",
 				event -> doChoose());
 		myVbox.getChildren().addAll(new Label("Turtle Prop."),
-				chooseFileButton, new Label("Turtle Commands"),
+				chooseFileButton, new Separator(),new Label("Turtle Commands"),
 				myAngleTextField, angleButton, myMoveTextField, moveButton,
-				new Label("Pen Commands"));
+				new PenPane(myCommandString).getPenPane());
 	}
 
 	private Button makeButton(String property, EventHandler<ActionEvent> handler) {
@@ -51,16 +52,19 @@ public class TurtleControllerPane extends PaneModule {
 	}
 
 	private void move() {
-		myCommandString.setCommand("Forward " + myMoveTextField.getText(),
-				Constants.SETTING);
-		myMoveTextField.clear();
+		if (!myMoveTextField.getText().equals("")) {
+			myCommandString.setCommand("Forward " + myMoveTextField.getText(),
+					Constants.SETTING);
+			myMoveTextField.clear();
+		}
 	}
 
 	private void angle() {
-		myCommandString.setCommand("Right " + myAngleTextField.getText(),
-				Constants.SETTING);
-		myAngleTextField.clear();
-
+		if (!myAngleTextField.getText().equals("")) {
+			myCommandString.setCommand("Right " + myAngleTextField.getText(),
+					Constants.SETTING);
+			myAngleTextField.clear();
+		}
 	}
 
 	private void doChoose() {
