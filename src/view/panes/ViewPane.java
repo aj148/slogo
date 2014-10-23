@@ -1,8 +1,9 @@
-package view;
+package view.panes;
 
 import java.util.Observable;
 import java.util.Observer;
 
+import view.Draw;
 import model.Turtle;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;

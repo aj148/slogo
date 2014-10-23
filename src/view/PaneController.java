@@ -4,9 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+
 import controller.Controller;
 import controller.MasterController;
 import view.Constants;
+import view.panes.ButtonPane;
+import view.panes.HistoryPane;
+import view.panes.InputPane;
+import view.panes.PaneModule;
+import view.panes.TurtleControllerPane;
+import view.panes.ViewPane;
 import javafx.scene.layout.BorderPane;
 
 

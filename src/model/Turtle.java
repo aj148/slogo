@@ -1,7 +1,7 @@
 package model;
 
 import view.Draw;
-import view.ViewPane;
+import view.panes.ViewPane;
 import commands.TurtleCommand;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;

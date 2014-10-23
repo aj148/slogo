@@ -72,7 +72,6 @@ public class LanguageController {
 						setLanguage(LANGUAGE[new_value.intValue()]);
 					}
 				});
-
 		return languages;
 	}
 }

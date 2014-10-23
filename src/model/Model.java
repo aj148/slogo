@@ -1,9 +1,10 @@
 package model;
 
 import java.util.Collection;
+
 import commands.Command;
 import commands.TurtleCommand;
-import view.ViewPane;
+import view.panes.ViewPane;
 
 
 /**

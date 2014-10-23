@@ -1,5 +1,7 @@
-package view;
+package view.panes;
 
+import view.CommandString;
+import view.Constants;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
