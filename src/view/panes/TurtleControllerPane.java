@@ -36,9 +36,10 @@ public class TurtleControllerPane extends PaneModule {
 		Button angleButton = makeButton("Right (deg)", event -> angle());
 		Button chooseFileButton = makeButton("Choose Image",
 				event -> doChoose());
-		myVbox.getChildren().addAll(new Label("Turtle Prop."), chooseFileButton,new Label("Turtle Commands"), myAngleTextField, angleButton,
-				myMoveTextField, moveButton, new Label("Pen Commands"));
-		myVbox.setOnKeyPressed(new MoveHandler());
+		myVbox.getChildren().addAll(new Label("Turtle Prop."),
+				chooseFileButton, new Label("Turtle Commands"),
+				myAngleTextField, angleButton, myMoveTextField, moveButton,
+				new Label("Pen Commands"));
 	}
 
 	private Button makeButton(String property, EventHandler<ActionEvent> handler) {
@@ -100,6 +101,7 @@ public class TurtleControllerPane extends PaneModule {
 				orientation = Constants.LEFT;
 			}
 			move(orientation);
+			System.out.print("Moving with Orientation" + orientation);
 		}
 	}
 }

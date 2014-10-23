@@ -59,6 +59,7 @@ public class HistoryPane extends PaneModule implements Observer {
         }
         else if (myCommandString.getType() == Constants.ERROR) {
             myHistoryDisplay.getChildren().add(new Label(myCommandString.getCommand()));
+            myHistoryDisplay.getChildren().remove(myHistoryDisplay.getChildren().size()-2);
         }
     }
 

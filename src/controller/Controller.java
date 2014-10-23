@@ -3,6 +3,7 @@ package controller;
 import java.util.Stack;
 
 import model.Model;
+import view.PaneController;
 import view.panes.ViewPane;
 import commands.Command;
 import commands.ErrorCommand;
@@ -20,6 +21,7 @@ public class Controller {
 
     ViewPane myView;
     Model myModel;
+    private PaneController myPane;
 
     /**
      * Constructor method called from ViewPanel.java
@@ -27,9 +29,10 @@ public class Controller {
      * @param view : The ViewPanel that called this constructor.
      * @param model : The Model constructed by said ViewPanel.
      */
-    public Controller (ViewPane view) {
+    public Controller (ViewPane view, PaneController pane) {
         myView = view;
         myModel = new Model(view);
+        myPane = pane;
     }
 
     /**
@@ -45,7 +48,8 @@ public class Controller {
         Stack<Command> commandsToExecute = master.myParser.parseInput(input);
         if(!commandsToExecute.isEmpty() && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")){
         	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
-        	myView.showError(error.displayMessage());
+        	//myView.showError(error.displayMessage());
+        	myPane.showError(error.displayMessage());
         	return;
         }
         runCommand(commandsToExecute);

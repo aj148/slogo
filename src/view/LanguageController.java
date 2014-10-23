@@ -57,7 +57,6 @@ public class LanguageController {
 				translated = translated + s1 + " ";
 			}
 		}
-		System.out.println(translated);
 		return translated;
 	}
 
