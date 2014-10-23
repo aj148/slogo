@@ -1,10 +1,12 @@
 package view;
 
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 
 /**
@@ -14,6 +16,12 @@ import javafx.scene.paint.Color;
  *
  */
 public class Draw {
+	
+	public Line figure;
+
+	public Draw(){
+		
+	}
     
 //    public void drawBackground (Canvas c, Color clr) {
 //        c.getGraphicsContext2D().setFill(clr);
@@ -34,10 +42,11 @@ public class Draw {
      * @param x2 New X Pixel Coordinate
      * @param y2 New Y Pixel Coordinate
      */
-//    public void drawLine (Pane c, Point2D cur, Point2D next) {
-//        c.getGraphicsContext2D().strokeLine(cur.getX() + (c.getWidth() / 2),
-//                                            cur.getY() + (c.getWidth() / 2),
-//                                            next.getX() + (c.getWidth() / 2),
-//                                            next.getY() + (c.getWidth() / 2));
-//    }
+	public void drawLine (Pane c, Point2D cur, Point2D next) {
+        figure = new Line(cur.getX() + (c.getWidth() / 2),
+                                            cur.getY() + (c.getWidth() / 2),
+                                            next.getX() + (c.getWidth() / 2),
+                                            next.getY() + (c.getWidth() / 2));
+        
+    }
 }
