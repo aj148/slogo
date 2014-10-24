@@ -3,7 +3,7 @@ package view.panes;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.Draw;
+import view.TurtleDraw;
 import model.Turtle;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.BorderPane;
@@ -26,7 +26,7 @@ public class ViewPane extends PaneModule {
     public boolean gridVisible = true;
     public Color backColor;
     private Pane myPane = new Pane();
-    private Draw myDraw = new Draw();
+    private TurtleDraw myDraw = new TurtleDraw();
     private Point2D myCurrentPoint = new Point2D(0, 0);
     private List<Line> myGrid = new ArrayList<Line>();
     private Color defColor = Color.LIGHTGRAY;
