@@ -1,23 +1,20 @@
 package view.panes;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-
-import view.Draw;
-import model.Turtle;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import model.Turtle;
-
+import view.Draw;
 
 /**
- * Responsible for drawing the graphical representation of the turtles movement as its state changes
- * using Observable. Calls on the Draw class to update the graphical representation stored in View
- * when the status of a turtle changes.
+ * Responsible for drawing the graphical representation of the turtles movement
+ * as its state changes using Observable. Calls on the Draw class to update the
+ * graphical representation stored in View when the status of a turtle changes.
  *
  * @author Team 14
  *
@@ -28,21 +25,22 @@ public class ViewPane extends PaneModule {
     private Draw myDraw = new Draw();
     private Point2D myCurrentPoint = new Point2D(0, 0);
     private List<Line> myGrid = new ArrayList<Line>();
+
     /**
      * Constructor method called from UserInterface.java
      */
     public ViewPane () {
-    	myPane.setStyle("-fx-background-color: white;");
-    	myPane.setPrefSize(DEFAULT_DIMENSION,DEFAULT_DIMENSION);
-    	
-    	createGrid();
+        myPane.setStyle("-fx-background-color: white;");
+        myPane.setPrefSize(DEFAULT_DIMENSION, DEFAULT_DIMENSION);
+
+        createGrid();
     }
 
     public void updateView (Turtle t) {
-    	
-    	myDraw.drawLine(myPane,myCurrentPoint,t.getLocation());
-        myPane.getChildren().add(myDraw.figure);
-       myCurrentPoint = t.getLocation();
+
+        myDraw.drawLine(myPane, myCurrentPoint, t.getLocation());
+        myPane.getChildren().add(myDraw.myFigure);
+        myCurrentPoint = t.getLocation();
     }
 
     @Override
@@ -51,23 +49,24 @@ public class ViewPane extends PaneModule {
         return p;
     }
 
-	public void showError(String displayMessage) {
-		System.out.println(displayMessage);
-	}
-	
-	private void createGrid(){
-		int loc = 0;
-		int cellSize = 10;
-		while(loc < DEFAULT_DIMENSION){
-				Line horizontal = new Line (0, loc, DEFAULT_DIMENSION, loc);
-				myGrid.add(horizontal);
-				Line vertical = new Line (loc, 0, loc, DEFAULT_DIMENSION);
-				myGrid.add(vertical);
-			loc += cellSize;
-		}
-		for (Line l : myGrid){
-			l.setStroke(Color.LIGHTGRAY);
-			l.toBack();
-			myPane.getChildren().add(l);
-		}
-	}}
+    public void showError (String displayMessage) {
+        System.out.println(displayMessage);
+    }
+
+    private void createGrid () {
+        int loc = 0;
+        int cellSize = 10;
+        while (loc < DEFAULT_DIMENSION) {
+            Line horizontal = new Line(0, loc, DEFAULT_DIMENSION, loc);
+            myGrid.add(horizontal);
+            Line vertical = new Line(loc, 0, loc, DEFAULT_DIMENSION);
+            myGrid.add(vertical);
+            loc += cellSize;
+        }
+        for (Line l : myGrid) {
+            l.setStroke(Color.LIGHTGRAY);
+            l.toBack();
+            myPane.getChildren().add(l);
+        }
+    }
+}

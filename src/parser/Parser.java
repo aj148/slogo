@@ -1,26 +1,28 @@
 package parser;
 
 import java.util.Stack;
+
 import commands.Command;
 import commands.ErrorCommand;
 import commands.OneInputCommand;
 import commands.ThreeInputCommand;
 import commands.TwoInputCommand;
-import controller.MasterController;
 
+import controller.MasterController;
 
 /**
  * This class is used to convert a string to a collection of commands to
  * execute.
- * 
+ *
  * @author Team 14
  */
 public class Parser {
 
     /**
      * Parses a string input and constructs a collection of executable commands.
-     * 
-     * @param input : String to parse.
+     *
+     * @param input
+     *            : String to parse.
      * @return Collection of commands to execute.
      */
     public Stack<Command> parseInput (String parseInput) {
@@ -31,17 +33,14 @@ public class Parser {
             if (MasterController.myCommandMap.containsKey(input)) {
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     return throwError(e);
                 }
-            }
-            else {
+            } else {
                 try {
                     double parameter = Double.parseDouble(input);
                     parameterStack.add(parameter);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     return throwError(e);
                 }
             }
@@ -59,26 +58,22 @@ public class Parser {
                     }
                     if (command.getNumParameters() == 2) {
                         ((TwoInputCommand) command).setParameters(parameterStack.pop(),
-                                                                  parameterStack.pop());
+                                parameterStack.pop());
                     }
                     if (command.getNumParameters() == 3) {
                         ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
-                                                                    parameterStack.pop(),
-                                                                    parameterStack.pop());
+                                parameterStack.pop(), parameterStack.pop());
                     }
                     if (cl.getInterfaces().length > 0
-                        && cl.getInterfaces()[0].getName().equals("commands.TurtleCommand")) {
+                            && cl.getInterfaces()[0].getName().equals("commands.TurtleCommand")) {
                         commandsToExecute.add(command);
-                    }
-                    else {
+                    } else {
                         parameterStack.add(command.executeCommand());
                     }
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     return throwError(e);
                 }
-            }
-            catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException e) {
                 return throwError(e);
             }
 

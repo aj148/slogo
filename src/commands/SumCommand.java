@@ -3,7 +3,7 @@ package commands;
 public class SumCommand extends TwoInputCommand {
 
     @Override
-    public double executeCommand() {
+    public double executeCommand () {
         return myParameterOne + myParameterTwo;
     }
 }
