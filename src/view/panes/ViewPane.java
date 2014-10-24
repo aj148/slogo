@@ -1,7 +1,7 @@
 package view.panes;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import view.Draw;
 import model.Turtle;
@@ -11,13 +11,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import model.Turtle;
 import view.Constants;
 
 /**
- * Responsible for drawing the graphical representation of the turtles movement as its state changes
- * using Observable. Calls on the Draw class to update the graphical representation stored in View
- * when the status of a turtle changes.
+ * Responsible for drawing the graphical representation of the turtles movement
+ * as its state changes using Observable. Calls on the Draw class to update the
+ * graphical representation stored in View when the status of a turtle changes.
  *
  * @author Team 14
  *
@@ -50,6 +49,12 @@ public class ViewPane extends PaneModule {
    		myDraw.moveTurtle(myCurrentPoint);
     }
 
+    public void updateView (Turtle t) {
+
+        myDraw.drawLine(myPane, myCurrentPoint, t.getLocation());
+        myPane.getChildren().add(myDraw.myFigure);
+        myCurrentPoint = t.getLocation();
+   }
     @Override
     public BorderPane addPane (BorderPane p) {
         p.setCenter(myPane);
@@ -88,8 +93,4 @@ public class ViewPane extends PaneModule {
 		gridVisible = !gridVisible;
 		System.out.println(gridVisible);
 	}	
-
 }
-
-
-	

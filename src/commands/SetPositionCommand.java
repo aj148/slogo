@@ -3,9 +3,9 @@ package commands;
 import model.Turtle;
 
 public class SetPositionCommand extends TwoInputCommand implements TurtleCommand {
-	
-	@Override
+
+    @Override
     public double executeCommand (Turtle turtle) {
-       return turtle.setXAndY(myParameterOne, myParameterTwo);
+        return turtle.setXAndY(myParameterOne, myParameterTwo);
     }
 }

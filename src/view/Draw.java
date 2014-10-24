@@ -8,10 +8,6 @@ import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-
 
 /**
  * Draws a line between two points.
@@ -20,13 +16,13 @@ import javafx.scene.shape.Line;
  *
  */
 public class Draw {
+<<<<<<< HEAD
 	
 	public Line path;
 	public ImageView figure;
 	public File image;
 	private double imageWidth;
 	private double imageHeight;
-
 	
 
 	public Draw(){
@@ -50,14 +46,23 @@ public class Draw {
 //                                           y1 + (c.getWidth() / 2) - 21);
 //    }
 
+
+
+
+
     /**
      * Draws a line between two points onto the GraphicsContext from a canvas.
      *
-     * @param gc GraphicsContext from Canvas to be drawn to
-     * @param x1 Initial X Pixel Coordinate
-     * @param y1 Initial Y Pixel Coordinate
-     * @param x2 New X Pixel Coordinate
-     * @param y2 New Y Pixel Coordinate
+     * @param gc
+     *            GraphicsContext from Canvas to be drawn to
+     * @param x1
+     *            Initial X Pixel Coordinate
+     * @param y1
+     *            Initial Y Pixel Coordinate
+     * @param x2
+     *            New X Pixel Coordinate
+     * @param y2
+     *            New Y Pixel Coordinate
      */
 	public void drawLine (Point2D cur, Point2D next) {
         path = new Line(cur.getX() + (Constants.DEFAULT_DIMENSION / 2),
@@ -65,7 +70,6 @@ public class Draw {
                                             next.getX() + (Constants.DEFAULT_DIMENSION / 2),
                                             next.getY() + (Constants.DEFAULT_DIMENSION / 2));
         
-    }
 	
 	/**
      * Draws a line between two points onto the GraphicsContext from a canvas.
