@@ -18,7 +18,7 @@ import javafx.scene.shape.Line;
  * @author Team 14
  *
  */
-public class Draw {
+public class TurtleDraw {
 
 	
 	public Line path;
@@ -28,7 +28,7 @@ public class Draw {
 	private double imageHeight;
 	
 
-	public Draw(){
+	public TurtleDraw(){
 		Image myLogo = new Image(getClass().getResourceAsStream("/LogoTurtle2.png"));
 		figure = new ImageView(myLogo);
 		imageWidth = myLogo.getWidth();
