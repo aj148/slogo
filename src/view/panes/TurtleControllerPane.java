@@ -94,14 +94,17 @@ public class TurtleControllerPane extends PaneModule {
         public void handle (KeyEvent event) {
             if (event.getCode() == KeyCode.W) {
                 orientation = Constants.UP;
+                move(orientation);
             } else if (event.getCode() == KeyCode.D) {
                 orientation = Constants.RIGHT;
+                move(orientation);
             } else if (event.getCode() == KeyCode.S) {
                 orientation = Constants.DOWN;
+                move(orientation);
             } else if (event.getCode() == KeyCode.A) {
                 orientation = Constants.LEFT;
+                move(orientation);
             }
-            move(orientation);
         }
     }
 }

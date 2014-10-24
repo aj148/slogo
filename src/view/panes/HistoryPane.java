@@ -40,7 +40,7 @@ public class HistoryPane extends PaneModule implements Observer {
                 new Label("User-Defined Commands"), mySavedScroll);
     }
 
-    public void addHistoryItem (String s) {
+    public void addItem (String s) {
         if (myCommandString.getType() == Constants.COMMAND
                 || myCommandString.getType() == Constants.USER_DEFINE) {
             Hyperlink link = new Hyperlink(s);
@@ -71,7 +71,7 @@ public class HistoryPane extends PaneModule implements Observer {
 
     @Override
     public void update (java.util.Observable o, Object arg) {
-        addHistoryItem(myCommandString.getCommand());
+        addItem(myCommandString.getCommand());
     }
 
 }

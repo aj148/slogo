@@ -29,13 +29,13 @@ public class ButtonPane extends PaneModule {
     private String myCurrent;
     private ColorPicker myColorPicker;
     private LanguageController myLanguageController;
-    private ViewPane myView = new ViewPane();
+    private ViewPane myView;
 
-    public ButtonPane (CommandString cs, LanguageController ls) {
+    public ButtonPane (CommandString cs, LanguageController ls, ViewPane vs) {
         myCommandString = cs;
         myLanguageController = ls;
+        myView = vs;
         createPropertiesMenu();
-
     }
 
     public void createPropertiesMenu () {

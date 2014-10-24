@@ -22,7 +22,7 @@ import view.Constants;
  *
  */
 public class ViewPane extends PaneModule {
-  
+
     public boolean gridVisible = true;
     public Color backColor;
     private Pane myPane = new Pane();
@@ -30,62 +30,64 @@ public class ViewPane extends PaneModule {
     private Point2D myCurrentPoint = new Point2D(0, 0);
     private List<Line> myGrid = new ArrayList<Line>();
     private Color defColor = Color.LIGHTGRAY;
+
     /**
      * Constructor method called from UserInterface.java
      */
     public ViewPane () {
-    	myPane.setStyle("-fx-background-color: white;");
-    	myPane.setPrefSize(Constants.VIEW_DEFAULT_DIMENSION,Constants.VIEW_DEFAULT_DIMENSION);
-    	myPane.getChildren().add(myDraw.figure);
-    	createGrid(defColor);
+        myPane.setStyle("-fx-background-color: white;");
+        myPane.setPrefSize(Constants.VIEW_DEFAULT_DIMENSION, Constants.VIEW_DEFAULT_DIMENSION);
+        myPane.getChildren().add(myDraw.figure);
+        createGrid(defColor);
     }
 
     public void updateView (Turtle t) {
-    	
-    	myDraw.drawLine(myCurrentPoint,t.getLocation());
+
+        myDraw.drawLine(myCurrentPoint, t.getLocation());
         myPane.getChildren().add(myDraw.path);
         myCurrentPoint = t.getLocation();
         myDraw.setAngle(t.getHeading());
-   		myDraw.moveTurtle(myCurrentPoint);
+        myDraw.moveTurtle(myCurrentPoint);
     }
 
-   
     @Override
     public BorderPane addPane (BorderPane p) {
         p.setCenter(myPane);
         return p;
     }
 
-	public void showError(String displayMessage) {
-		System.out.println(displayMessage);
-	}
-	
-	private void createGrid(Color c){
-		int loc = 0;
-		int cellSize = 10;
-		while(loc < Constants.VIEW_DEFAULT_DIMENSION - 10){
-				Line horizontal = new Line (0, loc, Constants.VIEW_DEFAULT_DIMENSION -10, loc);
-				myGrid.add(horizontal);
-				Line vertical = new Line (loc, 0, loc, Constants.VIEW_DEFAULT_DIMENSION);
-				myGrid.add(vertical);
-			loc += cellSize;
-		}
-		for (Line l : myGrid){
-			l.setStroke(c);
-			l.toBack();
-			myPane.getChildren().add(l);
-		}
-	}
-	public void changeGridVisibility(){
-		if (gridVisible != true){
-				
-				myPane.getChildren().remove(myGrid);
-			
-		}
-		else{
-		createGrid(defColor);
-		}
-		gridVisible = !gridVisible;
-		System.out.println(gridVisible);
-	}	
+    public void showError (String displayMessage) {
+        System.out.println(displayMessage);
+    }
+
+    private void createGrid (Color c) {
+        int loc = 0;
+        int cellSize = 10;
+        while (loc < Constants.VIEW_DEFAULT_DIMENSION - 10) {
+            Line horizontal = new Line(0, loc, Constants.VIEW_DEFAULT_DIMENSION - 10, loc);
+            myGrid.add(horizontal);
+            Line vertical = new Line(loc, 0, loc, Constants.VIEW_DEFAULT_DIMENSION);
+            myGrid.add(vertical);
+            loc += cellSize;
+        }
+        for (Line l : myGrid) {
+            l.setStroke(c);
+            l.toBack();
+            myPane.getChildren().add(l);
+        }
+    }
+
+    public void changeGridVisibility () {
+        if (gridVisible) {
+            for (Line l : myGrid) {
+                myPane.getChildren().remove(l);
+    
+            }
+
+        } else {
+            createGrid(defColor);
+        }
+        gridVisible = !gridVisible;
+        System.out.println(gridVisible);
+    }
 }
