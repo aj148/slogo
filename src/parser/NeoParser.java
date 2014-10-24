@@ -48,7 +48,7 @@ public class NeoParser {
     		myIndex += 1;
 			command = makeListCommand(new ListCommand(), inputs);
     	}
-    	else if(Pattern.matches("-??[0-9]+.??[0-9]*", input)){
+    	else if(Pattern.matches("-?[0-9]+\\.?[0-9]*", input)){
     		myIndex += 1;
 			command = new ConstantCommand(Double.parseDouble(input));
 		}
@@ -56,7 +56,7 @@ public class NeoParser {
     		myIndex += 1;
 			command = new VariableCommand(input.substring(1));
 		}
-    	else if(Pattern.matches("[a-zA-Z_]+(\\?)??", input)){
+    	else if(Pattern.matches("[a-zA-Z_]+(\\?)?", input)){
     		command = getCommandByReflection(inputs);
     	}
     	else{

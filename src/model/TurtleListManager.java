@@ -1,13 +1,12 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
 import view.ViewPane;
 
 public class TurtleListManager {
+	
 	private Stack<Set<Turtle>> myStack;
 	private Set<Turtle> mySet;
 
@@ -21,7 +20,7 @@ public class TurtleListManager {
 	}
 
 	public void regulateDepth(int finalLength) {
-		while (getStackLength()!=finalLength) {
+		while (getStackLength() != finalLength) {
 			myStack.pop();
 		}
 	}

@@ -127,6 +127,7 @@ public class Parser {
         }
         return listCommand;
     }
+    
     private Stack<Command> throwError (Exception e) {
         Stack<Command> error = new Stack<Command>();
         return error;
