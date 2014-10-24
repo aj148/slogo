@@ -33,8 +33,8 @@ public class TurtleDraw {
 		figure = new ImageView(myLogo);
 		imageWidth = myLogo.getWidth();
 		imageHeight = myLogo.getHeight();		
-		figure.setX(Constants.DEFAULT_DIMENSION / 2 - (imageWidth / 2) );
-		figure.setY(Constants.DEFAULT_DIMENSION / 2 - (imageHeight / 2) );
+		figure.setX(Constants.VIEW_DEFAULT_DIMENSION / 2 - (imageWidth / 2) );
+		figure.setY(Constants.VIEW_DEFAULT_DIMENSION / 2 - (imageHeight / 2) );
 		
 
 	}
@@ -68,10 +68,10 @@ public class TurtleDraw {
      *            New Y Pixel Coordinate
      */
 	public void drawLine (Point2D cur, Point2D next) {
-        path = new Line(cur.getX() + (Constants.DEFAULT_DIMENSION / 2),
-                                            cur.getY() + (Constants.DEFAULT_DIMENSION / 2),
-                                            next.getX() + (Constants.DEFAULT_DIMENSION / 2),
-                                            next.getY() + (Constants.DEFAULT_DIMENSION / 2));
+        path = new Line(cur.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2),
+                                            cur.getY() + (Constants.VIEW_DEFAULT_DIMENSION / 2),
+                                            next.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2),
+                                            next.getY() + (Constants.VIEW_DEFAULT_DIMENSION / 2));
         
 	}
 	/**
@@ -84,8 +84,8 @@ public class TurtleDraw {
      * @param y2 New Y Pixel Coordinate
      */
 	public void moveTurtle (Point2D next) {
-        figure.setX(next.getX() + (Constants.DEFAULT_DIMENSION / 2) - (imageWidth/2));
-        figure.setY(next.getY() + (Constants.DEFAULT_DIMENSION / 2) - (imageHeight/2));                                     
+        figure.setX(next.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2) - (imageWidth/2));
+        figure.setY(next.getY() + (Constants.VIEW_DEFAULT_DIMENSION / 2) - (imageHeight/2));                                     
     }
 	
 	/**

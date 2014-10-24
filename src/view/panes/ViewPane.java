@@ -35,7 +35,7 @@ public class ViewPane extends PaneModule {
      */
     public ViewPane () {
     	myPane.setStyle("-fx-background-color: white;");
-    	myPane.setPrefSize(Constants.DEFAULT_DIMENSION,Constants.DEFAULT_DIMENSION);
+    	myPane.setPrefSize(Constants.VIEW_DEFAULT_DIMENSION,Constants.VIEW_DEFAULT_DIMENSION);
     	myPane.getChildren().add(myDraw.figure);
     	createGrid(defColor);
     }
@@ -63,10 +63,10 @@ public class ViewPane extends PaneModule {
 	private void createGrid(Color c){
 		int loc = 0;
 		int cellSize = 10;
-		while(loc < Constants.DEFAULT_DIMENSION - 10){
-				Line horizontal = new Line (0, loc, Constants.DEFAULT_DIMENSION -10, loc);
+		while(loc < Constants.VIEW_DEFAULT_DIMENSION - 10){
+				Line horizontal = new Line (0, loc, Constants.VIEW_DEFAULT_DIMENSION -10, loc);
 				myGrid.add(horizontal);
-				Line vertical = new Line (loc, 0, loc, Constants.DEFAULT_DIMENSION);
+				Line vertical = new Line (loc, 0, loc, Constants.VIEW_DEFAULT_DIMENSION);
 				myGrid.add(vertical);
 			loc += cellSize;
 		}

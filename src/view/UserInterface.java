@@ -17,7 +17,6 @@ import javafx.stage.Stage;
  *
  */
 public class UserInterface {
-    public static final Dimension DEFAULT_DIMENSIONS = new Dimension(820, 620);
 
     private Stage myStage;
 
@@ -38,7 +37,7 @@ public class UserInterface {
         BorderPane root = new BorderPane();
         PaneController pb = new PaneController();
         root = pb.populate(root);
-        Scene scene = new Scene(root, DEFAULT_DIMENSIONS.width, DEFAULT_DIMENSIONS.height);
+        Scene scene = new Scene(root, Constants.DEFAULT_DIMENSIONS.width, Constants.DEFAULT_DIMENSIONS.height);
         s.setScene(scene);
         s.show();
 
