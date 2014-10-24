@@ -8,6 +8,7 @@ import java.util.Observer;
 import controller.Controller;
 import controller.MasterController;
 import view.Constants;
+import view.languages.LanguageController;
 import view.panes.ButtonPane;
 import view.panes.HistoryPane;
 import view.panes.InputPane;

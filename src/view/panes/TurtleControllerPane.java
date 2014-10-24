@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 
 public class TurtleControllerPane extends PaneModule {
@@ -38,8 +39,9 @@ public class TurtleControllerPane extends PaneModule {
 		Button chooseFileButton = makeButton("Choose Image",
 				event -> doChoose());
 		myVbox.getChildren().addAll(new Label("Turtle Prop."),
-				chooseFileButton, new Separator(),new Label("Turtle Commands"),
-				myAngleTextField, angleButton, myMoveTextField, moveButton,
+				chooseFileButton, new Separator(),
+				new Label("Turtle Commands"), myAngleTextField, angleButton,
+				myMoveTextField, moveButton,
 				new PenPane(myCommandString).getPenPane());
 	}
 

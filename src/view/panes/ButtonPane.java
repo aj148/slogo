@@ -9,7 +9,7 @@ import java.net.URL;
 
 import view.CommandString;
 import view.Constants;
-import view.LanguageController;
+import view.languages.LanguageController;
 
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 
@@ -45,7 +45,7 @@ public class ButtonPane extends PaneModule {
 		myCommandString = cs;
 		myLanguageController = ls;
 		createPropertiesMenu();
-
+		
 	}
 
 	public void createPropertiesMenu() {
@@ -110,7 +110,7 @@ public class ButtonPane extends PaneModule {
 		System.out.println("New Color's RGB = " + c.getRed() + " "
 				+ c.getGreen() + " " + c.getBlue());
 		myCurrent = myType + c.toString();
-		myCommandString.setCommand(myCurrent, 0);
+		myCommandString.setCommand(myCurrent, Constants.SETTING);
 		System.out.println(myCurrent);
 	}
 

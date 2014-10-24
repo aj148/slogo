@@ -1,4 +1,4 @@
-package view;
+package view.languages;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,7 +21,8 @@ public class LanguageController {
 	public final static String DEFAULT_LANGUAGE = "English";
 	private final static String[] LANGUAGE = new String[] { "English",
 			"Chinese", "French", "Italian", "Portuguese", "Russian" };
-
+	private LanguageProperties myLangProp = new LanguageProperties();
+	
 	public LanguageController() {
 		setLanguage(DEFAULT_LANGUAGE);
 	}
@@ -30,6 +31,7 @@ public class LanguageController {
 		InputStream in = getClass().getResourceAsStream(
 				"/resources/languages/" + s + ".properties");
 		commandMapper(in);
+		myLangProp.setLanguage(myCommandMap);
 	}
 
 	private void commandMapper(InputStream i) {
@@ -73,4 +75,9 @@ public class LanguageController {
 				});
 		return languages;
 	}
+	
+	public LanguageProperties getLangProp(){
+		return myLangProp;
+	}
+	
 }

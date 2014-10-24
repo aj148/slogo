@@ -17,13 +17,14 @@ public class PenPane {
 	private CheckBox myPenToggle = new CheckBox("Toggle Pen");
 	private ColorPicker myColorPicker;
 	private ChoiceBox myPenStyles = new ChoiceBox();
-	
+
 	public PenPane(CommandString cs) {
 		myCommandString = cs;
 		myColorPicker = makeColorPicker("Pen Color", event -> changePenColor());
 
-		myVbox.getChildren().addAll(new Separator(),new Label("Pen Commands"), myPenToggle,
-				new Label("Pen Color"), myColorPicker, new Label("Pen Style"), myPenStyles);
+		myVbox.getChildren().addAll(new Separator(), new Label("Pen Commands"),
+				myPenToggle, new Label("Pen Color"), myColorPicker,
+				new Label("Pen Style"), myPenStyles);
 
 	}
 
@@ -41,18 +42,10 @@ public class PenPane {
 	}
 
 	public void changePenColor() {
-
-		String myType = "Pen Color ";
-		changeColor(myType);
-
-	}
-
-	public void changeColor(String myType) {
 		Color c = myColorPicker.getValue();
-		System.out.println("New Color's RGB = " + c.getRed() + " "
-				+ c.getGreen() + " " + c.getBlue());
-		// myCurrent = myType + c.toString();
-		// myCommandString.setCommand(myCurrent, 0);
-		// System.out.println(myCurrent);
+		String cur = "SETSHAPE " + c.getRed() + " " + c.getGreen() + " "
+				+ c.getBlue();
+		myCommandString.setCommand(cur, 0);
 	}
+
 }
