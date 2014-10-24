@@ -7,12 +7,12 @@ import java.util.Observer;
 
 import javafx.scene.layout.BorderPane;
 import view.languages.LanguageController;
-import view.panes.ButtonPane;
-import view.panes.HistoryPane;
-import view.panes.InputPane;
+import view.panes.ButtonPaneModule;
+import view.panes.HistoryPaneModule;
+import view.panes.InputPaneModule;
 import view.panes.PaneModule;
-import view.panes.TurtleControllerPane;
-import view.panes.ViewPane;
+import view.panes.TurtleControllerPaneModule;
+import view.panes.ViewPaneModule;
 import controller.Controller;
 import controller.MasterController;
 
@@ -33,7 +33,7 @@ public class PaneController implements Observer {
      * CommandString containing the current command to be passed to the backend.
      */
     private CommandString myCommand = new CommandString(this);
-    private ViewPane myView = new ViewPane();
+    private ViewPaneModule myView = new ViewPaneModule();
     private Controller myController = new Controller(myView, this);
     private MasterController myMasterController;
     private LanguageController myLanguageController = new LanguageController();
@@ -44,10 +44,10 @@ public class PaneController implements Observer {
     public PaneController () {
         myMasterController = new MasterController("English");
         myPanes.add(myView);
-        myPanes.add(new ButtonPane(myCommand, myLanguageController, myView));
-        myPanes.add(new HistoryPane(myCommand));
-        myPanes.add(new InputPane(myCommand));
-        myPanes.add(new TurtleControllerPane(myCommand));
+        myPanes.add(new ButtonPaneModule(myCommand, myLanguageController, myView));
+        myPanes.add(new HistoryPaneModule(myCommand));
+        myPanes.add(new InputPaneModule(myCommand));
+        myPanes.add(new TurtleControllerPaneModule(myCommand));
     }
 
     /**

@@ -16,7 +16,7 @@ import javafx.stage.FileChooser;
 import view.CommandString;
 import view.Constants;
 
-public class TurtleControllerPane extends PaneModule {
+public class TurtleControllerPaneModule extends PaneModule {
     private VBox myVbox = new VBox();
     private TextField myMoveTextField = new TextField();
     private TextField myAngleTextField = new TextField();
@@ -30,7 +30,7 @@ public class TurtleControllerPane extends PaneModule {
      *            CommandString containing the String that represents the
      *            current command
      */
-    public TurtleControllerPane (CommandString cs) {
+    public TurtleControllerPaneModule (CommandString cs) {
         myCommandString = cs;
         myMoveTextField.setPrefColumnCount(5);
         myAngleTextField.setPrefColumnCount(5);

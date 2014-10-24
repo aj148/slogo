@@ -2,7 +2,7 @@ package model;
 
 import java.util.Collection;
 
-import view.panes.ViewPane;
+import view.panes.ViewPaneModule;
 
 import commands.Command;
 import commands.TurtleCommand;
@@ -16,7 +16,7 @@ import commands.TurtleCommand;
  */
 public class Model {
 
-    private ViewPane myView;
+    private ViewPaneModule myView;
     private Turtle myTurtle;
 
     /**
@@ -25,7 +25,7 @@ public class Model {
      * @param view
      *            : The ViewPanel that called this constructor.
      */
-    public Model (ViewPane view) {
+    public Model (ViewPaneModule view) {
         myView = view;
         myTurtle = new Turtle(0, 0, myView);
     }

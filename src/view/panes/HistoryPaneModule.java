@@ -20,7 +20,7 @@ import view.Constants;
  * @author Team 14
  *
  */
-public class HistoryPane extends PaneModule implements Observer {
+public class HistoryPaneModule extends PaneModule implements Observer {
 
     private VBox myRoot = new VBox();
     private ScrollPane myHistoryScroll = new ScrollPane();
@@ -29,7 +29,7 @@ public class HistoryPane extends PaneModule implements Observer {
     private VBox mySavedDisplay = new VBox();
     private CommandString myCommandString;
 
-    public HistoryPane (CommandString cs) {
+    public HistoryPaneModule (CommandString cs) {
         myCommandString = cs;
         myCommandString.addObserver(this);
         myHistoryScroll.setContent(myHistoryDisplay);

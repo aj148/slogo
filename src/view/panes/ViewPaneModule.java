@@ -21,7 +21,7 @@ import view.Constants;
  * @author Team 14
  *
  */
-public class ViewPane extends PaneModule {
+public class ViewPaneModule extends PaneModule {
 
 	public boolean gridVisible = true;
 	public Color backColor;
@@ -34,7 +34,7 @@ public class ViewPane extends PaneModule {
 	/**
 	 * Constructor method called from UserInterface.java
 	 */
-	public ViewPane () {
+	public ViewPaneModule () {
 		myPane.setStyle("-fx-background-color: " +  "white" + ";");
 		myPane.setPrefSize(Constants.VIEW_DEFAULT_DIMENSION, Constants.VIEW_DEFAULT_DIMENSION);
 		createGrid(defColor);
