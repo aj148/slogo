@@ -1,11 +1,11 @@
 package model;
 
-import view.Draw;
-import view.ViewPane;
-import commands.TurtleCommand;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
+import view.TurtleDraw;
+import view.panes.ViewPane;
 
+import commands.TurtleCommand;
 
 public class Turtle {
 
@@ -16,7 +16,7 @@ public class Turtle {
     private double isPenDown;
     private double isShowing;
     private Color myColor;
-    private Draw myDraw = new Draw();
+    private TurtleDraw myDraw = new TurtleDraw();
 
     public Turtle (int x, int y, ViewPane view) {
         myPoint = new Point2D(x, y);
@@ -34,20 +34,20 @@ public class Turtle {
     }
 
     public double updatePosition (double forward) {
-        double radians=toRadians(myHeading);
+        double radians = toRadians(myHeading);
         double x = forward * Math.sin(radians);
-        double y = forward * Math.cos(radians)*-1;
+        double y = forward * Math.cos(radians) * -1;
         myPoint = myPoint.add(x, y);
         return Math.abs(forward);
     }
 
-    private double toRadians(double degrees)
-    {
-        return degrees*PI/180.0;
+    private double toRadians (double degrees) {
+        return degrees * PI / 180.0;
     }
+
     public double updateHeading (double degree) {
         myHeading += degree;
-        myHeading=myHeading%360;
+        myHeading = myHeading % 360;
         return degree;
     }
 
@@ -75,8 +75,7 @@ public class Turtle {
         double curY = myPoint.getY();
         // did this so i could have it done before i reset myPoint just to be
         // safe
-        double root = Math.sqrt((x - curX) * (x - curX) + (y - curY)
-                                * (y - curY));
+        double root = Math.sqrt((x - curX) * (x - curX) + (y - curY) * (y - curY));
         myPoint = new Point2D(x, y);
         return root;
     }
@@ -98,8 +97,9 @@ public class Turtle {
     public double getXOrY (int xOrY) {
         if (xOrY == 0) {
             return myPoint.getX();
+        } else if (xOrY == -1) {
+            return myPoint.getY();
         }
-        else if (xOrY == -1) { return myPoint.getY(); }
         return -1;
     }
 

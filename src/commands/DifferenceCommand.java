@@ -1,9 +1,9 @@
 package commands;
 
 public class DifferenceCommand extends TwoInputCommand {
-    
+
     @Override
-    public double executeCommand() {
+    public double executeCommand () {
         return myParameterOne - myParameterTwo;
     }
 }
