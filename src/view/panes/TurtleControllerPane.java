@@ -20,6 +20,7 @@ public class TurtleControllerPane extends PaneModule {
     private VBox myVbox = new VBox();
     private TextField myMoveTextField = new TextField();
     private TextField myAngleTextField = new TextField();
+    private TextField myIDTextField = new TextField();
     private CommandString myCommandString;
 
     /**
@@ -32,13 +33,18 @@ public class TurtleControllerPane extends PaneModule {
     public TurtleControllerPane (CommandString cs) {
         myCommandString = cs;
         myMoveTextField.setPrefColumnCount(5);
-        Button moveButton = makeButton("Forward", event -> move());
         myAngleTextField.setPrefColumnCount(5);
+        myIDTextField.setPrefColumnCount(5);
+        Button moveButton = makeButton("Forward", event -> move());
         Button angleButton = makeButton("Right (deg)", event -> angle());
-        Button chooseFileButton = makeButton("Choose Image", event -> doChoose());
-        myVbox.getChildren().addAll(new Label("Turtle Prop."), chooseFileButton, new Separator(),
-                new Label("Turtle Commands"), myAngleTextField, angleButton, myMoveTextField,
+        Button chooseFileButton = makeButton("Add Image", event -> doChoose());
+        Button makeNewTurtle = makeButton("Make Turtle", event -> makeTurtle());
+
+        myVbox.getChildren().addAll(new Label("TURTLE PROP."), myIDTextField,
+                new Label("Turtle ID Number"), chooseFileButton, makeNewTurtle, new Separator(),
+                new Label("COMMANDS"), myAngleTextField, angleButton, myMoveTextField,
                 moveButton, new PenPane(myCommandString).getPenPane());
+
         myVbox.setOnKeyPressed(new MoveHandler());
     }
 
@@ -80,6 +86,12 @@ public class TurtleControllerPane extends PaneModule {
     public BorderPane addPane (BorderPane p) {
         p.setLeft(myVbox);
         return p;
+    }
+
+    private void makeTurtle () {
+        if (!myIDTextField.getText().equals("")) {
+            myIDTextField.clear();
+        }
     }
 
     private void move (int orientation) {
