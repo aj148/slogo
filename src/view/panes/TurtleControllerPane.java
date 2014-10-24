@@ -20,6 +20,8 @@ public class TurtleControllerPane extends PaneModule {
 	private TextField myMoveTextField = new TextField();
 	private TextField myAngleTextField = new TextField();
 	private CommandString myCommandString;
+	
+	public File turtleImage;
 
 	/**
 	 * Initializes the parameters of the InputPane.
@@ -72,6 +74,9 @@ public class TurtleControllerPane extends PaneModule {
 		// Show open file dialog
 		File file = fileChooser.showOpenDialog(null);
 		labelFile.setText(file.getPath());
+		turtleImage = file;
+		
+		 
 	}
 
 	@Override

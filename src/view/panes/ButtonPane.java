@@ -42,6 +42,7 @@ public class ButtonPane extends PaneModule {
     private ColorPicker myColorPicker;
     private ColorPicker myColorPicker2;
     private LanguageController myLanguageController;
+    private ViewPane myView = new ViewPane();
 
     public ButtonPane (CommandString cs, LanguageController ls) {
         myCommandString = cs;
@@ -78,14 +79,7 @@ public class ButtonPane extends PaneModule {
         return result;
     }
 
-    private ToggleButton makeToggleButton (String property, EventHandler<ActionEvent> handler) {
-        ToggleButton result = new ToggleButton();
-        String label = property;
-        result.setText(label);
-        result.setOnAction(handler);
-        return result;
-    }
-
+    
     private ColorPicker makeColorPicker (String property, EventHandler<ActionEvent> handler) {
         ColorPicker result = new ColorPicker();
         result.setOnAction(handler);
@@ -100,8 +94,8 @@ public class ButtonPane extends PaneModule {
 
     }
 
-    public void toggleGrid () {
-
+    public void toggleGrid(){
+    	myView.changeGridVisibility();
     }
 
     public void changePenColor () {

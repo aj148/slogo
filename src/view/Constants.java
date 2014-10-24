@@ -10,4 +10,6 @@ public final class Constants {
 	public static final int RIGHT = 90;
 	public static final int DOWN = 180;
 	public static final int LEFT = 270;
+	public static final int DEFAULT_DIMENSION= 500;
+	
 }

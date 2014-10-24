@@ -3,16 +3,16 @@ package view.panes;
 import java.util.List;
 import java.util.ArrayList;
 
-
 import view.Draw;
 import model.Turtle;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import model.Turtle;
-
+import view.Constants;
 
 /**
  * Responsible for drawing the graphical representation of the turtles movement as its state changes
@@ -23,26 +23,31 @@ import model.Turtle;
  *
  */
 public class ViewPane extends PaneModule {
-    public static final int DEFAULT_DIMENSION = 500;
+  
+    public boolean gridVisible = true;
+    public Color backColor;
     private Pane myPane = new Pane();
     private Draw myDraw = new Draw();
     private Point2D myCurrentPoint = new Point2D(0, 0);
     private List<Line> myGrid = new ArrayList<Line>();
+    private Color defColor = Color.LIGHTGRAY;
     /**
      * Constructor method called from UserInterface.java
      */
     public ViewPane () {
     	myPane.setStyle("-fx-background-color: white;");
-    	myPane.setPrefSize(DEFAULT_DIMENSION,DEFAULT_DIMENSION);
-    	
-    	createGrid();
+    	myPane.setPrefSize(Constants.DEFAULT_DIMENSION,Constants.DEFAULT_DIMENSION);
+    	myPane.getChildren().add(myDraw.figure);
+    	createGrid(defColor);
     }
 
     public void updateView (Turtle t) {
     	
-    	myDraw.drawLine(myPane,myCurrentPoint,t.getLocation());
-        myPane.getChildren().add(myDraw.figure);
-       myCurrentPoint = t.getLocation();
+    	myDraw.drawLine(myCurrentPoint,t.getLocation());
+        myPane.getChildren().add(myDraw.path);
+        myCurrentPoint = t.getLocation();
+        myDraw.setAngle(t.getHeading());
+   		myDraw.moveTurtle(myCurrentPoint);
     }
 
     @Override
@@ -55,19 +60,36 @@ public class ViewPane extends PaneModule {
 		System.out.println(displayMessage);
 	}
 	
-	private void createGrid(){
+	private void createGrid(Color c){
 		int loc = 0;
 		int cellSize = 10;
-		while(loc < DEFAULT_DIMENSION){
-				Line horizontal = new Line (0, loc, DEFAULT_DIMENSION, loc);
+		while(loc < Constants.DEFAULT_DIMENSION - 10){
+				Line horizontal = new Line (0, loc, Constants.DEFAULT_DIMENSION -10, loc);
 				myGrid.add(horizontal);
-				Line vertical = new Line (loc, 0, loc, DEFAULT_DIMENSION);
+				Line vertical = new Line (loc, 0, loc, Constants.DEFAULT_DIMENSION);
 				myGrid.add(vertical);
 			loc += cellSize;
 		}
 		for (Line l : myGrid){
-			l.setStroke(Color.LIGHTGRAY);
+			l.setStroke(c);
 			l.toBack();
 			myPane.getChildren().add(l);
 		}
-	}}
+	}
+	public void changeGridVisibility(){
+		if (gridVisible != true){
+				
+				myPane.getChildren().remove(myGrid);
+			
+		}
+		else{
+		createGrid(defColor);
+		}
+		gridVisible = !gridVisible;
+		System.out.println(gridVisible);
+	}	
+
+}
+
+
+	
