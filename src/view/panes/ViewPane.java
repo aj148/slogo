@@ -49,12 +49,7 @@ public class ViewPane extends PaneModule {
    		myDraw.moveTurtle(myCurrentPoint);
     }
 
-    public void updateView (Turtle t) {
-
-        myDraw.drawLine(myPane, myCurrentPoint, t.getLocation());
-        myPane.getChildren().add(myDraw.myFigure);
-        myCurrentPoint = t.getLocation();
-   }
+   
     @Override
     public BorderPane addPane (BorderPane p) {
         p.setCenter(myPane);

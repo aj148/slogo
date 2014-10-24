@@ -2,12 +2,15 @@ package view;
 
 
 import java.io.File;
+
 import view.Constants;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
 
 /**
  * Draws a line between two points.
@@ -16,7 +19,7 @@ import javafx.scene.image.ImageView;
  *
  */
 public class Draw {
-<<<<<<< HEAD
+
 	
 	public Line path;
 	public ImageView figure;
@@ -70,7 +73,7 @@ public class Draw {
                                             next.getX() + (Constants.DEFAULT_DIMENSION / 2),
                                             next.getY() + (Constants.DEFAULT_DIMENSION / 2));
         
-	
+	}
 	/**
      * Draws a line between two points onto the GraphicsContext from a canvas.
      *
