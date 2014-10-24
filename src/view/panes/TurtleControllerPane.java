@@ -43,6 +43,7 @@ public class TurtleControllerPane extends PaneModule {
 				new Label("Turtle Commands"), myAngleTextField, angleButton,
 				myMoveTextField, moveButton,
 				new PenPane(myCommandString).getPenPane());
+		myVbox.setOnKeyPressed(new MoveHandler());
 	}
 
 	private Button makeButton(String property, EventHandler<ActionEvent> handler) {
@@ -89,7 +90,7 @@ public class TurtleControllerPane extends PaneModule {
 
 	private void move(int orientation) {
 		myCommandString.setCommand("setheading " + orientation, 0);
-		myCommandString.setCommand("forward 90", 0);
+		myCommandString.setCommand("forward 20", 0);
 	}
 
 	private class MoveHandler implements EventHandler<KeyEvent> {
@@ -97,17 +98,16 @@ public class TurtleControllerPane extends PaneModule {
 
 		@Override
 		public void handle(KeyEvent event) {
-			if (event.getCode() == KeyCode.UP) {
+			if (event.getCode() == KeyCode.W) {
 				orientation = Constants.UP;
-			} else if (event.getCode() == KeyCode.RIGHT) {
+			} else if (event.getCode() == KeyCode.D) {
 				orientation = Constants.RIGHT;
-			} else if (event.getCode() == KeyCode.DOWN) {
+			} else if (event.getCode() == KeyCode.S) {
 				orientation = Constants.DOWN;
-			} else if (event.getCode() == KeyCode.LEFT) {
+			} else if (event.getCode() == KeyCode.A) {
 				orientation = Constants.LEFT;
 			}
 			move(orientation);
-			System.out.print("Moving with Orientation" + orientation);
 		}
 	}
 }
