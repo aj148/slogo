@@ -5,12 +5,16 @@ import model.Turtle;
 
 public class HomeCommand extends ZeroInputCommand {
 
-	@Override
-	public double executeCommand(Model model) {
-		double last = 0;
-		for(Turtle a : model.getManager().getCurrentList()){
-			last = a.setXAndY(0.0, 0.0);
-		}
-		return last;
-	}
+//	@Override
+//	public double executeCommand(Model model) {
+//		double last = 0;
+//		for(Turtle a : model.getManager().getCurrentList()){
+//			last = a.setXAndY(0.0, 0.0);
+//		}
+//		return last;
+//	}
+	
+    public double updateTurtle(Model model, Turtle a) {
+        return a.setXAndY(0.0, 0.0);
+    }
 }

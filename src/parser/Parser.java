@@ -1,8 +1,7 @@
 package parser;
 
-import java.util.regex.Pattern;
 import java.util.Stack;
-
+import java.util.regex.Pattern;
 import commands.Command;
 import commands.ConstantCommand;
 import commands.ForwardCommand;
@@ -21,7 +20,7 @@ import controller.MasterController;
  * @author Team 14
  */
 public class Parser {
-	
+
     /**
      * Parses a string input and constructs a collection of executable commands.
      * 
@@ -30,16 +29,14 @@ public class Parser {
      * @return Collection of commands to execute.
      */
     private Stack<String> commandStack = new Stack<String>();
-    
+
     public Stack<Command> parseInput (String parseInput) {
         Stack<Command> parameterStack = new Stack<Command>();
         for (String input : parseInput.split(" ")) {
-            System.out.println(input);
             if (MasterController.myCommandMap.containsKey(input)) {
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     return throwError(e);
                 }
             }
@@ -67,18 +64,15 @@ public class Parser {
         System.out.println("---");
         return parameterStack;
     }
-    
-    private Command getCommand (String commandName, Stack<Command> parameterStack){
+
+    private Command getCommand (String commandName, Stack<Command> parameterStack) {
         if (Pattern.matches("-??[0-9]+.??[0-9]*", commandName)) {
             return new ConstantCommand(Double.parseDouble(commandName));
-        }
-        else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
+        } else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
             return new VariableCommand(commandName.substring(1));
-        }
-        else if (commandName.equals("commands.ListEndCommand")) {
+        } else if (commandName.equals("commands.ListEndCommand")) {
             return makeListCommand(commandStack);
-        }
-        else {
+        } else {
             Class<?> cl;
             Command command;
             try {
@@ -86,24 +80,20 @@ public class Parser {
                 try {
                     command = (Command) cl.getConstructor().newInstance();
                     if (command.getNumParameters() == 1) {
-                         ((OneInputCommand) command).setParameters(parameterStack.pop());
-                    }
-                    if (command.getNumParameters() == 2) {
+                        ((OneInputCommand) command).setParameters(parameterStack.pop());
+                    } else if (command.getNumParameters() == 2) {
                         ((TwoInputCommand) command).setParameters(parameterStack.pop(),
                                 parameterStack.pop());
-                    }
-                    if (command.getNumParameters() == 3) {
+                    } else if (command.getNumParameters() == 3) {
                         ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
                                 parameterStack.pop(), parameterStack.pop());
                     }
                     return command;
+                } catch (Exception e) {
+
                 }
-                catch (Exception e) {
-                	
-                }
-            }
-            catch (ClassNotFoundException e) {
-            	
+            } catch (ClassNotFoundException e) {
+
             }
         }
         return null;
@@ -111,18 +101,18 @@ public class Parser {
 
     private Command makeListCommand (Stack<String> commandStack) {
         Stack<Command> tempParameterStack = new Stack<Command>();
+        ListCommand listCommand = new ListCommand();
         boolean inListCommand = true;
         while (!commandStack.isEmpty() & inListCommand) {
             String commandName = commandStack.pop();
-            if(commandName.equals("commands.ListStartCommand")){
+            if (commandName.equals("commands.ListStartCommand")) {
                 inListCommand = false;
                 continue;
             }
             Command newCommand = getCommand(commandName, tempParameterStack);
             tempParameterStack.add(newCommand);
         }
-        ListCommand listCommand = new ListCommand();
-        while(!tempParameterStack.empty()){
+        while (!tempParameterStack.empty()) {
             listCommand.addParameter(tempParameterStack.pop());
         }
         return listCommand;
