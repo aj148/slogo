@@ -78,15 +78,10 @@ public class ViewPane extends PaneModule {
     }
 
     public void changeGridVisibility () {
-        if (gridVisible) {
-            for (Line l : myGrid) {
-                myPane.getChildren().remove(l);
-    
-            }
-
-        } else {
-            createGrid(defColor);
-        }
+    	for (Line l : myGrid){
+			l.setVisible(!gridVisible);
+			l.toBack();
+		}
         gridVisible = !gridVisible;
         System.out.println(gridVisible);
     }
