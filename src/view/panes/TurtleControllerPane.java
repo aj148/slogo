@@ -84,7 +84,7 @@ public class TurtleControllerPane extends PaneModule {
 
     private void move (int orientation) {
         myCommandString.setCommand("setheading " + orientation, 0);
-        myCommandString.setCommand("forward 20", 0);
+        myCommandString.setCommand("forward 5", 0);
     }
 
     private class MoveHandler implements EventHandler<KeyEvent> {

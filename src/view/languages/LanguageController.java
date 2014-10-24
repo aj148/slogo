@@ -13,11 +13,11 @@ import javafx.collections.FXCollections;
 import javafx.scene.control.ChoiceBox;
 
 public class LanguageController {
-    private static final String[] LANGUAGE = new String[] { "English", "Chinese", "French",
-            "Italian", "Portuguese", "Russian" };
-    public static final String DEFAULT_LANGUAGE = LANGUAGE[0];
     private Map<String, String> myCommandMap = new HashMap<String, String>();
     private Properties myProp = new Properties();
+    public final static String DEFAULT_LANGUAGE = "English";
+    private final static String[] LANGUAGE = new String[] { "English", "Chinese", "French",
+            "Italian", "Portuguese", "Russian" };
     private LanguageProperties myLangProp = new LanguageProperties();
 
     public LanguageController () {
@@ -42,7 +42,6 @@ public class LanguageController {
                 }
             }
         } catch (IOException ioe) {
-
         }
     }
 
@@ -59,13 +58,11 @@ public class LanguageController {
         return translated;
     }
 
-    public ChoiceBox<String> makeMenu () {
-        ChoiceBox<String> choiceBox = new ChoiceBox<String>(FXCollections.observableArrayList(
-                "English", "中文", "Français", "Italiano", "Português", "русский"));
-        ChoiceBox<String> languages = choiceBox;
+    public ChoiceBox makeMenu () {
+        ChoiceBox languages = new ChoiceBox(FXCollections.observableArrayList("English", "中文",
+                "Français", "Italiano", "Português", "русский"));
         languages.getSelectionModel().selectedIndexProperty()
                 .addListener(new ChangeListener<Number>() {
-                    @Override
                     public void changed (ObservableValue ov, Number value, Number new_value) {
                         setLanguage(LANGUAGE[new_value.intValue()]);
                     }
@@ -76,5 +73,4 @@ public class LanguageController {
     public LanguageProperties getLangProp () {
         return myLangProp;
     }
-
 }
