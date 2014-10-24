@@ -44,7 +44,7 @@ public class PaneController implements Observer {
     public PaneController () {
         myMasterController = new MasterController("English");
         myPanes.add(myView);
-        myPanes.add(new ButtonPane(myCommand, myLanguageController));
+        myPanes.add(new ButtonPane(myCommand, myLanguageController, myView));
         myPanes.add(new HistoryPane(myCommand));
         myPanes.add(new InputPane(myCommand));
         myPanes.add(new TurtleControllerPane(myCommand));
