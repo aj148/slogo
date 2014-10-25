@@ -1,6 +1,8 @@
 package view.panes;
 
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,6 +24,8 @@ public class TurtleControllerPaneModule extends PaneModule {
     private TextField myAngleTextField = new TextField();
     private TextField myIDTextField = new TextField();
     private CommandString myCommandString;
+    private TurtleSelectorPane myTurtles = new TurtleSelectorPane();
+    private Set<Integer> myActiveTurtles = new HashSet<Integer>();
 
     /**
      * Initializes the parameters of the InputPane.
@@ -42,8 +46,8 @@ public class TurtleControllerPaneModule extends PaneModule {
 
         myVbox.getChildren().addAll(new Label("TURTLE PROP."), myIDTextField,
                 new Label("Turtle ID Number"), chooseFileButton, makeNewTurtle, new Separator(),
-                new Label("COMMANDS"), myAngleTextField, angleButton, myMoveTextField,
-                moveButton, new PenPane(myCommandString).getPenPane());
+                new Label("COMMANDS"), myAngleTextField, angleButton, myMoveTextField, moveButton,
+                new PenPane(myCommandString).getPenPane(), myTurtles.getPane());
 
         myVbox.setOnKeyPressed(new MoveHandler());
     }
@@ -90,6 +94,7 @@ public class TurtleControllerPaneModule extends PaneModule {
 
     private void makeTurtle () {
         if (!myIDTextField.getText().equals("")) {
+            myTurtles.newTurtle(Integer.parseInt(myIDTextField.getText()));
             myIDTextField.clear();
         }
     }
