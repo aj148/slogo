@@ -1,4 +1,4 @@
-package view;
+package view.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javafx.scene.layout.BorderPane;
-import view.languages.LanguageController;
+import view.CommandString;
+import view.Constants;
 import view.panes.ButtonPaneModule;
 import view.panes.HistoryPaneModule;
 import view.panes.InputPaneModule;
@@ -37,6 +38,7 @@ public class PaneController implements Observer {
     private Controller myController = new Controller(myView, this);
     private MasterController myMasterController;
     private LanguageController myLanguageController = new LanguageController();
+    private ImagePalette myImagePalette = new ImagePalette();
 
     /**
      * Constructor. Adds Panes to myPanes.
@@ -47,7 +49,7 @@ public class PaneController implements Observer {
         myPanes.add(new ButtonPaneModule(myCommand, myLanguageController, myView));
         myPanes.add(new HistoryPaneModule(myCommand));
         myPanes.add(new InputPaneModule(myCommand));
-        myPanes.add(new TurtleControllerPaneModule(myCommand));
+        myPanes.add(new TurtleControllerPaneModule(myCommand, myImagePalette));
     }
 
     /**

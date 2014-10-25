@@ -6,6 +6,7 @@ public final class Constants {
     //Dimension Constants
     public static final Dimension DEFAULT_DIMENSIONS = new Dimension(1000,800);
     public static final int VIEW_DEFAULT_DIMENSION = 690;
+    
     //CommandString Constants
     public static final int SETTING = 0;
     public static final int COMMAND = 1;
@@ -20,4 +21,8 @@ public final class Constants {
     
     //URL Constants
     public static final String HELP_URL = "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php";
+    
+    //Display Constants
+    public static final double IMAGE_WIDTH = 40.0;
+    public static final double IMAGE_HEIGHT = 45.0;
 }

@@ -1,7 +1,9 @@
 package view.panes;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javafx.event.ActionEvent;
@@ -17,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import view.CommandString;
 import view.Constants;
+import view.controllers.ImagePalette;
 
 public class TurtleControllerPaneModule extends PaneModule {
     private VBox myVbox = new VBox();
@@ -26,6 +29,8 @@ public class TurtleControllerPaneModule extends PaneModule {
     private CommandString myCommandString;
     private TurtleSelectorPane myTurtles = new TurtleSelectorPane();
     private Set<Integer> myActiveTurtles = new HashSet<Integer>();
+    private Map<Integer, String> myImages = new HashMap<Integer, String>();
+    private ImagePalette myImagePalette;
 
     /**
      * Initializes the parameters of the InputPane.
@@ -34,8 +39,9 @@ public class TurtleControllerPaneModule extends PaneModule {
      *            CommandString containing the String that represents the
      *            current command
      */
-    public TurtleControllerPaneModule (CommandString cs) {
+    public TurtleControllerPaneModule (CommandString cs, ImagePalette ip) {
         myCommandString = cs;
+        myImagePalette = ip;
         myMoveTextField.setPrefColumnCount(5);
         myAngleTextField.setPrefColumnCount(5);
         myIDTextField.setPrefColumnCount(5);
@@ -83,7 +89,7 @@ public class TurtleControllerPaneModule extends PaneModule {
         fileChooser.getExtensionFilters().add(extFilter);
         // Show open file dialog
         File file = fileChooser.showOpenDialog(null);
-        labelFile.setText(file.getPath());
+        myImagePalette.addImage(file.getPath());
     }
 
     @Override

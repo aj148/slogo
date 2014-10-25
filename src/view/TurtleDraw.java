@@ -29,12 +29,14 @@ public class TurtleDraw {
 	
 
 	public TurtleDraw(){
-		Image myLogo = new Image(getClass().getResourceAsStream("/LogoTurtle2.png"));
+		//Image myLogo = new Image(getClass().getResourceAsStream("/resources/images/LogoTurtle2.png"));
+	    Image myLogo = new Image(getClass().getResourceAsStream("/resources/images/RCD.png"));
 		figure = new ImageView(myLogo);
-		imageWidth = myLogo.getWidth();
-		imageHeight = myLogo.getHeight();		
-		figure.setX(Constants.VIEW_DEFAULT_DIMENSION / 2 - (imageWidth / 2) );
-		figure.setY(Constants.VIEW_DEFAULT_DIMENSION / 2 - (imageHeight / 2) );
+		figure.setPreserveRatio(true);
+		figure.setFitHeight(50);
+		figure.setFitWidth(50);
+		figure.setX(Constants.VIEW_DEFAULT_DIMENSION / 2 - (Constants.IMAGE_WIDTH / 2) );
+		figure.setY(Constants.VIEW_DEFAULT_DIMENSION / 2 - (Constants.IMAGE_HEIGHT / 2) );
 		
 
 	}
