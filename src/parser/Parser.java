@@ -45,8 +45,7 @@ public class Parser {
                 commandStack.add(input);
             }
             else {
-                String errorMessage = String.format(
-                        "[%: Invalid Input] This input does not exist in our library of commands, contants, and variables", input);
+                String errorMessage = "[ "+ input + ": Invalid Input] This input does not exist in our library of commands, contants, and variables";
                 return throwError(errorMessage);
             }
         }
@@ -86,10 +85,9 @@ public class Parser {
                     return command;
                 }
                 catch (Exception e) {
-                	String errorMessage = String.format(
-                            "[%s: Invalid Input] Command class for this command could not be"
-                            + " constructed properly.",
-                            commandName);
+                	String errorMessage = 
+                            "["+commandName+" : Invalid Input] Command class for this command could not be"
+                            + " constructed properly.";
                     return new ErrorCommand(errorMessage);
                 }
             }
