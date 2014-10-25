@@ -2,7 +2,6 @@ package model;
 
 import java.util.Set;
 import java.util.Stack;
-import view.panes.ViewPaneModule;
 
 public class TurtleListManager {
     private Stack<Set<Turtle>> myStack;
@@ -23,15 +22,15 @@ public class TurtleListManager {
         }
     }
 
-    public void addTurtle (int ID, ViewPaneModule view) {
-        mySet.add(new Turtle(0, 0, view, ID));
+    public void addTurtle (int ID) {
+        mySet.add(new Turtle(ID));
     }
 
-    public Set<Turtle> getCurrentList () {
+    public Set<Turtle> getCurrentSet () {
         return myStack.lastElement();
     }
 
-    public Set<Turtle> getFullList () {
+    public Set<Turtle> getFullSet () {
         return mySet;
     }
 

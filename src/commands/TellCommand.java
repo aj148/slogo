@@ -16,7 +16,7 @@ public class TellCommand extends OneInputCommand {
 		TurtleListManager temp = model.getManager();
 		double toReturn = 0;
 		Set<Turtle> tellSet = new TreeSet<Turtle>();
-		List<Turtle> fullList = new ArrayList<Turtle>(temp.getFullList());
+		List<Turtle> fullList = new ArrayList<Turtle>(temp.getFullSet());
 		List<Command> turtlesToAdd = ((ListCommand) myParameters[0]).getList();
 		boolean exists = false;
 		for(Command a: turtlesToAdd) {
@@ -30,7 +30,7 @@ public class TellCommand extends OneInputCommand {
 				}
 			}
 			if(!exists) {
-				temp.getFullList().add(new Turtle(0, 0, model.getView(), toReturn));
+				temp.getFullSet().add(new Turtle(0, 0, model.getView(), toReturn));
 			}
 		}
 		temp.add(tellSet);

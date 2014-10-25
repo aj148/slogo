@@ -1,28 +1,21 @@
 package model;
 
-import view.panes.ViewPaneModule;
 import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
 
 public class Turtle implements Comparable<Object> {
 	
     private static final double PI = Math.PI;
-    private ViewPaneModule myView;
+    private double myID;
     private Point2D myPoint;
     private double myHeading;
     private double isShowing;
     private Pen myPen;
-    /*
-     * private Color myColor; private double mySize;
-     */
-    private double myID;
 
-    public Turtle (int x, int y, ViewPaneModule view, double ID) {
-        myPoint = new Point2D(x, y);
+    public Turtle (double ID) {
+    	myID = ID;
+        myPoint = new Point2D(0, 0);
         myHeading = 0;
         isShowing = 1;
-        myView = view;
-        myID = ID;
         myPen = new Pen();
     }
     
@@ -92,6 +85,10 @@ public class Turtle implements Comparable<Object> {
         }
         return myPen.getStatus();
     }
+    
+    public double setPenColor (double red, double green, double blue) {
+        return myPen.updateColor(red, green, blue);
+    }
 
     public double changeVisibility (double visible) {
         if (visible == 1.0 || visible == 0.0) {
@@ -112,7 +109,7 @@ public class Turtle implements Comparable<Object> {
         return isShowing;
     }
 
-    public Color getPenColor () {
+    public double getPenColor () {
         return myPen.getColor();
     }
 

@@ -10,7 +10,7 @@ public class Pen {
 
 	public Pen() {
 		mySize = 1.0;
-		myColor = Color.BLUE;
+		myColor = Color.BLACK;
 		myDash = 1;
 	}
 
@@ -24,17 +24,19 @@ public class Pen {
 	}
 	
 	protected double getDash(){
-		
 		return myDash;
 	}
 	
-	
-	protected void updateColor(Color color) {
-		myColor = color;
+	protected double updateColor(double red, double green, double blue) {
+		myColor = Color.rgb((int)red, (int)green, (int)blue);
+		return red + (1000 * green) + (1000000 * blue);
 	}
 
-	protected Color getColor() {
-		return myColor;
+	protected double getColor() {
+		double red = myColor.getRed() * 255;
+		double green = myColor.getGreen() * 255000;
+		double blue = myColor.getBlue() * 255000000;
+		return red + green + blue;
 	}
 
 	protected double setPenStatus(double status) {
