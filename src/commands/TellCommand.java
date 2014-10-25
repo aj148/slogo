@@ -30,7 +30,9 @@ public class TellCommand extends OneInputCommand {
 				}
 			}
 			if(!exists) {
-				temp.getFullSet().add(new Turtle(toReturn));
+				Turtle cur=new Turtle(toReturn);
+				temp.getFullSet().add(cur);
+				temp.getActiveTurtles().add(cur);
 			}
 		}
 		temp.addTurtleSet(tellSet);

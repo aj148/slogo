@@ -16,12 +16,13 @@ public class TurtleSelectorPane {
     private Set<CheckBox> myBoxes = new HashSet<CheckBox>();
     private Map<CheckBox, Integer> myIDs = new HashMap<CheckBox, Integer>();
     private Set<Integer> myActiveTurtles = new HashSet<Integer>();
+    private CheckBox myToggle = new CheckBox("Toggle Identification");
     
     private ScrollPane myTurtleScroll = new ScrollPane();
     private VBox myVBox = new VBox();
 
     public TurtleSelectorPane () {
-        myVBox.getChildren().add(new Label("TURTLE SELECTION"));
+        myVBox.getChildren().addAll(new Label("TURTLE SELECTION"), myToggle);
         myTurtleScroll.setContent(myVBox);
         myTurtleScroll.setPrefWidth(50);
     }
