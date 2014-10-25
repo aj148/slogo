@@ -1,7 +1,9 @@
 package commands;
 
+import java.util.HashMap;
+
 import model.Model;
-import controller.MasterController;
+import model.VariableManager;
 
 public class ForCommand extends TwoInputCommand {
 	
@@ -13,11 +15,13 @@ public class ForCommand extends TwoInputCommand {
     	double end = ((Command) command.getParameters().get(2)).executeCommand(model);
     	double increment = ((Command) command.getParameters().get(3)).executeCommand(model);
     	double toReturn = 0;
+    	VariableManager temp = model.getVariableManager();
+    	temp.addVariableMap(new HashMap<String, Double>());
     	for(double i = start; i < end; i += increment) {
-    		MasterController.myVariableMap.put(variable, i);
+    		temp.addLocalVariable(variable, i);
     		toReturn = myParameters[1].executeCommand(model);
     	}
-    	MasterController.myVariableMap.remove(variable);
+    	temp.reduceVariableScope();
     	return toReturn;
     }
 }
