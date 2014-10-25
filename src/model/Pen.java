@@ -5,11 +5,13 @@ import javafx.scene.paint.Color;
 public class Pen {
 	private Color myColor;
 	private double mySize;
+	private double myDash;
 	private double isPenDown;
 
 	public Pen() {
 		mySize = 1.0;
 		myColor = Color.BLUE;
+		myDash = 1;
 	}
 
 	protected double updateSize(double newSize) {
@@ -20,7 +22,13 @@ public class Pen {
 	protected double getSize() {
 		return mySize;
 	}
-
+	
+	protected double getDash(){
+		
+		return myDash;
+	}
+	
+	
 	protected void updateColor(Color color) {
 		myColor = color;
 	}
