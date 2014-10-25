@@ -87,9 +87,7 @@ public class Parser {
                     return new ErrorCommand(errorMessage);
                 }
             } catch (ClassNotFoundException e) {
-                String errorMessage = String.format(
-                        "[%s: Invalid Command] Command class for this command does not exist",
-                        commandName);
+                String errorMessage = "["+ commandName + " : Invalid Command] Command class for this command does not exist";
                 return new ErrorCommand(errorMessage);
             }
         }
