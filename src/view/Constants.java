@@ -4,8 +4,8 @@ import java.awt.Dimension;
 
 public final class Constants {
     //Dimension Constants
-    public static final Dimension DEFAULT_DIMENSIONS = new Dimension(1000,800);
-    public static final int VIEW_DEFAULT_DIMENSION = 690;
+    public static final Dimension DEFAULT_DIMENSIONS = new Dimension(1200,900);
+    public static final int VIEW_DEFAULT_DIMENSION = 810;
     
     //CommandString Constants
     public static final int SETTING = 0;

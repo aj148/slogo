@@ -11,6 +11,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import view.CommandString;
@@ -29,11 +30,12 @@ public class PenPane {
 
     public PenPane (CommandString cs) {
         myCommandString = cs;
+        myPenWidth.setPrefColumnCount(8);
         myColorPicker = makeColorPicker("Pen Color", event -> changePenColor());
         myPenStyles = makeMenu();
         myVbox.getChildren().addAll(new Separator(), new Label("PEN COMMANDS"), myPenToggle,
-                new Label("Pen Color"), myColorPicker, new Label("Pen Style"), myPenStyles,
-                new Label("Pen Width"), myPenWidth);
+                new HBox(myColorPicker,new Label("Pen Color")), new HBox(myPenStyles,new Label("Pen Style")),
+                new HBox(myPenWidth,new Label("Pen Width")));
 
     }
 
