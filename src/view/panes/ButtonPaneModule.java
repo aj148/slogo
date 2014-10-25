@@ -50,7 +50,7 @@ public class ButtonPaneModule extends PaneModule {
 		Button help = makeButton("Help", event -> help());
 		Button save = makeButton("Save Workspace", event -> saveWorkspace());
 		myHbox.getChildren().addAll(new Label("Background"), myColorPicker, toggleReferenceGrid,
-				myLanguageController.makeMenu(), help);
+				myLanguageController.makeMenu(), help, save);
 		myToolBar.getItems().add(myHbox);
 		myVbox.getChildren().add(myToolBar);
 		WorkspaceTabs workspace = new WorkspaceTabs();
