@@ -1,12 +1,12 @@
 package parser;
 
-import java.util.Stack; 
+import java.util.Stack;
 import java.util.regex.Pattern;
+
 import commands.Command;
 import commands.ConstantCommand;
-import commands.ForwardCommand;
+import commands.ErrorCommand;
 import commands.ListCommand;
-import commands.SumCommand;
 import commands.VariableCommand;
 import controller.MasterController;
 
@@ -33,47 +33,36 @@ public class Parser {
             if (MasterController.myCommandMap.containsKey(input)) {
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
+                } catch (Exception e) {
                 }
-                catch (Exception e) {
-                    return throwError(e);
-                }
-            }
-            if (Pattern.matches("-??[0-9]+.??[0-9]*", input) | Pattern.matches(":[a-zA-Z]+", input)) {
+            } else if (Pattern.matches("-??[0-9]+.??[0-9]*", input)
+                    | Pattern.matches(":[a-zA-Z]+", input)) {
                 commandStack.add(input);
+            } else {
+                String errorMessage = String.format(
+                        "[%: Invalid Input] This input does not exist in our library of commands, contants, and variables", input);
+                return throwError(errorMessage);
             }
         }
         while (!commandStack.isEmpty()) {
             String commandName = commandStack.pop();
             Command newCommand = getCommand(commandName, parameterStack);
             parameterStack.add(newCommand);
+            if(newCommand.getClassName().equals("commands.ErrorCommand")){
+                return parameterStack;
+            }
         }
-//        System.out.println("---");
-//        ForwardCommand temp = (ForwardCommand) parameterStack.pop();
-//        ListCommand temp2 = (ListCommand) temp.getParameter(0);
-//        ForwardCommand temp3 = (ForwardCommand) temp2.getParameters().get(0);
-//        SumCommand temp4 = (SumCommand) temp3.getParameter(0);
-//        System.out.println(temp);
-//        System.out.println(temp.getParameter(0));
-//        System.out.println(temp2.getParameters());
-//        System.out.println(temp3);
-//        System.out.println(temp4);
-//        System.out.println(temp4.getParameter(0));
-//        System.out.println(temp4.getParameter(1));
-//        System.out.println("---");
         return parameterStack;
     }
 
     private Command getCommand (String commandName, Stack<Command> parameterStack) {
         if (Pattern.matches("-??[0-9]+.??[0-9]*", commandName)) {
             return new ConstantCommand(Double.parseDouble(commandName));
-        }
-        else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
+        } else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
             return new VariableCommand(commandName.substring(1));
-        }
-        else if (commandName.equals("commands.ListEndCommand")) {
+        } else if (commandName.equals("commands.ListEndCommand")) {
             return makeListCommand(commandStack);
-        }
-        else {
+        } else {
             Class<?> cl;
             Command command;
             try {
@@ -81,18 +70,19 @@ public class Parser {
                 try {
                     command = (Command) cl.getConstructor().newInstance();
                     Command[] parameters = new Command[command.getNumParameters()];
-        			for(int i = 0; i < parameters.length; i++){
-        				parameters[i] = parameterStack.pop();
-        			}
-        			command.setParameters(parameters);
+                    for (int i = 0; i < parameters.length; i++) {
+                        parameters[i] = parameterStack.pop();
+                    }
+                    command.setParameters(parameters);
                     return command;
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
 
                 }
-            }
-            catch (ClassNotFoundException e) {
-
+            } catch (ClassNotFoundException e) {
+                String errorMessage = String.format(
+                        "[%s: Invalid Command] Command class for this command does not exist",
+                        commandName);
+                return new ErrorCommand(errorMessage);
             }
         }
         return null;
@@ -116,9 +106,11 @@ public class Parser {
         }
         return listCommand;
     }
-    
-    private Stack<Command> throwError (Exception e) {
-        Stack<Command> error = new Stack<Command>();
-        return error;
+
+    private Stack<Command> throwError (String errorMessage) {
+        Stack<Command> errorStack = new Stack<Command>();
+        ErrorCommand error = new ErrorCommand(errorMessage);
+        errorStack.add(error);
+        return errorStack;
     }
 }

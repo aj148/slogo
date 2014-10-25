@@ -6,6 +6,7 @@ import model.Model;
 import view.controllers.PaneController;
 import view.panes.ViewPaneModule;
 import commands.Command;
+import commands.ErrorCommand;
 
 /**
  * Communicates between the View, the Parser, and the Model. The Controller
@@ -48,12 +49,10 @@ public class Controller {
     public void getInput (String input) {
         MasterController master = new MasterController("English");
         Stack<Command> commandsToExecute = master.myParser.parseInput(input);
-
         if(!commandsToExecute.isEmpty() && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")){
-//        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
-//        	myView.showError(error.displayMessage());
+        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
+            myPane.showError(error.showError());
         	return;
-
         }
         runCommand(commandsToExecute);
     }
