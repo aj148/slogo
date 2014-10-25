@@ -5,7 +5,6 @@ import model.Model;
 public class QuotientCommand extends TwoInputCommand {
 
     @Override
-
     public double executeCommand(Model model) {
     	try{
     		return myParameterOne.executeCommand(model) / myParameterTwo.executeCommand(model);

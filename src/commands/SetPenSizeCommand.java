@@ -5,11 +5,8 @@ import model.Turtle;
 
 public class SetPenSizeCommand extends OneInputCommand {
 	
-	public double executeCommand(Model model) {
-		double toReturn = 0;
-		for(Turtle a : model.getManager().getCurrentList()){
-			toReturn = a.setPenSize(myParameterOne.executeCommand(model));
-		}
-		return toReturn;
+	@Override
+	public double updateTurtle(Model model, Turtle a) {
+		return a.setPenSize(myParameterOne.executeCommand(model));
 	}
 }

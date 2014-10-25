@@ -1,8 +1,9 @@
 package model;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
+
 import javafx.scene.paint.Color;
 import commands.Command;
 import view.panes.ViewPaneModule;
@@ -27,7 +28,7 @@ public class Model {
      *            : The ViewPanel that called this constructor.
      */
     public Model (ViewPaneModule view) {
-        myFullList = new HashSet<Turtle>();
+        myFullList = new TreeSet<Turtle>();
         myView = view;
         myManager = new TurtleListManager(myFullList);
         myBackground = Color.WHITE;
