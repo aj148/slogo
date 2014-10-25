@@ -1,19 +1,28 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.geometry.Point2D;
 
 public class Turtle implements Comparable<Object> {
 	
     private static final double PI = Math.PI;
     private double myID;
-    private Point2D myPoint;
+     
     private double myHeading;
     private double isShowing;
     private Pen myPen;
+    private List<Point2D> myTurtlePoints = new ArrayList<Point2D>();
+    private Point2D myFirstPoint;
+    private Point2D myCurrPoint = myTurtlePoints.get(myTurtlePoints.size()-1);
+    private Point2D myNextPoint;  
 
     public Turtle (double ID) {
     	myID = ID;
-        myPoint = new Point2D(0, 0);
+        myFirstPoint = new Point2D(0, 0);
+        myTurtlePoints.add(myFirstPoint);
+        myCurrPoint = myTurtlePoints.get(myTurtlePoints.size()-1);
         myHeading = 0;
         isShowing = 1;
         myPen = new Pen();
@@ -32,10 +41,17 @@ public class Turtle implements Comparable<Object> {
         double radians = toRadians(myHeading);
         double x = forward * Math.sin(radians);
         double y = forward * -Math.cos(radians);
-        myPoint = myPoint.add(x, y);
+        myCurrPoint = myCurrPoint.add(x, y);
+        myNextPoint = myCurrPoint;
+        myTurtlePoints.add(myNextPoint);
+        getmyCurr();
         return Math.abs(forward);
     }
 
+    public void getmyCurr(){
+    	myCurrPoint = myTurtlePoints.get(myTurtlePoints.size()-1);
+    }
+    
     public double setPenSize (double size) {
         myPen.updateSize(size);
         return size;
@@ -62,8 +78,9 @@ public class Turtle implements Comparable<Object> {
     }
 
     public double towards (double x, double y) {
-        double deltaX = x - myPoint.getX();
-        double deltaY = y - myPoint.getY();
+    	getmyCurr();
+        double deltaX = x - myCurrPoint.getX();
+        double deltaY = y - myCurrPoint.getY();
         double oldHeading = toRadians(myHeading);
         double newHeading = Math.atan(deltaX / deltaY);
         myHeading = newHeading;
@@ -71,14 +88,22 @@ public class Turtle implements Comparable<Object> {
     }
 
     public double setXAndY (double x, double y) {
-        double curX = myPoint.getX();
-        double curY = myPoint.getY();
+    	getmyCurr();
+    	double curX = myCurrPoint.getX();
+        double curY = myCurrPoint.getY();
         // did this so i could have it done before i reset myPoint just to be safe
         double root = Math.sqrt((x - curX) * (x - curX) + (y - curY) * (y - curY));
-        myPoint = new Point2D(x, y);
+        myCurrPoint = new Point2D(x, y);
+        myTurtlePoints.add(myCurrPoint);
+        getmyCurr();
         return root;
     }
 
+    
+    
+    
+    
+    
     public double changePen (double pen) {
         if (pen == 1.0 || pen == 0.0) {
             myPen.setPenStatus(pen);
@@ -97,8 +122,14 @@ public class Turtle implements Comparable<Object> {
         return isShowing;
     }
 
-    public Point2D getLocation () {
-        return myPoint;
+    public Point2D getNewLocation () {
+        return myTurtlePoints.get(myTurtlePoints.size()-1);
+    }
+    
+    public Point2D getPrevLocation () {
+    	if(myTurtlePoints.size()>2)
+    		return myTurtlePoints.get(myTurtlePoints.size()-2);
+    	return myFirstPoint;
     }
 
     public double getPenStatus () {

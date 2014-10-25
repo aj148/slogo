@@ -92,11 +92,10 @@ public class ViewPaneModule extends PaneModule {
 	
 	private void updateTurtle(Turtle t){
 		
-//		myDraw.drawLine(myCurrentPoint, t.getLocation());
-//		myPane.getChildren().add(myDraw.path);
-//		myCurrentPoint = t.getLocation();
-//		myDraw.setAngle(t.getHeading());
-//		myDraw.moveTurtle(myCurrentPoint);
+		myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
+		myPane.getChildren().add(myDraw.path);
+		myDraw.setAngle(t.getHeading());
+		myDraw.moveTurtle(t.getNewLocation());
 	}
 	
 	private void updateBGColor(String RGB){
