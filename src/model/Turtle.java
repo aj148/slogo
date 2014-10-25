@@ -73,7 +73,6 @@ public class Turtle implements Comparable<Object> {
     public double setXAndY (double x, double y) {
         double curX = myPoint.getX();
         double curY = myPoint.getY();
-        // did this so i could have it done before i reset myPoint just to be safe
         double root = Math.sqrt((x - curX) * (x - curX) + (y - curY) * (y - curY));
         myPoint = new Point2D(x, y);
         return root;

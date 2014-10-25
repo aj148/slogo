@@ -7,20 +7,20 @@ import java.util.Set;
 
 import model.Model;
 import model.Turtle;
-import model.TurtleListManager;
+import model.TurtleSetManager;
 
 public class TellCommand extends OneInputCommand {
 	
 	@Override
 	public double executeCommand(Model model){
-		TurtleListManager temp = model.getManager();
+		TurtleSetManager temp = model.getTurtleManager();
 		double toReturn = 0;
 		Set<Turtle> tellSet = new TreeSet<Turtle>();
 		List<Turtle> fullList = new ArrayList<Turtle>(temp.getFullSet());
 		List<Command> turtlesToAdd = ((ListCommand) myParameters[0]).getList();
 		boolean exists = false;
 		for(Command a: turtlesToAdd) {
-			exists=false;
+			exists = false;
 			toReturn = a.executeCommand(model);
 			for(Turtle b: fullList) {
 				if(toReturn == b.getID()) {
@@ -30,10 +30,10 @@ public class TellCommand extends OneInputCommand {
 				}
 			}
 			if(!exists) {
-				temp.getFullSet().add(new Turtle(0, 0, model.getView(), toReturn));
+				temp.getFullSet().add(new Turtle(toReturn));
 			}
 		}
-		temp.add(tellSet);
+		temp.addTurtleSet(tellSet);
 		return toReturn;
 	}
 }

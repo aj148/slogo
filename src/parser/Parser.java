@@ -11,8 +11,7 @@ import commands.VariableCommand;
 import controller.MasterController;
 
 /**
- * This class is used to convert a string to a collection of commands to
- * execute.
+ * This class is used to convert a string to a collection of commands to execute.
  *
  * @author Team 14
  */
@@ -21,8 +20,7 @@ public class Parser {
     /**
      * Parses a string input and constructs a collection of executable commands.
      * 
-     * @param input
-     *            : String to parse.
+     * @param input : String to parse.
      * @return Collection of commands to execute.
      */
     private Stack<String> commandStack = new Stack<String>();

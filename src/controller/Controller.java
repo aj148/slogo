@@ -25,10 +25,8 @@ public class Controller {
     /**
      * Constructor method called from ViewPanel.java
      *
-     * @param view
-     *            : The ViewPanel that called this constructor.
-     * @param model
-     *            : The Model constructed by said ViewPanel.
+     * @param view : The ViewPanel that called this constructor.
+     * @param model : The Model constructed by said ViewPanel.
      */
     public Controller (ViewPaneModule view, PaneController pane) {
         myView = view;
@@ -43,8 +41,7 @@ public class Controller {
      * and no commands are executed. Otherwise, all commands are run in
      * sequence.
      *
-     * @param input
-     *            : User input string from the ViewPanel.
+     * @param input : User input string from the ViewPanel.
      */
     public void getInput (String input) {
         MasterController master = new MasterController("English");
@@ -60,8 +57,7 @@ public class Controller {
     /**
      * Passes the commands to the Model to execute.
      *
-     * @param commandsToExecute
-     *            : The commands to execute.
+     * @param commandsToExecute : The commands to execute.
      */
     private void runCommand (Stack<Command> commandsToExecute) {
         myModel.updateModel(commandsToExecute);
