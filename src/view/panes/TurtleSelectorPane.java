@@ -21,7 +21,7 @@ public class TurtleSelectorPane {
     private VBox myVBox = new VBox();
 
     public TurtleSelectorPane () {
-        myVBox.getChildren().add(new Label("Turtle Selection"));
+        myVBox.getChildren().add(new Label("TURTLE SELECTION"));
         myTurtleScroll.setContent(myVBox);
         myTurtleScroll.setPrefWidth(50);
     }

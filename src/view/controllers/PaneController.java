@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import view.CommandString;
 import view.Constants;
 import view.panes.ButtonPaneModule;

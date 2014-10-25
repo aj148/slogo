@@ -26,7 +26,6 @@ public class ImagePalette {
     private List<String> myChoices = new ArrayList<String>();
     private ObservableList<String> myObservable = FXCollections.observableList(myChoices);
     private ChoiceBox myChoiceImages = new ChoiceBox<String>(myObservable);
-    private HBox myImageBar = new HBox();
 
     // private ComboBox myChoices = new ComboBox();
 
@@ -35,44 +34,28 @@ public class ImagePalette {
         myImages.put(1, TRIANGLE);
         myImages.put(2, CIRCLE);
         myImages.put(3, DUVALL);
-        myChoices.add("Turtle");
-        myChoices.add("Triangle");
-        myChoices.add("Circle");
-        myChoices.add("Duvall");
-        Button chooseFileButton = makeButton("Add Image", event -> doChoose());
-        myImageBar.getChildren().addAll(myChoiceImages,chooseFileButton);
+        myObservable.add("Turtle");
+        myObservable.add("Triangle");
+        myObservable.add("Circle");
+        myObservable.add("Duvall");
+        System.out.println(myChoices.size());
+ 
     }
 
-    private Button makeButton (String property, EventHandler<ActionEvent> handler) {
-        Button result = new Button();
-        String label = property;
-        result.setText(label);
-        result.setOnAction(handler);
-        return result;
-    }
 
-    private void doChoose () {
-        final Label labelFile = new Label();
-        FileChooser fileChooser = new FileChooser();
-        // Set extension filter
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "Image Files (*.png)", "*.png");
-        fileChooser.getExtensionFilters().add(extFilter);
-        // Show open file dialog
-        File file = fileChooser.showOpenDialog(null);
-        this.addImage(file.getPath());
-    }
+
 
     public void addImage (String s) {
         myImages.put(myImages.size() + 1, s);
-        myChoices.add("User-Defined");
+        myObservable.add("User-Defined");
+        System.out.println(myChoices.size());
     }
 
     public String getImage (int i) {
         return myImages.get(i);
     }
 
-    public HBox getBox () {
-        return myImageBar;
+    public ChoiceBox<String> getBox () {
+        return myChoiceImages;
     }
 }

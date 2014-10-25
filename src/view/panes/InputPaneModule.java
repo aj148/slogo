@@ -36,7 +36,7 @@ public class InputPaneModule extends PaneModule {
     public InputPaneModule (CommandString cs) {
         myCommandString = cs;
         myScrollPane.setContent(myTextField);
-        myTextField.setPrefColumnCount(60);
+        myTextField.setPrefColumnCount(70);
         myTextField.setOnKeyPressed(new SubmitHandler());
         Button submit = new Button("Submit");
         submit.setOnAction(event -> submit());
