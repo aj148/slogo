@@ -60,14 +60,14 @@ public class ButtonPaneModule extends PaneModule {
     @Override
     public BorderPane addPane (BorderPane p) {
         if (myVBox.getChildren().size() == 1) {
-           myVBox.getChildren().add(myToolBar);
+            myVBox.getChildren().add(myToolBar);
         } else {
             myVBox.getChildren().remove(1);
             myVBox.getChildren().add(myToolBar);
         }
         p.setTop(myVBox);
         return p;
-       
+
     }
 
     private Button makeButton (String property, EventHandler<ActionEvent> handler) {
@@ -87,22 +87,12 @@ public class ButtonPaneModule extends PaneModule {
     }
 
     public void backgroundColor () {
-        String myType = "Background Color ";
-        changeColor(myType);
-
+        Color c = myColorPicker.getValue();
+        myCommandString.setCommand("SETBACKGROUND "+c.getRed()+" "+c.getGreen()+" "+c.getBlue(), Constants.SETTING);
     }
 
     public void toggleGrid () {
         myView.changeGridVisibility();
-    }
-
-    public void changeColor (String myType) {
-        Color c = myColorPicker.getValue();
-        System.out.println("New Color's RGB = " + c.getRed() + " " + c.getGreen() + " "
-                + c.getBlue());
-        myCurrent = myType + c.toString();
-        myCommandString.setCommand(myCurrent, Constants.SETTING);
-        System.out.println(myCurrent);
     }
 
     public void help () {

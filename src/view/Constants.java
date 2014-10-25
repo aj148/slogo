@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Dimension;
 
+import javafx.scene.paint.Color;
+
 public final class Constants {
     //Dimension Constants
     public static final Dimension DEFAULT_DIMENSIONS = new Dimension(1200,900);
@@ -25,4 +27,7 @@ public final class Constants {
     //Display Constants
     public static final double IMAGE_WIDTH = 40.0;
     public static final double IMAGE_HEIGHT = 45.0;
+	public static final Color DEFAULT_BGCOLOR = Color.RED;
+	public static final Color DEFAULT_PCCOLOR = Color.BLACK;
+	
 }

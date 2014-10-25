@@ -32,7 +32,7 @@ public class TurtleControllerPaneModule extends PaneModule {
     private VBox myVbox = new VBox();
     private TextField myMoveTextField = new TextField();
     private TextField myAngleTextField = new TextField();
-    private TextField myIDTextField = new TextField();
+    private TextField myIDTextField = new TextField("0");
     private CommandString myCommandString;
     private TurtleSelectorPane myTurtles = new TurtleSelectorPane();
     private Set<Integer> myActiveTurtles = new HashSet<Integer>();
@@ -61,9 +61,12 @@ public class TurtleControllerPaneModule extends PaneModule {
                 new HBox(myIDTextField, new Label("ID Number")), imageSelectorMaker(),
                 makeNewTurtle, new Separator(), new Label("COMMANDS"),
                 new HBox(myAngleTextField, angleButton), new HBox(myMoveTextField, moveButton),
+                new Label("WASD can be used with "), new Label("this pane active"),
                 new PenPane(myCommandString).getPenPane(), myTurtles.getPane());
 
         myVbox.setOnKeyPressed(new MoveHandler());
+        makeTurtle();
+        myIDTextField.clear();
     }
 
     private HBox imageSelectorMaker () {
@@ -90,7 +93,7 @@ public class TurtleControllerPaneModule extends PaneModule {
         // Show open file dialog
         File file = fileChooser.showOpenDialog(null);
         String fileName = file.getName();
-        myImagePalette.addImage(file.getPath(), fileName);   
+        myImagePalette.addImage(file.getPath(), fileName);
     }
 
     private void move () {
@@ -115,9 +118,11 @@ public class TurtleControllerPaneModule extends PaneModule {
 
     private void makeTurtle () {
         if (!myIDTextField.getText().equals("")) {
-            myTurtles.newTurtle(Integer.parseInt(myIDTextField.getText()));
+        	int id = Integer.parseInt(myIDTextField.getText());
+            myTurtles.newTurtle(id);
             String myImage = myImagePalette.getCurrentImage();
             myIDTextField.clear();
+//            myCommandString.setCommand("Tell " + Integer.toString(id) + "[HOME]",Constants.SETTING);
         }
     }
 

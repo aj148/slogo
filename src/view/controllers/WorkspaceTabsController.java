@@ -33,9 +33,10 @@ public class WorkspaceTabsController {
             @Override
             public void changed (ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
                 if (t1 != null) {
-                    int i = new Integer(t1.getId());
-                    PaneController pc = myWorkspaces.get(i);
-                    pc.populate(bp);
+                    makeActive(t1);
+                }
+                else{
+                    newTab();
                 }
             }
         });
@@ -48,6 +49,13 @@ public class WorkspaceTabsController {
         myWorkspaces.add(control);
         tab.setId("" + (myWorkspaces.size() - 1));
         myTabPane.getTabs().add(tab);
+        makeActive(myTabPane.getTabs().get(0));
+    }
+
+    private void makeActive (Tab t1) {
+        int i = new Integer(t1.getId());
+        PaneController pc = myWorkspaces.get(i);
+        pc.populate(myBorderPane);
     }
 
 }

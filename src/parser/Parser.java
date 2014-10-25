@@ -2,7 +2,7 @@ package parser;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack; 
+import java.util.Stack;
 import java.util.regex.Pattern;
 
 import commands.Command;
@@ -54,6 +54,9 @@ public class Parser {
             String commandName = commandStack.pop();
             Command newCommand = getCommand(commandName, parameterStack);
             parameterStack.add(newCommand);
+            if(newCommand.getClassName().equals("commands.ErrorCommand")){
+                return parameterStack;
+            }
         }
         return parameterStack;
     }
@@ -76,10 +79,10 @@ public class Parser {
                 try {
                     command = (Command) cl.getConstructor().newInstance();
                     Command[] parameters = new Command[command.getNumParameters()];
-        			for(int i = 0; i < parameters.length; i++){
-        				parameters[i] = parameterStack.pop();
-        			}
-        			command.setParameters(parameters);
+                    for (int i = 0; i < parameters.length; i++) {
+                        parameters[i] = parameterStack.pop();
+                    }
+                    command.setParameters(parameters);
                     return command;
                 }
                 catch (Exception e) {
