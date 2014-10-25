@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,6 +28,7 @@ public class ImagePalette {
     private List<String> myChoices = new ArrayList<String>();
     private ObservableList<String> myObservable = FXCollections.observableList(myChoices);
     private ChoiceBox myChoiceImages = new ChoiceBox<String>(myObservable);
+    private String currentImage = TURTLE;
 
     // private ComboBox myChoices = new ComboBox();
 
@@ -38,21 +41,27 @@ public class ImagePalette {
         myObservable.add("Triangle");
         myObservable.add("Circle");
         myObservable.add("Duvall");
-        System.out.println(myChoices.size());
- 
+        myChoiceImages.setMaxWidth(100);
+        myChoiceImages.getSelectionModel().selectedIndexProperty()
+                .addListener(new ChangeListener<Number>() {
+                    public void changed (ObservableValue ov, Number value, Number new_value) {
+                        currentImage = myImages.get(new_value.intValue());
+                    }
+                });
+
     }
 
-
-
-
-    public void addImage (String s) {
+    public void addImage (String s, String f) {
         myImages.put(myImages.size() + 1, s);
-        myObservable.add("User-Defined");
-        System.out.println(myChoices.size());
+        myObservable.add(f);
     }
 
     public String getImage (int i) {
         return myImages.get(i);
+    }
+
+    public String getCurrentImage () {
+        return currentImage;
     }
 
     public ChoiceBox<String> getBox () {
