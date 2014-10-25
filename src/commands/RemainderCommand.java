@@ -1,11 +1,17 @@
 package commands;
 
+import model.Model;
+
 public class RemainderCommand extends TwoInputCommand {
 
     @Override
-    public double executeCommand () {
-        return myParameterOne % myParameterTwo;
-        // Beware of DIVIDE BY ZERO errors. if parametertwo is zero you'll get
-        // an error
+    public double executeCommand(Model model) {
+    	try{
+    		return myParameterOne.executeCommand(model) % myParameterTwo.executeCommand(model);
+    	}
+        catch(ArithmeticException e){
+        	System.out.println("Exception caught in RemainderCommand: DIVIDE BY ZERO");
+    		return 0;
+        }
     }
 }

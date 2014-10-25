@@ -1,5 +1,6 @@
 package model;
 
+import commands.Command;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import view.TurtleDraw;
@@ -9,28 +10,34 @@ import commands.TurtleCommand;
 
 public class Turtle {
 
-    private static final double PI = 3.1415927;
+    private static final double PI = Math.PI;
     private ViewPane myView;
     private Point2D myPoint;
     private double myHeading;
-    private double isPenDown;
     private double isShowing;
-    private Color myColor;
-    private TurtleDraw myDraw = new TurtleDraw();
+    private Pen myPen;
 
-    public Turtle (int x, int y, ViewPane view) {
+    /*
+     * private Color myColor; private double mySize;
+     */
+    private double myID;
+
+    public Turtle (int x, int y, ViewPane view, double ID) {
         myPoint = new Point2D(x, y);
         myHeading = 0;
-        isPenDown = 1;
         isShowing = 1;
-        myColor = new Color(0.0, 0.0, 0.0, 1.0);
         myView = view;
+        myID = ID;
+        myPen = new Pen();
     }
 
-    public void updateTurtle (TurtleCommand command) {
-        command.executeCommand(Turtle.this);
-        // observeHelper();
-        myView.updateView(this);
+    @Override
+    public boolean equals (Object o) {
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+        Turtle obj = (Turtle) o;
+        return this.myID == obj.myID;
     }
 
     public double updatePosition (double forward) {
@@ -39,6 +46,11 @@ public class Turtle {
         double y = forward * Math.cos(radians) * -1;
         myPoint = myPoint.add(x, y);
         return Math.abs(forward);
+    }
+
+    public double setPenSize (double size) {
+        myPen.updateSize(size);
+        return size;
     }
 
     private double toRadians (double degrees) {
@@ -61,13 +73,14 @@ public class Turtle {
         return toReturn;
     }
 
-    public double towards (Point2D point) {
-        double x = point.getX() - myPoint.getX();
-        double y = point.getY() - myPoint.getY();
-        double oldHeading = myHeading;
-        double newHeading = Math.atan(x / y);
+    public double towards (double x, double y) {
+        // This is faulty. Very faulty.
+        double deltaX = x - myPoint.getX();
+        double deltaY = y - myPoint.getY();
+        double oldHeading = toRadians(myHeading);
+        double newHeading = Math.atan(deltaX / deltaY);
         myHeading = newHeading;
-        return oldHeading - newHeading;
+        return oldHeading - toRadians(newHeading);
     }
 
     public double setXAndY (double x, double y) {
@@ -82,9 +95,9 @@ public class Turtle {
 
     public double changePen (double pen) {
         if (pen == 1.0 || pen == 0.0) {
-            isPenDown = pen;
+            myPen.setPenStatus(pen);
         }
-        return isPenDown;
+        return myPen.getStatus();
     }
 
     public double changeVisibility (double visible) {
@@ -108,7 +121,7 @@ public class Turtle {
     }
 
     public double getPenStatus () {
-        return isPenDown;
+        return myPen.getStatus();
     }
 
     public double getShowing () {
@@ -116,6 +129,10 @@ public class Turtle {
     }
 
     public Color getPenColor () {
-        return myColor;
+        return myPen.getColor();
+    }
+
+    public double getID () {
+        return myID;
     }
 }

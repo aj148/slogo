@@ -1,12 +1,16 @@
 package commands;
 
-import javafx.geometry.Point2D;
+import model.Model;
 import model.Turtle;
 
-public class SetTowardsCommand extends TwoInputCommand implements TurtleCommand {
-
-    @Override
-    public double executeCommand (Turtle turtle) {
-        return turtle.towards(new Point2D(myParameterOne, myParameterTwo));
-    }
+public class SetTowardsCommand extends TwoInputCommand {
+	
+	@Override
+	public double executeCommand(Model model) {
+		double toReturn = 0;
+		for(Turtle a : model.getManager().getCurrentList()){
+			toReturn = a.towards(myParameterOne.executeCommand(model), myParameterTwo.executeCommand(model));
+		}
+		return toReturn;
+	}
 }

@@ -1,11 +1,12 @@
 package commands;
 
-import model.Turtle;
+import model.Model;
 
-public class LeftCommand extends OneInputCommand implements TurtleCommand {
-
+public class LeftCommand extends OneInputCommand {
     @Override
-    public double executeCommand (Turtle turtle) {
-        return turtle.updateHeading(-myParameterOne);
+    public double executeCommand (Model model) {
+        RightCommand a = new RightCommand();
+        a.setParameters(new ConstantCommand(-1.0 * myParameterOne.executeCommand(model)));
+        return a.executeCommand(model);
     }
 }

@@ -1,11 +1,14 @@
 package model;
 
-import java.util.Collection;
+import java.util.Collection; 
 
-import view.panes.ViewPane;
+import java.util.HashSet;
+import java.util.Set;
+
+import javafx.scene.paint.Color;
 
 import commands.Command;
-import commands.TurtleCommand;
+import view.ViewPane;
 
 /**
  * Class that contains the basic information of what needs to be displayed in
@@ -15,10 +18,12 @@ import commands.TurtleCommand;
  * @author Team 14
  */
 public class Model {
-
+	
     private ViewPane myView;
-    private Turtle myTurtle;
-
+    private Color myBackground;
+    private Set<Turtle> myFullList;
+    private TurtleListManager myManager;
+    
     /**
      * Constructor method called from ViewPanel.java
      *
@@ -26,10 +31,12 @@ public class Model {
      *            : The ViewPanel that called this constructor.
      */
     public Model (ViewPane view) {
+    	myFullList = new HashSet<Turtle>();
         myView = view;
-        myTurtle = new Turtle(0, 0, myView);
+        myManager = new TurtleListManager(myFullList);
+        myBackground = Color.WHITE;
     }
-
+    
     /**
      * Method to update the model with the commands passed from the Controller.
      *
@@ -38,7 +45,20 @@ public class Model {
      */
     public void updateModel (Collection<Command> commandsToExecute) {
         for (Command command : commandsToExecute) {
-            myTurtle.updateTurtle((TurtleCommand) command);
+            command.executeCommand(this);
+            myView.updateView(this);
         }
+    }
+    public ViewPane getView()
+    {
+    	return myView;
+    }
+    
+    public TurtleListManager getManager() {
+    	return myManager;
+    }
+    public void setBackgroundColor(Color color)
+    {
+    	myBackground=color;
     }
 }

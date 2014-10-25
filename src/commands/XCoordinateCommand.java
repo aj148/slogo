@@ -1,11 +1,16 @@
 package commands;
 
+import model.Model;
 import model.Turtle;
 
-public class XCoordinateCommand extends ZeroInputCommand implements TurtleCommand {
-
+public class XCoordinateCommand extends ZeroInputCommand {
+    
     @Override
-    public double executeCommand (Turtle turtle) {
-        return turtle.getXOrY(0);
+    public double executeCommand (Model model) {
+    	double toReturn = 0;
+		for(Turtle a : model.getManager().getCurrentList()){
+			toReturn = a.getXOrY(0);
+		}
+		return toReturn;
     }
 }

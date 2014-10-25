@@ -1,10 +1,16 @@
 package commands;
 
+import model.Model;
+
 public class NaturalLogCommand extends OneInputCommand {
 
     @Override
-    public double executeCommand () {
-        // error with logs if 0 or less.
-        return Math.log(myParameterOne);
+    public double executeCommand(Model model) {
+    	Double value = Math.log(myParameterOne.executeCommand(model));
+    	if(value.toString().equals("NaN") || value.toString().equals("-Infinity")){
+    		System.out.println("Problem in NaturalLogCommand: " + value.toString());
+    		return 0;
+    	}
+    	return value;
     }
 }

@@ -1,9 +1,12 @@
 package commands;
 
+import model.Model;
+
 public class PowerCommand extends TwoInputCommand {
 
     @Override
-    public double executeCommand () {
-        return Math.pow(myParameterOne, myParameterTwo);
+
+    public double executeCommand(Model model) {
+        return Math.pow(myParameterOne.executeCommand(model), myParameterTwo.executeCommand(model));
     }
 }

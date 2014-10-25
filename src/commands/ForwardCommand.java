@@ -1,11 +1,13 @@
 package commands;
 
+import model.Model;
 import model.Turtle;
 
-public class ForwardCommand extends OneInputCommand implements TurtleCommand {
 
+public class ForwardCommand extends OneInputCommand {
+    
     @Override
-    public double executeCommand (Turtle turtle) {
-        return turtle.updatePosition(myParameterOne);
-    }
+    public double updateTurtle(Model model, Turtle a) {
+		return a.updatePosition(myParameterOne.executeCommand(model));
+	}
 }

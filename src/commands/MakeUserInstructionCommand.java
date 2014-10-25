@@ -1,5 +1,11 @@
 package commands;
 
-public class MakeUserInstructionCommand extends ThreeInputCommand {
+import model.Model;
 
+public class MakeUserInstructionCommand extends ThreeInputCommand {
+	
+	@Override
+    public double executeCommand(Model model) {
+		
+    }
 }
