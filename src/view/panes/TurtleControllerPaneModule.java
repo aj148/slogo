@@ -55,7 +55,7 @@ public class TurtleControllerPaneModule extends PaneModule {
         myIDTextField.setPrefColumnCount(5);
         Button moveButton = makeButton("Forward", event -> move());
         Button angleButton = makeButton("Right (deg)", event -> angle());
-        Button makeNewTurtle = makeButton("Make Turtle", event -> makeTurtle());
+        Button makeNewTurtle = makeButton("Make New Turtle", event -> makeTurtle());
 
         myVbox.getChildren().addAll(new Label("TURTLE PROPERTIES"),
                 new HBox(myIDTextField, new Label("ID Number")), imageSelectorMaker(),
@@ -122,7 +122,8 @@ public class TurtleControllerPaneModule extends PaneModule {
             myTurtles.newTurtle(id);
             String myImage = myImagePalette.getCurrentImage();
             myIDTextField.clear();
-//            myCommandString.setCommand("Tell " + Integer.toString(id) + "[HOME]",Constants.SETTING);
+            myCommandString.setCommand("Tell [ " + Integer.toString(id) + " ]",Constants.SETTING);
+//
         }
     }
 

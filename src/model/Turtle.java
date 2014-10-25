@@ -15,7 +15,7 @@ public class Turtle implements Comparable<Object> {
     private Pen myPen;
     private List<Point2D> myTurtlePoints = new ArrayList<Point2D>();
     private Point2D myFirstPoint;
-    private Point2D myCurrPoint = myTurtlePoints.get(myTurtlePoints.size()-1);
+    private Point2D myCurrPoint; 
     private Point2D myNextPoint;  
 
     public Turtle (double ID) {
