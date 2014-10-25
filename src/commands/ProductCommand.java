@@ -6,6 +6,6 @@ public class ProductCommand extends TwoInputCommand {
 
     @Override
     public double executeCommand(Model model) {
-        return myParameterOne.executeCommand(model) * myParameterTwo.executeCommand(model);
+        return myParameters[0].executeCommand(model) * myParameters[1].executeCommand(model);
     }
 }

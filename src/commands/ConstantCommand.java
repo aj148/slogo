@@ -4,14 +4,14 @@ import model.Model;
 
 public class ConstantCommand extends ZeroInputCommand {
 	
-	private double myParameter;
+	private double myConstant;
 	
 	public ConstantCommand(double parameter){
-		myParameter = parameter;
+		myConstant = parameter;
 	}
 	
 	@Override
 	public double executeCommand(Model model){
-		return myParameter;
+		return myConstant;
 	}
 }

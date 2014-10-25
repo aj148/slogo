@@ -8,7 +8,7 @@ public class RandomCommand extends OneInputCommand {
     @Override
     public double executeCommand(Model model) {
     	try{
-    		return (double)MasterController.myRandom.nextInt((int)myParameterOne.executeCommand(model));
+    		return (double)MasterController.myRandom.nextInt((int)myParameters[0].executeCommand(model));
     	}
     	catch(IllegalArgumentException e){
     		System.out.println("Exception caught in RandomCommand: ZERO OR LESS");

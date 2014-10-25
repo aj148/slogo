@@ -17,7 +17,7 @@ public class TellCommand extends OneInputCommand {
 		double toReturn = 0;
 		Set<Turtle> tellSet = new TreeSet<Turtle>();
 		List<Turtle> fullList = new ArrayList<Turtle>(temp.getFullList());
-		List<Command> turtlesToAdd = ((ListCommand) myParameterOne).getList();
+		List<Command> turtlesToAdd = ((ListCommand) myParameters[0]).getList();
 		boolean exists = false;
 		for(Command a: turtlesToAdd) {
 			exists=false;

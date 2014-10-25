@@ -6,10 +6,7 @@ import commands.Command;
 import commands.ConstantCommand;
 import commands.ForwardCommand;
 import commands.ListCommand;
-import commands.OneInputCommand;
 import commands.SumCommand;
-import commands.ThreeInputCommand;
-import commands.TwoInputCommand;
 import commands.VariableCommand;
 import controller.MasterController;
 
@@ -36,7 +33,8 @@ public class Parser {
             if (MasterController.myCommandMap.containsKey(input)) {
                 try {
                     commandStack.add(MasterController.myCommandMap.get(input));
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     return throwError(e);
                 }
             }
@@ -49,50 +47,51 @@ public class Parser {
             Command newCommand = getCommand(commandName, parameterStack);
             parameterStack.add(newCommand);
         }
-        System.out.println("---");
-        ForwardCommand temp = (ForwardCommand) parameterStack.pop();
-        ListCommand temp2 = (ListCommand) temp.getParamerter();
-        ForwardCommand temp3 = (ForwardCommand) temp2.getParameters().get(0);
-        SumCommand temp4 = (SumCommand) temp3.getParamerter();
-        System.out.println(temp);
-        System.out.println(temp.getParamerter());
-        System.out.println(temp2.getParameters());
-        System.out.println(temp3);
-        System.out.println(temp4);
-        System.out.println(temp4.getParameterOne());
-        System.out.println(temp4.getParameterTwo());
-        System.out.println("---");
+//        System.out.println("---");
+//        ForwardCommand temp = (ForwardCommand) parameterStack.pop();
+//        ListCommand temp2 = (ListCommand) temp.getParameter(0);
+//        ForwardCommand temp3 = (ForwardCommand) temp2.getParameters().get(0);
+//        SumCommand temp4 = (SumCommand) temp3.getParameter(0);
+//        System.out.println(temp);
+//        System.out.println(temp.getParameter(0));
+//        System.out.println(temp2.getParameters());
+//        System.out.println(temp3);
+//        System.out.println(temp4);
+//        System.out.println(temp4.getParameter(0));
+//        System.out.println(temp4.getParameter(1));
+//        System.out.println("---");
         return parameterStack;
     }
 
     private Command getCommand (String commandName, Stack<Command> parameterStack) {
         if (Pattern.matches("-??[0-9]+.??[0-9]*", commandName)) {
             return new ConstantCommand(Double.parseDouble(commandName));
-        } else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
+        }
+        else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
             return new VariableCommand(commandName.substring(1));
-        } else if (commandName.equals("commands.ListEndCommand")) {
+        }
+        else if (commandName.equals("commands.ListEndCommand")) {
             return makeListCommand(commandStack);
-        } else {
+        }
+        else {
             Class<?> cl;
             Command command;
             try {
                 cl = Class.forName(commandName);
                 try {
                     command = (Command) cl.getConstructor().newInstance();
-                    if (command.getNumParameters() == 1) {
-                        ((OneInputCommand) command).setParameters(parameterStack.pop());
-                    } else if (command.getNumParameters() == 2) {
-                        ((TwoInputCommand) command).setParameters(parameterStack.pop(),
-                                parameterStack.pop());
-                    } else if (command.getNumParameters() == 3) {
-                        ((ThreeInputCommand) command).setParameters(parameterStack.pop(),
-                                parameterStack.pop(), parameterStack.pop());
-                    }
+                    Command[] parameters = new Command[command.getNumParameters()];
+        			for(int i = 0; i < parameters.length; i++){
+        				parameters[i] = parameterStack.pop();
+        			}
+        			command.setParameters(parameters);
                     return command;
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
 
                 }
-            } catch (ClassNotFoundException e) {
+            }
+            catch (ClassNotFoundException e) {
 
             }
         }

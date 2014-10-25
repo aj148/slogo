@@ -7,11 +7,7 @@ import java.util.regex.Pattern;
 import commands.Command;
 import commands.CommentCommand;
 import commands.ConstantCommand;
-import commands.FourInputCommand;
 import commands.ListCommand;
-import commands.OneInputCommand;
-import commands.ThreeInputCommand;
-import commands.TwoInputCommand;
 import commands.VariableCommand;
 import controller.MasterController;
 
@@ -86,44 +82,18 @@ public class NeoParser {
 		}
 		catch (ClassNotFoundException e) {
 			System.out.println("Class not found for some reason.");
-			e.printStackTrace();
 			return null;
 		}
 		try {
 			command = (Command) cl.getConstructor().newInstance();
-			// Command takes one parameter.
-			if (command.getNumParameters() == 1) {
-				Command one = generateCommand(inputs);
-				((OneInputCommand) command).setParameters(one);
+			Command[] parameters = new Command[command.getNumParameters()];
+			for(int i = 0; i < parameters.length; i++){
+				parameters[i] = generateCommand(inputs);
 			}
-
-			// Command takes two parameters.
-			if (command.getNumParameters() == 2) {
-				Command one = generateCommand(inputs);
-				Command two = generateCommand(inputs);
-				((TwoInputCommand) command).setParameters(one, two);
-			}
-
-			// Command takes three parameters.
-			if (command.getNumParameters() == 3) {
-				Command one = generateCommand(inputs);
-				Command two = generateCommand(inputs);
-				Command three = generateCommand(inputs);
-				((ThreeInputCommand) command).setParameters(one, two, three);
-			}
-
-			// Command takes four parameters.
-			if (command.getNumParameters() == 4) {
-				Command one = generateCommand(inputs);
-				Command two = generateCommand(inputs);
-				Command three = generateCommand(inputs);
-				Command four = generateCommand(inputs);
-				((FourInputCommand) command).setParameters(one, two, three, four);
-			}
+			command.setParameters(parameters);
 		}
 		catch(Exception e){
 			System.out.println("Well, crap. Who knows what went wrong.");
-			e.printStackTrace();
 			return null;
 		}
 		return command;
@@ -133,6 +103,7 @@ public class NeoParser {
     	MasterController doge = new MasterController("English");
     	List<Command> commands = MasterController.myParser.parseInput("fd [ fd sum [ sum 10 10 ] 10 ]");
     	System.out.println(commands.size());
+    	System.out.println(commands.get(0).getClassName());
     	for(Command command : commands){
     		System.out.println(command.getClassName());
     		if(command.getClassName().equals("commands.ListCommand")){

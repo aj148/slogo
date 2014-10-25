@@ -6,6 +6,6 @@ public class PowerCommand extends TwoInputCommand {
 
     @Override
     public double executeCommand(Model model) {
-        return Math.pow(myParameterOne.executeCommand(model), myParameterTwo.executeCommand(model));
+        return Math.pow(myParameters[0].executeCommand(model), myParameters[1].executeCommand(model));
     }
 }

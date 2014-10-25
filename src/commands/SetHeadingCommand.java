@@ -7,6 +7,6 @@ public class SetHeadingCommand extends OneInputCommand {
 	
 	@Override
 	public double updateTurtle(Model model, Turtle a) {
-        return a.setHeading(myParameterOne.executeCommand(model));
+        return a.setHeading(myParameters[0].executeCommand(model));
     }
 }

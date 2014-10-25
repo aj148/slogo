@@ -7,6 +7,6 @@ public class ForwardCommand extends OneInputCommand {
     
     @Override
     public double updateTurtle(Model model, Turtle a) {
-		return a.updatePosition(myParameterOne.executeCommand(model));
+		return a.updatePosition(myParameters[0].executeCommand(model));
 	}
 }

@@ -7,7 +7,7 @@ public class ForCommand extends TwoInputCommand {
 	
 	@Override
     public double executeCommand(Model model) {
-		ListCommand command = (ListCommand) myParameterOne;
+		ListCommand command = (ListCommand) myParameters[0];
 		String variable = ((VariableCommand) command.getParameters().get(0)).getVariableName();
     	double start = ((Command) command.getParameters().get(1)).executeCommand(model);
     	double end = ((Command) command.getParameters().get(2)).executeCommand(model);
@@ -15,7 +15,7 @@ public class ForCommand extends TwoInputCommand {
     	double toReturn = 0;
     	for(double i = start; i < end; i += increment) {
     		MasterController.myVariableMap.put(variable, i);
-    		toReturn = myParameterTwo.executeCommand(model);
+    		toReturn = myParameters[1].executeCommand(model);
     	}
     	MasterController.myVariableMap.remove(variable);
     	return toReturn;
