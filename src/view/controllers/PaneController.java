@@ -7,6 +7,7 @@ import java.util.Observer;
 
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import view.CommandString;
 import view.Constants;
@@ -45,13 +46,14 @@ public class PaneController implements Observer {
     /**
      * Constructor. Adds Panes to myPanes.
      */
-    public PaneController () {
+    public PaneController (BorderPane bp, VBox v) {
         myMasterController = new MasterController("English");
         myPanes.add(myView);
-        myPanes.add(new ButtonPaneModule(myCommand, myLanguageController, myView));
+        myPanes.add(new ButtonPaneModule(myCommand, myLanguageController, myView, v));
         myPanes.add(new HistoryPaneModule(myCommand));
         myPanes.add(new InputPaneModule(myCommand));
         myPanes.add(new TurtleControllerPaneModule(myCommand, myImagePalette));
+        populate(bp);
     }
 
     /**
@@ -62,11 +64,10 @@ public class PaneController implements Observer {
      *            BorderPane that the Panes are to be added to.
      * @return BorderPane with Panes configured and populated.
      */
-    public BorderPane populate (BorderPane bp) {
+    public void populate (BorderPane bp) {
         for (PaneModule p : myPanes) {
             bp = p.addPane(bp);
         }
-        return bp;
     }
 
     public void showError (String s) {
