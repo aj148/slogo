@@ -4,15 +4,12 @@ import java.util.Stack;
 import java.util.regex.Pattern;
 import commands.Command;
 import commands.ConstantCommand;
-import commands.ForwardCommand;
 import commands.ListCommand;
-import commands.SumCommand;
 import commands.VariableCommand;
 import controller.MasterController;
 
 /**
- * This class is used to convert a string to a collection of commands to
- * execute.
+ * This class is used to convert a string to a collection of commands to execute.
  *
  * @author Team 14
  */
@@ -21,8 +18,7 @@ public class Parser {
     /**
      * Parses a string input and constructs a collection of executable commands.
      * 
-     * @param input
-     *            : String to parse.
+     * @param input : String to parse.
      * @return Collection of commands to execute.
      */
     private Stack<String> commandStack = new Stack<String>();
@@ -35,7 +31,7 @@ public class Parser {
                     commandStack.add(MasterController.myCommandMap.get(input));
                 }
                 catch (Exception e) {
-                    return throwError(e);
+                    
                 }
             }
             if (Pattern.matches("-??[0-9]+.??[0-9]*", input) | Pattern.matches(":[a-zA-Z]+", input)) {
@@ -47,19 +43,6 @@ public class Parser {
             Command newCommand = getCommand(commandName, parameterStack);
             parameterStack.add(newCommand);
         }
-//        System.out.println("---");
-//        ForwardCommand temp = (ForwardCommand) parameterStack.pop();
-//        ListCommand temp2 = (ListCommand) temp.getParameter(0);
-//        ForwardCommand temp3 = (ForwardCommand) temp2.getParameters().get(0);
-//        SumCommand temp4 = (SumCommand) temp3.getParameter(0);
-//        System.out.println(temp);
-//        System.out.println(temp.getParameter(0));
-//        System.out.println(temp2.getParameters());
-//        System.out.println(temp3);
-//        System.out.println(temp4);
-//        System.out.println(temp4.getParameter(0));
-//        System.out.println(temp4.getParameter(1));
-//        System.out.println("---");
         return parameterStack;
     }
 
@@ -115,10 +98,5 @@ public class Parser {
             listCommand.addParameter(tempParameterStack.pop());
         }
         return listCommand;
-    }
-    
-    private Stack<Command> throwError (Exception e) {
-        Stack<Command> error = new Stack<Command>();
-        return error;
     }
 }

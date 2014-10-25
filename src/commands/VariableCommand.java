@@ -1,7 +1,9 @@
 package commands;
 
+import java.util.Map;
+
 import model.Model;
-import controller.MasterController;
+import model.VariableManager;
 
 public class VariableCommand extends ZeroInputCommand {
 	
@@ -17,8 +19,16 @@ public class VariableCommand extends ZeroInputCommand {
 	
 	@Override
 	public double executeCommand(Model model){
-		if(MasterController.myVariableMap.containsKey(myParameter)){
-			return MasterController.myVariableMap.get(myParameter);
+		VariableManager temp = model.getVariableManager();
+		Map<String, Double> variables = temp.getLocalVariables();
+		if(variables.containsKey(myParameter)){
+			return variables.get(myParameter);
+		}
+		else{
+			variables = temp.getGlobalVariables();
+			if(variables.containsKey(myParameter)){
+				return variables.get(myParameter);
+			}
 		}
 		System.out.println("Variable " + myParameter + " not yet initiated.");
 		return 0;

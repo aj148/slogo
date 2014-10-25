@@ -31,7 +31,7 @@ public abstract class Command {
     
     public double executeCommand (Model model) {
     	double last = 0;
-    	for(Turtle a : model.getManager().getCurrentSet()){
+    	for(Turtle a : model.getTurtleManager().getActiveTurtles()){
     		last = updateTurtle(model, a);
     	}
         return last;
@@ -42,7 +42,7 @@ public abstract class Command {
 	}
     
     protected Turtle getFirstTurtle(Model model){
-    	return model.getManager().getCurrentSet().iterator().next();
+    	return model.getTurtleManager().getActiveTurtles().iterator().next();
     }
     
 	public String getClassName(){
