@@ -1,10 +1,10 @@
 package model;
 
-import commands.Command;
+import commands.Command; 
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import view.TurtleDraw;
-import view.panes.ViewPane;
+import view.panes.ViewPaneModule;
 
 import commands.TurtleCommand;
 

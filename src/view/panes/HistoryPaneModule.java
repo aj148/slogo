@@ -20,7 +20,7 @@ import view.Constants;
  * @author Team 14
  *
  */
-public class HistoryPane extends PaneModule implements Observer {
+public class HistoryPaneModule extends PaneModule implements Observer {
 
     private VBox myRoot = new VBox();
     private ScrollPane myHistoryScroll = new ScrollPane();
@@ -29,7 +29,7 @@ public class HistoryPane extends PaneModule implements Observer {
     private VBox mySavedDisplay = new VBox();
     private CommandString myCommandString;
 
-    public HistoryPane (CommandString cs) {
+    public HistoryPaneModule (CommandString cs) {
         myCommandString = cs;
         myCommandString.addObserver(this);
         myHistoryScroll.setContent(myHistoryDisplay);
@@ -40,7 +40,7 @@ public class HistoryPane extends PaneModule implements Observer {
                 new Label("User-Defined Commands"), mySavedScroll);
     }
 
-    public void addHistoryItem (String s) {
+    public void addItem (String s) {
         if (myCommandString.getType() == Constants.COMMAND
                 || myCommandString.getType() == Constants.USER_DEFINE) {
             Hyperlink link = new Hyperlink(s);
@@ -71,7 +71,7 @@ public class HistoryPane extends PaneModule implements Observer {
 
     @Override
     public void update (java.util.Observable o, Object arg) {
-        addHistoryItem(myCommandString.getCommand());
+        addItem(myCommandString.getCommand());
     }
 
 }

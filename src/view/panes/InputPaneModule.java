@@ -20,7 +20,7 @@ import view.Constants;
  *
  */
 
-public class InputPane extends PaneModule {
+public class InputPaneModule extends PaneModule {
     private HBox myHBox = new HBox();
     private ScrollPane myScrollPane = new ScrollPane();
     private TextField myTextField = new TextField();
@@ -33,7 +33,7 @@ public class InputPane extends PaneModule {
      *            CommandString containing the String that represents the
      *            current command
      */
-    public InputPane (CommandString cs) {
+    public InputPaneModule (CommandString cs) {
         myCommandString = cs;
         myScrollPane.setContent(myTextField);
         myTextField.setPrefColumnCount(60);

@@ -22,7 +22,7 @@ public class PenPane {
         myCommandString = cs;
         myColorPicker = makeColorPicker("Pen Color", event -> changePenColor());
 
-        myVbox.getChildren().addAll(new Separator(), new Label("Pen Commands"), myPenToggle,
+        myVbox.getChildren().addAll(new Separator(), new Label("PEN COMMANDS"), myPenToggle,
                 new Label("Pen Color"), myColorPicker, new Label("Pen Style"), myPenStyles);
 
     }

@@ -20,7 +20,7 @@ import view.CommandString;
 import view.Constants;
 import view.languages.LanguageController;
 
-public class ButtonPane extends PaneModule {
+public class ButtonPaneModule extends PaneModule {
     private final ToolBar myToolBar = new ToolBar();
     private ComboBox<Button> myComboBox = new ComboBox<Button>();
     private VBox myVbox = new VBox();
@@ -29,13 +29,13 @@ public class ButtonPane extends PaneModule {
     private String myCurrent;
     private ColorPicker myColorPicker;
     private LanguageController myLanguageController;
-    private ViewPane myView = new ViewPane();
+    private ViewPaneModule myView;
 
-    public ButtonPane (CommandString cs, LanguageController ls) {
+    public ButtonPaneModule (CommandString cs, LanguageController ls, ViewPaneModule vs) {
         myCommandString = cs;
         myLanguageController = ls;
+        myView = vs;
         createPropertiesMenu();
-
     }
 
     public void createPropertiesMenu () {

@@ -1,6 +1,8 @@
 package view.panes;
 
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,11 +18,14 @@ import javafx.stage.FileChooser;
 import view.CommandString;
 import view.Constants;
 
-public class TurtleControllerPane extends PaneModule {
+public class TurtleControllerPaneModule extends PaneModule {
     private VBox myVbox = new VBox();
     private TextField myMoveTextField = new TextField();
     private TextField myAngleTextField = new TextField();
+    private TextField myIDTextField = new TextField();
     private CommandString myCommandString;
+    private TurtleSelectorPane myTurtles = new TurtleSelectorPane();
+    private Set<Integer> myActiveTurtles = new HashSet<Integer>();
 
     /**
      * Initializes the parameters of the InputPane.
@@ -29,16 +34,21 @@ public class TurtleControllerPane extends PaneModule {
      *            CommandString containing the String that represents the
      *            current command
      */
-    public TurtleControllerPane (CommandString cs) {
+    public TurtleControllerPaneModule (CommandString cs) {
         myCommandString = cs;
         myMoveTextField.setPrefColumnCount(5);
-        Button moveButton = makeButton("Forward", event -> move());
         myAngleTextField.setPrefColumnCount(5);
+        myIDTextField.setPrefColumnCount(5);
+        Button moveButton = makeButton("Forward", event -> move());
         Button angleButton = makeButton("Right (deg)", event -> angle());
-        Button chooseFileButton = makeButton("Choose Image", event -> doChoose());
-        myVbox.getChildren().addAll(new Label("Turtle Prop."), chooseFileButton, new Separator(),
-                new Label("Turtle Commands"), myAngleTextField, angleButton, myMoveTextField,
-                moveButton, new PenPane(myCommandString).getPenPane());
+        Button chooseFileButton = makeButton("Add Image", event -> doChoose());
+        Button makeNewTurtle = makeButton("Make Turtle", event -> makeTurtle());
+
+        myVbox.getChildren().addAll(new Label("TURTLE PROP."), myIDTextField,
+                new Label("Turtle ID Number"), chooseFileButton, makeNewTurtle, new Separator(),
+                new Label("COMMANDS"), myAngleTextField, angleButton, myMoveTextField, moveButton,
+                new PenPane(myCommandString).getPenPane(), myTurtles.getPane());
+
         myVbox.setOnKeyPressed(new MoveHandler());
     }
 
@@ -82,6 +92,13 @@ public class TurtleControllerPane extends PaneModule {
         return p;
     }
 
+    private void makeTurtle () {
+        if (!myIDTextField.getText().equals("")) {
+            myTurtles.newTurtle(Integer.parseInt(myIDTextField.getText()));
+            myIDTextField.clear();
+        }
+    }
+
     private void move (int orientation) {
         myCommandString.setCommand("setheading " + orientation, 0);
         myCommandString.setCommand("forward 5", 0);
@@ -94,14 +111,17 @@ public class TurtleControllerPane extends PaneModule {
         public void handle (KeyEvent event) {
             if (event.getCode() == KeyCode.W) {
                 orientation = Constants.UP;
+                move(orientation);
             } else if (event.getCode() == KeyCode.D) {
                 orientation = Constants.RIGHT;
+                move(orientation);
             } else if (event.getCode() == KeyCode.S) {
                 orientation = Constants.DOWN;
+                move(orientation);
             } else if (event.getCode() == KeyCode.A) {
                 orientation = Constants.LEFT;
+                move(orientation);
             }
-            move(orientation);
         }
     }
 }

@@ -4,7 +4,7 @@ import java.util.Stack;
 
 import model.Model;
 import view.PaneController;
-import view.panes.ViewPane;
+import view.panes.ViewPaneModule;
 
 import commands.Command;
 
@@ -18,7 +18,7 @@ import commands.Command;
  */
 public class Controller {
 
-    ViewPane myView;
+    ViewPaneModule myView;
     Model myModel;
     private PaneController myPane;
 
@@ -30,7 +30,7 @@ public class Controller {
      * @param model
      *            : The Model constructed by said ViewPanel.
      */
-    public Controller (ViewPane view, PaneController pane) {
+    public Controller (ViewPaneModule view, PaneController pane) {
         myView = view;
         myModel = new Model(view);
         myPane = pane;
