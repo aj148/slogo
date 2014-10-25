@@ -9,12 +9,14 @@ import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import view.CommandString;
@@ -31,7 +33,8 @@ public class TurtleControllerPaneModule extends PaneModule {
     private Set<Integer> myActiveTurtles = new HashSet<Integer>();
     private Map<Integer, String> myImages = new HashMap<Integer, String>();
     private ImagePalette myImagePalette;
-
+    private HBox myImageBar = new HBox();
+    
     /**
      * Initializes the parameters of the InputPane.
      *
@@ -42,17 +45,17 @@ public class TurtleControllerPaneModule extends PaneModule {
     public TurtleControllerPaneModule (CommandString cs, ImagePalette ip) {
         myCommandString = cs;
         myImagePalette = ip;
+        myImageBar = myImagePalette.getBox();
         myMoveTextField.setPrefColumnCount(5);
         myAngleTextField.setPrefColumnCount(5);
         myIDTextField.setPrefColumnCount(5);
         Button moveButton = makeButton("Forward", event -> move());
         Button angleButton = makeButton("Right (deg)", event -> angle());
-        Button chooseFileButton = makeButton("Add Image", event -> doChoose());
         Button makeNewTurtle = makeButton("Make Turtle", event -> makeTurtle());
-
-        myVbox.getChildren().addAll(new Label("TURTLE PROP."), myIDTextField,
-                new Label("Turtle ID Number"), chooseFileButton, makeNewTurtle, new Separator(),
-                new Label("COMMANDS"), myAngleTextField, angleButton, myMoveTextField, moveButton,
+   
+        myVbox.getChildren().addAll(new Label("TURTLE PROP."), new HBox(myIDTextField,
+                new Label("ID Number")),myImageBar, makeNewTurtle, new Separator(),
+                new Label("COMMANDS"), new HBox(myAngleTextField, angleButton), new HBox(myMoveTextField, moveButton),
                 new PenPane(myCommandString).getPenPane(), myTurtles.getPane());
 
         myVbox.setOnKeyPressed(new MoveHandler());
@@ -78,18 +81,6 @@ public class TurtleControllerPaneModule extends PaneModule {
             myCommandString.setCommand("Right " + myAngleTextField.getText(), Constants.SETTING);
             myAngleTextField.clear();
         }
-    }
-
-    private void doChoose () {
-        final Label labelFile = new Label();
-        FileChooser fileChooser = new FileChooser();
-        // Set extension filter
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "Image Files (*.png)", "*.png");
-        fileChooser.getExtensionFilters().add(extFilter);
-        // Show open file dialog
-        File file = fileChooser.showOpenDialog(null);
-        myImagePalette.addImage(file.getPath());
     }
 
     @Override

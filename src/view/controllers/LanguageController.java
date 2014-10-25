@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import view.languages.LanguageProperties;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -19,7 +18,6 @@ public class LanguageController {
     public final static String DEFAULT_LANGUAGE = "English";
     private final static String[] LANGUAGE = new String[] { "English", "Chinese", "French",
             "Italian", "Portuguese", "Russian" };
-    private LanguageProperties myLangProp = new LanguageProperties();
 
     public LanguageController () {
         setLanguage(DEFAULT_LANGUAGE);
@@ -29,7 +27,6 @@ public class LanguageController {
         InputStream in = getClass()
                 .getResourceAsStream("/resources/languages/" + s + ".properties");
         commandMapper(in);
-        myLangProp.setLanguage(myCommandMap);
     }
 
     private void commandMapper (InputStream i) {
@@ -71,7 +68,4 @@ public class LanguageController {
         return languages;
     }
 
-    public LanguageProperties getLangProp () {
-        return myLangProp;
-    }
 }
