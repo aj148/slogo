@@ -1,10 +1,11 @@
 package model;
 
 import java.util.Collection;
-import view.panes.ViewPaneModule;
-
+import java.util.HashSet;
+import java.util.Set;
+import javafx.scene.paint.Color;
 import commands.Command;
-import view.ViewPane;
+import view.panes.ViewPaneModule;
 
 /**
  * Class that contains the basic information of what needs to be displayed in
@@ -14,9 +15,10 @@ import view.ViewPane;
  * @author Team 14
  */
 public class Model {
-
     private ViewPaneModule myView;
-    private Turtle myTurtle;
+    private Color myBackground;
+    private Set<Turtle> myFullList;
+    private TurtleListManager myManager;
 
     /**
      * Constructor method called from ViewPanel.java
@@ -25,6 +27,7 @@ public class Model {
      *            : The ViewPanel that called this constructor.
      */
     public Model (ViewPaneModule view) {
+        myFullList = new HashSet<Turtle>();
         myView = view;
         myManager = new TurtleListManager(myFullList);
         myBackground = Color.WHITE;
@@ -43,7 +46,7 @@ public class Model {
         }
     }
 
-    public ViewPane getView () {
+    public ViewPaneModule getView () {
         return myView;
     }
 

@@ -1,28 +1,23 @@
 package model;
 
-import commands.Command; 
+import view.panes.ViewPaneModule;
+import commands.Command;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
-import view.TurtleDraw;
-import view.panes.ViewPaneModule;
-
-import commands.TurtleCommand;
 
 public class Turtle {
-
     private static final double PI = Math.PI;
-    private ViewPane myView;
+    private ViewPaneModule myView;
     private Point2D myPoint;
     private double myHeading;
     private double isShowing;
     private Pen myPen;
-
     /*
      * private Color myColor; private double mySize;
      */
     private double myID;
 
-    public Turtle (int x, int y, ViewPane view, double ID) {
+    public Turtle (int x, int y, ViewPaneModule view, double ID) {
         myPoint = new Point2D(x, y);
         myHeading = 0;
         isShowing = 1;
