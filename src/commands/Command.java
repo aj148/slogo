@@ -15,9 +15,13 @@ public abstract class Command {
         return last;
     }
     
-    public double updateTurtle(Model model, Turtle a) {
+    protected double updateTurtle(Model model, Turtle a) {
 		return 0;
 	}
+    
+    protected Turtle getFirstTurtle(Model model){
+    	return model.getManager().getCurrentList().iterator().next();
+    }
     
 	public String getClassName(){
 		return this.getClass().getName();
