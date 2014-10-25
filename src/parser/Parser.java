@@ -40,8 +40,8 @@ public class Parser {
             if (myCommandMap.containsKey(input)) {
                 commandStack.add(myCommandMap.get(input));
             }
-            else if (Pattern.matches(myRegularExpressions.get("Constant"), input)
-                    | Pattern.matches(myRegularExpressions.get("Variable"), input)) {
+            else if (Pattern.matches("-?[0-9]+\\.?[0-9]*", input)
+                    | Pattern.matches(":[a-zA-Z]+", input)) {
                 commandStack.add(input);
             }
             else {
@@ -62,10 +62,10 @@ public class Parser {
     }
 
     private Command getCommand (String commandName, Stack<Command> parameterStack) {
-        if (Pattern.matches(myRegularExpressions.get("Constant"), commandName)) {
+        if (Pattern.matches("-?[0-9]+\\.?[0-9]*", commandName)) {
             return new ConstantCommand(Double.parseDouble(commandName));
         }
-        else if (Pattern.matches(myRegularExpressions.get("Variable"), commandName)) {
+        else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
             return new VariableCommand(commandName.substring(1));
         }
         else if (commandName.equals("commands.ListEndCommand")) {
