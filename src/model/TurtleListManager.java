@@ -10,7 +10,7 @@ public class TurtleListManager {
 
     public TurtleListManager (Set<Turtle> myTurtles) {
         mySet = myTurtles;
-        new Stack<Set<Turtle>>();
+        myStack = new Stack<Set<Turtle>>();
     }
 
     public void add (Set<Turtle> newSet) {

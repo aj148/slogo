@@ -9,7 +9,7 @@ public class MakeVariableCommand extends TwoInputCommand {
     public double executeCommand(Model model) {
 		double value = myParameterTwo.executeCommand(model);
 		try{
-			VariableCommand variable = (VariableCommand)myParameterOne;
+			VariableCommand variable = (VariableCommand) myParameterOne;
 			String variableName = variable.getVariableName();
 			MasterController.myVariableMap.put(variableName, value);
 		}

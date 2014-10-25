@@ -1,7 +1,7 @@
 package commands;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.TreeSet;
 import java.util.List;
 import java.util.Set;
 
@@ -15,7 +15,7 @@ public class TellCommand extends OneInputCommand {
 	public double executeCommand(Model model){
 		TurtleListManager temp = model.getManager();
 		double toReturn = 0;
-		Set<Turtle> tellSet = new HashSet<Turtle>();
+		Set<Turtle> tellSet = new TreeSet<Turtle>();
 		List<Turtle> fullList = new ArrayList<Turtle>(temp.getFullList());
 		List<Command> turtlesToAdd = ((ListCommand) myParameterOne).getList();
 		boolean exists = false;
