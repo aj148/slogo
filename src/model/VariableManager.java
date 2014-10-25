@@ -18,8 +18,8 @@ public class VariableManager {
     	myLocalVariables.add(newMap);
     }
     
-    public void regulateVariableScope (int finalLength) {
-    	while(myLocalVariables.size() > finalLength){
+    public void reduceVariableScope () {
+    	if(!myLocalVariables.isEmpty()){
     		myLocalVariables.pop();
     	}
     }
@@ -32,7 +32,11 @@ public class VariableManager {
     	return myLocalVariables.lastElement();
     }
     
-    public void addVariable(String varName, double varValue){
+    public void addGlobalVariable(String varName, double varValue){
+    	myGlobalVariables.put(varName, varValue);
+    }
+    
+    public void addLocalVariable(String varName, double varValue){
     	Map<String, Double> currentVariables = myLocalVariables.pop();
     	currentVariables.put(varName, varValue);
     	myLocalVariables.add(currentVariables);

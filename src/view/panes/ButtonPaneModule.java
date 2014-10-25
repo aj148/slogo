@@ -30,10 +30,8 @@ import view.controllers.WorkspaceTabsController;
 
 public class ButtonPaneModule extends PaneModule {
     private final ToolBar myToolBar = new ToolBar();
-    private ComboBox<Button> myComboBox = new ComboBox<Button>();
     private HBox myHbox = new HBox();
     private CommandString myCommandString;
-    private String myCurrent;
     private ColorPicker myColorPicker;
     private LanguageController myLanguageController;
     private ViewPaneModule myView;
@@ -51,9 +49,8 @@ public class ButtonPaneModule extends PaneModule {
         myColorPicker = makeColorPicker("Background Color", event -> backgroundColor());
         Button toggleReferenceGrid = makeButton("Toggle Grid", event -> toggleGrid());
         Button help = makeButton("Help", event -> help());
-        Button save = makeButton("Save Workspace", event -> saveWorkspace());
         myHbox.getChildren().addAll(new Label("Background"), myColorPicker, toggleReferenceGrid,
-                myLanguageController.makeMenu(), help, save);
+                myLanguageController.makeMenu(), help);
         myToolBar.getItems().add(myHbox);
     }
 
@@ -88,7 +85,9 @@ public class ButtonPaneModule extends PaneModule {
 
     public void backgroundColor () {
         Color c = myColorPicker.getValue();
-        myCommandString.setCommand("SETBACKGROUND "+c.getRed()+" "+c.getGreen()+" "+c.getBlue(), Constants.SETTING);
+        myCommandString.setCommand(
+                "SETBACKGROUND " + c.getRed() + " " + c.getGreen() + " " + c.getBlue(),
+                Constants.SETTING);
     }
 
     public void toggleGrid () {
@@ -103,23 +102,6 @@ public class ButtonPaneModule extends PaneModule {
             System.out.println("IO Exception When Opening Help Page");
         } catch (URISyntaxException e) {
             System.out.println("Help Page URL Formatted Incorrectly");
-        }
-    }
-
-    public void saveWorkspace () {
-        try {
-            Properties properties = new Properties();
-            // properties.setProperty("Color",
-            // currentWorkspace.getColor().toString());
-            FileChooser fileChooser = new FileChooser();
-            File file = fileChooser.showSaveDialog(new Stage());
-            FileWriter fileOut = new FileWriter(file);
-            properties.store(fileOut, "Workspace Properties");
-            fileOut.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
