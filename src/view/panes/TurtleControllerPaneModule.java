@@ -61,6 +61,7 @@ public class TurtleControllerPaneModule extends PaneModule {
                 new HBox(myIDTextField, new Label("ID Number")), imageSelectorMaker(),
                 makeNewTurtle, new Separator(), new Label("COMMANDS"),
                 new HBox(myAngleTextField, angleButton), new HBox(myMoveTextField, moveButton),
+                new Label("WASD can be used with "), new Label("this pane active"),
                 new PenPane(myCommandString).getPenPane(), myTurtles.getPane());
 
         myVbox.setOnKeyPressed(new MoveHandler());
@@ -92,7 +93,7 @@ public class TurtleControllerPaneModule extends PaneModule {
         // Show open file dialog
         File file = fileChooser.showOpenDialog(null);
         String fileName = file.getName();
-        myImagePalette.addImage(file.getPath(), fileName);   
+        myImagePalette.addImage(file.getPath(), fileName);
     }
 
     private void move () {
