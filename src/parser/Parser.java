@@ -37,8 +37,9 @@ public class Parser {
                     | Pattern.matches(":[a-zA-Z]+", input)) {
                 commandStack.add(input);
             } else {
-                String errorMessage = String.format(
-                        "[%: Invalid Input] This input does not exist in our library of commands, contants, and variables", input);
+//                String errorMessage = String.format(
+//                        "[%: Invalid Input] This input does not exist in our library of commands, contants, and variables", input);
+            	String errorMessage = "Invalid Input";
                 return throwError(errorMessage);
             }
         }

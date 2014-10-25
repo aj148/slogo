@@ -122,7 +122,8 @@ public class TurtleControllerPaneModule extends PaneModule {
             myTurtles.newTurtle(id);
             String myImage = myImagePalette.getCurrentImage();
             myIDTextField.clear();
-//            myCommandString.setCommand("Tell " + Integer.toString(id) + "[HOME]",Constants.SETTING);
+            myCommandString.setCommand("Tell [ " + Integer.toString(id) + " ]",Constants.SETTING);
+//
         }
     }
 

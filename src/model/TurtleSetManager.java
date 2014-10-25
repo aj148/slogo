@@ -11,7 +11,9 @@ public class TurtleSetManager {
 
     public TurtleSetManager (Set<Turtle> turtles) {
         mySet = turtles;
+        mySet.add(new Turtle(0));
         myStack = new Stack<Set<Turtle>>();
+        myStack.add(mySet);
     }
 
     public void addTurtleSet (Set<Turtle> newSet) {
