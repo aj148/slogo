@@ -2,6 +2,7 @@ package view.panes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import view.TurtleDraw;
 import model.Model;
@@ -25,18 +26,22 @@ import view.Constants;
 public class ViewPaneModule extends PaneModule {
 
 	public boolean gridVisible = true;
-	public Color myBackColor;
+	private Color myBackColor;
+	private String RGB;
 	private Pane myPane = new Pane();
 	private TurtleDraw myDraw = new TurtleDraw();
 	private Point2D myCurrentPoint = new Point2D(0, 0);
 	private List<Line> myGrid = new ArrayList<Line>();
 	private Color defColor = Color.LIGHTGRAY;
+	private Set<Turtle> myActiveTurtles;
 
 	/**
 	 * Constructor method called from UserInterface.java
 	 */
 	public ViewPaneModule () {
-		myPane.setStyle("-fx-background-color: " +  "white" + ";");
+		myBackColor = Constants.DEFAULT_BGCOLOR;
+		RGB = toRGB(myBackColor);
+		updateBGColor(RGB);
 		myPane.setPrefSize(Constants.VIEW_DEFAULT_DIMENSION, Constants.VIEW_DEFAULT_DIMENSION);
 		createGrid(defColor);
 		myPane.getChildren().add(myDraw.figure);
@@ -45,13 +50,8 @@ public class ViewPaneModule extends PaneModule {
 
 	public void updateView (Model m) {
 	    myBackColor = m.getBackgroundColor();
-	    
-	    
-//		myDraw.drawLine(myCurrentPoint, t.getLocation());
-//		myPane.getChildren().add(myDraw.path);
-//		myCurrentPoint = t.getLocation();
-//		myDraw.setAngle(t.getHeading());
-//		myDraw.moveTurtle(myCurrentPoint);
+	    myActiveTurtles = m.getManager().getCurrentSet();
+	    myActiveTurtles.forEach(turtle -> updateTurtle(turtle));
 	}
 
 	@Override
@@ -88,4 +88,27 @@ public class ViewPaneModule extends PaneModule {
 		}
 		gridVisible = !gridVisible;
 	}
+	
+	
+	private void updateTurtle(Turtle t){
+		
+//		myDraw.drawLine(myCurrentPoint, t.getLocation());
+//		myPane.getChildren().add(myDraw.path);
+//		myCurrentPoint = t.getLocation();
+//		myDraw.setAngle(t.getHeading());
+//		myDraw.moveTurtle(myCurrentPoint);
+	}
+	
+	private void updateBGColor(String RGB){
+		myPane.setStyle("-fx-background-color: rgb( " +  RGB + ");");
+	}
+	
+	private String toRGB(Color c){
+		String R = Double.toString(255*c.getRed());
+		String G = Double.toString(255*c.getGreen());
+		String B = Double.toString(255*c.getBlue());
+		
+		return R + "," + G + ","  + B;
+	}
+	
 }
