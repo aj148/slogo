@@ -18,7 +18,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.stage.Popup;
+import javafx.stage.PopupWindow;
+import javafx.stage.Stage;
 import view.CommandString;
 import view.Constants;
 import view.controllers.ImagePalette;
@@ -51,21 +56,22 @@ public class TurtleControllerPaneModule extends PaneModule {
         Button moveButton = makeButton("Forward", event -> move());
         Button angleButton = makeButton("Right (deg)", event -> angle());
         Button makeNewTurtle = makeButton("Make Turtle", event -> makeTurtle());
-      
+
         myVbox.getChildren().addAll(new Label("TURTLE PROPERTIES"),
-                new HBox(myIDTextField, new Label("ID Number")), imageSelectorMaker(), makeNewTurtle,
-                new Separator(), new Label("COMMANDS"), new HBox(myAngleTextField, angleButton),
-                new HBox(myMoveTextField, moveButton), new PenPane(myCommandString).getPenPane(),
-                myTurtles.getPane());
+                new HBox(myIDTextField, new Label("ID Number")), imageSelectorMaker(),
+                makeNewTurtle, new Separator(), new Label("COMMANDS"),
+                new HBox(myAngleTextField, angleButton), new HBox(myMoveTextField, moveButton),
+                new PenPane(myCommandString).getPenPane(), myTurtles.getPane());
 
         myVbox.setOnKeyPressed(new MoveHandler());
     }
 
-    private HBox imageSelectorMaker(){
+    private HBox imageSelectorMaker () {
         Button chooseFileButton = makeButton("Add Image", event -> doChoose());
-        myImageBar.getChildren().addAll(myImagePalette.getBox(),chooseFileButton);
+        myImageBar.getChildren().addAll(myImagePalette.getBox(), chooseFileButton);
         return myImageBar;
     }
+
     private Button makeButton (String property, EventHandler<ActionEvent> handler) {
         Button result = new Button();
         String label = property;
@@ -83,7 +89,8 @@ public class TurtleControllerPaneModule extends PaneModule {
         fileChooser.getExtensionFilters().add(extFilter);
         // Show open file dialog
         File file = fileChooser.showOpenDialog(null);
-        myImagePalette.addImage(file.getPath());
+        String fileName = file.getName();
+        myImagePalette.addImage(file.getPath(), fileName);   
     }
 
     private void move () {
@@ -109,6 +116,7 @@ public class TurtleControllerPaneModule extends PaneModule {
     private void makeTurtle () {
         if (!myIDTextField.getText().equals("")) {
             myTurtles.newTurtle(Integer.parseInt(myIDTextField.getText()));
+            String myImage = myImagePalette.getCurrentImage();
             myIDTextField.clear();
         }
     }
