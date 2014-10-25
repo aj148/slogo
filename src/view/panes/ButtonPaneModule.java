@@ -18,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import view.CommandString;
 import view.Constants;
-import view.languages.LanguageController;
+import view.controllers.LanguageController;
 
 public class ButtonPaneModule extends PaneModule {
     private final ToolBar myToolBar = new ToolBar();

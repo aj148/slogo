@@ -41,7 +41,7 @@ public class PenPane {
 
     public void changePenColor () {
         Color c = myColorPicker.getValue();
-        String cur = "SETSHAPE " + c.getRed() + " " + c.getGreen() + " " + c.getBlue();
+        String cur = "SETPENCOLOR " + c.getRed() + " " + c.getGreen() + " " + c.getBlue();
         myCommandString.setCommand(cur, 0);
     }
 

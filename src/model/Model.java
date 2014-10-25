@@ -57,4 +57,8 @@ public class Model {
     public void setBackgroundColor (Color color) {
         myBackground = color;
     }
+
+    public Color getBackgroundColor () {
+        return myBackground;
+    }
 }

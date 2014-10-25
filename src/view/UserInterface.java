@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Dimension;
 
+import view.controllers.PaneController;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;

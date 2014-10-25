@@ -3,9 +3,8 @@ package controller;
 import java.util.Stack;
 
 import model.Model;
-import view.PaneController;
+import view.controllers.PaneController;
 import view.panes.ViewPaneModule;
-
 import commands.Command;
 
 /**
