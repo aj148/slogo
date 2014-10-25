@@ -16,10 +16,12 @@ import view.panes.ViewPaneModule;
  * @author Team 14
  */
 public class Model {
+	
     private ViewPaneModule myView;
     private Color myBackground;
     private Set<Turtle> myFullSet;
-    private TurtleListManager myManager;
+    private TurtleSetManager myTurtleManager;
+    private VariableManager myVariableManager;
 
     /**
      * Constructor method called from ViewPanel.java
@@ -29,7 +31,8 @@ public class Model {
     public Model (ViewPaneModule view) {
         myFullSet = new TreeSet<Turtle>();
         myView = view;
-        myManager = new TurtleListManager(myFullSet);
+        myTurtleManager = new TurtleSetManager(myFullSet);
+        myVariableManager = new VariableManager();
         myBackground = Color.WHITE;
     }
 
@@ -46,12 +49,16 @@ public class Model {
         }
     }
 
-    public ViewPaneModule getView () {
+    public ViewPaneModule getView() {
         return myView;
     }
 
-    public TurtleListManager getManager () {
-        return myManager;
+    public TurtleSetManager getTurtleManager() {
+        return myTurtleManager;
+    }
+    
+    public VariableManager getVariableManager(){
+    	return myVariableManager;
     }
 
     public double setBackgroundColor (double red, double green, double blue) {
