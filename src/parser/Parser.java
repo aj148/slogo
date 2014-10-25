@@ -43,17 +43,10 @@ public class Parser {
             else if (Pattern.matches(myRegularExpressions.get("Constant"), input)
                     | Pattern.matches(myRegularExpressions.get("Variable"), input)) {
                 commandStack.add(input);
-<<<<<<< HEAD
-            } else {
-//                String errorMessage = String.format(
-//                        "[%: Invalid Input] This input does not exist in our library of commands, contants, and variables", input);
-            	String errorMessage = "Invalid Input";
-=======
             }
             else {
                 String errorMessage = String.format(
                         "[%: Invalid Input] This input does not exist in our library of commands, contants, and variables", input);
->>>>>>> 75b9b77af2e0d94f04734bb517a13b57620c0e7b
                 return throwError(errorMessage);
             }
         }
