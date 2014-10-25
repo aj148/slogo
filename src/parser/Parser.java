@@ -41,10 +41,12 @@ public class Parser {
         for (String input : parseInput.split(" ")) {
             if (myCommandMap.containsKey(input)) {
                 commandStack.add(myCommandMap.get(input));
-            } else if (Pattern.matches(myRegularExpressions.get("Constant"), input)
-                    | Pattern.matches(myRegularExpressions.get("Variable"), input)) {
+            }
+            else if (Pattern.matches("-?[0-9]+\\.?[0-9]*", input)
+                    | Pattern.matches(":[a-zA-Z]+", input)) {
                 commandStack.add(input);
-            } else {
+            }
+            else {
                 String errorMessage = "[ "+ input+ ": Invalid Input] This input does not exist in our library of commands, contants, and variables";
                 return throwError(errorMessage);
             }
@@ -61,13 +63,16 @@ public class Parser {
     }
 
     private Command getCommand (String commandName, Stack<Command> parameterStack) {
-        if (Pattern.matches(myRegularExpressions.get("Constant"), commandName)) {
+        if (Pattern.matches("-?[0-9]+\\.?[0-9]*", commandName)) {
             return new ConstantCommand(Double.parseDouble(commandName));
-        } else if (Pattern.matches(myRegularExpressions.get("Variable"), commandName)) {
+        }
+        else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
             return new VariableCommand(commandName.substring(1));
-        } else if (commandName.equals("commands.ListEndCommand")) {
+        }
+        else if (commandName.equals("commands.ListEndCommand")) {
             return makeListCommand(commandStack);
-        } else {
+        }
+        else {
             Class<?> cl;
             Command command;
             try {
@@ -80,7 +85,8 @@ public class Parser {
                     }
                     command.setParameters(parameters);
                     return command;
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     String errorMessage = "[" + commandName
                             + " : Invalid Input] Command class for this command could not be"
                             + " constructed properly.";
@@ -88,6 +94,7 @@ public class Parser {
                 }
             } catch (ClassNotFoundException e) {
                 String errorMessage = "["+ commandName + " : Invalid Command] Command class for this command does not exist";
+
                 return new ErrorCommand(errorMessage);
             }
         }
