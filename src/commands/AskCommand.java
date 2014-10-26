@@ -11,7 +11,6 @@ public class AskCommand extends TwoInputCommand {
 		a.setParameters(myParameters);
 		a.executeCommand(model);
 		double toReturn = myParameters[1].executeCommand(model);
-		// this gets rid of nested tell commands
 		model.getTurtleManager().regulateTurtleDepth(currentStackLength);
 		return toReturn;
 	}
