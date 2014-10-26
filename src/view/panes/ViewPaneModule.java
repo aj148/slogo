@@ -125,7 +125,6 @@ public class ViewPaneModule extends PaneModule {
         String R = "" + (int) r;
         String G = "" + (int) g;
         String B = "" + (int) b;
-        System.out.println("mynameis" + R + "," + G + "," + B);
         return R + "," + G + "," + B;
 
     }
