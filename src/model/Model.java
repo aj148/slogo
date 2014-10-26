@@ -62,7 +62,10 @@ public class Model {
     }
 
     public double setBackgroundColor (double red, double green, double blue) {
-    	myBackground = Color.rgb((int)red, (int)green, (int)blue);
+    	int r = (int)(255*red);
+    	int g = (int)(255*green);
+    	int b = (int)(255*blue);
+    	myBackground = Color.rgb(r,g,b);
     	return red + (1000 * green) + (1000000 * blue);
     }
 
