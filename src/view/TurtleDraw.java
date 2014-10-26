@@ -40,10 +40,12 @@ public class TurtleDraw {
         Image myLogo = null;
         if (logoID < 4) {
             myLogo = new Image(getClass().getResourceAsStream(myImagePalette.getImage(logoID)));
-        } else {
+        }
+        else {
             try {
                 myLogo = new Image(new FileInputStream(myImagePalette.getImage(logoID)));
-            } catch (FileNotFoundException e) {
+            }
+            catch (FileNotFoundException e) {
             }
         }
 

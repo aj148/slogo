@@ -34,6 +34,7 @@ public abstract class Command {
     	for(Turtle a : model.getTurtleManager().getActiveTurtles()){
     		last = updateTurtle(model, a);
     	}
+    	model.notifyView();
         return last;
     }
     
