@@ -25,7 +25,7 @@ public final class Constants {
     public static final String HELP_URL = "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php";
     
     //Display Constants
-    public static final double IMAGE_WIDTH = 40.0;
+    public static final double IMAGE_WIDTH = 45.0;
     public static final double IMAGE_HEIGHT = 45.0;
 	public static final Color DEFAULT_BGCOLOR = Color.WHITE;
 	public static final Color DEFAULT_PCCOLOR = Color.BLACK;

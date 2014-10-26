@@ -22,13 +22,20 @@ public class TurtleSelectorPane {
     private Set<Integer> myActiveTurtles = new HashSet<Integer>();
     private CommandString myCommandString;
     private CheckBox myToggle = new CheckBox("Toggle Identification");
-
     private ScrollPane myTurtleScroll = new ScrollPane();
     private VBox myVBox = new VBox();
+    private ViewPaneModule myViewPane;
 
-    public TurtleSelectorPane (CommandString cs) {
+    public TurtleSelectorPane (CommandString cs, ViewPaneModule vp) {
         myCommandString = cs;
+        myViewPane = vp;
         myVBox.getChildren().addAll(new Label("TURTLE SELECTION"), myToggle);
+        myToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            public void changed (ObservableValue<? extends Boolean> ov, Boolean old_val,
+                    Boolean new_val) {
+                myViewPane.toggleActive(new_val);
+            }
+        });
         myTurtleScroll.setContent(myVBox);
         myTurtleScroll.setPrefWidth(50);
     }
@@ -43,6 +50,11 @@ public class TurtleSelectorPane {
                     getActiveTurtles();
                 }
             });
+            for(CheckBox cb:myBoxes){
+                cb.setSelected(false);
+            }
+            
+            turt.setSelected(true);
             myBoxes.add(turt);
             myIDs.put(turt, (Integer) id);
             myVBox.getChildren().add(turt);

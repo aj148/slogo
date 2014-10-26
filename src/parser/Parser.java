@@ -55,7 +55,9 @@ public class Parser {
                 commandStack.add(input);
             }
             else {
+
                 String errorMessage = "[ " + input + ": Invalid Input] This input does not exist in our library of commands, contants, and variables";
+
                 return throwError(errorMessage);
             }
         }

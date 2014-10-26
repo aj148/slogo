@@ -53,7 +53,7 @@ public class PaneController implements Observer {
         myPanes.add(new ButtonPaneModule(myCommand, myLanguageController, myView, v));
         myPanes.add(new HistoryPaneModule(myCommand));
         myPanes.add(new InputPaneModule(myCommand));
-        myPanes.add(new TurtleControllerPaneModule(myCommand, myImagePalette));
+        myPanes.add(new TurtleControllerPaneModule(myCommand, myImagePalette, myView));
         populate(bp);
     }
 
