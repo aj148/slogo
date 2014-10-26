@@ -1,7 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javafx.geometry.Point2D;
 
@@ -152,14 +154,14 @@ public class Turtle implements Comparable<Object> {
         return myID;
     }
     
-    public List getStats()
+    public Map getStats()
     {
-    	List<Double> toReturn=new ArrayList<Double>(); 
-    	toReturn.add((double) myCurrPoint.getX());
-    	toReturn.add((double) myCurrPoint.getY());
-    	toReturn.add(isShowing);
-    	toReturn.add(myHeading);
-    	toReturn.add(myID);
+    	Map<String, Double> toReturn=new HashMap<String, Double>(); 
+    	toReturn.put("X-Coordinate", (double) myCurrPoint.getX());
+    	toReturn.put("Y-Coordinate", (double) myCurrPoint.getY());
+    	toReturn.put("Pen Status", isShowing);
+    	toReturn.put("Heading", myHeading);
+    	toReturn.put("ID", myID);
     	return toReturn;
     }
 }
