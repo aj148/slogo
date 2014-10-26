@@ -1,5 +1,7 @@
 package view.panes;
 
+import com.sun.corba.se.impl.orbutil.closure.Constant;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -34,9 +36,21 @@ public class PenPane {
         myColorPicker = makeColorPicker("Pen Color", event -> changePenColor());
         myPenStyles = makeMenu();
         myVbox.getChildren().addAll(new Separator(), new Label("PEN COMMANDS"), myPenToggle,
-                new HBox(myColorPicker,new Label("Pen Color")), new HBox(myPenStyles,new Label("Pen Style")),
-                new HBox(myPenWidth,new Label("Pen Width")));
-
+                new HBox(myColorPicker, new Label("Pen Color")),
+                new HBox(myPenStyles, new Label("Pen Style")),
+                new HBox(myPenWidth, new Label("Pen Width")));
+        myPenToggle.setSelected(true);
+        myPenToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            public void changed (ObservableValue<? extends Boolean> ov, Boolean old_val,
+                    Boolean new_val) {
+                if(new_val){
+                    myCommandString.setCommand("pendown", Constants.SETTING);
+                }
+                else{
+                    myCommandString.setCommand("penup", Constants.SETTING);
+                }
+            }
+        });
     }
 
     public VBox getPenPane () {
