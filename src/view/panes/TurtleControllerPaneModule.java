@@ -120,10 +120,9 @@ public class TurtleControllerPaneModule extends PaneModule {
         if (!myIDTextField.getText().equals("")) {
         	int id = Integer.parseInt(myIDTextField.getText());
             myTurtles.newTurtle(id);
-            String myImage = myImagePalette.getCurrentImage();
             myIDTextField.clear();
-            System.out.println(id);
             myCommandString.setCommand("Tell [ " + Integer.toString(id) + " ]",Constants.SETTING);
+            myCommandString.setCommand("SETSHAPE "+ myImagePalette.getCurrentImageID(), Constants.SETTING);
         }
     }
 

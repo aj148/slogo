@@ -1,6 +1,6 @@
 package view;
 
-import java.awt.Dimension;
+import java.awt.Dimension; 
 
 import view.controllers.PaneController;
 import view.controllers.WorkspaceTabsController;
