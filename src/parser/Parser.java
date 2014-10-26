@@ -25,8 +25,8 @@ public class Parser {
 
     public Parser (Map<String, String> commandMap, Map<String, String> regularExpressions) {
         commandStack = new Stack<String>();
-        myCommandMap = new HashMap<String, String>();
-        myRegularExpressions = new HashMap<String, String>();
+        myCommandMap = commandMap;
+        myRegularExpressions = regularExpressions;
     }
 
     /**
