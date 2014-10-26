@@ -15,7 +15,7 @@ public class TurtleSetManager {
         myStack.add(mySet);
     }
 
-    public void addTurtleSet (Set<Turtle> newSet) {
+    public void addTurtleCollection (Set<Turtle> newSet) {
         myStack.add(newSet);
     }
 
@@ -33,7 +33,7 @@ public class TurtleSetManager {
         return myStack.lastElement();
     }
 
-    public Set<Turtle> getFullSet () {
+    public Set<Turtle> getAllTurtles () {
         return mySet;
     }
 
