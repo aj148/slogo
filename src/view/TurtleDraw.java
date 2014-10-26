@@ -35,7 +35,6 @@ public class TurtleDraw {
         ImageView figure;
         int logoID = (int) t.getShape();
         Image myLogo = new Image(getClass().getResourceAsStream(myImagePalette.getImage(logoID)));
-        System.out.println(logoID);
         figure = new ImageView(myLogo);
         figure.setPreserveRatio(true);
         figure.setFitHeight(50);
