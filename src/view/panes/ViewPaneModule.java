@@ -44,8 +44,6 @@ public class ViewPaneModule extends PaneModule {
 		updateBGColor(RGB);
 		myPane.setPrefSize(Constants.VIEW_DEFAULT_DIMENSION, Constants.VIEW_DEFAULT_DIMENSION);
 		createGrid(defColor);
-		myPane.getChildren().add(myDraw.figure);
-		
 	}
 
 	public void updateView (Model m) {
@@ -92,16 +90,14 @@ public class ViewPaneModule extends PaneModule {
 	
 	
 	private void updateTurtle(Turtle t){
-		
-		myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
+		/*myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
 		myPane.getChildren().add(myDraw.path);
 		myDraw.setAngle(t.getHeading());
-		myDraw.moveTurtle(t.getNewLocation());
+		myDraw.moveTurtle(t.getNewLocation());*/
 	}
 	
 	private void updateBGColor(String RGB){
 		myPane.setStyle("-fx-background-color: rgb( " +  RGB + ");");
-		System.out.println("Changing Background Color to"+RGB);
 	}
 	
 	private String toRGB(Color c){
