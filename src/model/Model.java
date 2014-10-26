@@ -44,9 +44,13 @@ public class Model {
      */
     public void updateModel (Collection<Command> commandsToExecute) {
         for (Command command : commandsToExecute) {
-                command.executeCommand(this);
-            myView.updateView(this);
+        	command.executeCommand(this);
+        	notifyView();
         }
+    }
+    
+    public void notifyView(){
+    	myView.updateView(this);
     }
 
     public ViewPaneModule getView() {

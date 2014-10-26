@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -45,12 +46,16 @@ public class Controller {
      * @param input : User input string from the ViewPanel.
      */
     public void getInput (String input) {
-        List<Command> commandsToExecute = MasterController.myParser.parseInput(input);
-//        if(!commandsToExecute.isEmpty() && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")){
-//        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
-//            myPane.showError(error.showError());
-//        	return;
-//        }
+        Stack<Command> commands = MasterController.myParser.parseInput(input);
+        if(!commands.isEmpty() && commands.peek().getClassName().equals("commands.ErrorCommand")){
+        	ErrorCommand error = (ErrorCommand)commands.pop();
+            myPane.showError(error.showError());
+        	return;
+        }
+        List<Command> commandsToExecute = new ArrayList<Command>();
+        while(!commands.isEmpty()){
+        	commandsToExecute.add(commands.pop());
+        }
         runCommand(commandsToExecute);
     }
 
