@@ -9,30 +9,33 @@ import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
 public class Turtle implements Comparable<Object> {
-	
-    private static final double PI = Math.PI;
-    private double myID;
-    private double myShapeID;
-    private double myHeading;
-    private double isShowing;
-    private Pen myPen;
-    private List<Point2D> myTurtlePoints = new ArrayList<Point2D>();
-    private Point2D myFirstPoint;
-    private Point2D myCurrPoint; 
-    private Point2D myNextPoint;  
 
-    public Turtle (double ID) {
-    	myID = ID;
-        myFirstPoint = new Point2D(0, 0);
-        myTurtlePoints.add(myFirstPoint);
-        myCurrPoint = myTurtlePoints.get(myTurtlePoints.size()-1);
-        myHeading = 0;
-        isShowing = 1;
-        myPen = new Pen();
-    }
-    
-    @Override
+	private static final int MYHEADING_CONVERSION_CONSTANT = 90;
+	private static final double PI = Math.PI;
+	private static final double RADIANS_TO_DEGREES = 180.0 / PI;
+	private double myID;
+	private double myShapeID;
+	private double myHeading;
+	private double isShowing;
+	private Pen myPen;
+	private List<Point2D> myTurtlePoints = new ArrayList<Point2D>();
+	private Point2D myFirstPoint;
+	private Point2D myCurrPoint;
+	private Point2D myNextPoint;
+
+	public Turtle(double ID) {
+		myID = ID;
+		myFirstPoint = new Point2D(0, 0);
+		myTurtlePoints.add(myFirstPoint);
+		myCurrPoint = myTurtlePoints.get(myTurtlePoints.size() - 1);
+		myHeading = 0;
+		isShowing = 1;
+		myPen = new Pen();
+	}
+
+	@Override
 	public int compareTo(Object obj) {
+
     	if (obj == null || this.getClass() != obj.getClass()) {
             return 0;
         }
@@ -82,12 +85,20 @@ public class Turtle implements Comparable<Object> {
 
     public double towards (double x, double y) {
     	getmyCurr();
-        double deltaX = x - myCurrPoint.getX();
-        double deltaY = y - myCurrPoint.getY();
-        double oldHeading = toRadians(myHeading);
-        double newHeading = Math.atan(deltaX / deltaY);
-        myHeading = newHeading;
-        return oldHeading - toRadians(newHeading);
+		double oldHeading = myHeading;
+		if (x == y && x == 0) {
+			myHeading = 0;
+			return oldHeading;
+		} else {
+			double deltaX = x - myCurrPoint.getX();
+			double deltaY = y - myCurrPoint.getY();
+			double newHeading = Math.atan(deltaY / deltaX);
+			myHeading = -1.0 * newHeading * RADIANS_TO_DEGREES
+					+ MYHEADING_CONVERSION_CONSTANT;
+			if(deltaX<0 && deltaY<0) myHeading+=180.0;
+			if(deltaY>0&&deltaX<0) myHeading+=180.0;
+			return oldHeading - newHeading;
+		}
     }
 
     public double setXAndY (double x, double y) {
@@ -169,4 +180,4 @@ public class Turtle implements Comparable<Object> {
     	toReturn.put("ID", myID);
     	return toReturn;
     }
-}
+    }

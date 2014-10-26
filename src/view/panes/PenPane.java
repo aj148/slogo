@@ -52,7 +52,7 @@ public class PenPane {
     
     private void setPenWidth() {
         if (!myPenWidthTextField.getText().equals("")) {
-            myCommandString.setCommand("SETPENSIZE " + myPenWidthTextField.getText(), Constants.SETTING);
+            myCommandString.setCommand("setpensize " + myPenWidthTextField.getText(), Constants.SETTING);
             myPenWidthTextField.clear();
         }
     }
@@ -74,7 +74,7 @@ public class PenPane {
 
     public void setPenStyle (int i) {
         if (i < 4) {
-            myCommandString.setCommand("SETPENSIZE " + Integer.toString(i/10), Constants.SETTING);
+            myCommandString.setCommand("setpensize " + Integer.toString(i/10), Constants.SETTING);
             System.out.println("pensize = " + Integer.toString(i/10));
         } else {
             // myCommandString.setCommand("SETPENDASH " +

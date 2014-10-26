@@ -48,9 +48,9 @@ public class TurtleControllerPaneModule extends PaneModule {
      *            CommandString containing the String that represents the
      *            current command
      */
-    public TurtleControllerPaneModule (CommandString cs, ImagePalette ip) {
+    public TurtleControllerPaneModule (CommandString cs, ImagePalette ip, ViewPaneModule vp) {
         myCommandString = cs;
-        myTurtles = new TurtleSelectorPane(myCommandString);
+        myTurtles = new TurtleSelectorPane(myCommandString, vp);
         myImagePalette = ip;
         myMoveTextField.setPrefColumnCount(5);
         myAngleTextField.setPrefColumnCount(5);
