@@ -35,7 +35,7 @@ public class TurtleControllerPaneModule extends PaneModule {
     private TextField myAngleTextField = new TextField();
     private TextField myIDTextField = new TextField("0");
     private CommandString myCommandString;
-    private TurtleSelectorPane myTurtles = new TurtleSelectorPane();
+    private TurtleSelectorPane myTurtles;;
     private Set<Integer> myActiveTurtles = new HashSet<Integer>();
     private Map<Integer, String> myImages = new HashMap<Integer, String>();
     private ImagePalette myImagePalette;
@@ -50,6 +50,7 @@ public class TurtleControllerPaneModule extends PaneModule {
      */
     public TurtleControllerPaneModule (CommandString cs, ImagePalette ip) {
         myCommandString = cs;
+        myTurtles = new TurtleSelectorPane(myCommandString);
         myImagePalette = ip;
         myMoveTextField.setPrefColumnCount(5);
         myAngleTextField.setPrefColumnCount(5);
@@ -120,11 +121,12 @@ public class TurtleControllerPaneModule extends PaneModule {
 
     private void makeTurtle () {
         if (!myIDTextField.getText().equals("")) {
-        	int id = Integer.parseInt(myIDTextField.getText());
+            int id = Integer.parseInt(myIDTextField.getText());
             myTurtles.newTurtle(id);
             myIDTextField.clear();
-            myCommandString.setCommand("Tell [ " + Integer.toString(id) + " ]",Constants.SETTING);
-            myCommandString.setCommand("SETSHAPE "+ myImagePalette.getCurrentImageID(), Constants.SETTING);
+            myCommandString.setCommand("Tell [ " + Integer.toString(id) + " ]", Constants.SETTING);
+            myCommandString.setCommand("SETSHAPE " + myImagePalette.getCurrentImageID(),
+                    Constants.SETTING);
         }
     }
 

@@ -129,4 +129,8 @@ public class ViewPaneModule extends PaneModule {
 
     }
 
+    public Set<Turtle> getTurtles () {
+        return myActiveTurtles;
+    }
+
 }
