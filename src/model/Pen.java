@@ -22,16 +22,16 @@ public class Pen {
 	protected double getSize() {
 		return mySize;
 	}
-	
-	protected double getDash(){
+
+	protected double getDash() {
 		return myDash;
 	}
-	
+
 	protected double updateColor(double red, double green, double blue) {
-		int r = (int)(255*red);
-    	int g = (int)(255*green);
-    	int b = (int)(255*blue);
-    	myColor= Color.rgb(r,g,b);
+		int r = (int) (255 * red);
+		int g = (int) (255 * green);
+		int b = (int) (255 * blue);
+		myColor = Color.rgb(r, g, b);
 		return red + (1000 * green) + (1000000 * blue);
 	}
 
@@ -42,12 +42,10 @@ public class Pen {
 		return red + green + blue;
 	}
 
-	
 	protected Color getPenColor() {
 		return myColor;
 	}
-	
-	
+
 	protected double setPenStatus(double status) {
 		isPenDown = status;
 		return status;

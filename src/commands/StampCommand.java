@@ -6,7 +6,7 @@ import model.Turtle;
 public class StampCommand extends ZeroInputCommand {
 	
 	@Override
-	public double updateTurtle(Model model, Turtle a) {
-		
+	public double executeCommand(Model model) {
+		return model.setStamp(1.0);
 	}
 }
