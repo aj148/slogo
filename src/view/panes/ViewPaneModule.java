@@ -57,7 +57,7 @@ public class ViewPaneModule extends PaneModule {
     public void updateView (Model m) {
         myBackColor = m.getBackgroundColor();
         this.updateBGColor(this.toRGB(myBackColor));
-        myActiveTurtles = m.getTurtleManager().getFullSet();
+        myActiveTurtles = m.getTurtleManager().getAllTurtles();
         myActiveTurtles.forEach(turtle -> updateTurtle(turtle));
     }
 
