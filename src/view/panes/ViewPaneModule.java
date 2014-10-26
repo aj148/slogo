@@ -112,7 +112,7 @@ public class ViewPaneModule extends PaneModule {
 
     private void makeStamps () {
         for (Turtle t : myActiveTurtles) {
-            ImageView stamp = myDraw.drawTurtle(t, true);
+            ImageView stamp = myDraw.drawTurtle(t, false);
             myStamps.add(stamp);
             myDraw.showTurtle(myPane, stamp);
             myDraw.moveTurtle(stamp, t.getPrevLocation());
