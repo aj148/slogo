@@ -5,6 +5,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import view.CommandString;
+import view.Constants;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -16,12 +20,14 @@ public class TurtleSelectorPane {
     private Set<CheckBox> myBoxes = new HashSet<CheckBox>();
     private Map<CheckBox, Integer> myIDs = new HashMap<CheckBox, Integer>();
     private Set<Integer> myActiveTurtles = new HashSet<Integer>();
+    private CommandString myCommandString;
     private CheckBox myToggle = new CheckBox("Toggle Identification");
-    
+
     private ScrollPane myTurtleScroll = new ScrollPane();
     private VBox myVBox = new VBox();
 
-    public TurtleSelectorPane () {
+    public TurtleSelectorPane (CommandString cs) {
+        myCommandString = cs;
         myVBox.getChildren().addAll(new Label("TURTLE SELECTION"), myToggle);
         myTurtleScroll.setContent(myVBox);
         myTurtleScroll.setPrefWidth(50);
@@ -31,21 +37,37 @@ public class TurtleSelectorPane {
         if (!myTurtles.contains(id)) {
             myTurtles.add(id);
             CheckBox turt = new CheckBox("ID=" + id);
+            turt.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                public void changed (ObservableValue<? extends Boolean> ov, Boolean old_val,
+                        Boolean new_val) {
+                    getActiveTurtles();
+                }
+            });
             myBoxes.add(turt);
-            myIDs.put(turt, (Integer)id);
+            myIDs.put(turt, (Integer) id);
             myVBox.getChildren().add(turt);
         }
 
     }
 
-    public Set<Integer> getActiveTurtles () {
+    public void getActiveTurtles () {
         myActiveTurtles.clear();
         for (CheckBox cb : myBoxes) {
             if (cb.isSelected()) {
                 myActiveTurtles.add(myIDs.get(cb));
             }
+            toggleActiveTurtles();
         }
-        return myActiveTurtles;
+
+    }
+
+    public void toggleActiveTurtles () {
+        String s = "tell [ ";
+        for (Integer i : myActiveTurtles) {
+            s = s + i + " ";
+        }
+        s = s + "]";
+        myCommandString.setCommand(s, Constants.SETTING);
     }
 
     public ScrollPane getPane () {

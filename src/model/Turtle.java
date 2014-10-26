@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javafx.geometry.Point2D;
+import javafx.scene.paint.Color;
 
 public class Turtle implements Comparable<Object> {
 	
@@ -151,8 +152,8 @@ public class Turtle implements Comparable<Object> {
         return myShapeID;
     }
     
-    public double getPenColor () {
-        return myPen.getColor();
+    public Color getPenColor () {
+        return myPen.getPenColor();
     }
 
     public double getID () {
