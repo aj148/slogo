@@ -151,4 +151,11 @@ public class Turtle implements Comparable<Object> {
     public double getID () {
         return myID;
     }
+    
+    public List getStats()
+    {
+    	List<Double> toReturn=new ArrayList(); 
+    	toReturn.add(myID);
+    	return toReturn;
+    }
 }
