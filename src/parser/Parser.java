@@ -38,20 +38,24 @@ public class Parser {
     public Stack<Command> parseInput (String parseInput) {
         Stack<Command> parameterStack = new Stack<Command>();
         for (String input : parseInput.split(" ")) {
+            System.out.println(input);
             if (myCommandMap.containsKey(input)) {
                 commandStack.add(myCommandMap.get(input));
             }
             else if (Pattern.matches("-?[0-9]+\\.?[0-9]*", input)
-                    | Pattern.matches(":[a-zA-Z]+", input)) {
+                    | Pattern.matches(":[a-zA-Z]+", input) | input.equals("[") | input.equals("]")) {
                 commandStack.add(input);
             }
             else {
+                System.out.println("error");
                 String errorMessage = "[ "+ input+ ": Invalid Input] This input does not exist in our library of commands, contants, and variables";
                 return throwError(errorMessage);
             }
         }
         while (!commandStack.isEmpty()) {
             String commandName = commandStack.pop();
+//            System.out.println(commandName);
+            
             Command newCommand = getCommand(commandName, parameterStack);
             parameterStack.add(newCommand);
             if (newCommand.getClassName().equals("commands.ErrorCommand")) {
@@ -68,7 +72,7 @@ public class Parser {
         else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
             return new VariableCommand(commandName.substring(1));
         }
-        else if (commandName.equals("commands.ListEndCommand")) {
+        else if (commandName.equals("]")) {
             return makeListCommand(commandStack);
         }
         else {
@@ -105,7 +109,7 @@ public class Parser {
         boolean inListCommand = true;
         while (!commandStack.isEmpty() & inListCommand) {
             String commandName = commandStack.pop();
-            if (commandName.equals("commands.ListStartCommand")) {
+            if (commandName.equals("[")) {
                 inListCommand = false;
                 continue;
             }

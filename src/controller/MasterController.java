@@ -19,7 +19,7 @@ import parser.Parser;
  */
 public class MasterController {
 	
-	public static NeoParser myParser;
+	public static Parser myParser;
     public static Random myRandom = new Random();
     private final String resources = "resources.languages/";
 
@@ -43,7 +43,7 @@ public class MasterController {
             	}
             }
         }
-        myParser = new NeoParser(commandMap, regularExpressions);
+        myParser = new Parser(commandMap, regularExpressions);
     }
     
     private Set<String> constructSet() {
