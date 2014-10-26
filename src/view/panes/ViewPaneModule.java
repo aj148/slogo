@@ -50,6 +50,7 @@ public class ViewPaneModule extends PaneModule {
 
 	public void updateView (Model m) {
 	    myBackColor = m.getBackgroundColor();
+	    this.updateBGColor(this.toRGB(myBackColor));
 	    myActiveTurtles = m.getTurtleManager().getActiveTurtles();
 	    myActiveTurtles.forEach(turtle -> updateTurtle(turtle));
 	}
@@ -100,13 +101,15 @@ public class ViewPaneModule extends PaneModule {
 	
 	private void updateBGColor(String RGB){
 		myPane.setStyle("-fx-background-color: rgb( " +  RGB + ");");
+		//System.out.println("Changing Background Color to"+RGB);
 	}
 	
 	private String toRGB(Color c){
+	  
 		String R = Double.toString(255*c.getRed());
 		String G = Double.toString(255*c.getGreen());
 		String B = Double.toString(255*c.getBlue());
-		
+		System.out.println(c.getRed());
 		return R + "," + G + ","  + B;
 	}
 	

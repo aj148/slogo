@@ -13,7 +13,6 @@ public class TellCommand extends OneInputCommand {
 	
 	@Override
 	public double executeCommand(Model model){
-		System.out.println("Tell");
 		TurtleSetManager temp = model.getTurtleManager();
 		double toReturn = 0;
 		Set<Turtle> tellSet = new TreeSet<Turtle>();
@@ -37,7 +36,6 @@ public class TellCommand extends OneInputCommand {
 			}
 		}
 		temp.addTurtleSet(tellSet);
-		System.out.println(temp.getFullSet().size());
 		return toReturn;
 	}
 }
