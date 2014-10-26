@@ -122,9 +122,7 @@ public class ViewPaneModule extends PaneModule {
             myPane.getChildren().add(myDraw.path);
         }
 
-        myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
-        myDraw.path.setStroke(t.getPenColor());
-        myDraw.path.setStrokeWidth(t.getPenSize());
+      
         System.out.println(t.getPenSize());
         myPane.getChildren().add(myDraw.path);
         myDraw.setAngle(myIcons.get(id), t.getHeading());
