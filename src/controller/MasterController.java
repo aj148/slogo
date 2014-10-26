@@ -24,6 +24,7 @@ public class MasterController {
     private final String resources = "resources.languages/";
 
     public MasterController (String lang) {
+    	myParser = new Parser();
     	constructMasterController(lang);
     }
     
@@ -47,7 +48,7 @@ public class MasterController {
             	}
             }
         }
-        myParser = new Parser(commandMap, regularExpressions);
+        myParser.resetParser(commandMap, regularExpressions);
     }
     
     private Set<String> constructSet() {

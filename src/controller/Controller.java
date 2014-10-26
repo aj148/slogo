@@ -45,8 +45,7 @@ public class Controller {
      * @param input : User input string from the ViewPanel.
      */
     public void getInput (String input) {
-        MasterController master = new MasterController("English");
-        List<Command> commandsToExecute = master.myParser.parseInput(input);
+        List<Command> commandsToExecute = MasterController.myParser.parseInput(input);
 //        if(!commandsToExecute.isEmpty() && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")){
 //        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
 //            myPane.showError(error.showError());

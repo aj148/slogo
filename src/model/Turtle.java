@@ -9,7 +9,7 @@ public class Turtle implements Comparable<Object> {
 	
     private static final double PI = Math.PI;
     private double myID;
-     
+    private double myShapeID;
     private double myHeading;
     private double isShowing;
     private Pen myPen;
@@ -134,7 +134,16 @@ public class Turtle implements Comparable<Object> {
     public double getShowing () {
         return isShowing;
     }
+    
+    public double setShape(double shapeID) {
+        myShapeID = shapeID;
+        return shapeID;
+    }
 
+    public double getShape() {
+        return myShapeID;
+    }
+    
     public double getPenColor () {
         return myPen.getColor();
     }

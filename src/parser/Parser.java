@@ -18,16 +18,15 @@ import commands.VariableCommand;
  */
 public class Parser {
 
-    private Stack<String> commandStack;
+    private Stack<String> commandStack = new Stack<String>();
     private Map<String, String> myCommandMap;
     private Map<String, String> myRegularExpressions;
-
-    public Parser (Map<String, String> commandMap, Map<String, String> regularExpressions) {
-        commandStack = new Stack<String>();
-        myCommandMap = commandMap;
+    
+    public void resetParser(Map<String, String> commandMap, Map<String, String> regularExpressions) {
+    	myCommandMap = commandMap;
         myRegularExpressions = regularExpressions;
     }
-
+    
     /**
      * Parses a string input and constructs a collection of executable commands.
      * 
