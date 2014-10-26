@@ -39,8 +39,8 @@ public class PaneController implements Observer {
     private CommandString myCommand = new CommandString(this);
     private ViewPaneModule myView = new ViewPaneModule();
     private Controller myController = new Controller(myView, this);
-    private MasterController myMasterController;
-    private LanguageController myLanguageController = new LanguageController();
+    private MasterController myMasterController = new MasterController("English");;
+    private LanguageController myLanguageController = new LanguageController(myMasterController);
     private ImagePalette myImagePalette = new ImagePalette();
     // private WorkspacePropertiesController myProp;
 
@@ -48,7 +48,6 @@ public class PaneController implements Observer {
      * Constructor. Adds Panes to myPanes.
      */
     public PaneController (BorderPane bp, VBox v) {
-        myMasterController = new MasterController("English");
         myPanes.add(myView);
         myPanes.add(new ButtonPaneModule(myCommand, myLanguageController, myView, v));
         myPanes.add(new HistoryPaneModule(myCommand));
@@ -84,10 +83,7 @@ public class PaneController implements Observer {
         String s = myCommand.getCommand().toLowerCase();
         if ((myCommand.getType() != Constants.USER_DEFINE)
                 && (myCommand.getType() != Constants.ERROR)) {
-            String com = myLanguageController.translateCommand(s);
-            com = com.toLowerCase();
-            System.out.println(com);
-            myController.getInput(com);
+            myController.getInput(s);
         }
     }
 }
