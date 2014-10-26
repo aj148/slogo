@@ -12,6 +12,7 @@ public class AskCommand extends TwoInputCommand {
 		a.executeCommand(model);
 		double toReturn = myParameters[1].executeCommand(model);
 		model.getTurtleManager().regulateTurtleDepth(currentStackLength);
+		//same call on variables?
 		return toReturn;
 	}
 }

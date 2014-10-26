@@ -22,6 +22,7 @@ public class Model {
     private Set<Turtle> myFullSet;
     private TurtleSetManager myTurtleManager;
     private VariableManager myVariableManager;
+    private double isStamp;
 
     /**
      * Constructor method called from ViewPanel.java
@@ -34,6 +35,7 @@ public class Model {
         myTurtleManager = new TurtleSetManager(myFullSet);
         myVariableManager = new VariableManager();
         myBackground = Color.WHITE;
+        isStamp=0.0;
     }
 
     /**
@@ -76,4 +78,17 @@ public class Model {
     public Color getBackgroundColor () {
         return myBackground;
     }
+    
+    public double getStamp()
+    {
+    	return isStamp;
+    }
+    
+    public double setStamp(double stamp)
+    {
+    	isStamp=stamp;
+    	return stamp;
+    }
+    
+  
 }

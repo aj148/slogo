@@ -43,6 +43,7 @@ public class ViewPaneModule extends PaneModule {
     private boolean mySelectorCheck = false;
     private Set<Turtle> myActiveTurtles;
     private Model myModel;
+    private List<ImageView> myStamps = new ArrayList<ImageView>();
 
     /**
      * Constructor method called from UserInterface.java
@@ -105,20 +106,40 @@ public class ViewPaneModule extends PaneModule {
         int id = (int) t.getID();
         if (!myIcons.containsKey(id)) {
             myIcons.put(id, myDraw.drawTurtle(t, myActiveTurtles.contains(t) && mySelectorCheck));
-            myDraw.showTurtle(myPane, myIcons.get(id));
+            if (((int) t.getShowing()) == 1) {
+                myDraw.showTurtle(myPane, myIcons.get(id));
+            }
         } else {
             myDraw.hideTurtle(myPane, myIcons.get(id));
             myIcons.put(id, myDraw.drawTurtle(t, myActiveTurtles.contains(t) && mySelectorCheck));
-            myDraw.showTurtle(myPane, myIcons.get(id));
+            if (((int) t.getShowing()) == 1) {
+                myDraw.showTurtle(myPane, myIcons.get(id));
+            }
         }
+        if (((int) t.getPenStatus()) == 1) {
+            myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
+            myDraw.path.setStroke(t.getPenColor());
+            myPane.getChildren().add(myDraw.path);
+        }
+
         myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
         myDraw.path.setStroke(t.getPenColor());
+        myDraw.path.setStrokeWidth(t.getPenSize());
+        System.out.println(t.getPenSize());
         myPane.getChildren().add(myDraw.path);
         myDraw.setAngle(myIcons.get(id), t.getHeading());
         myDraw.moveTurtle(myIcons.get(id), t.getNewLocation());
+//        DisplayStats(Turtle t);
+
 
     }
 
+    
+    
+    private void DisplayStats(Turtle t){
+//    	t.get
+    }
+    
     private void updateBGColor (String RGB) {
         myPane.setStyle("-fx-background-color: rgb( " + RGB + ");");
     }
