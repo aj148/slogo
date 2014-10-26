@@ -27,7 +27,7 @@ public final class Constants {
     //Display Constants
     public static final double IMAGE_WIDTH = 40.0;
     public static final double IMAGE_HEIGHT = 45.0;
-	public static final Color DEFAULT_BGCOLOR = Color.RED;
+	public static final Color DEFAULT_BGCOLOR = Color.WHITE;
 	public static final Color DEFAULT_PCCOLOR = Color.BLACK;
 	
 }
