@@ -57,6 +57,13 @@ public class ViewPaneModule extends PaneModule {
         createGrid(defColor);
     }
 
+    /**
+     * Updates the view with the Model
+     * 
+     * @param m
+     *            Model containing the Turtles and current state of the
+     *            simulation
+     */
     public void updateView (Model m) {
         myModel = m;
         myBackColor = m.getBackgroundColor();
@@ -74,16 +81,21 @@ public class ViewPaneModule extends PaneModule {
         myTurtles.forEach(turtle -> updateTurtle(turtle));
     }
 
+    /**
+     * Adds the pane to the BorderPane
+     */
     @Override
     public BorderPane addPane (BorderPane p) {
         p.setCenter(myPane);
         return p;
     }
 
-    public void showError (String displayMessage) {
-        System.out.println(displayMessage);
-    }
-
+    /**
+     * Creates a Grid
+     * 
+     * @param c
+     *            Color of the grid
+     */
     private void createGrid (Color c) {
         int loc = 0;
         int cellSize = 10;
@@ -101,6 +113,9 @@ public class ViewPaneModule extends PaneModule {
         }
     }
 
+    /**
+     * Toggles the visibility of the Grid
+     */
     public void changeGridVisibility () {
         for (Line l : myGrid) {
             l.setVisible(!gridVisible);
@@ -109,6 +124,9 @@ public class ViewPaneModule extends PaneModule {
         gridVisible = !gridVisible;
     }
 
+    /**
+     * Makes a stamp of all currently active turtles
+     */
     private void makeStamps () {
         for (Turtle t : myActiveTurtles) {
             ImageView stamp = myDraw.drawTurtle(t, false);
@@ -119,6 +137,9 @@ public class ViewPaneModule extends PaneModule {
         }
     }
 
+    /**
+     * Clears all stamps
+     */
     private void eraseStamps () {
         for (ImageView s : myStamps) {
             myDraw.hideTurtle(myPane, s);
@@ -126,6 +147,12 @@ public class ViewPaneModule extends PaneModule {
         myStamps.clear();
     }
 
+    /**
+     * Updates the drawing state of a turtle
+     * 
+     * @param t
+     *            Turtle to have it's state drawn to the frontend
+     */
     private void updateTurtle (Turtle t) {
         int id = (int) t.getID();
         // wrapping(t);
@@ -147,6 +174,12 @@ public class ViewPaneModule extends PaneModule {
         myDraw.moveTurtle(myIcons.get(id), t.getNewLocation());
     }
 
+    /**
+     * Attempt at wrapping the View. Doesn't fully work
+     * 
+     * @param t
+     *            Turtle that needs to be wrapped
+     */
     private void wrapping (Turtle t) {
         if (Math.abs(t.getNewLocation().getX()) > Constants.VIEW_DEFAULT_DIMENSION / 2
                 || Math.abs(t.getNewLocation().getY()) > Constants.VIEW_DEFAULT_DIMENSION / 2) {
@@ -169,10 +202,23 @@ public class ViewPaneModule extends PaneModule {
         // t.get
     }
 
+    /**
+     * Updates the background color of the View
+     * 
+     * @param RGB
+     *            String representing the RBG value to set the background to
+     */
     private void updateBGColor (String RGB) {
         myPane.setStyle("-fx-background-color: rgb( " + RGB + ");");
     }
 
+    /**
+     * Takes a color and turns into a RBG String
+     * 
+     * @param c
+     *            Color
+     * @return RGB String representing the Color
+     */
     private String toRGB (Color c) {
         double r = 255 * c.getRed();
         double g = 255 * c.getGreen();
@@ -184,10 +230,19 @@ public class ViewPaneModule extends PaneModule {
 
     }
 
+    /**
+     * Gets the set of Turtles
+     * 
+     * @return Set of Turtles
+     */
     public Set<Turtle> getTurtles () {
         return myTurtles;
     }
 
+    /**
+     * Toggles that active turtles should have a graphical identifier.
+     * @param b Boolean representing whether turtles need a graphical identifier
+     */
     public void toggleActive (boolean b) {
         mySelectorCheck = b;
         updateView(myModel);

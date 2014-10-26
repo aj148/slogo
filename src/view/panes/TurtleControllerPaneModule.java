@@ -22,6 +22,12 @@ import view.CommandString;
 import view.Constants;
 import view.controllers.ImagePalette;
 
+/**
+ * Allows the GUI control over turtles
+ * 
+ * @author Team 14
+ *
+ */
 public class TurtleControllerPaneModule extends PaneModule {
     private VBox myVbox = new VBox();
     private TextField myMoveTextField = new TextField();
@@ -66,12 +72,26 @@ public class TurtleControllerPaneModule extends PaneModule {
         myIDTextField.clear();
     }
 
+    /**
+     * Makes a new ImageSelector System
+     * 
+     * @return HBox containing image selector items
+     */
     private HBox imageSelectorMaker () {
         Button chooseFileButton = makeButton("Add Image", event -> doChoose());
         myImageBar.getChildren().addAll(myImagePalette.getBox(), chooseFileButton);
         return myImageBar;
     }
 
+    /**
+     * Button Factory
+     * 
+     * @param property
+     *            String label for button
+     * @param handler
+     *            EventHandler for the button
+     * @return Completed Button
+     */
     private Button makeButton (String property, EventHandler<ActionEvent> handler) {
         Button result = new Button();
         String label = property;
@@ -80,6 +100,10 @@ public class TurtleControllerPaneModule extends PaneModule {
         return result;
     }
 
+    /**
+     * Defines the behavior for when a File Chooser is used to select a new
+     * image to be added to the Image Palette
+     */
     private void doChoose () {
         new Label();
         FileChooser fileChooser = new FileChooser();
@@ -94,6 +118,9 @@ public class TurtleControllerPaneModule extends PaneModule {
         myImagePalette.addImage(filePath, fileName);
     }
 
+    /**
+     * Moves the turtle using the GUI
+     */
     private void move () {
         if (!myMoveTextField.getText().equals("")) {
             myCommandString.setCommand("Forward " + myMoveTextField.getText(), Constants.SETTING);
@@ -101,6 +128,9 @@ public class TurtleControllerPaneModule extends PaneModule {
         }
     }
 
+    /**
+     * Sets the Orientation of the turtle using the GUI
+     */
     private void angle () {
         if (!myAngleTextField.getText().equals("")) {
             myCommandString.setCommand("Right " + myAngleTextField.getText(), Constants.SETTING);
@@ -108,12 +138,19 @@ public class TurtleControllerPaneModule extends PaneModule {
         }
     }
 
+    /**
+     * Adds the pane to the BorderPane
+     */
     @Override
     public BorderPane addPane (BorderPane p) {
         p.setLeft(myVbox);
         return p;
     }
 
+    /**
+     * Makes a new turtle with a user defined ID number and turtle image using
+     * the GUI
+     */
     private void makeTurtle () {
         if (!myIDTextField.getText().equals("")) {
             int id = Integer.parseInt(myIDTextField.getText());
@@ -126,11 +163,23 @@ public class TurtleControllerPaneModule extends PaneModule {
         }
     }
 
+    /**
+     * Works with the MoveHandler to move a turtle using the WASD keys
+     * 
+     * @param orientation
+     *            Int representing the direction of movement
+     */
     private void move (int orientation) {
         myCommandString.setCommand("setheading " + orientation, 0);
         myCommandString.setCommand("forward 5", 0);
     }
 
+    /**
+     * Event Handler that allows for movement of the turtle using the WASD keys
+     * 
+     * @author Team 14
+     *
+     */
     private class MoveHandler implements EventHandler<KeyEvent> {
         int orientation = 0;
 

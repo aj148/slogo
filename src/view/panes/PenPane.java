@@ -18,12 +18,19 @@ import javafx.scene.paint.Color;
 import view.CommandString;
 import view.Constants;
 
+/**
+ * Allows properties of the Pen for a turtle to be configured graphically
+ * through the user interface.
+ * 
+ * @author Team 14
+ *
+ */
 public class PenPane {
     private VBox myVbox = new VBox();
     private CommandString myCommandString;
     private CheckBox myPenToggle = new CheckBox("Toggle PenUp");
     private ColorPicker myColorPicker;
-    private ChoiceBox myPenStyles = new ChoiceBox();
+    private ChoiceBox<String> myPenStyles = new ChoiceBox<String>();
     private TextField myPenWidthTextField = new TextField("double from 0 to 1");
     private TextField myPenDashTextField = new TextField("double from 0 to 1");
     private final static String[] PENSTYLE = new String[] { "Thin", "Thick", "Thicker", "Thickest",
@@ -57,10 +64,18 @@ public class PenPane {
 
     }
 
+    /**
+     * Returns the VBox containing the PenPane
+     * 
+     * @return VBox containing the PenPane
+     */
     public VBox getPenPane () {
         return myVbox;
     }
 
+    /**
+     * Sets the width of the Pen
+     */
     private void setPenWidth () {
         if (!myPenWidthTextField.getText().equals("")) {
             myCommandString.setCommand("setpensize " + myPenWidthTextField.getText(),
@@ -69,6 +84,15 @@ public class PenPane {
         }
     }
 
+    /**
+     * Button Factory
+     * 
+     * @param property
+     *            String label for button
+     * @param handler
+     *            EventHandler for the button
+     * @return Completed Button
+     */
     private Button makeButton (String property, EventHandler<ActionEvent> handler) {
         Button result = new Button();
         String label = property;
@@ -77,6 +101,9 @@ public class PenPane {
         return result;
     }
 
+    /**
+     * Sets the Dash Style of the Pen
+     */
     private void setPenDash () {
         if (!myPenDashTextField.getText().equals("")) {
             myCommandString.setCommand("setpendash " + myPenDashTextField.getText(),
@@ -86,11 +113,20 @@ public class PenPane {
         }
     }
 
+    /**
+     * Sets the toggle correctly when a new turtle is made
+     */
     public void newTurtle () {
         myPenToggle.setSelected(false);
         myPenToggle.setSelected(true);
     }
 
+    /**
+     * Sets the style of the pen
+     * 
+     * @param i
+     *            int representing the style of the pen
+     */
     public void setPenStyle (int i) {
         if (i < 4) {
             myCommandString.setCommand("setpensize " + Integer.toString(i / 10), Constants.SETTING);
@@ -103,6 +139,15 @@ public class PenPane {
 
     }
 
+    /**
+     * ColorPicker Factory
+     * 
+     * @param property
+     *            String label for ColorPicker
+     * @param handler
+     *            EventHandler for ColorPicker
+     * @return Completed ColorPicker
+     */
     private ColorPicker makeColorPicker (String property, EventHandler<ActionEvent> handler) {
         ColorPicker result = new ColorPicker();
         result.setOnAction(handler);
@@ -111,20 +156,28 @@ public class PenPane {
         return result;
     }
 
+    /**
+     * Makes the menu for the types of Pen Styles
+     * 
+     * @return ChoiceBox containing the types of Pen Styles
+     */
     public ChoiceBox makeMenu () {
         ChoiceBox penStyles = new ChoiceBox(FXCollections.observableArrayList("Thin", "Thick",
                 "Thicker", "Dashed", "Dotted"));
         penStyles.getSelectionModel().selectedIndexProperty()
-        .addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed (ObservableValue ov, Number value, Number new_value) {
-                setPenStyle(new_value.intValue());
-                System.out.println("pen = " + new_value.intValue());
-            }
-        });
+                .addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed (ObservableValue ov, Number value, Number new_value) {
+                        setPenStyle(new_value.intValue());
+                        System.out.println("pen = " + new_value.intValue());
+                    }
+                });
         return penStyles;
     }
 
+    /**
+     * Changes the color of the pen using a color picker
+     */
     public void changePenColor () {
         Color c = myColorPicker.getValue();
         String cur = "SETPENCOLOR " + c.getRed() + " " + c.getGreen() + " " + c.getBlue();

@@ -4,6 +4,12 @@ import java.awt.Dimension;
 
 import javafx.scene.paint.Color;
 
+/**
+ * Constants
+ * 
+ * @author Team 14
+ *
+ */
 public final class Constants {
     // Dimension Constants
     public static final Dimension DEFAULT_DIMENSIONS = new Dimension(1200, 900);

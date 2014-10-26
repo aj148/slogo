@@ -18,8 +18,12 @@ import view.CommandString;
 import view.Constants;
 import view.controllers.LanguageController;
 
-//import view.controllers.WorkspaceTabsController;
-
+/**
+ * Pane containing the ToolBar of Buttons allowing for function setting
+ * 
+ * @author Team 14
+ *
+ */
 public class ButtonPaneModule extends PaneModule {
     private final ToolBar myToolBar = new ToolBar();
     private HBox myHbox = new HBox();
@@ -37,6 +41,9 @@ public class ButtonPaneModule extends PaneModule {
         createPropertiesMenu();
     }
 
+    /**
+     * Creates the Toolbar of Buttons that allow for Properties adjustment
+     */
     public void createPropertiesMenu () {
         myColorPicker = makeColorPicker("Background Color", event -> backgroundColor());
         Button toggleReferenceGrid = makeButton("Toggle Grid", event -> toggleGrid());
@@ -46,6 +53,9 @@ public class ButtonPaneModule extends PaneModule {
         myToolBar.getItems().add(myHbox);
     }
 
+    /**
+     * Adds the pane to the BorderPane
+     */
     @Override
     public BorderPane addPane (BorderPane p) {
         if (myVBox.getChildren().size() == 1) {
@@ -59,6 +69,15 @@ public class ButtonPaneModule extends PaneModule {
 
     }
 
+    /**
+     * Button Factory
+     * 
+     * @param property
+     *            String label for button
+     * @param handler
+     *            EventHandler for the button
+     * @return Completed Button
+     */
     private Button makeButton (String property, EventHandler<ActionEvent> handler) {
         Button result = new Button();
         String label = property;
@@ -67,6 +86,15 @@ public class ButtonPaneModule extends PaneModule {
         return result;
     }
 
+    /**
+     * ColorPicker Factory
+     * 
+     * @param property
+     *            String label for ColorPicker
+     * @param handler
+     *            EventHandler for ColorPicker
+     * @return Completed ColorPicker
+     */
     private ColorPicker makeColorPicker (String property, EventHandler<ActionEvent> handler) {
         ColorPicker result = new ColorPicker();
         result.setOnAction(handler);
@@ -75,6 +103,9 @@ public class ButtonPaneModule extends PaneModule {
         return result;
     }
 
+    /**
+     * Sets the background color using a colorpicker
+     */
     public void backgroundColor () {
         Color c = myColorPicker.getValue();
         myCommandString.setCommand(
@@ -83,10 +114,16 @@ public class ButtonPaneModule extends PaneModule {
 
     }
 
+    /**
+     * Toggles the visibility of the Grid
+     */
     public void toggleGrid () {
         myView.changeGridVisibility();
     }
 
+    /**
+     * Allows for the opening of a help page in an Internet Browser
+     */
     public void help () {
         String url = Constants.HELP_URL;
         try {

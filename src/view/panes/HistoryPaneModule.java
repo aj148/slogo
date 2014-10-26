@@ -38,10 +38,16 @@ public class HistoryPaneModule extends PaneModule implements Observer {
         mySavedScroll.setPrefWidth(200);
         myRoot.getChildren().addAll(new Label("Command History"), myHistoryScroll,
                 new Label("User-Defined Commands"), mySavedScroll,
-                new VariablesPane().getVariables()); // Move Variables Pane
-                                                     // Declaration Elsewhere
+                new VariablesPane().getVariables());
     }
 
+    /**
+     * Adds a new Item. Can either be a history command, error message, or user
+     * defined saved command
+     * 
+     * @param s
+     *            String representing command
+     */
     public void addItem (String s) {
         if (myCommandString.getType() == Constants.COMMAND
                 || myCommandString.getType() == Constants.USER_DEFINE) {
@@ -65,12 +71,18 @@ public class HistoryPaneModule extends PaneModule implements Observer {
         }
     }
 
+    /**
+     * Adds pane to BorderPane
+     */
     @Override
     public BorderPane addPane (BorderPane p) {
         p.setRight(myRoot);
         return p;
     }
 
+    /**
+     * Observable to update History when a Command is entered
+     */
     @Override
     public void update (java.util.Observable o, Object arg) {
         addItem(myCommandString.getCommand());

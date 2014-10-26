@@ -14,6 +14,12 @@ import javafx.scene.layout.VBox;
 import view.CommandString;
 import view.Constants;
 
+/**
+ * Allows for graphical toggling of active turtles
+ * 
+ * @author Team 14
+ *
+ */
 public class TurtleSelectorPane {
     private Set<Integer> myTurtles = new HashSet<Integer>();
     private Set<CheckBox> myBoxes = new HashSet<CheckBox>();
@@ -40,6 +46,12 @@ public class TurtleSelectorPane {
         myTurtleScroll.setPrefWidth(50);
     }
 
+    /**
+     * Makes a new Turtle toggle for a new turtle made by the GUI
+     * 
+     * @param id
+     *            ID of the new Turtle
+     */
     public void newTurtle (int id) {
         if (!myTurtles.contains(id)) {
             myTurtles.add(id);
@@ -63,6 +75,9 @@ public class TurtleSelectorPane {
 
     }
 
+    /**
+     * Gets all turtles set to be active by the user
+     */
     public void getActiveTurtles () {
         myActiveTurtles.clear();
         for (CheckBox cb : myBoxes) {
@@ -74,6 +89,9 @@ public class TurtleSelectorPane {
 
     }
 
+    /**
+     * Sets the active turtles to be active for command input
+     */
     public void toggleActiveTurtles () {
         String s = "tell [ ";
         for (Integer i : myActiveTurtles) {
@@ -83,6 +101,11 @@ public class TurtleSelectorPane {
         myCommandString.setCommand(s, Constants.SETTING);
     }
 
+    /**
+     * Gets the Pane
+     * 
+     * @return ScrollPane containing the TurtleSelector
+     */
     public ScrollPane getPane () {
         return myTurtleScroll;
     }

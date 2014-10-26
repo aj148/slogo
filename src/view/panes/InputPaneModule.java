@@ -57,6 +57,10 @@ public class InputPaneModule extends PaneModule {
         }
     }
 
+    /**
+     * Saves the current command as a user defined command for future use by
+     * update the CommandString with the String contained by the TextField.
+     */
     private void save () {
         if (!myTextField.getText().equals("")) {
             myCommandString.setCommand(myTextField.getText(), Constants.USER_DEFINE);
@@ -65,6 +69,9 @@ public class InputPaneModule extends PaneModule {
 
     }
 
+    /**
+     * Adds the pane to the BorderPane
+     */
     @Override
     public BorderPane addPane (BorderPane p) {
         p.setBottom(myHBox);

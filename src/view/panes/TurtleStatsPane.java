@@ -13,6 +13,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import view.CommandString;
 
+/**
+ * Shows the Variables of a turtle
+ * @author Team 14
+ *
+ */
 public class TurtleStatsPane {
     private VBox myVbox = new VBox();
     private Map<String,Double> map = new HashMap<String,Double>();
