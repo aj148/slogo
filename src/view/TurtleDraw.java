@@ -11,6 +11,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 /**
@@ -24,6 +25,7 @@ public class TurtleDraw {
     public Line path;
     public File image;;
     private ImagePalette myImagePalette;
+    public Color lineColor;
 
     public TurtleDraw (ImagePalette ip) {
         myImagePalette = ip;
@@ -46,6 +48,7 @@ public class TurtleDraw {
 
     /**
      * Draws a line between two points onto the GraphicsContext from a canvas.
+     * @param color 
      *
      * @param gc
      *            GraphicsContext from Canvas to be drawn to
@@ -59,7 +62,9 @@ public class TurtleDraw {
      *            New Y Pixel Coordinate
      */
     public void drawLine (Point2D cur, Point2D next) {
-        path = new Line(cur.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2), cur.getY()
+        
+     
+    	path = new Line(cur.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2), cur.getY()
                 + (Constants.VIEW_DEFAULT_DIMENSION / 2), next.getX()
                 + (Constants.VIEW_DEFAULT_DIMENSION / 2), next.getY()
                 + (Constants.VIEW_DEFAULT_DIMENSION / 2));

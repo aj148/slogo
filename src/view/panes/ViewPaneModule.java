@@ -106,10 +106,9 @@ public class ViewPaneModule extends PaneModule {
             myIcons.put(id, myDraw.drawTurtle(t));
             myDraw.showTurtle(myPane, myIcons.get(id));
         }
-
         myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
+        myDraw.path.setStroke(t.getPenColor());
         myPane.getChildren().add(myDraw.path);
-
         myDraw.setAngle(myIcons.get(id), t.getHeading());
         myDraw.moveTurtle(myIcons.get(id), t.getNewLocation());
 
