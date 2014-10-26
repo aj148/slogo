@@ -29,7 +29,7 @@ public abstract class Command {
         return myParameters[index];
     }
     
-    public double executeCommand (Model model) {
+    public double executeCommand(Model model) {
     	double last = 0;
     	for(Turtle a : model.getTurtleManager().getActiveTurtles()){
     		last = updateTurtle(model, a);
