@@ -64,6 +64,14 @@ public class ViewPaneModule extends PaneModule {
         this.updateBGColor(this.toRGB(myBackColor));
         myActiveTurtles = m.getTurtleManager().getActiveTurtles();
         myTurtles = m.getTurtleManager().getAllTurtles();
+        if ((int) m.getStamp() == 1) {
+            makeStamps();
+            m.setStamp(0.0);
+        }
+        if ((int) m.getStamp() == -1) {
+            eraseStamps();
+            m.setStamp(0.0);
+        }
         myTurtles.forEach(turtle -> updateTurtle(turtle));
     }
 
@@ -102,6 +110,23 @@ public class ViewPaneModule extends PaneModule {
         gridVisible = !gridVisible;
     }
 
+    private void makeStamps () {
+        for (Turtle t : myActiveTurtles) {
+            ImageView stamp = myDraw.drawTurtle(t, true);
+            myStamps.add(stamp);
+            myDraw.showTurtle(myPane, stamp);
+            myDraw.moveTurtle(stamp, t.getPrevLocation());
+            myDraw.setAngle(stamp, t.getHeading());
+        }
+    }
+
+    private void eraseStamps () {
+        for (ImageView s : myStamps) {
+            myDraw.hideTurtle(myPane, s);
+        }
+        myStamps.clear();
+    }
+
     private void updateTurtle (Turtle t) {
         int id = (int) t.getID();
         if (!myIcons.containsKey(id)) {
@@ -129,17 +154,14 @@ public class ViewPaneModule extends PaneModule {
         myPane.getChildren().add(myDraw.path);
         myDraw.setAngle(myIcons.get(id), t.getHeading());
         myDraw.moveTurtle(myIcons.get(id), t.getNewLocation());
-//        DisplayStats(Turtle t);
-
+        // DisplayStats(Turtle t);
 
     }
 
-    
-    
-    private void DisplayStats(Turtle t){
-//    	t.get
+    private void DisplayStats (Turtle t) {
+        // t.get
     }
-    
+
     private void updateBGColor (String RGB) {
         myPane.setStyle("-fx-background-color: rgb( " + RGB + ");");
     }
