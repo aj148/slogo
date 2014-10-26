@@ -48,13 +48,13 @@ public class Controller {
      *            : User input string from the ViewPanel.
      */
     public void getInput (String input) {
-        List<Command> commandsToExecute = MasterController.myParser.parseInput(input);
-      /*  if (!commandsToExecute.isEmpty()
-                && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")) {
-            ErrorCommand error = (ErrorCommand) commandsToExecute.pop();
+
+        Stack<Command> commandsToExecute = MasterController.myParser.parseInput(input);
+        if(!commandsToExecute.isEmpty() && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")){
+        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
             myPane.showError(error.showError());
-            return;
-        }*/
+        	return;
+        }
         runCommand(commandsToExecute);
     }
 
