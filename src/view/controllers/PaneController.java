@@ -86,6 +86,7 @@ public class PaneController implements Observer {
                 && (myCommand.getType() != Constants.ERROR)) {
             String com = myLanguageController.translateCommand(s);
             com = com.toLowerCase();
+            System.out.println(com);
             myController.getInput(com);
         }
     }

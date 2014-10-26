@@ -86,6 +86,7 @@ public class NeoParser {
 		Class<?> cl;
 		Command command;
 		try {
+		    System.out.println(input);
 			cl = Class.forName(myCommandMap.get(input));
 		}
 		catch (ClassNotFoundException e) {
