@@ -7,7 +7,6 @@ import javafx.stage.Stage;
  * Main Method for the SLogo Project
  *
  * @author Team 14
- *
  */
 public class Main extends Application {
     @Override
