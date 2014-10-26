@@ -7,7 +7,6 @@ import javafx.stage.Stage;
  * Main Method for the SLogo Project
  *
  * @author Team 14
- *
  */
 public class Main extends Application {
     @Override
@@ -18,8 +17,7 @@ public class Main extends Application {
     /**
      * Main method to launch the application.
      *
-     * @param args
-     *            : Standard arguments
+     * @param args : Standard arguments
      */
     public static void main (String[] args) {
         launch(args);

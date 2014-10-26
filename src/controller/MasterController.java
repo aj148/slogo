@@ -24,6 +24,10 @@ public class MasterController {
     private final String resources = "resources.languages/";
 
     public MasterController (String lang) {
+    	constructMasterController(lang);
+    }
+    
+    public void constructMasterController(String lang){
         Map<String, String> commandMap = new HashMap<String, String>();
         Map<String, String> regularExpressions = new HashMap<String, String>();
         ResourceBundle language = ResourceBundle.getBundle(resources + lang);

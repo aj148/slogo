@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 import view.CommandString;
 import view.Constants;
 import view.controllers.LanguageController;
-import view.controllers.WorkspaceTabsController;
+//import view.controllers.WorkspaceTabsController;
 
 public class ButtonPaneModule extends PaneModule {
     private final ToolBar myToolBar = new ToolBar();

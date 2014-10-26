@@ -10,6 +10,7 @@ import commands.CommentCommand;
 import commands.ConstantCommand;
 import commands.ListCommand;
 import commands.VariableCommand;
+import controller.MasterController;
 
 /**
  * This class is used to convert a string to a collection of commands to

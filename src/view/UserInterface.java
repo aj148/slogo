@@ -1,6 +1,6 @@
 package view;
 
-import java.awt.Dimension;
+import java.awt.Dimension; 
 
 import view.controllers.PaneController;
 import view.controllers.WorkspaceTabsController;
@@ -41,6 +41,5 @@ public class UserInterface {
         Scene scene = new Scene(root, Constants.DEFAULT_DIMENSIONS.width, Constants.DEFAULT_DIMENSIONS.height);
         s.setScene(scene);
         s.show();
-
     }
 }

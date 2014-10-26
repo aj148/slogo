@@ -37,7 +37,7 @@ public class TurtleDraw {
 		figure.setFitWidth(50);
 		figure.setX(Constants.VIEW_DEFAULT_DIMENSION / 2 - (Constants.IMAGE_WIDTH / 2) );
 		figure.setY(Constants.VIEW_DEFAULT_DIMENSION / 2 - (Constants.IMAGE_HEIGHT / 2) );
-		
+		figure.toFront();
 
 	}
     
@@ -87,7 +87,8 @@ public class TurtleDraw {
      */
 	public void moveTurtle (Point2D next) {
         figure.setX(next.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2) - (Constants.IMAGE_WIDTH /2));
-        figure.setY(next.getY() + (Constants.VIEW_DEFAULT_DIMENSION / 2) - (Constants.IMAGE_HEIGHT/2));                                     
+        figure.setY(next.getY() + (Constants.VIEW_DEFAULT_DIMENSION / 2) - (Constants.IMAGE_HEIGHT/2)); 
+        figure.toFront();
     }
 	
 	/**
