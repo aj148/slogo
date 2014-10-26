@@ -154,9 +154,13 @@ public class Turtle implements Comparable<Object> {
         return myPen.getSize();
     }
     
+    public double getPenDash () {
+    	return myPen.getDash();
+    }
     public double getShowing () {
         return isShowing;
     }
+    
     
     public double setShape(double shapeID) {
         myShapeID = shapeID;

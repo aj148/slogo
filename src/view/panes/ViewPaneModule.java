@@ -139,6 +139,7 @@ public class ViewPaneModule extends PaneModule {
         }
         if (((int) t.getPenStatus()) == 1) {
             myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
+            myDraw.path.setStrokeDashOffset(t.getPenDash());
             myDraw.path.setStroke(t.getPenColor());
             myPane.getChildren().add(myDraw.path);
         }
