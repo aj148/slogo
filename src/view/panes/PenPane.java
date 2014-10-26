@@ -39,7 +39,7 @@ public class PenPane {
                 new HBox(myColorPicker, new Label("Pen Color")),
                 new HBox(myPenStyles, new Label("Pen Style")),
                 new HBox(myPenWidth, new Label("Pen Width")));
-        myPenToggle.setSelected(true);
+     
         myPenToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
             public void changed (ObservableValue<? extends Boolean> ov, Boolean old_val,
                     Boolean new_val) {
@@ -57,6 +57,10 @@ public class PenPane {
         return myVbox;
     }
 
+    public void newTurtle(){
+        myPenToggle.setSelected(false);
+        myPenToggle.setSelected(true);
+    }
     public void setPenStyle (int i) {
         if (i < 4) {
             myCommandString.setCommand("SETPENSIZE " + Integer.toString(i), Constants.SETTING);
