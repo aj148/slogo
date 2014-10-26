@@ -42,7 +42,7 @@ public class PaneController implements Observer {
     private MasterController myMasterController;
     private LanguageController myLanguageController = new LanguageController();
     private ImagePalette myImagePalette = new ImagePalette();
-    private WorkspacePropertiesController myProp;
+    // private WorkspacePropertiesController myProp;
 
     /**
      * Constructor. Adds Panes to myPanes.
@@ -89,5 +89,4 @@ public class PaneController implements Observer {
             myController.getInput(com);
         }
     }
-
 }

@@ -10,6 +10,7 @@ import commands.CommentCommand;
 import commands.ConstantCommand;
 import commands.ListCommand;
 import commands.VariableCommand;
+import controller.MasterController;
 
 /**
  * This class is used to convert a string to a collection of commands to
@@ -104,5 +105,12 @@ public class NeoParser {
 			return null;
 		}
 		return command;
+	}
+	
+	public static void main(String[] args){
+		MasterController mc = new MasterController("English");
+		List<Command> test = mc.myParser.parseInput("back 50");
+		System.out.println(test.size());
+		System.out.println(test.get(0).getClassName());
 	}
 }
