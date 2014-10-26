@@ -27,16 +27,16 @@ public class PenPane {
     private CheckBox myPenToggle = new CheckBox("Toggle PenUp");
     private ColorPicker myColorPicker;
     private ChoiceBox myPenStyles = new ChoiceBox();
-    private TextField myPenWidthTextField = new TextField("Insert double from 0 to 1");
-    private TextField myPenDashTextField = new TextField("Insert double from 0 to 1");
+    private TextField myPenWidthTextField = new TextField("double from 0 to 1");
+    private TextField myPenDashTextField = new TextField("double from 0 to 1");
     private final static String[] PENSTYLE = new String[] { "Thin", "Thick", "Thicker",
             "Thickest", "Dashed", "Dotted" };
     
 
     public PenPane (CommandString cs) {
         myCommandString = cs;
-        myPenWidthTextField.setPrefColumnCount(10);
-        myPenDashTextField.setPrefColumnCount(10);
+        myPenWidthTextField.setPrefColumnCount(8);
+        myPenDashTextField.setPrefColumnCount(8);
         myColorPicker = makeColorPicker("Pen Color", event -> changePenColor());
         myPenStyles = makeMenu();
         Button penWidthButton = makeButton("Pen Size", event -> setPenWidth());
@@ -82,7 +82,8 @@ public class PenPane {
     
     private void setPenDash() {
         if (!myPenDashTextField.getText().equals("")) {
-            myCommandString.setCommand("SETPENDASH " + myPenDashTextField.getText(), Constants.SETTING);
+            myCommandString.setCommand("setpendash " + myPenDashTextField.getText(), Constants.SETTING);
+           
             myPenDashTextField.clear();
         }
     }

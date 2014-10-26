@@ -21,6 +21,7 @@ public class Pen {
 
 	protected double updateDash(double newDash) {
 		myDash = newDash;
+		
 		return newDash;
 	}
 	
