@@ -7,6 +7,6 @@ public class PenUpCommand extends ZeroInputCommand {
 	
 	@Override
     public double updateTurtle(Model model, Turtle a) {
-        return a.changePen(1.0);
+        return a.changePen(0.0);
     }
 }
