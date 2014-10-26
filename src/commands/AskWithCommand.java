@@ -13,16 +13,16 @@ public class AskWithCommand extends TwoInputCommand {
     	Set<Turtle> allTurtles = model.getTurtleManager().getAllTurtles();
     	ListCommand turtleList = new ListCommand();
     	for(Turtle turtle : allTurtles){
-    		ConstantCommand[] turtleID = {new ConstantCommand(turtle.getID())};
     		if(myParameters[0].executeCommand(model) != 0){
     			turtleList.addParameter(new ConstantCommand(turtle.getID()));
     			System.out.println(turtle.getID());
     		}
     	}
     	ListCommand[] metConditions = {turtleList};
-    	AskWithCommand stuff=new AskWithCommand();
-    	Command[] st= { turtleList, myParameters[1] };
-    	double toReturn = stuff.executeCommand(model);
+    	TellCommand a = new TellCommand();
+    	a.setParameters(metConditions);
+    	a.executeCommand(model);
+		double toReturn = myParameters[1].executeCommand(model);
 		model.getTurtleManager().regulateTurtleDepth(currentStackLength);
 		return toReturn;
     }

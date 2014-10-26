@@ -19,7 +19,7 @@ public class TellCommand extends OneInputCommand {
 		List<Turtle> fullList = new ArrayList<Turtle>(temp.getAllTurtles());
 		List<Command> turtlesToAdd = ((ListCommand) myParameters[0]).getList();
 		boolean exists = false;
-		for(Command a: turtlesToAdd) {
+		for(Command a : turtlesToAdd) {
 			exists = false;
 			toReturn = a.executeCommand(model);
 			for(Turtle b: fullList) {
@@ -30,7 +30,7 @@ public class TellCommand extends OneInputCommand {
 				}
 			}
 			if(!exists) {
-				Turtle cur=new Turtle(toReturn);
+				Turtle cur = new Turtle(toReturn);
 				temp.getAllTurtles().add(cur);
 				tellSet.add(cur);
 			}
