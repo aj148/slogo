@@ -86,6 +86,8 @@ public class NeoParser {
 		Class<?> cl;
 		Command command;
 		try {
+			System.out.println(input);
+			System.out.println(myCommandMap.get(input));
 			cl = Class.forName(myCommandMap.get(input));
 		}
 		catch (ClassNotFoundException e) {
@@ -105,12 +107,5 @@ public class NeoParser {
 			return null;
 		}
 		return command;
-	}
-	
-	public static void main(String[] args){
-		MasterController mc = new MasterController("English");
-		List<Command> test = mc.myParser.parseInput("back 50");
-		System.out.println(test.size());
-		System.out.println(test.get(0).getClassName());
 	}
 }
