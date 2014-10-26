@@ -44,7 +44,7 @@ public class Model {
      */
     public void updateModel (Collection<Command> commandsToExecute) {
         for (Command command : commandsToExecute) {
-            command.executeCommand(this);
+                command.executeCommand(this);
             myView.updateView(this);
         }
     }

@@ -29,7 +29,7 @@ public class ImagePalette {
     private ObservableList<String> myObservable = FXCollections.observableList(myChoices);
     private ChoiceBox myChoiceImages = new ChoiceBox<String>(myObservable);
     private String currentImage = TURTLE;
-
+    private int currentImageID = 0;
     // private ComboBox myChoices = new ComboBox();
 
     public ImagePalette () {
@@ -46,6 +46,7 @@ public class ImagePalette {
                 .addListener(new ChangeListener<Number>() {
                     public void changed (ObservableValue ov, Number value, Number new_value) {
                         currentImage = myImages.get(new_value.intValue());
+                        currentImageID = new_value.intValue();
                     }
                 });
 
@@ -64,6 +65,9 @@ public class ImagePalette {
         return currentImage;
     }
 
+    public int getCurrentImageID(){
+        return currentImageID;
+    }
     public ChoiceBox<String> getBox () {
         return myChoiceImages;
     }
