@@ -1,6 +1,5 @@
 package parser;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 import java.util.regex.Pattern;

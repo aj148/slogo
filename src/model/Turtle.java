@@ -98,11 +98,6 @@ public class Turtle implements Comparable<Object> {
         getmyCurr();
         return root;
     }
-
-    
-    
-    
-    
     
     public double changePen (double pen) {
         if (pen == 1.0 || pen == 0.0) {
@@ -123,12 +118,12 @@ public class Turtle implements Comparable<Object> {
     }
 
     public Point2D getNewLocation () {
-        return myTurtlePoints.get(myTurtlePoints.size()-1);
+        return myTurtlePoints.get(myTurtlePoints.size() - 1);
     }
     
     public Point2D getPrevLocation () {
-    	if(myTurtlePoints.size()>2)
-    		return myTurtlePoints.get(myTurtlePoints.size()-2);
+    	if(myTurtlePoints.size() > 2)
+    		return myTurtlePoints.get(myTurtlePoints.size() - 2);
     	return myFirstPoint;
     }
 

@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import java.util.Map;
 import java.util.Set;
 
+import parser.NeoParser;
 import parser.Parser;
 
 /**
@@ -18,7 +19,7 @@ import parser.Parser;
  */
 public class MasterController {
 	
-	public static Parser myParser;
+	public static NeoParser myParser;
     public static Random myRandom = new Random();
     private final String resources = "resources.languages/";
 
@@ -42,7 +43,7 @@ public class MasterController {
             	}
             }
         }
-        myParser = new Parser(commandMap, regularExpressions);
+        myParser = new NeoParser(commandMap, regularExpressions);
     }
     
     private Set<String> constructSet() {

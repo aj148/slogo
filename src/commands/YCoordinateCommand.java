@@ -6,6 +6,6 @@ public class YCoordinateCommand extends ZeroInputCommand {
     
     @Override
     public double executeCommand(Model model) {
-		return getFirstTurtle(model).getLocation().getY();
+		return getFirstTurtle(model).getNewLocation().getY();
 	}
 }
