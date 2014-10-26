@@ -19,6 +19,12 @@ public class Pen {
 		return newSize;
 	}
 
+	protected double updateDash(double newDash) {
+		myDash = newDash;
+		return newDash;
+	}
+	
+	
 	protected double getSize() {
 		return mySize;
 	}

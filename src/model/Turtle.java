@@ -62,6 +62,11 @@ public class Turtle implements Comparable<Object> {
         myPen.updateSize(size);
         return size;
     }
+    
+    public double setPenDash (double dash) {
+        myPen.updateDash(dash);
+        return dash;
+    }
 
     private double toRadians (double degrees) {
         return degrees * PI / 180.0;
