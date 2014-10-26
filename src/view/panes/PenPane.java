@@ -1,7 +1,5 @@
 package view.panes;
 
-import com.sun.corba.se.impl.orbutil.closure.Constant;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -19,7 +17,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import view.CommandString;
 import view.Constants;
-import model.Pen;
 
 public class PenPane {
     private VBox myVbox = new VBox();
@@ -29,9 +26,8 @@ public class PenPane {
     private ChoiceBox myPenStyles = new ChoiceBox();
     private TextField myPenWidthTextField = new TextField("double from 0 to 1");
     private TextField myPenDashTextField = new TextField("double from 0 to 1");
-    private final static String[] PENSTYLE = new String[] { "Thin", "Thick", "Thicker",
-            "Thickest", "Dashed", "Dotted" };
-    
+    private final static String[] PENSTYLE = new String[] { "Thin", "Thick", "Thicker", "Thickest",
+            "Dashed", "Dotted" };
 
     public PenPane (CommandString cs) {
         myCommandString = cs;
@@ -43,17 +39,17 @@ public class PenPane {
         Button penDashButton = makeButton("Pen Dash", event -> setPenDash());
         myVbox.getChildren().addAll(new Separator(), new Label("PEN COMMANDS"), myPenToggle,
 
-                new HBox(myColorPicker, new Label("Pen Color")),
+        new HBox(myColorPicker, new Label("Pen Color")),
                 new HBox(myPenWidthTextField, penWidthButton),
                 new HBox(myPenDashTextField, penDashButton));
-     
+
         myPenToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
             public void changed (ObservableValue<? extends Boolean> ov, Boolean old_val,
                     Boolean new_val) {
-                if(new_val){
+                if (new_val) {
                     myCommandString.setCommand("pendown", Constants.SETTING);
-                }
-                else{
+                } else {
                     myCommandString.setCommand("penup", Constants.SETTING);
                 }
             }
@@ -64,14 +60,15 @@ public class PenPane {
     public VBox getPenPane () {
         return myVbox;
     }
-    
-    private void setPenWidth() {
+
+    private void setPenWidth () {
         if (!myPenWidthTextField.getText().equals("")) {
-            myCommandString.setCommand("setpensize " + myPenWidthTextField.getText(), Constants.SETTING);
+            myCommandString.setCommand("setpensize " + myPenWidthTextField.getText(),
+                    Constants.SETTING);
             myPenWidthTextField.clear();
         }
     }
-    
+
     private Button makeButton (String property, EventHandler<ActionEvent> handler) {
         Button result = new Button();
         String label = property;
@@ -79,23 +76,25 @@ public class PenPane {
         result.setOnAction(handler);
         return result;
     }
-    
-    private void setPenDash() {
+
+    private void setPenDash () {
         if (!myPenDashTextField.getText().equals("")) {
-            myCommandString.setCommand("setpendash " + myPenDashTextField.getText(), Constants.SETTING);
-           
+            myCommandString.setCommand("setpendash " + myPenDashTextField.getText(),
+                    Constants.SETTING);
+
             myPenDashTextField.clear();
         }
     }
 
-    public void newTurtle(){
+    public void newTurtle () {
         myPenToggle.setSelected(false);
         myPenToggle.setSelected(true);
     }
+
     public void setPenStyle (int i) {
         if (i < 4) {
-            myCommandString.setCommand("setpensize " + Integer.toString(i/10), Constants.SETTING);
-            System.out.println("pensize = " + Integer.toString(i/10));
+            myCommandString.setCommand("setpensize " + Integer.toString(i / 10), Constants.SETTING);
+            System.out.println("pensize = " + Integer.toString(i / 10));
         } else {
             // myCommandString.setCommand("SETPENDASH " +
             // Integer.toString(i),Constants.SETTING);
@@ -116,12 +115,13 @@ public class PenPane {
         ChoiceBox penStyles = new ChoiceBox(FXCollections.observableArrayList("Thin", "Thick",
                 "Thicker", "Dashed", "Dotted"));
         penStyles.getSelectionModel().selectedIndexProperty()
-                .addListener(new ChangeListener<Number>() {
-                    public void changed (ObservableValue ov, Number value, Number new_value) {
-                        setPenStyle(new_value.intValue());
-                        System.out.println("pen = " + new_value.intValue());
-                    }
-                });
+        .addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed (ObservableValue ov, Number value, Number new_value) {
+                setPenStyle(new_value.intValue());
+                System.out.println("pen = " + new_value.intValue());
+            }
+        });
         return penStyles;
     }
 

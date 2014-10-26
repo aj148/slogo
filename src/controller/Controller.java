@@ -1,12 +1,12 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 import model.Model;
 import view.controllers.PaneController;
 import view.panes.ViewPaneModule;
+
 import commands.Command;
 import commands.ErrorCommand;
 
@@ -50,10 +50,11 @@ public class Controller {
      */
     public void getInput (String input) {
         Stack<Command> commandsToExecute = MasterController.myParser.parseInput(input);
-        if(!commandsToExecute.isEmpty() && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")){
-        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
+        if (!commandsToExecute.isEmpty()
+                && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")) {
+            ErrorCommand error = (ErrorCommand) commandsToExecute.pop();
             myPane.showError(error.showError());
-        	return;
+            return;
         }
         runCommand(commandsToExecute);
     }

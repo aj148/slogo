@@ -5,15 +5,14 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import view.CommandString;
-import view.Constants;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
-import model.Turtle;
+import view.CommandString;
+import view.Constants;
 
 public class TurtleSelectorPane {
     private Set<Integer> myTurtles = new HashSet<Integer>();
@@ -31,6 +30,7 @@ public class TurtleSelectorPane {
         myViewPane = vp;
         myVBox.getChildren().addAll(new Label("TURTLE SELECTION"), myToggle);
         myToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
             public void changed (ObservableValue<? extends Boolean> ov, Boolean old_val,
                     Boolean new_val) {
                 myViewPane.toggleActive(new_val);
@@ -45,18 +45,19 @@ public class TurtleSelectorPane {
             myTurtles.add(id);
             CheckBox turt = new CheckBox("ID=" + id);
             turt.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
                 public void changed (ObservableValue<? extends Boolean> ov, Boolean old_val,
                         Boolean new_val) {
                     getActiveTurtles();
                 }
             });
-            for(CheckBox cb:myBoxes){
+            for (CheckBox cb : myBoxes) {
                 cb.setSelected(false);
             }
-            
+
             turt.setSelected(true);
             myBoxes.add(turt);
-            myIDs.put(turt, (Integer) id);
+            myIDs.put(turt, id);
             myVBox.getChildren().add(turt);
         }
 

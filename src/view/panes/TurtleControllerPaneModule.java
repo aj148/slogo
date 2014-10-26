@@ -9,22 +9,15 @@ import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
-import javafx.stage.Popup;
-import javafx.stage.PopupWindow;
-import javafx.stage.Stage;
 import view.CommandString;
 import view.Constants;
 import view.controllers.ImagePalette;
@@ -40,7 +33,7 @@ public class TurtleControllerPaneModule extends PaneModule {
     private Map<Integer, String> myImages = new HashMap<Integer, String>();
     private ImagePalette myImagePalette;
     private HBox myImageBar = new HBox();
-    private PenPane myPenPane; 
+    private PenPane myPenPane;
 
     /**
      * Initializes the parameters of the InputPane.
@@ -88,7 +81,7 @@ public class TurtleControllerPaneModule extends PaneModule {
     }
 
     private void doChoose () {
-        final Label labelFile = new Label();
+        new Label();
         FileChooser fileChooser = new FileChooser();
         // Set extension filter
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(

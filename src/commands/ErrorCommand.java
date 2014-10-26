@@ -3,15 +3,15 @@ package commands;
 import model.Model;
 
 public class ErrorCommand extends ZeroInputCommand {
-    
+
     private String myError;
-    
-    public ErrorCommand(String error){
+
+    public ErrorCommand (String error) {
         myError = error;
     }
-    
+
     @Override
-    public double executeCommand(Model model){
+    public double executeCommand (Model model) {
         return 0;
     }
 

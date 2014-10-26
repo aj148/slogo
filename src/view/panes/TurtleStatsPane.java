@@ -14,19 +14,19 @@ import javafx.scene.layout.VBox;
 import view.CommandString;
 
 public class TurtleStatsPane {
-	 private VBox myVbox = new VBox();
-	 private Map<String,Double> map = new HashMap<String,Double>();
+    private VBox myVbox = new VBox();
+    private Map<String,Double> map = new HashMap<String,Double>();
 
-	    public TurtleStatsPane () {
-	    	map = turtle.getStats();
-	    	map.forEach()
-	        myVbox.getChildren().addAll();
+    public TurtleStatsPane () {
+        map = turtle.getStats();
+        map.forEach()
+        myVbox.getChildren().addAll();
 
-	    }
-	    
-	    public VBox getTurtleStatsPane(){
-	    	return myVBox;
-	    }
-	    
-	    public Label LabelMaker
+    }
+
+    public VBox getTurtleStatsPane(){
+        return myVBox;
+    }
+
+    public Label LabelMaker
 }

@@ -1,8 +1,8 @@
 package commands;
 
 public abstract class ZeroInputCommand extends Command {
-	
-	public ZeroInputCommand() {
-		super(0);
-	}
+
+    public ZeroInputCommand () {
+        super(0);
+    }
 }

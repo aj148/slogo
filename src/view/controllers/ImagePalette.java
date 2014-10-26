@@ -1,6 +1,5 @@
 package view.controllers;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,15 +9,14 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.layout.HBox;
-import javafx.stage.FileChooser;
 
+/**
+ * Contains a Palette of images that can be used to set turtle images
+ * 
+ * @author Team 14
+ *
+ */
 public class ImagePalette {
     private static final String TURTLE = "/resources/images/LogoTurtle2.png";
     private static final String TRIANGLE = "/resources/images/Triangle.png";
@@ -27,10 +25,13 @@ public class ImagePalette {
     private Map<Integer, String> myImages = new HashMap<Integer, String>();
     private List<String> myChoices = new ArrayList<String>();
     private ObservableList<String> myObservable = FXCollections.observableList(myChoices);
-    private ChoiceBox myChoiceImages = new ChoiceBox<String>(myObservable);
-    private String currentImage = TURTLE;
-    private int currentImageID = 0;
+    private ChoiceBox<String> myChoiceImages = new ChoiceBox<String>(myObservable);
+    private String myCurrentImage = TURTLE;
+    private int myCurrentImageID;
 
+    /**
+     * Default Constructor. Populates with default image options.
+     */
     public ImagePalette () {
         myImages.put(0, TURTLE);
         myImages.put(1, TRIANGLE);
@@ -43,30 +44,62 @@ public class ImagePalette {
         myChoiceImages.setMaxWidth(100);
         myChoiceImages.getSelectionModel().selectedIndexProperty()
                 .addListener(new ChangeListener<Number>() {
+                    @Override
                     public void changed (ObservableValue ov, Number value, Number new_value) {
-                        currentImage = myImages.get(new_value.intValue());
-                        currentImageID = new_value.intValue();
+                        myCurrentImage = myImages.get(new_value.intValue());
+                        myCurrentImageID = new_value.intValue();
                     }
                 });
 
     }
 
+    /**
+     * Adds an image to the palette
+     * 
+     * @param s
+     *            String containing the file path to image
+     * @param f
+     *            String containing the name of the new image
+     */
     public void addImage (String s, String f) {
         myImages.put(myImages.size(), s);
         myObservable.add(f);
     }
 
+    /**
+     * Gets an image file path from the palette
+     * 
+     * @param i
+     *            int representing ID of image
+     * @return String containing file path to image
+     */
     public String getImage (int i) {
         return myImages.get(i);
     }
 
+    /**
+     * Getter for the current image set
+     * 
+     * @return String containing file path to image
+     */
     public String getCurrentImage () {
-        return currentImage;
+        return myCurrentImage;
     }
 
-    public int getCurrentImageID(){
-        return currentImageID;
+    /**
+     * Getter for the current image ID
+     * 
+     * @return ID representing current image ID
+     */
+    public int getCurrentImageID () {
+        return myCurrentImageID;
     }
+
+    /**
+     * Getter to get the ChoiceBox with the Image options
+     * 
+     * @return ChoiceBox with the Image options
+     */
     public ChoiceBox<String> getBox () {
         return myChoiceImages;
     }

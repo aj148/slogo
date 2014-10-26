@@ -1,31 +1,23 @@
 package view.panes;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Properties;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import view.CommandString;
 import view.Constants;
 import view.controllers.LanguageController;
+
 //import view.controllers.WorkspaceTabsController;
 
 public class ButtonPaneModule extends PaneModule {
@@ -88,7 +80,7 @@ public class ButtonPaneModule extends PaneModule {
         myCommandString.setCommand(
                 "SETBACKGROUND " + c.getRed() + " " + c.getGreen() + " " + c.getBlue(),
                 Constants.SETTING);
-        
+
     }
 
     public void toggleGrid () {

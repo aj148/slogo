@@ -1,8 +1,8 @@
 package commands;
 
 public abstract class ThreeInputCommand extends Command {
-	
-	public ThreeInputCommand(){
-		super(3);
-	}
+
+    public ThreeInputCommand () {
+        super(3);
+    }
 }

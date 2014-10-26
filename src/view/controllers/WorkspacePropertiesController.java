@@ -12,9 +12,16 @@ import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+/**
+ * Allows the saving and loading of the properties within a workspace. Not fully
+ * implemented and not used.
+ * 
+ * @author Team 14
+ *
+ */
 public class WorkspacePropertiesController {
     public WorkspacePropertiesController () {
-        Button save = makeButton("Save Workspace", event -> saveWorkspace());
+        makeButton("Save Workspace", event -> saveWorkspace());
     }
 
     private Button makeButton (String property, EventHandler<ActionEvent> handler) {

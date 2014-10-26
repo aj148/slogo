@@ -1,12 +1,9 @@
 package view;
 
-import java.awt.Dimension; 
-
-import view.controllers.PaneController;
-import view.controllers.WorkspaceTabsController;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import view.controllers.WorkspaceTabsController;
 
 /**
  * Provides the main User Interface presented to the User. Implements various
@@ -37,10 +34,11 @@ public class UserInterface {
     public void initiate (Stage s) {
         s.setTitle("SLogo");
         s.setResizable(false);
-        
+
         BorderPane root = new BorderPane();
-        WorkspaceTabsController workspace = new WorkspaceTabsController(root);
-        Scene scene = new Scene(root, Constants.DEFAULT_DIMENSIONS.width, Constants.DEFAULT_DIMENSIONS.height);
+        new WorkspaceTabsController(root);
+        Scene scene = new Scene(root, Constants.DEFAULT_DIMENSIONS.width,
+                Constants.DEFAULT_DIMENSIONS.height);
         s.setScene(scene);
         s.show();
     }

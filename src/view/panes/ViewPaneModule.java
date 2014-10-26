@@ -6,17 +6,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import view.TurtleDraw;
-import model.Model;
-import model.Turtle;
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import model.Model;
+import model.Turtle;
 import view.Constants;
+import view.TurtleDraw;
 import view.controllers.ImagePalette;
 
 /**
@@ -61,7 +60,7 @@ public class ViewPaneModule extends PaneModule {
     public void updateView (Model m) {
         myModel = m;
         myBackColor = m.getBackgroundColor();
-        this.updateBGColor(this.toRGB(myBackColor));
+        updateBGColor(toRGB(myBackColor));
         myActiveTurtles = m.getTurtleManager().getActiveTurtles();
         myTurtles = m.getTurtleManager().getAllTurtles();
         if ((int) m.getStamp() == 1) {
@@ -129,6 +128,7 @@ public class ViewPaneModule extends PaneModule {
 
     private void updateTurtle (Turtle t) {
         int id = (int) t.getID();
+        // wrapping(t);
         if (!myIcons.containsKey(id)) {
             myIcons.put(id, myDraw.drawTurtle(t, myActiveTurtles.contains(t) && mySelectorCheck));
             myDraw.showTurtle(myPane, myIcons.get(id));
@@ -139,12 +139,30 @@ public class ViewPaneModule extends PaneModule {
         }
         if (((int) t.getPenStatus()) == 1) {
             myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
-            myDraw.path.setStrokeDashOffset(t.getPenDash());
-            myDraw.path.setStroke(t.getPenColor());
-            myPane.getChildren().add(myDraw.path);
+            myDraw.myPath.setStrokeDashOffset(t.getPenDash());
+            myDraw.myPath.setStroke(t.getPenColor());
+            myPane.getChildren().add(myDraw.myPath);
         }
         myDraw.setAngle(myIcons.get(id), t.getHeading());
         myDraw.moveTurtle(myIcons.get(id), t.getNewLocation());
+    }
+
+    private void wrapping (Turtle t) {
+        if (Math.abs(t.getNewLocation().getX()) > Constants.VIEW_DEFAULT_DIMENSION / 2
+                || Math.abs(t.getNewLocation().getY()) > Constants.VIEW_DEFAULT_DIMENSION / 2) {
+            double x = t.getNewLocation().getX();
+            double y = t.getNewLocation().getY();
+            if ((Math.abs(t.getNewLocation().getX()) > Constants.VIEW_DEFAULT_DIMENSION / 2)) {
+                x = Constants.VIEW_DEFAULT_DIMENSION / 2;
+            }
+            if ((Math.abs(t.getNewLocation().getY()) > Constants.VIEW_DEFAULT_DIMENSION / 2)) {
+                y = Constants.VIEW_DEFAULT_DIMENSION / 2;
+            }
+            double cur = t.getPenStatus();
+            t.setPenStatus(0.0);
+            t.setXAndY(x, y);
+            t.setPenStatus(cur);
+        }
     }
 
     private void DisplayStats (Turtle t) {

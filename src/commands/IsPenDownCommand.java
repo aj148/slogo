@@ -6,6 +6,6 @@ public class IsPenDownCommand extends ZeroInputCommand {
 
     @Override
     public double executeCommand (Model model) {
-		return getFirstTurtle(model).getPenStatus();
+        return getFirstTurtle(model).getPenStatus();
     }
 }

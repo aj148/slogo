@@ -6,9 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import view.CommandString;
 import view.Constants;
 import view.panes.ButtonPaneModule;
@@ -43,8 +41,6 @@ public class PaneController implements Observer {
     private MasterController myMasterController = new MasterController("English");;
     private LanguageController myLanguageController = new LanguageController(myMasterController);
 
-    // private WorkspacePropertiesController myProp;
-
     /**
      * Constructor. Adds Panes to myPanes.
      */
@@ -71,6 +67,12 @@ public class PaneController implements Observer {
         }
     }
 
+    /**
+     * Shows an error from the backend
+     * 
+     * @param s
+     *            String representing an error
+     */
     public void showError (String s) {
         myCommand.setCommand(s, Constants.ERROR);
     }

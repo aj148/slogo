@@ -37,7 +37,9 @@ public class HistoryPaneModule extends PaneModule implements Observer {
         mySavedScroll.setContent(mySavedDisplay);
         mySavedScroll.setPrefWidth(200);
         myRoot.getChildren().addAll(new Label("Command History"), myHistoryScroll,
-                new Label("User-Defined Commands"), mySavedScroll, new VariablesPane().getVariables()); //Move Variables Pane Declaration Elsewhere
+                new Label("User-Defined Commands"), mySavedScroll,
+                new VariablesPane().getVariables()); // Move Variables Pane
+                                                     // Declaration Elsewhere
     }
 
     public void addItem (String s) {

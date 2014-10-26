@@ -5,8 +5,9 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import javafx.scene.paint.Color;
-import commands.Command;
 import view.panes.ViewPaneModule;
+
+import commands.Command;
 
 /**
  * Class that contains the basic information of what needs to be displayed in
@@ -16,7 +17,7 @@ import view.panes.ViewPaneModule;
  * @author Team 14
  */
 public class Model {
-	
+
     private ViewPaneModule myView;
     private Color myBackground;
     private Set<Turtle> myFullSet;
@@ -27,7 +28,8 @@ public class Model {
     /**
      * Constructor method called from ViewPanel.java
      *
-     * @param view : The ViewPanel that called this constructor.
+     * @param view
+     *            : The ViewPanel that called this constructor.
      */
     public Model (ViewPaneModule view) {
         myFullSet = new TreeSet<Turtle>();
@@ -35,7 +37,7 @@ public class Model {
         myTurtleManager = new TurtleSetManager(myFullSet);
         myVariableManager = new VariableManager();
         myBackground = Color.WHITE;
-        isStamp=0.0;
+        isStamp = 0.0;
     }
 
     /**
@@ -46,49 +48,46 @@ public class Model {
      */
     public void updateModel (Collection<Command> commandsToExecute) {
         for (Command command : commandsToExecute) {
-        	command.executeCommand(this);
-        	notifyView();
+            command.executeCommand(this);
+            notifyView();
         }
     }
-    
-    public void notifyView(){
-    	myView.updateView(this);
+
+    public void notifyView () {
+        myView.updateView(this);
     }
 
-    public ViewPaneModule getView() {
+    public ViewPaneModule getView () {
         return myView;
     }
 
-    public TurtleSetManager getTurtleManager() {
+    public TurtleSetManager getTurtleManager () {
         return myTurtleManager;
     }
-    
-    public VariableManager getVariableManager(){
-    	return myVariableManager;
+
+    public VariableManager getVariableManager () {
+        return myVariableManager;
     }
 
     public double setBackgroundColor (double red, double green, double blue) {
-    	int r = (int)(255*red);
-    	int g = (int)(255*green);
-    	int b = (int)(255*blue);
-    	myBackground = Color.rgb(r,g,b);
-    	return red + (1000 * green) + (1000000 * blue);
+        int r = (int) (255 * red);
+        int g = (int) (255 * green);
+        int b = (int) (255 * blue);
+        myBackground = Color.rgb(r, g, b);
+        return red + (1000 * green) + (1000000 * blue);
     }
 
     public Color getBackgroundColor () {
         return myBackground;
     }
-    
-    public double getStamp()
-    {
-    	return isStamp;
+
+    public double getStamp () {
+        return isStamp;
     }
-    
-    public double setStamp(double stamp)
-    {
-    	isStamp=stamp;
-    	return stamp;
+
+    public double setStamp (double stamp) {
+        isStamp = stamp;
+        return stamp;
     }
-    
-  
+
 }

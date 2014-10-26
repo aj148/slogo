@@ -36,6 +36,8 @@ public class CommandString extends Observable {
      *
      * @param s
      *            String representing the current command
+     * @param t
+     *            int representing the type of command
      */
     public void setCommand (String s, int t) {
         myCommand = s;
@@ -53,6 +55,11 @@ public class CommandString extends Observable {
         return myCommand;
     }
 
+    /**
+     * Getter to get the type of command contained within the CommandString
+     * 
+     * @return int representing the type of command
+     */
     public int getType () {
         return myType;
     }

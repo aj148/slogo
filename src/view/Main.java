@@ -9,16 +9,17 @@ import javafx.stage.Stage;
  * @author Team 14
  */
 public class Main extends Application {
-	
+
     @Override
     public void start (Stage stage) {
         new UserInterface(stage);
     }
-    
+
     /**
      * Main method to launch the application.
      *
-     * @param args : Standard arguments
+     * @param args
+     *            : Standard arguments
      */
     public static void main (String[] args) {
         launch(args);

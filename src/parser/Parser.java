@@ -25,21 +25,21 @@ public class Parser {
     private Map<String, String> myRegularExpressions;
     private Map<String, CustomCommand> myUserInputCommands;
     private static String EMPTY_SPACE = "";
-    
-    public void resetParser(Map<String, String> commandMap, Map<String, String> regularExpressions) {
-    	myCommandMap = commandMap;
+
+    public void resetParser (Map<String, String> commandMap, Map<String, String> regularExpressions) {
+        myCommandMap = commandMap;
         myRegularExpressions = regularExpressions;
         myUserInputCommands = new HashMap<String, CustomCommand>();
     }
-    
-    public void addUserInputCommand(String name, CustomCommand command){
-    	myUserInputCommands.put(name, command);
-    	System.out.println("I am a genius.");
+
+    public void addUserInputCommand (String name, CustomCommand command) {
+        myUserInputCommands.put(name, command);
+        System.out.println("I am a genius.");
     }
-    
+
     /**
      * Parses a string input and constructs a collection of executable commands.
-     * 
+     *
      * @param input
      *            : String to parse.
      * @return Collection of commands to execute.
@@ -48,19 +48,18 @@ public class Parser {
         Stack<Command> parameterStack = new Stack<Command>();
         Stack<Command> commandsToExecute = new Stack<Command>();
         for (String input : parseInput.split(" ")) {
-            if (input.equals(EMPTY_SPACE)){
+            if (input.equals(EMPTY_SPACE)) {
                 continue;
-            }
-            else if (myCommandMap.containsKey(input)) {
+            } else if (myCommandMap.containsKey(input)) {
                 commandStack.add(myCommandMap.get(input));
-            }
-            else if (Pattern.matches("-?[0-9]+\\.?[0-9]*", input)
+            } else if (Pattern.matches("-?[0-9]+\\.?[0-9]*", input)
                     | Pattern.matches(":[a-zA-Z]+", input) | input.equals("[") | input.equals("]")) {
                 commandStack.add(input);
-            }
-            else {
+            } else {
 
-                String errorMessage = "[ " + input + ": Invalid Input] This input does not exist in our library of commands, contants, and variables";
+                String errorMessage = "[ "
+                        + input
+                        + ": Invalid Input] This input does not exist in our library of commands, contants, and variables";
 
                 return throwError(errorMessage);
             }
@@ -73,7 +72,7 @@ public class Parser {
                 return parameterStack;
             }
         }
-        while(!parameterStack.isEmpty()){
+        while (!parameterStack.isEmpty()) {
             commandsToExecute.add(parameterStack.pop());
         }
         return commandsToExecute;
@@ -82,14 +81,11 @@ public class Parser {
     private Command getCommand (String commandName, Stack<Command> parameterStack) {
         if (Pattern.matches("-?[0-9]+\\.?[0-9]*", commandName)) {
             return new ConstantCommand(Double.parseDouble(commandName));
-        }
-        else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
+        } else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
             return new VariableCommand(commandName.substring(1));
-        }
-        else if (commandName.equals("]")) {
+        } else if (commandName.equals("]")) {
             return makeListCommand(commandStack);
-        }
-        else {
+        } else {
             Class<?> cl;
             Command command;
             try {
@@ -102,17 +98,16 @@ public class Parser {
                     }
                     command.setParameters(parameters);
                     return command;
-                }
-                catch (Exception e) {
-                	e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                     String errorMessage = "[" + commandName
                             + " : Invalid Input] Command class for this command could not be"
                             + " constructed properly.";
                     return new ErrorCommand(errorMessage);
                 }
-            }
-            catch (ClassNotFoundException e) {
-                String errorMessage = "["+ commandName + " : Invalid Command] Command class for this command does not exist";
+            } catch (ClassNotFoundException e) {
+                String errorMessage = "[" + commandName
+                        + " : Invalid Command] Command class for this command does not exist";
                 return new ErrorCommand(errorMessage);
             }
         }
@@ -143,5 +138,5 @@ public class Parser {
         errorStack.add(error);
         return errorStack;
     }
-    
+
 }

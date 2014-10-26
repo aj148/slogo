@@ -12,6 +12,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * Maintains multiple workspaces within the program. Allows for creation of new
+ * workspace and switching between existing workspaces.
+ * 
+ * @author Team 14
+ *
+ */
 public class WorkspaceTabsController {
 
     private HBox myHbox = new HBox();
@@ -20,6 +27,12 @@ public class WorkspaceTabsController {
     private BorderPane myBorderPane;
     private VBox myVBox = new VBox();
 
+    /**
+     * Default Constructor
+     * 
+     * @param bp
+     *            BorderPane to add the Tabs to
+     */
     public WorkspaceTabsController (BorderPane bp) {
         myBorderPane = bp;
         Button addWS = new Button("New Workspace");
@@ -34,14 +47,16 @@ public class WorkspaceTabsController {
             public void changed (ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
                 if (t1 != null) {
                     makeActive(t1);
-                }
-                else{
+                } else {
                     newTab();
                 }
             }
         });
     }
 
+    /**
+     * Makes a new Tab and new Workspace
+     */
     private void newTab () {
         Tab tab = new Tab();
         tab.setText("Workspace");
@@ -52,6 +67,12 @@ public class WorkspaceTabsController {
         makeActive(myTabPane.getTabs().get(0));
     }
 
+    /**
+     * Makes a tab active
+     * 
+     * @param t1
+     *            Tab that is to be active
+     */
     private void makeActive (Tab t1) {
         int i = new Integer(t1.getId());
         PaneController pc = myWorkspaces.get(i);
