@@ -37,9 +37,12 @@ public class ViewPaneModule extends PaneModule {
     private Point2D myCurrentPoint = new Point2D(0, 0);
     private List<Line> myGrid = new ArrayList<Line>();
     private Color defColor = Color.LIGHTGRAY;
-    private Set<Turtle> myActiveTurtles;
+    private Set<Turtle> myTurtles;
     private ImagePalette myImagePalette;
     private Map<Integer, ImageView> myIcons = new HashMap<Integer, ImageView>();
+    private boolean mySelectorCheck = false;
+    private Set<Turtle> myActiveTurtles;
+    private Model myModel;
 
     /**
      * Constructor method called from UserInterface.java
@@ -55,10 +58,12 @@ public class ViewPaneModule extends PaneModule {
     }
 
     public void updateView (Model m) {
+        myModel = m;
         myBackColor = m.getBackgroundColor();
         this.updateBGColor(this.toRGB(myBackColor));
-        myActiveTurtles = m.getTurtleManager().getAllTurtles();
-        myActiveTurtles.forEach(turtle -> updateTurtle(turtle));
+        myActiveTurtles = m.getTurtleManager().getActiveTurtles();
+        myTurtles = m.getTurtleManager().getAllTurtles();
+        myTurtles.forEach(turtle -> updateTurtle(turtle));
     }
 
     @Override
@@ -99,11 +104,11 @@ public class ViewPaneModule extends PaneModule {
     private void updateTurtle (Turtle t) {
         int id = (int) t.getID();
         if (!myIcons.containsKey(id)) {
-            myIcons.put(id, myDraw.drawTurtle(t));
+            myIcons.put(id, myDraw.drawTurtle(t, myActiveTurtles.contains(t) && mySelectorCheck));
             myDraw.showTurtle(myPane, myIcons.get(id));
         } else {
             myDraw.hideTurtle(myPane, myIcons.get(id));
-            myIcons.put(id, myDraw.drawTurtle(t));
+            myIcons.put(id, myDraw.drawTurtle(t, myActiveTurtles.contains(t) && mySelectorCheck));
             myDraw.showTurtle(myPane, myIcons.get(id));
         }
         myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
@@ -130,7 +135,11 @@ public class ViewPaneModule extends PaneModule {
     }
 
     public Set<Turtle> getTurtles () {
-        return myActiveTurtles;
+        return myTurtles;
     }
 
+    public void toggleActive (boolean b) {
+        mySelectorCheck = b;
+        updateView(myModel);
+    }
 }

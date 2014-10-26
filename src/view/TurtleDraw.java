@@ -10,6 +10,7 @@ import view.controllers.ImagePalette;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.effect.SepiaTone;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -33,7 +34,7 @@ public class TurtleDraw {
         myImagePalette = ip;
     }
 
-    public ImageView drawTurtle (Turtle t) {
+    public ImageView drawTurtle (Turtle t, boolean b) {
         ImageView figure;
         int logoID = (int) t.getShape();
         Image myLogo = null;
@@ -47,6 +48,7 @@ public class TurtleDraw {
             catch (FileNotFoundException e) {
             }
         }
+
         figure = new ImageView(myLogo);
         figure.setPreserveRatio(true);
         figure.setFitHeight(50);
@@ -54,12 +56,20 @@ public class TurtleDraw {
         figure.setX(Constants.VIEW_DEFAULT_DIMENSION / 2 - (Constants.IMAGE_WIDTH / 2));
         figure.setY(Constants.VIEW_DEFAULT_DIMENSION / 2 - (Constants.IMAGE_HEIGHT / 2));
         figure.toFront();
+        if (b) {
+             figure.setEffect(new SepiaTone());
+        }
         return figure;
+    }
+
+    public void drawSquare (Point2D cur) {
+
     }
 
     /**
      * Draws a line between two points onto the GraphicsContext from a canvas.
-     * @param color 
+     * 
+     * @param color
      *
      * @param gc
      *            GraphicsContext from Canvas to be drawn to
@@ -73,9 +83,8 @@ public class TurtleDraw {
      *            New Y Pixel Coordinate
      */
     public void drawLine (Point2D cur, Point2D next) {
-        
-     
-    	path = new Line(cur.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2), cur.getY()
+
+        path = new Line(cur.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2), cur.getY()
                 + (Constants.VIEW_DEFAULT_DIMENSION / 2), next.getX()
                 + (Constants.VIEW_DEFAULT_DIMENSION / 2), next.getY()
                 + (Constants.VIEW_DEFAULT_DIMENSION / 2));
