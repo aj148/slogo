@@ -1,19 +1,23 @@
 package view.panes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import view.TurtleDraw;
 import model.Model;
 import model.Turtle;
 import javafx.geometry.Point2D;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import view.Constants;
+import view.controllers.ImagePalette;
 
 /**
  * Responsible for drawing the graphical representation of the turtles movement
@@ -29,16 +33,20 @@ public class ViewPaneModule extends PaneModule {
     private Color myBackColor;
     private String RGB;
     private Pane myPane = new Pane();
-    private TurtleDraw myDraw = new TurtleDraw();
+    private TurtleDraw myDraw;
     private Point2D myCurrentPoint = new Point2D(0, 0);
     private List<Line> myGrid = new ArrayList<Line>();
     private Color defColor = Color.LIGHTGRAY;
     private Set<Turtle> myActiveTurtles;
+    private ImagePalette myImagePalette;
+    private Map<Integer, ImageView> myIcons = new HashMap<Integer, ImageView>();
 
     /**
      * Constructor method called from UserInterface.java
      */
-    public ViewPaneModule () {
+    public ViewPaneModule (ImagePalette ip) {
+        myImagePalette = ip;
+        myDraw = new TurtleDraw(myImagePalette);
         myBackColor = Constants.DEFAULT_BGCOLOR;
         RGB = toRGB(myBackColor);
         updateBGColor(RGB);
@@ -49,7 +57,7 @@ public class ViewPaneModule extends PaneModule {
     public void updateView (Model m) {
         myBackColor = m.getBackgroundColor();
         this.updateBGColor(this.toRGB(myBackColor));
-        myActiveTurtles = m.getTurtleManager().getActiveTurtles();
+        myActiveTurtles = m.getTurtleManager().getFullSet();
         myActiveTurtles.forEach(turtle -> updateTurtle(turtle));
     }
 
@@ -89,12 +97,21 @@ public class ViewPaneModule extends PaneModule {
     }
 
     private void updateTurtle (Turtle t) {
-        /*
-         * myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
-         * myPane.getChildren().add(myDraw.path);
-         * myDraw.setAngle(t.getHeading());
-         * myDraw.moveTurtle(t.getNewLocation());
-         */
+        int id = (int)t.getID();
+        if(!myIcons.containsKey(id)){
+            myIcons.put(id, myDraw.drawTurtle(t));
+            myDraw.showTurtle(myPane, myIcons.get(id));
+        }
+        else{
+            myDraw.hideTurtle(myPane, myIcons.get(id));
+            myIcons.put(id, myDraw.drawTurtle(t));
+            myDraw.showTurtle(myPane, myIcons.get(id));
+        }
+        myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
+        myPane.getChildren().add(myDraw.path);
+        myDraw.setAngle(myIcons.get(id),t.getHeading());
+        myDraw.moveTurtle(myIcons.get(id),t.getNewLocation());
+
     }
 
     private void updateBGColor (String RGB) {
