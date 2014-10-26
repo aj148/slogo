@@ -24,6 +24,7 @@ public class Parser {
     private Map<String, String> myCommandMap;
     private Map<String, String> myRegularExpressions;
     private Map<String, CustomCommand> myUserInputCommands;
+    private static String EMPTY_SPACE = "";
     
     public void resetParser(Map<String, String> commandMap, Map<String, String> regularExpressions) {
     	myCommandMap = commandMap;
@@ -47,7 +48,10 @@ public class Parser {
         Stack<Command> parameterStack = new Stack<Command>();
         Stack<Command> commandsToExecute = new Stack<Command>();
         for (String input : parseInput.split(" ")) {
-            if (myCommandMap.containsKey(input)) {
+            if (input.equals(EMPTY_SPACE)){
+                continue;
+            }
+            else if (myCommandMap.containsKey(input)) {
                 commandStack.add(myCommandMap.get(input));
             }
             else if (Pattern.matches("-?[0-9]+\\.?[0-9]*", input)
@@ -139,4 +143,5 @@ public class Parser {
         errorStack.add(error);
         return errorStack;
     }
+    
 }
