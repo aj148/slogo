@@ -30,7 +30,6 @@ public class ImagePalette {
     private ChoiceBox myChoiceImages = new ChoiceBox<String>(myObservable);
     private String currentImage = TURTLE;
     private int currentImageID = 0;
-    // private ComboBox myChoices = new ComboBox();
 
     public ImagePalette () {
         myImages.put(0, TURTLE);
@@ -53,7 +52,7 @@ public class ImagePalette {
     }
 
     public void addImage (String s, String f) {
-        myImages.put(myImages.size() + 1, s);
+        myImages.put(myImages.size(), s);
         myObservable.add(f);
     }
 

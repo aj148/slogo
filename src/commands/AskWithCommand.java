@@ -10,11 +10,12 @@ public class AskWithCommand extends TwoInputCommand {
     @Override
     public double executeCommand(Model model) {
     	int currentStackLength = model.getTurtleManager().getStackLength();
-    	Set<Turtle> allTurtles = model.getTurtleManager().getFullSet();
+    	Set<Turtle> allTurtles = model.getTurtleManager().getAllTurtles();
     	ListCommand turtleList = new ListCommand();
     	for(Turtle turtle : allTurtles){
     		if(myParameters[0].executeCommand(model) != 0){
     			turtleList.addParameter(new ConstantCommand(turtle.getID()));
+    			System.out.println(turtle.getID());
     		}
     	}
     	ListCommand[] metConditions = {turtleList};

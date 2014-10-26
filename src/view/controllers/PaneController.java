@@ -84,7 +84,6 @@ public class PaneController implements Observer {
         String s = myCommand.getCommand().toLowerCase();
         if ((myCommand.getType() != Constants.USER_DEFINE)
                 && (myCommand.getType() != Constants.ERROR)) {
-            System.out.println(s);
             myController.getInput(s);
         }
     }

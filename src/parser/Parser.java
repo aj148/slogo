@@ -45,6 +45,7 @@ public class Parser {
      */
     public Stack<Command> parseInput (String parseInput) {
         Stack<Command> parameterStack = new Stack<Command>();
+        Stack<Command> commandsToExecute = new Stack<Command>();
         for (String input : parseInput.split(" ")) {
             if (myCommandMap.containsKey(input)) {
                 commandStack.add(myCommandMap.get(input));
@@ -66,7 +67,10 @@ public class Parser {
                 return parameterStack;
             }
         }
-        return parameterStack;
+        while(!parameterStack.isEmpty()){
+            commandsToExecute.add(parameterStack.pop());
+        }
+        return commandsToExecute;
     }
 
     private Command getCommand (String commandName, Stack<Command> parameterStack) {

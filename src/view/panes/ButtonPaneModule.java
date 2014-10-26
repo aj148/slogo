@@ -88,6 +88,7 @@ public class ButtonPaneModule extends PaneModule {
         myCommandString.setCommand(
                 "SETBACKGROUND " + c.getRed() + " " + c.getGreen() + " " + c.getBlue(),
                 Constants.SETTING);
+        
     }
 
     public void toggleGrid () {

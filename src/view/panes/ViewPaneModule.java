@@ -57,7 +57,7 @@ public class ViewPaneModule extends PaneModule {
     public void updateView (Model m) {
         myBackColor = m.getBackgroundColor();
         this.updateBGColor(this.toRGB(myBackColor));
-        myActiveTurtles = m.getTurtleManager().getFullSet();
+        myActiveTurtles = m.getTurtleManager().getAllTurtles();
         myActiveTurtles.forEach(turtle -> updateTurtle(turtle));
     }
 
@@ -97,25 +97,25 @@ public class ViewPaneModule extends PaneModule {
     }
 
     private void updateTurtle (Turtle t) {
-        int id = (int)t.getID();
-        if(!myIcons.containsKey(id)){
+        int id = (int) t.getID();
+        if (!myIcons.containsKey(id)) {
             myIcons.put(id, myDraw.drawTurtle(t));
             myDraw.showTurtle(myPane, myIcons.get(id));
-        }
-        else{
+        } else {
             myDraw.hideTurtle(myPane, myIcons.get(id));
             myIcons.put(id, myDraw.drawTurtle(t));
             myDraw.showTurtle(myPane, myIcons.get(id));
         }
         myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
+        myDraw.path.setStroke(t.getPenColor());
         myPane.getChildren().add(myDraw.path);
-        myDraw.setAngle(myIcons.get(id),t.getHeading());
-        myDraw.moveTurtle(myIcons.get(id),t.getNewLocation());
+        myDraw.setAngle(myIcons.get(id), t.getHeading());
+        myDraw.moveTurtle(myIcons.get(id), t.getNewLocation());
 
     }
 
     private void updateBGColor (String RGB) {
-        // myPane.setStyle("-fx-background-color: rgb( " + RGB + ");");
+        myPane.setStyle("-fx-background-color: rgb( " + RGB + ");");
     }
 
     private String toRGB (Color c) {
@@ -127,6 +127,10 @@ public class ViewPaneModule extends PaneModule {
         String B = "" + (int) b;
         return R + "," + G + "," + B;
 
+    }
+
+    public Set<Turtle> getTurtles () {
+        return myActiveTurtles;
     }
 
 }

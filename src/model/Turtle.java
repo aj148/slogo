@@ -1,13 +1,18 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javafx.geometry.Point2D;
+import javafx.scene.paint.Color;
 
 public class Turtle implements Comparable<Object> {
 	
-    private static final double PI = Math.PI;
+    private static final int MYHEADING_CONVERSION_CONSTANT = 90;
+	private static final double PI = Math.PI;
+	private static final double RADIANS_TO_DEGREES = 180.0/PI;
     private double myID;
     private double myShapeID;
     private double myHeading;
@@ -78,13 +83,16 @@ public class Turtle implements Comparable<Object> {
     }
 
     public double towards (double x, double y) {
+    	//towards 0 0 goes straight up, otherwise makes no sense
     	getmyCurr();
         double deltaX = x - myCurrPoint.getX();
         double deltaY = y - myCurrPoint.getY();
-        double oldHeading = toRadians(myHeading);
-        double newHeading = Math.atan(deltaX / deltaY);
-        myHeading = newHeading;
-        return oldHeading - toRadians(newHeading);
+        double oldHeading = myHeading;
+        double newHeading = Math.atan(deltaY / deltaX);
+        myHeading = -1.0*newHeading*RADIANS_TO_DEGREES+MYHEADING_CONVERSION_CONSTANT;
+        if(x==y && x==0) myHeading=0;
+        System.out.println(myHeading);
+        return oldHeading - newHeading;
     }
 
     public double setXAndY (double x, double y) {
@@ -144,11 +152,22 @@ public class Turtle implements Comparable<Object> {
         return myShapeID;
     }
     
-    public double getPenColor () {
-        return myPen.getColor();
+    public Color getPenColor () {
+        return myPen.getPenColor();
     }
 
     public double getID () {
         return myID;
+    }
+    
+    public Map getStats()
+    {
+    	Map<String, Double> toReturn=new HashMap<String, Double>(); 
+    	toReturn.put("X-Coordinate", (double) myCurrPoint.getX());
+    	toReturn.put("Y-Coordinate", (double) myCurrPoint.getY());
+    	toReturn.put("Pen Status", isShowing);
+    	toReturn.put("Heading", myHeading);
+    	toReturn.put("ID", myID);
+    	return toReturn;
     }
 }
