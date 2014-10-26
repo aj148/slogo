@@ -40,6 +40,7 @@ public class TurtleControllerPaneModule extends PaneModule {
     private Map<Integer, String> myImages = new HashMap<Integer, String>();
     private ImagePalette myImagePalette;
     private HBox myImageBar = new HBox();
+    private PenPane myPenPane; 
 
     /**
      * Initializes the parameters of the InputPane.
@@ -52,6 +53,7 @@ public class TurtleControllerPaneModule extends PaneModule {
         myCommandString = cs;
         myTurtles = new TurtleSelectorPane(myCommandString, vp);
         myImagePalette = ip;
+        myPenPane = new PenPane(myCommandString);
         myMoveTextField.setPrefColumnCount(5);
         myAngleTextField.setPrefColumnCount(5);
         myIDTextField.setPrefColumnCount(5);
@@ -64,7 +66,7 @@ public class TurtleControllerPaneModule extends PaneModule {
                 makeNewTurtle, new Separator(), new Label("COMMANDS"),
                 new HBox(myAngleTextField, angleButton), new HBox(myMoveTextField, moveButton),
                 new Label("WASD can be used with "), new Label("this pane active"),
-                new PenPane(myCommandString).getPenPane(), myTurtles.getPane());
+                myPenPane.getPenPane(), myTurtles.getPane());
 
         myVbox.setOnKeyPressed(new MoveHandler());
         makeTurtle();
@@ -127,6 +129,7 @@ public class TurtleControllerPaneModule extends PaneModule {
             myCommandString.setCommand("Tell [ " + Integer.toString(id) + " ]", Constants.SETTING);
             myCommandString.setCommand("SETSHAPE " + myImagePalette.getCurrentImageID(),
                     Constants.SETTING);
+            myPenPane.newTurtle();
         }
     }
 

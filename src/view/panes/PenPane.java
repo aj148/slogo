@@ -1,5 +1,7 @@
 package view.panes;
 
+import com.sun.corba.se.impl.orbutil.closure.Constant;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -39,10 +41,22 @@ public class PenPane {
         Button penWidthButton = makeButton("Pen Width", event -> setPenWidth());
         Button penDashButton = makeButton("Pen Dash", event -> setPenDash());
         myVbox.getChildren().addAll(new Separator(), new Label("PEN COMMANDS"), myPenToggle,
-                new HBox(myColorPicker,new Label("Pen Color")),
-                new HBox(myPenWidthTextField,penWidthButton),
-                new HBox(myPenDashTextField,penDashButton));
-        
+
+                new HBox(myColorPicker, new Label("Pen Color")),
+                new HBox(myPenStyles, new Label("Pen Style")),
+                new HBox(myPenWidthTextField, new Label("Pen Width")));
+     
+        myPenToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            public void changed (ObservableValue<? extends Boolean> ov, Boolean old_val,
+                    Boolean new_val) {
+                if(new_val){
+                    myCommandString.setCommand("pendown", Constants.SETTING);
+                }
+                else{
+                    myCommandString.setCommand("penup", Constants.SETTING);
+                }
+            }
+        });
 
     }
 
@@ -72,6 +86,10 @@ public class PenPane {
         }
     }
 
+    public void newTurtle(){
+        myPenToggle.setSelected(false);
+        myPenToggle.setSelected(true);
+    }
     public void setPenStyle (int i) {
         if (i < 4) {
             myCommandString.setCommand("setpensize " + Integer.toString(i/10), Constants.SETTING);
