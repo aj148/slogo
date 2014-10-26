@@ -108,12 +108,21 @@ public class ViewPaneModule extends PaneModule {
         }
         myDraw.drawLine(t.getPrevLocation(), t.getNewLocation());
         myDraw.path.setStroke(t.getPenColor());
+        myDraw.path.setStrokeWidth(t.getPenSize());
+        System.out.println(t.getPenSize());
         myPane.getChildren().add(myDraw.path);
         myDraw.setAngle(myIcons.get(id), t.getHeading());
         myDraw.moveTurtle(myIcons.get(id), t.getNewLocation());
+//        DisplayStats(Turtle t);
 
     }
 
+    
+    
+    private void DisplayStats(Turtle t){
+//    	t.get
+    }
+    
     private void updateBGColor (String RGB) {
         myPane.setStyle("-fx-background-color: rgb( " + RGB + ");");
     }

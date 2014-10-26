@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
@@ -24,28 +25,57 @@ public class PenPane {
     private CheckBox myPenToggle = new CheckBox("Toggle PenUp");
     private ColorPicker myColorPicker;
     private ChoiceBox myPenStyles = new ChoiceBox();
-    private TextField myPenWidth = new TextField("Insert double");
-    private final static String[] PENSTYLE = new String[] { "Normal", "Thick", "Thicker",
+    private TextField myPenWidthTextField = new TextField("Insert double from 0 to 1");
+    private TextField myPenDashTextField = new TextField("Insert double from 0 to 1");
+    private final static String[] PENSTYLE = new String[] { "Thin", "Thick", "Thicker",
             "Thickest", "Dashed", "Dotted" };
+    
 
     public PenPane (CommandString cs) {
         myCommandString = cs;
-        myPenWidth.setPrefColumnCount(8);
+        myPenWidthTextField.setPrefColumnCount(8);
         myColorPicker = makeColorPicker("Pen Color", event -> changePenColor());
         myPenStyles = makeMenu();
+        Button penWidthButton = makeButton("Pen Width", event -> setPenWidth());
+        Button penDashButton = makeButton("Pen Dash", event -> setPenDash());
         myVbox.getChildren().addAll(new Separator(), new Label("PEN COMMANDS"), myPenToggle,
-                new HBox(myColorPicker,new Label("Pen Color")), new HBox(myPenStyles,new Label("Pen Style")),
-                new HBox(myPenWidth,new Label("Pen Width")));
+                new HBox(myColorPicker,new Label("Pen Color")),
+                new HBox(myPenWidthTextField,penWidthButton),
+                new HBox(myPenDashTextField,penDashButton));
+        
 
     }
 
     public VBox getPenPane () {
         return myVbox;
     }
+    
+    private void setPenWidth() {
+        if (!myPenWidthTextField.getText().equals("")) {
+            myCommandString.setCommand("SETPENSIZE " + myPenWidthTextField.getText(), Constants.SETTING);
+            myPenWidthTextField.clear();
+        }
+    }
+    
+    private Button makeButton (String property, EventHandler<ActionEvent> handler) {
+        Button result = new Button();
+        String label = property;
+        result.setText(label);
+        result.setOnAction(handler);
+        return result;
+    }
+    
+    private void setPenDash() {
+        if (!myPenDashTextField.getText().equals("")) {
+            myCommandString.setCommand("SETPENDASH " + myPenDashTextField.getText(), Constants.SETTING);
+            myPenDashTextField.clear();
+        }
+    }
 
     public void setPenStyle (int i) {
         if (i < 4) {
-            myCommandString.setCommand("SETPENSIZE " + Integer.toString(i), Constants.SETTING);
+            myCommandString.setCommand("SETPENSIZE " + Integer.toString(i/10), Constants.SETTING);
+            System.out.println("pensize = " + Integer.toString(i/10));
         } else {
             // myCommandString.setCommand("SETPENDASH " +
             // Integer.toString(i),Constants.SETTING);
@@ -63,12 +93,13 @@ public class PenPane {
     }
 
     public ChoiceBox makeMenu () {
-        ChoiceBox penStyles = new ChoiceBox(FXCollections.observableArrayList("Normal", "Thick",
+        ChoiceBox penStyles = new ChoiceBox(FXCollections.observableArrayList("Thin", "Thick",
                 "Thicker", "Dashed", "Dotted"));
         penStyles.getSelectionModel().selectedIndexProperty()
                 .addListener(new ChangeListener<Number>() {
                     public void changed (ObservableValue ov, Number value, Number new_value) {
                         setPenStyle(new_value.intValue());
+                        System.out.println("pen = " + new_value.intValue());
                     }
                 });
         return penStyles;

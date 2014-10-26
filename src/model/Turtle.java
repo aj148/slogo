@@ -134,6 +134,10 @@ public class Turtle implements Comparable<Object> {
         return myPen.getStatus();
     }
 
+    public double getPenSize () {
+        return myPen.getSize();
+    }
+    
     public double getShowing () {
         return isShowing;
     }

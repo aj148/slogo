@@ -36,6 +36,8 @@ public class UserInterface {
      */
     public void initiate (Stage s) {
         s.setTitle("SLogo");
+        s.setResizable(false);
+        
         BorderPane root = new BorderPane();
         WorkspaceTabsController workspace = new WorkspaceTabsController(root);
         Scene scene = new Scene(root, Constants.DEFAULT_DIMENSIONS.width, Constants.DEFAULT_DIMENSIONS.height);
