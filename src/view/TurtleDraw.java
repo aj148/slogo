@@ -86,8 +86,8 @@ public class TurtleDraw {
      * @param y2 New Y Pixel Coordinate
      */
 	public void moveTurtle (Point2D next) {
-        figure.setX(next.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2) - (imageWidth/2));
-        figure.setY(next.getY() + (Constants.VIEW_DEFAULT_DIMENSION / 2) - (imageHeight/2));                                     
+        figure.setX(next.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2) - (Constants.IMAGE_WIDTH /2));
+        figure.setY(next.getY() + (Constants.VIEW_DEFAULT_DIMENSION / 2) - (Constants.IMAGE_HEIGHT/2));                                     
     }
 	
 	/**
