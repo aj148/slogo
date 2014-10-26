@@ -4,6 +4,7 @@ import java.io.File;
 
 import model.Turtle;
 import view.Constants;
+import view.controllers.ImagePalette;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -21,16 +22,17 @@ import javafx.scene.shape.Line;
 public class TurtleDraw {
 
     public Line path;
-    public ImageView figure;
-    public File image;
-    private double imageWidth;
-    private double imageHeight;
+    public File image;;
+    private ImagePalette myImagePalette;
 
-    public TurtleDraw () {
-        // int logoID =
-        // Image myLogo = new
-        // Image(getClass().getResourceAsStream("/resources/images/LogoTurtle2.png"));
-        Image myLogo = new Image(getClass().getResourceAsStream("/resources/images/RCD.png"));
+    public TurtleDraw (ImagePalette ip) {
+        myImagePalette = ip;
+    }
+
+    public ImageView drawTurtle (Turtle t) {
+        ImageView figure;
+        int logoID = (int) t.getShape();
+        Image myLogo = new Image(getClass().getResourceAsStream(myImagePalette.getImage(logoID)));
         figure = new ImageView(myLogo);
         figure.setPreserveRatio(true);
         figure.setFitHeight(50);
@@ -38,12 +40,9 @@ public class TurtleDraw {
         figure.setX(Constants.VIEW_DEFAULT_DIMENSION / 2 - (Constants.IMAGE_WIDTH / 2));
         figure.setY(Constants.VIEW_DEFAULT_DIMENSION / 2 - (Constants.IMAGE_HEIGHT / 2));
         figure.toFront();
-
+        return figure;
     }
 
-    public void drawTurtle(){
-        
-    }
     /**
      * Draws a line between two points onto the GraphicsContext from a canvas.
      *
@@ -80,7 +79,7 @@ public class TurtleDraw {
      * @param y2
      *            New Y Pixel Coordinate
      */
-    public void moveTurtle (Point2D next) {
+    public void moveTurtle (ImageView figure, Point2D next) {
         figure.setX(next.getX() + (Constants.VIEW_DEFAULT_DIMENSION / 2)
                 - (Constants.IMAGE_WIDTH / 2));
         figure.setY(next.getY() + (Constants.VIEW_DEFAULT_DIMENSION / 2)
@@ -102,15 +101,15 @@ public class TurtleDraw {
      * @param y2
      *            New Y Pixel Coordinate
      */
-    public void setAngle (double angle) {
+    public void setAngle (ImageView figure, double angle) {
         figure.setRotate((angle));
     }
 
-    public void showTurtle (Pane p) {
+    public void showTurtle (Pane p, ImageView figure) {
         p.getChildren().add(figure);
     }
 
-    public void hideTurtle (Pane p) {
+    public void hideTurtle(Pane p, ImageView figure) {
         p.getChildren().remove(figure);
     }
 }
