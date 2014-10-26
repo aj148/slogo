@@ -10,10 +10,9 @@ public class TurtleSetManager {
 
     public TurtleSetManager (Set<Turtle> turtles) {
         mySet = turtles;
-        mySet.add(new Turtle(0));
+        //mySet.add(new Turtle(0));
         myStack = new Stack<Set<Turtle>>();
         myStack.add(mySet);
-        System.out.println(mySet.toString());
     }
 
     public void addTurtleSet (Set<Turtle> newSet) {
@@ -28,7 +27,6 @@ public class TurtleSetManager {
 
     public void addTurtle (int ID) {
         mySet.add(new Turtle(ID));
-        System.out.println("new turtle");
     }
 
     public Set<Turtle> getActiveTurtles () {
