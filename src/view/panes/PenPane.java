@@ -35,16 +35,17 @@ public class PenPane {
 
     public PenPane (CommandString cs) {
         myCommandString = cs;
-        myPenWidthTextField.setPrefColumnCount(8);
+        myPenWidthTextField.setPrefColumnCount(10);
+        myPenDashTextField.setPrefColumnCount(10);
         myColorPicker = makeColorPicker("Pen Color", event -> changePenColor());
         myPenStyles = makeMenu();
-        Button penWidthButton = makeButton("Pen Width", event -> setPenWidth());
+        Button penWidthButton = makeButton("Pen Size", event -> setPenWidth());
         Button penDashButton = makeButton("Pen Dash", event -> setPenDash());
         myVbox.getChildren().addAll(new Separator(), new Label("PEN COMMANDS"), myPenToggle,
 
                 new HBox(myColorPicker, new Label("Pen Color")),
-                new HBox(myPenStyles, new Label("Pen Style")),
-                new HBox(myPenWidthTextField, new Label("Pen Width")));
+                new HBox(myPenWidthTextField, penWidthButton),
+                new HBox(myPenDashTextField, penDashButton));
      
         myPenToggle.selectedProperty().addListener(new ChangeListener<Boolean>() {
             public void changed (ObservableValue<? extends Boolean> ov, Boolean old_val,
