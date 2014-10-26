@@ -1,6 +1,8 @@
 package view;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import model.Turtle;
 import view.Constants;
@@ -32,8 +34,15 @@ public class TurtleDraw {
     public ImageView drawTurtle (Turtle t) {
         ImageView figure;
         int logoID = (int) t.getShape();
-        Image myLogo = new Image(getClass().getResourceAsStream(myImagePalette.getImage(logoID)));
-        System.out.println(logoID);
+        Image myLogo = null;
+        if (logoID < 4) {
+            myLogo = new Image(getClass().getResourceAsStream(myImagePalette.getImage(logoID)));
+        } else {
+            try {
+                myLogo = new Image(new FileInputStream(myImagePalette.getImage(logoID)));
+            } catch (FileNotFoundException e) {
+            }
+        }
         figure = new ImageView(myLogo);
         figure.setPreserveRatio(true);
         figure.setFitHeight(50);
@@ -110,7 +119,7 @@ public class TurtleDraw {
         p.getChildren().add(figure);
     }
 
-    public void hideTurtle(Pane p, ImageView figure) {
+    public void hideTurtle (Pane p, ImageView figure) {
         p.getChildren().remove(figure);
     }
 }

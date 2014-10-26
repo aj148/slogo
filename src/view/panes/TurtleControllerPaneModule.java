@@ -13,6 +13,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -93,7 +94,8 @@ public class TurtleControllerPaneModule extends PaneModule {
         // Show open file dialog
         File file = fileChooser.showOpenDialog(null);
         String fileName = file.getName();
-        myImagePalette.addImage(file.getPath(), fileName);
+        String filePath = file.getPath().replace("\\", "/");
+        myImagePalette.addImage(filePath, fileName);
     }
 
     private void move () {

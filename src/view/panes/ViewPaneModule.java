@@ -117,9 +117,6 @@ public class ViewPaneModule extends PaneModule {
 
     private void updateBGColor (String RGB) {
         myPane.setStyle("-fx-background-color: rgb( " + RGB + ");");
-
-        System.out.println(RGB);
-
     }
 
     private String toRGB (Color c) {
