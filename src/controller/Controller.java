@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.List;
 import java.util.Stack;
 
 import model.Model;
@@ -45,12 +46,12 @@ public class Controller {
      */
     public void getInput (String input) {
         MasterController master = new MasterController("English");
-        Stack<Command> commandsToExecute = master.myParser.parseInput(input);
-        if(!commandsToExecute.isEmpty() && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")){
-        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
-            myPane.showError(error.showError());
-        	return;
-        }
+        List<Command> commandsToExecute = master.myParser.parseInput(input);
+//        if(!commandsToExecute.isEmpty() && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")){
+//        	ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
+//            myPane.showError(error.showError());
+//        	return;
+//        }
         runCommand(commandsToExecute);
     }
 
@@ -59,7 +60,7 @@ public class Controller {
      *
      * @param commandsToExecute : The commands to execute.
      */
-    private void runCommand (Stack<Command> commandsToExecute) {
+    private void runCommand (List<Command> commandsToExecute) {
         myModel.updateModel(commandsToExecute);
     }
 }
