@@ -2,8 +2,8 @@ package commands;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import model.Model;
+
 
 public class ListCommand extends ZeroInputCommand {
 

@@ -3,11 +3,10 @@ package model;
 import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
-
 import javafx.scene.paint.Color;
 import view.panes.ViewPaneModule;
-
 import commands.Command;
+
 
 /**
  * Class that contains the basic information of what needs to be displayed in
@@ -29,7 +28,7 @@ public class Model {
      * Constructor method called from ViewPanel.java
      *
      * @param view
-     *            : The ViewPanel that called this constructor.
+     *        : The ViewPanel that called this constructor.
      */
     public Model (ViewPaneModule view) {
         myFullSet = new TreeSet<Turtle>();
@@ -44,7 +43,7 @@ public class Model {
      * Method to update the model with the commands passed from the Controller.
      *
      * @param commandsToExecute
-     *            : Collection of commands to execute.
+     *        : Collection of commands to execute.
      */
     public void updateModel (Collection<Command> commandsToExecute) {
         for (Command command : commandsToExecute) {

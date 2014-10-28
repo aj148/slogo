@@ -2,6 +2,7 @@ package model;
 
 import javafx.scene.paint.Color;
 
+
 public class Pen {
     private Color myColor;
     private double mySize;

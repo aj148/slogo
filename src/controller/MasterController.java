@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Set;
-
 import parser.Parser;
+
 
 /**
  * Class to contain the Parser and a set of executable commands. This
@@ -38,7 +38,8 @@ public class MasterController {
             String command = enumerator.nextElement();
             if (expressions.contains(command)) {
                 regularExpressions.put(command, language.getString(command));
-            } else {
+            }
+            else {
                 String[] inputs = language.getString(command).split(",");
                 command = "commands." + command + "Command";
                 for (String input : inputs) {
@@ -52,7 +53,7 @@ public class MasterController {
     private Set<String> constructSet () {
         Set<String> expressionSet = new HashSet<String>();
         String[] expressionArray = { "Comment", "Constant", "Variable", "Command", "ListStart",
-                "ListEnd", "GroupStart", "GroupEnd" };
+                                    "ListEnd", "GroupStart", "GroupEnd" };
         for (String item : expressionArray) {
             expressionSet.add(item);
         }

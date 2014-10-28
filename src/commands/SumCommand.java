@@ -2,6 +2,7 @@ package commands;
 
 import model.Model;
 
+
 public class SumCommand extends TwoInputCommand {
 
     @Override

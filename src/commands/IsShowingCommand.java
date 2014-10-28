@@ -2,6 +2,7 @@ package commands;
 
 import model.Model;
 
+
 public class IsShowingCommand extends ZeroInputCommand {
 
     @Override

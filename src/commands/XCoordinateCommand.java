@@ -2,6 +2,7 @@ package commands;
 
 import model.Model;
 
+
 public class XCoordinateCommand extends ZeroInputCommand {
 
     @Override

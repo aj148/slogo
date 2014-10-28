@@ -3,6 +3,7 @@ package commands;
 import model.Model;
 import model.Turtle;
 
+
 public class ForwardCommand extends OneInputCommand {
 
     @Override

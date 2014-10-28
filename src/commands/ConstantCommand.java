@@ -2,6 +2,7 @@ package commands;
 
 import model.Model;
 
+
 public class ConstantCommand extends ZeroInputCommand {
 
     private double myConstant;

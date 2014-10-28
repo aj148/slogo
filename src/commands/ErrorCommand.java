@@ -2,6 +2,7 @@ package commands;
 
 import model.Model;
 
+
 public class ErrorCommand extends ZeroInputCommand {
 
     private String myError;

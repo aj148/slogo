@@ -1,9 +1,9 @@
 package commands;
 
 import java.util.Set;
-
 import model.Model;
 import model.Turtle;
+
 
 public class AskWithCommand extends TwoInputCommand {
 

@@ -1,9 +1,9 @@
 package commands;
 
 import java.util.HashMap;
-
 import model.Model;
 import model.VariableManager;
+
 
 public class ForCommand extends TwoInputCommand {
 

@@ -2,13 +2,12 @@ package controller;
 
 import java.util.List;
 import java.util.Stack;
-
 import model.Model;
 import view.controllers.PaneController;
 import view.panes.ViewPaneModule;
-
 import commands.Command;
 import commands.ErrorCommand;
+
 
 /**
  * Communicates between the View, the Parser, and the Model. The Controller
@@ -28,9 +27,9 @@ public class Controller {
      * Constructor method called from ViewPanel.java
      *
      * @param view
-     *            : The ViewPanel that called this constructor.
+     *        : The ViewPanel that called this constructor.
      * @param model
-     *            : The Model constructed by said ViewPanel.
+     *        : The Model constructed by said ViewPanel.
      */
     public Controller (ViewPaneModule view, PaneController pane) {
         myView = view;
@@ -46,12 +45,12 @@ public class Controller {
      * sequence.
      *
      * @param input
-     *            : User input string from the ViewPanel.
+     *        : User input string from the ViewPanel.
      */
     public void getInput (String input) {
         Stack<Command> commandsToExecute = MasterController.myParser.parseInput(input);
         if (!commandsToExecute.isEmpty()
-                && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")) {
+            && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")) {
             ErrorCommand error = (ErrorCommand) commandsToExecute.pop();
             myPane.showError(error.showError());
             return;
@@ -63,7 +62,7 @@ public class Controller {
      * Passes the commands to the Model to execute.
      *
      * @param commandsToExecute
-     *            : The commands to execute.
+     *        : The commands to execute.
      */
     private void runCommand (List<Command> commandsToExecute) {
         myModel.updateModel(commandsToExecute);

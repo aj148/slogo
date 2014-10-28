@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
+
 
 public class Turtle implements Comparable<Object> {
 
@@ -36,9 +36,7 @@ public class Turtle implements Comparable<Object> {
     @Override
     public int compareTo (Object obj) {
 
-        if (obj == null || this.getClass() != obj.getClass()) {
-            return 0;
-        }
+        if (obj == null || this.getClass() != obj.getClass()) { return 0; }
         Turtle turtle = (Turtle) obj;
         return (int) myID - (int) turtle.myID;
     }
@@ -94,7 +92,8 @@ public class Turtle implements Comparable<Object> {
         if (x == y && x == 0) {
             myHeading = 0;
             return oldHeading;
-        } else {
+        }
+        else {
             double deltaX = x - myCurrPoint.getX();
             double deltaY = y - myCurrPoint.getY();
             double newHeading = Math.atan(deltaY / deltaX);
@@ -145,9 +144,7 @@ public class Turtle implements Comparable<Object> {
     }
 
     public Point2D getPrevLocation () {
-        if (myTurtlePoints.size() > 2) {
-            return myTurtlePoints.get(myTurtlePoints.size() - 2);
-        }
+        if (myTurtlePoints.size() > 2) { return myTurtlePoints.get(myTurtlePoints.size() - 2); }
         return myFirstPoint;
     }
 

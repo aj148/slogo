@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-
 import model.Model;
 import model.Turtle;
 import model.TurtleSetManager;
+
 
 public class TellCommand extends OneInputCommand {
 

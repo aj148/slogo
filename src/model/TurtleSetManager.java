@@ -3,6 +3,7 @@ package model;
 import java.util.Set;
 import java.util.Stack;
 
+
 public class TurtleSetManager {
 
     private Stack<Set<Turtle>> myStack;
@@ -25,8 +26,8 @@ public class TurtleSetManager {
         }
     }
 
-    public void addTurtle (int ID) {
-        mySet.add(new Turtle(ID));
+    public void addTurtle (int id) {
+        mySet.add(new Turtle(id));
     }
 
     public Set<Turtle> getActiveTurtles () {
