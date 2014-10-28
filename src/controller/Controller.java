@@ -51,7 +51,7 @@ public class Controller {
         Stack<Command> commandsToExecute = MasterController.myParser.parseInput(input);
         if (!commandsToExecute.isEmpty()
             && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")) {
-            ErrorCommand error = (ErrorCommand) commandsToExecute.pop();
+            ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
             myPane.showError(error.showError());
             return;
         }

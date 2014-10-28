@@ -20,11 +20,11 @@ import commands.VariableCommand;
  */
 public class Parser {
 
-    private Stack<String> commandStack = new Stack<String>();
+    private static String EMPTY_SPACE = "";
+    private Stack<String> myCommandStack = new Stack<String>();
     private Map<String, String> myCommandMap;
     private Map<String, String> myRegularExpressions;
     private Map<String, CustomCommand> myUserInputCommands;
-    private static String EMPTY_SPACE = "";
 
     public void resetParser (Map<String, String> commandMap, Map<String, String> regularExpressions) {
         myCommandMap = commandMap;
@@ -52,11 +52,11 @@ public class Parser {
                 continue;
             }
             else if (myCommandMap.containsKey(input)) {
-                commandStack.add(myCommandMap.get(input));
+                myCommandStack.add(myCommandMap.get(input));
             }
             else if (Pattern.matches("-?[0-9]+\\.?[0-9]*", input)
                      | Pattern.matches(":[a-zA-Z]+", input) | input.equals("[") | input.equals("]")) {
-                commandStack.add(input);
+                myCommandStack.add(input);
             }
             else {
 
@@ -66,8 +66,8 @@ public class Parser {
                 return throwError(errorMessage);
             }
         }
-        while (!commandStack.isEmpty()) {
-            String commandName = commandStack.pop();
+        while (!myCommandStack.isEmpty()) {
+            String commandName = myCommandStack.pop();
             Command newCommand = getCommand(commandName, parameterStack);
             parameterStack.add(newCommand);
             if (newCommand.getClassName().equals("commands.ErrorCommand")) { return parameterStack; }
@@ -86,7 +86,7 @@ public class Parser {
             return new VariableCommand(commandName.substring(1));
         }
         else if (commandName.equals("]")) {
-            return makeListCommand(commandStack);
+            return makeListCommand(myCommandStack);
         }
         else {
             Class<?> cl;
@@ -94,7 +94,7 @@ public class Parser {
             try {
                 cl = Class.forName(commandName);
                 try {
-                    command = (Command) cl.getConstructor().newInstance();
+                    command = (Command)cl.getConstructor().newInstance();
                     Command[] parameters = new Command[command.getNumParameters()];
                     for (int i = 0; i < parameters.length; i++) {
                         parameters[i] = parameterStack.pop();

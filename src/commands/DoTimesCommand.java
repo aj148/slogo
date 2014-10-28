@@ -10,9 +10,9 @@ public class DoTimesCommand extends TwoInputCommand {
     @Override
     public double executeCommand (Model model) {
         String variable =
-                ((VariableCommand) ((ListCommand) myParameters[0]).getParameters().get(0))
+                ((VariableCommand)((ListCommand)myParameters[0]).getParameters().get(0))
                         .getVariableName();
-        double limit = ((ListCommand) myParameters[0]).getParameters().get(1).executeCommand(model);
+        double limit = ((ListCommand)myParameters[0]).getParameters().get(1).executeCommand(model);
         double toReturn = 0;
         VariableManager temp = model.getVariableManager();
         temp.addVariableMap(new HashMap<String, Double>());

@@ -20,7 +20,7 @@ public class MasterController {
 
     public static Parser myParser;
     public static Random myRandom = new Random();
-    private final String resources = "resources.languages/";
+    private final String myResources = "resources.languages/";
 
     public MasterController (String lang) {
         myParser = new Parser();
@@ -30,7 +30,7 @@ public class MasterController {
     public void constructMasterController (String lang) {
         Map<String, String> commandMap = new HashMap<String, String>();
         Map<String, String> regularExpressions = new HashMap<String, String>();
-        ResourceBundle language = ResourceBundle.getBundle(resources + lang);
+        ResourceBundle language = ResourceBundle.getBundle(myResources + lang);
         Set<String> expressions = constructSet();
 
         Enumeration<String> enumerator = language.getKeys();

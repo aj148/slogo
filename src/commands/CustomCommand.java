@@ -21,7 +21,7 @@ public class CustomCommand extends OneInputCommand {
     public double executeCommand (Model model) {
         Map<String, Double> variableMap = new HashMap<String, Double>();
         if (!myParameters[0].getClassName().equals("commands.ListCommand")) { return 0; }
-        ListCommand variableValues = (ListCommand) myParameters[0];
+        ListCommand variableValues = (ListCommand)myParameters[0];
         for (int i = 0; i < variableValues.getNumParameters(); i++) {
             double value = variableValues.getParameter(i).executeCommand(model);
             if (i < myVariables.size()) {

@@ -9,8 +9,8 @@ public class ForCommand extends TwoInputCommand {
 
     @Override
     public double executeCommand (Model model) {
-        ListCommand command = (ListCommand) myParameters[0];
-        String variable = ((VariableCommand) command.getParameters().get(0)).getVariableName();
+        ListCommand command = (ListCommand)myParameters[0];
+        String variable = ((VariableCommand)command.getParameters().get(0)).getVariableName();
         double start = command.getParameters().get(1).executeCommand(model);
         double end = command.getParameters().get(2).executeCommand(model);
         double increment = command.getParameters().get(3).executeCommand(model);
