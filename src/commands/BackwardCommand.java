@@ -4,6 +4,13 @@ import model.Model;
 import model.Turtle;
 
 
+/**
+ * Backward command class - moves turtle backward in its current heading by pixels distance
+ *                          returns the value of pixels
+ * 
+ * @author team14
+ *
+ */
 public class BackwardCommand extends OneInputCommand {
 
     @Override

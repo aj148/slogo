@@ -4,6 +4,12 @@ import javafx.scene.paint.Color;
 import model.Model;
 
 
+/**
+ * This class returns turtle's current color index
+ * 
+ * @author team14
+ *
+ */
 public class GetPenColorCommand extends ZeroInputCommand {
     
     private static int RED_ADJUSTER = 255;

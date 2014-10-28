@@ -5,6 +5,13 @@ import model.Model;
 import model.VariableManager;
 
 
+/**
+ * This class runs the commands for each value specified in the range, 
+ * i.e., from (start - end), going by increment.
+ * 
+ * @author team14
+ *
+ */
 public class ForCommand extends TwoInputCommand {
 
     @Override

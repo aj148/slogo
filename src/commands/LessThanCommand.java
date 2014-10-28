@@ -3,6 +3,11 @@ package commands;
 import model.Model;
 
 
+/**
+ * returns 1 if the value of expr1 is strictly less than the value of expr2, otherwise 0
+ * 
+ * @author team14
+ */
 public class LessThanCommand extends TwoInputCommand {
 
     @Override

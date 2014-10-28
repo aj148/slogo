@@ -3,6 +3,12 @@ package commands;
 import model.Model;
 
 
+/**
+ * This class returns a string that indicates the type of error in the user input.
+ * 
+ * @author team14
+ *
+ */
 public class ErrorCommand extends ZeroInputCommand {
 
     private String myError;

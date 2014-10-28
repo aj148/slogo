@@ -5,6 +5,13 @@ import model.Model;
 import model.VariableManager;
 
 
+/**
+ * This class runs the commands for each value specified in the range, 
+ * i.e., from (1 - limit) inclusive 
+ * 
+ * @author team14
+ *
+ */
 public class DoTimesCommand extends TwoInputCommand {
 
     @Override

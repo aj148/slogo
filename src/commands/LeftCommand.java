@@ -4,6 +4,13 @@ import model.Model;
 import model.Turtle;
 
 
+/**
+ * turns turtle counterclockwise by degrees angle
+ * returns the value of degrees
+ * 
+ * @author team14
+ *
+ */
 public class LeftCommand extends OneInputCommand {
 
     @Override

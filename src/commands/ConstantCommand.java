@@ -3,6 +3,12 @@ package commands;
 import model.Model;
 
 
+/**
+ * This class turns a number(constant) into a command object
+ * 
+ * @author team14
+ *
+ */
 public class ConstantCommand extends ZeroInputCommand {
 
     private double myConstant;

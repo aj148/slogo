@@ -5,6 +5,12 @@ import java.util.List;
 import model.Model;
 
 
+/**
+ * This class creates a list command, which contains a list of other commands as its parameters.
+ * 
+ * @author team14
+ *
+ */
 public class ListCommand extends ZeroInputCommand {
 
     private List<Command> myCommandList;

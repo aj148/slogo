@@ -4,14 +4,27 @@ import model.Model;
 import model.Turtle;
 
 
+/**
+ * Command class which all the other sub command classes extend
+ * 
+ * @author team14
+ *
+ */
 public abstract class Command {
 
     protected Command[] myParameters;
 
+    /**
+     * Constructor for Command object with no input
+     */
     public Command () {
         myParameters = new Command[0];
     }
 
+    /**
+     * Constructor for Command object with one or more than one input
+     * @param numParameters - number of parameters
+     */
     public Command (int numParameters) {
         myParameters = new Command[numParameters];
     }
@@ -30,6 +43,12 @@ public abstract class Command {
         return myParameters[index];
     }
 
+    /**
+     * This method executes a specific command on each turtle in the given model
+     * 
+     * @param model - contains all the active turtles 
+     * @return the last turtle on which command was executed
+     */
     public double executeCommand (Model model) {
         double last = 0;
         for (Turtle a : model.getTurtleManager().getActiveTurtles()) {

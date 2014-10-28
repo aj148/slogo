@@ -3,6 +3,13 @@ package commands;
 import model.Model;
 
 
+/**
+ * Ask command class - tell turtles given in first list to run commands given in the second list 
+ *                     returns result of last command run
+ * 
+ * @author team 14
+ *
+ */
 public class AskCommand extends TwoInputCommand {
 
     @Override

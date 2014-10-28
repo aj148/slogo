@@ -5,6 +5,13 @@ import model.Model;
 import model.Turtle;
 
 
+/**
+ * AskWith command class - tell turtles matching given condition to run commands in the second list
+ *                         returns result of last command run
+ * 
+ * @author team14
+ *
+ */
 public class AskWithCommand extends TwoInputCommand {
 
     @Override

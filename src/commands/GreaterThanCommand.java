@@ -3,6 +3,13 @@ package commands;
 import model.Model;
 
 
+/**
+ * This class returns 1 if the value of expr1 is strictly greater
+ * than the value of expr2, otherwise 0
+ * 
+ * @author team14
+ *
+ */
 public class GreaterThanCommand extends TwoInputCommand {
 
     @Override
