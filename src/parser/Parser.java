@@ -78,6 +78,14 @@ public class Parser {
         return commandsToExecute;
     }
 
+    /**
+     * This method gets a string of command name and, using reflection, 
+     * returns command object or error, if it doesn't exist.
+     * 
+     * @param commandName - a string of command name
+     * @param parameterStack - stack of commands that contains parameters
+     * @return either command or error
+     */
     private Command getCommand (String commandName, Stack<Command> parameterStack) {
         if (Pattern.matches("-?[0-9]+\\.?[0-9]*", commandName)) {
             return new ConstantCommand(Double.parseDouble(commandName));
@@ -122,6 +130,12 @@ public class Parser {
         }
     }
 
+    /**
+     * When encountering "]", this method is used to create a ListCommand
+     * 
+     * @param commandStack
+     * @return ListCommand
+     */
     private Command makeListCommand (Stack<String> commandStack) {
         Stack<Command> tempParameterStack = new Stack<Command>();
         ListCommand listCommand = new ListCommand();
