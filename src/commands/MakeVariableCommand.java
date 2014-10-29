@@ -5,7 +5,12 @@ import model.VariableManager;
 
 
 public class MakeVariableCommand extends TwoInputCommand {
-
+	/**
+	 * makes a command that when executed, adds a variable to the system
+	 * 
+	 * @author team14
+	 *
+	 */
     @Override
     public double executeCommand (Model model) {
         double value = myParameters[1].executeCommand(model);

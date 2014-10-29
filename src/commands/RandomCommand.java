@@ -5,7 +5,12 @@ import controller.MasterController;
 
 
 public class RandomCommand extends OneInputCommand {
-
+	/**
+	 * returns a random
+	 * 
+	 * @author team14
+	 *
+	 */
     @Override
     public double executeCommand (Model model) {
         try {

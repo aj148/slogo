@@ -7,7 +7,12 @@ import controller.MasterController;
 
 
 public class MakeUserInstructionCommand extends ThreeInputCommand {
-    
+	/**
+	 * makes command based on instruction of user
+	 * 
+	 * @author team14
+	 *
+	 */
     private static String VARIABLE_COMMAND = "commands.VariableCommand";
     private static String LIST_COMMAND = "commands.ListCommand";
 

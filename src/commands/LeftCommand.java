@@ -1,5 +1,4 @@
 package commands;
-
 import model.Model;
 import model.Turtle;
 

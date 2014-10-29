@@ -4,7 +4,12 @@ import model.Model;
 
 
 public class QuotientCommand extends TwoInputCommand {
-
+	/**
+	 * returns the quotient of the values assigned to the two parameters
+	 * 
+	 * @author team14
+	 *
+	 */
     @Override
     public double executeCommand (Model model) {
         try {
