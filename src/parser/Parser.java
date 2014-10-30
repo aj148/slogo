@@ -1,16 +1,19 @@
+// This entire file is part of my masterpiece.
+// MARTIN TAMAYO
+
 package parser;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 import java.util.regex.Pattern;
+
 import commands.Command;
+import commands.CommentCommand;
 import commands.ConstantCommand;
-import commands.CustomCommand;
 import commands.ErrorCommand;
 import commands.ListCommand;
 import commands.VariableCommand;
-
 
 /**
  * This class is used to convert a string to a collection of commands to
@@ -19,147 +22,112 @@ import commands.VariableCommand;
  * @author Team 14
  */
 public class Parser {
+	
+    private int myIndex;
+    private boolean myError;
+    private String[] myInputs;
+    private String[] myRegularExpressions;
+	private Map<String, String> myCommandMap;
 
-    private static String EMPTY_SPACE = "";
-    private Stack<String> myCommandStack = new Stack<String>();
-    private Map<String, String> myCommandMap;
-    private Map<String, String> myRegularExpressions;
-    private Map<String, CustomCommand> myUserInputCommands;
-
-    public void resetParser (Map<String, String> commandMap, Map<String, String> regularExpressions) {
+    public void resetParser (Map<String, String> commandMap, String[] regularExpressions) {
         myCommandMap = commandMap;
         myRegularExpressions = regularExpressions;
-        myUserInputCommands = new HashMap<String, CustomCommand>();
     }
-
-    public void addUserInputCommand (String name, CustomCommand command) {
-        myUserInputCommands.put(name, command);
-        System.out.println("I am a genius.");
-    }
-
-    /**
+	
+	/**
      * Parses a string input and constructs a collection of executable commands.
-     *
-     * @param input
-     *        : String to parse.
+     * 
+     * @param input : String to parse.
      * @return Collection of commands to execute.
      */
-    public Stack<Command> parseInput (String parseInput) {
-        Stack<Command> parameterStack = new Stack<Command>();
-        Stack<Command> commandsToExecute = new Stack<Command>();
-        for (String input : parseInput.split(" ")) {
-            if (input.equals(EMPTY_SPACE)) {
-                continue;
-            }
-            else if (myCommandMap.containsKey(input)) {
-                myCommandStack.add(myCommandMap.get(input));
-            }
-            else if (Pattern.matches("-?[0-9]+\\.?[0-9]*", input)
-                     | Pattern.matches(":[a-zA-Z]+", input) | input.equals("[") | input.equals("]")) {
-                myCommandStack.add(input);
-            }
-            else {
+    public List<Command> parseInput (String parseInput) {
+    	myIndex = 0;
+    	myError = false;
+    	List<Command> commandsToExecute = new ArrayList<Command>();
+    	myInputs = parseInput.trim().split(" ");
+    	while(myIndex < myInputs.length){
+    		commandsToExecute.add(generateCommand());
+    		if(myError){
+    			commandsToExecute.clear();
+    			commandsToExecute.add(new ErrorCommand("Error: Invalid Input"));
+    			return commandsToExecute;
+    		}
+    	}
+    	return commandsToExecute;
+	}
+    
+    private Command generateCommand() {
+    	String input = myInputs[myIndex];
+    	myIndex += 1;
+    	for(int i = 0; i < myRegularExpressions.length; i++){
+    		if(Pattern.matches(myRegularExpressions[i], input)){
+    			return createCommand(i, input);
+    		}
+    	}
+    	return throwError();
+	}
 
-                String errorMessage =
-                        "[ " + input +
-                                ": Invalid Input] This input does not exist in our library of commands, contants, and variables";
-                return throwError(errorMessage);
-            }
-        }
-        while (!myCommandStack.isEmpty()) {
-            String commandName = myCommandStack.pop();
-            Command newCommand = getCommand(commandName, parameterStack);
-            parameterStack.add(newCommand);
-            if (newCommand.getClassName().equals("commands.ErrorCommand")) { return parameterStack; }
-        }
-        while (!parameterStack.isEmpty()) {
-            commandsToExecute.add(parameterStack.pop());
-        }
-        return commandsToExecute;
+    interface CommandFactory {
+        Command create(String input);
+    }
+    
+    private Command createCommand(int choice, String input) {
+        return myCommandClasses[choice].create(input);
     }
 
-    /**
-     * This method gets a string of command name and, using reflection, 
-     * returns command object or error, if it doesn't exist.
-     * 
-     * @param commandName - a string of command name
-     * @param parameterStack - stack of commands that contains parameters
-     * @return either command or error
-     */
-    private Command getCommand (String commandName, Stack<Command> parameterStack) {
-        if (Pattern.matches("-?[0-9]+\\.?[0-9]*", commandName)) {
-            return new ConstantCommand(Double.parseDouble(commandName));
-        }
-        else if (Pattern.matches(":[a-zA-Z]+", commandName)) {
-            return new VariableCommand(commandName.substring(1));
-        }
-        else if (commandName.equals("]")) {
-            return makeListCommand(myCommandStack);
-        }
-        else {
-            Class<?> cl;
-            Command command;
-            try {
-                cl = Class.forName(commandName);
-                try {
-                    command = (Command)cl.getConstructor().newInstance();
-                    Command[] parameters = new Command[command.getNumParameters()];
-                    for (int i = 0; i < parameters.length; i++) {
-                        parameters[i] = parameterStack.pop();
-                    }
-                    command.setParameters(parameters);
-                    return command;
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                    String errorMessage =
-                            "[" + commandName
-                                    +
-                                    " : Invalid Input] Command class for this command could not be"
-                                    + " constructed properly.";
-                    return new ErrorCommand(errorMessage);
-                }
-            }
-            catch (ClassNotFoundException e) {
-                String errorMessage =
-                        "[" + commandName
-                                +
-                                " : Invalid Command] Command class for this command does not exist";
-                return new ErrorCommand(errorMessage);
-            }
-        }
-    }
-
-    /**
-     * When encountering "]", this method is used to create a ListCommand
-     * 
-     * @param commandStack
-     * @return ListCommand
-     */
-    private Command makeListCommand (Stack<String> commandStack) {
-        Stack<Command> tempParameterStack = new Stack<Command>();
-        ListCommand listCommand = new ListCommand();
-        boolean inListCommand = true;
-        while (!commandStack.isEmpty() & inListCommand) {
-            String commandName = commandStack.pop();
-            if (commandName.equals("[")) {
-                inListCommand = false;
-                continue;
-            }
-            Command newCommand = getCommand(commandName, tempParameterStack);
-            tempParameterStack.add(newCommand);
-        }
-        while (!tempParameterStack.empty()) {
-            listCommand.addParameter(tempParameterStack.pop());
-        }
-        return listCommand;
-    }
-
-    private Stack<Command> throwError (String errorMessage) {
-        Stack<Command> errorStack = new Stack<Command>();
-        ErrorCommand error = new ErrorCommand(errorMessage);
-        errorStack.add(error);
-        return errorStack;
-    }
-
+    private CommandFactory[] myCommandClasses = new CommandFactory[] {
+    	new CommandFactory() { public Command create(String input) { return makeListCommand(new ListCommand(), input); } },
+        new CommandFactory() { public Command create(String input) { return makeConstantCommand(input); } },
+        new CommandFactory() { public Command create(String input) { return makeVariableCommand(input); } },
+        new CommandFactory() { public Command create(String input) { return getCommandByReflection(input); } },
+        new CommandFactory() { public Command create(String input) { return makeCommentCommand(); } },
+        new CommandFactory() { public Command create(String input) { return throwError(); } },
+        new CommandFactory() { public Command create(String input) { return throwError(); } },
+        new CommandFactory() { public Command create(String input) { return throwError(); } }
+        // Since "GroupStart" and "GroupEnd" are currently not supported, an error will be thrown instead.
+    };
+    
+	private ListCommand makeListCommand(ListCommand command, String input) {
+		if(Pattern.matches(myRegularExpressions[5], input)){
+			myIndex += 1;
+			return command;
+		}
+		command.addParameter(generateCommand());
+		return makeListCommand(command, myInputs[myIndex]);
+	}
+	
+	private ConstantCommand makeConstantCommand(String input){
+		return new ConstantCommand(Double.parseDouble(input));
+	}
+	
+	private VariableCommand makeVariableCommand(String input){
+		return new VariableCommand(input.substring(1));
+	}
+    
+	private Command getCommandByReflection(String input) {
+		Class<?> cl;
+		Command command;
+		try {
+			cl = Class.forName(myCommandMap.get(input));
+			command = (Command) cl.getConstructor().newInstance();
+			Command[] parameters = new Command[command.getNumParameters()];
+			for(int i = 0; i < parameters.length; i++){
+				parameters[i] = generateCommand();
+			}
+			command.setParameters(parameters);
+		}
+		catch(Exception e){
+			return throwError();
+		}
+		return command;
+	}
+	
+	private CommentCommand makeCommentCommand(){
+		return new CommentCommand();
+	}
+	
+	private Command throwError(){
+		myError = true;
+		return null;
+	}
 }

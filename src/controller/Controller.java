@@ -1,7 +1,7 @@
 package controller;
 
 import java.util.List;
-import java.util.Stack;
+
 import model.Model;
 import view.controllers.PaneController;
 import view.panes.ViewPaneModule;
@@ -48,11 +48,9 @@ public class Controller {
      *        : User input string from the ViewPanel.
      */
     public void getInput (String input) {
-        Stack<Command> commandsToExecute = MasterController.myParser.parseInput(input);
-        if (!commandsToExecute.isEmpty()
-            && commandsToExecute.peek().getClassName().equals("commands.ErrorCommand")) {
-            ErrorCommand error = (ErrorCommand)commandsToExecute.pop();
-            myPane.showError(error.showError());
+        List<Command> commandsToExecute = MasterController.myParser.parseInput(input);
+        if (!commandsToExecute.isEmpty() && commandsToExecute.get(0).getClassName().equals("commands.ErrorCommand")) {
+            myPane.showError(((ErrorCommand)commandsToExecute.get(0)).showError());
             return;
         }
         runCommand(commandsToExecute);
