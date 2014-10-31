@@ -19,7 +19,8 @@ import view.Constants;
  * @author Team14
  *
  */
-
+//This entire file is part of my masterpiece.
+//Jesse Ling
 public class InputPaneModule extends PaneModule {
     private HBox myHBox = new HBox();
     private ScrollPane myScrollPane = new ScrollPane();
@@ -38,10 +39,8 @@ public class InputPaneModule extends PaneModule {
         myScrollPane.setContent(myTextField);
         myTextField.setPrefColumnCount(70);
         myTextField.setOnKeyPressed(new SubmitHandler());
-        Button submit = new Button("Submit");
-        submit.setOnAction(event -> submit());
-        Button save = new Button("Save");
-        save.setOnAction(event -> save());
+        Button submit = new Factory().makeButton("Submit", event -> submit());
+        Button save = new  Factory().makeButton("Save", event -> save());
         myHBox.getChildren().addAll(myScrollPane, submit, save);
     }
 

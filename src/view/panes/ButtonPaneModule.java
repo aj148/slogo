@@ -24,6 +24,8 @@ import view.controllers.LanguageController;
  * @author Team 14
  *
  */
+// This entire file is part of my masterpiece.
+// Jesse Ling
 public class ButtonPaneModule extends PaneModule {
     private final ToolBar myToolBar = new ToolBar();
     private HBox myHbox = new HBox();
@@ -45,9 +47,10 @@ public class ButtonPaneModule extends PaneModule {
      * Creates the Toolbar of Buttons that allow for Properties adjustment
      */
     public void createPropertiesMenu () {
-        myColorPicker = makeColorPicker("Background Color", event -> backgroundColor());
-        Button toggleReferenceGrid = makeButton("Toggle Grid", event -> toggleGrid());
-        Button help = makeButton("Help", event -> help());
+        myColorPicker = new Factory().makeColorPicker("Background Color",
+                event -> backgroundColor());
+        Button toggleReferenceGrid = new Factory().makeButton("Toggle Grid", event -> toggleGrid());
+        Button help = new Factory().makeButton("Help", event -> help());
         myHbox.getChildren().addAll(new Label("Background"), myColorPicker, toggleReferenceGrid,
                 myLanguageController.makeMenu(), help);
         myToolBar.getItems().add(myHbox);
@@ -67,40 +70,6 @@ public class ButtonPaneModule extends PaneModule {
         p.setTop(myVBox);
         return p;
 
-    }
-
-    /**
-     * Button Factory
-     * 
-     * @param property
-     *            String label for button
-     * @param handler
-     *            EventHandler for the button
-     * @return Completed Button
-     */
-    private Button makeButton (String property, EventHandler<ActionEvent> handler) {
-        Button result = new Button();
-        String label = property;
-        result.setText(label);
-        result.setOnAction(handler);
-        return result;
-    }
-
-    /**
-     * ColorPicker Factory
-     * 
-     * @param property
-     *            String label for ColorPicker
-     * @param handler
-     *            EventHandler for ColorPicker
-     * @return Completed ColorPicker
-     */
-    private ColorPicker makeColorPicker (String property, EventHandler<ActionEvent> handler) {
-        ColorPicker result = new ColorPicker();
-        result.setOnAction(handler);
-        result.getStyleClass().add("split-button");
-        result.setPromptText(property);
-        return result;
     }
 
     /**
