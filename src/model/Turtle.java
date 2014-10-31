@@ -7,7 +7,7 @@ import java.util.Map;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
-public class Turtle implements Comparable<Object> {
+public class Turtle implements Comparable<Object>{
 	/**
 	 * Class of Turtle, the object that is seen on the screen represented as a
 	 * turtle.

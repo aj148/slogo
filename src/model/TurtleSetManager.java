@@ -1,45 +1,45 @@
+// This entire file is part of my masterpiece.
+// Ben Reisner
 package model;
 
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
-import java.util.Stack;
+import java.util.LinkedList;
 
 /**
  * Class the contains various lists of turtles, used to manage scope of the
  * turtle
  */
-public class TurtleSetManager {
+public class TurtleSetManager extends MasterpieceSuper {
 
-	private Stack<Set<Turtle>> myStack;
-	private Set<Turtle> mySet;
+	private LinkedList<Set<Turtle>> myLinkedList;
 
 	public TurtleSetManager(Set<Turtle> turtles) {
-		mySet = turtles;
 		// mySet.add(new Turtle(0));
-		myStack = new Stack<Set<Turtle>>();
-		myStack.add(mySet);
+		myLinkedList = new LinkedList<Set<Turtle>>();
+		myLinkedList.add(turtles);
 	}
 
 	/**
-	 * Method to add a set to the current stack of sets of turtles.
+	 * Method to add a set to the current LinkedList of sets of turtles.
 	 *
 	 * @param newSet
 	 *            : the set to be added.
 	 */
 	public void addTurtleCollection(Set<Turtle> newSet) {
-		myStack.add(newSet);
+		super.add(myLinkedList, newSet);
 	}
 
 	/**
-	 * Method to regulate the depth of the stack.
+	 * Method to regulate the depth of the LinkedList.
 	 *
 	 * @param finalLength
-	 *            : integer representing the length the stack should be when
-	 *            this is called.
+	 *            : integer representing the length the LinkedList should be
+	 *            when this is called.
 	 */
 	public void regulateTurtleDepth(int finalLength) {
-		while (getStackLength() != finalLength) {
-			myStack.pop();
-		}
+		super.reduceScope(finalLength, myLinkedList);
 	}
 
 	/**
@@ -49,29 +49,31 @@ public class TurtleSetManager {
 	 * @param id
 	 *            : adds new turtle with ID int id.
 	 */
+	// didn't really modify because I don't think it's used, don't want to mess
+	// with it
 	public void addTurtle(int id) {
-		mySet.add(new Turtle(id));
+		getAllTurtles().add(new Turtle(id));
 	}
 
 	/**
 	 * Method to return collection of currently active turtles.
 	 */
 	public Set<Turtle> getActiveTurtles() {
-		return myStack.lastElement();
+		return new HashSet(super.getLowestLevel(myLinkedList));
 	}
 
 	/**
 	 * Method to return collection of all turtles
 	 */
 	public Set<Turtle> getAllTurtles() {
-		return mySet;
+		return new HashSet(super.getLowestLevel(myLinkedList));
 	}
 
 	/**
-	 * Method to get the length of the stack, used in regulatedepth for ease in
-	 * typing.
+	 * Method to get the length of the LinkedList, used in regulatedepth for
+	 * ease in typing.
 	 */
-	public int getStackLength() {
-		return myStack.size();
+	public int getLinkedListLength() {
+		return myLinkedList.size();
 	}
 }
