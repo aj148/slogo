@@ -34,9 +34,9 @@ public class PaneController implements Observer {
     /**
      * CommandString containing the current command to be passed to the backend.
      */
-    private CommandString myCommand = new CommandString(this);
+    public CommandString myCommand = new CommandString(this);
     private ImagePalette myImagePalette = new ImagePalette();
-    private ViewPaneModule myView = new ViewPaneModule(myImagePalette);
+    public ViewPaneModule myView = new ViewPaneModule(myImagePalette);
     private Controller myController = new Controller(myView, this);
     private MasterController myMasterController = new MasterController("English");;
     private LanguageController myLanguageController = new LanguageController(myMasterController);
