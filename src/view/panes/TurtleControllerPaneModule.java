@@ -20,10 +20,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import view.CommandString;
 import view.Constants;
+import view.Factory;
 import view.controllers.ImagePalette;
 
 /**
  * Allows the GUI control over turtles
+ * 
+ * This is my Masterpiece.
+ * Arihant Jain
  * 
  * @author Team 14
  *
@@ -56,9 +60,9 @@ public class TurtleControllerPaneModule extends PaneModule {
         myMoveTextField.setPrefColumnCount(5);
         myAngleTextField.setPrefColumnCount(5);
         myIDTextField.setPrefColumnCount(5);
-        Button moveButton = makeButton("Forward", event -> move());
-        Button angleButton = makeButton("Right (deg)", event -> angle());
-        Button makeNewTurtle = makeButton("Make New Turtle", event -> makeTurtle());
+        Button moveButton = new Factory().makeButton("Forward", event -> move());
+        Button angleButton = new Factory().makeButton("Right (deg)", event -> angle());
+        Button makeNewTurtle = new Factory().makeButton("Make New Turtle", event -> makeTurtle());
 
         myVbox.getChildren().addAll(new Label("TURTLE PROPERTIES"),
                 new HBox(myIDTextField, new Label("ID Number")), imageSelectorMaker(),
@@ -78,27 +82,12 @@ public class TurtleControllerPaneModule extends PaneModule {
      * @return HBox containing image selector items
      */
     private HBox imageSelectorMaker () {
-        Button chooseFileButton = makeButton("Add Image", event -> doChoose());
+        Button chooseFileButton = new Factory().makeButton("Add Image", event -> doChoose());
         myImageBar.getChildren().addAll(myImagePalette.getBox(), chooseFileButton);
         return myImageBar;
     }
 
-    /**
-     * Button Factory
-     * 
-     * @param property
-     *            String label for button
-     * @param handler
-     *            EventHandler for the button
-     * @return Completed Button
-     */
-    private Button makeButton (String property, EventHandler<ActionEvent> handler) {
-        Button result = new Button();
-        String label = property;
-        result.setText(label);
-        result.setOnAction(handler);
-        return result;
-    }
+
 
     /**
      * Defines the behavior for when a File Chooser is used to select a new

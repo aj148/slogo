@@ -34,8 +34,8 @@ public class ViewPaneModule extends PaneModule {
     private Pane myPane = new Pane();
     private TurtleDraw myDraw;
     private Point2D myCurrentPoint = new Point2D(0, 0);
-    private List<Line> myGrid = new ArrayList<Line>();
     private Color defColor = Color.LIGHTGRAY;
+    private List<Line> myGrid; 
     private Set<Turtle> myTurtles;
     private ImagePalette myImagePalette;
     private Map<Integer, ImageView> myIcons = new HashMap<Integer, ImageView>();
@@ -54,7 +54,7 @@ public class ViewPaneModule extends PaneModule {
         RGB = toRGB(myBackColor);
         updateBGColor(RGB);
         myPane.setPrefSize(Constants.VIEW_DEFAULT_DIMENSION, Constants.VIEW_DEFAULT_DIMENSION);
-        createGrid(defColor);
+        myGrid = GridInterface.createGrid(myPane, 10, defColor);
     }
 
     /**
@@ -88,29 +88,6 @@ public class ViewPaneModule extends PaneModule {
     public BorderPane addPane (BorderPane p) {
         p.setCenter(myPane);
         return p;
-    }
-
-    /**
-     * Creates a Grid
-     * 
-     * @param c
-     *            Color of the grid
-     */
-    private void createGrid (Color c) {
-        int loc = 0;
-        int cellSize = 10;
-        while (loc < Constants.VIEW_DEFAULT_DIMENSION - 10) {
-            Line horizontal = new Line(0, loc, Constants.VIEW_DEFAULT_DIMENSION - 10, loc);
-            myGrid.add(horizontal);
-            Line vertical = new Line(loc, 0, loc, Constants.VIEW_DEFAULT_DIMENSION);
-            myGrid.add(vertical);
-            loc += cellSize;
-        }
-        for (Line l : myGrid) {
-            l.setStroke(c);
-            l.toBack();
-            myPane.getChildren().add(l);
-        }
     }
 
     /**

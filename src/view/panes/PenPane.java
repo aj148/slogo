@@ -17,12 +17,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import view.CommandString;
 import view.Constants;
+import view.Factory;
 
 /**
  * Allows properties of the Pen for a turtle to be configured graphically
  * through the user interface.
  * 
  * @author Team 14
+ *
+ *This is my Masterpiece.
+ * Arihant Jain
  *
  */
 public class PenPane {
@@ -40,10 +44,10 @@ public class PenPane {
         myCommandString = cs;
         myPenWidthTextField.setPrefColumnCount(8);
         myPenDashTextField.setPrefColumnCount(8);
-        myColorPicker = makeColorPicker("Pen Color", event -> changePenColor());
+        myColorPicker = new Factory().makeColorPicker("Pen Color", event -> changePenColor());
         myPenStyles = makeMenu();
-        Button penWidthButton = makeButton("Pen Size", event -> setPenWidth());
-        Button penDashButton = makeButton("Pen Dash", event -> setPenDash());
+        Button penWidthButton = new Factory().makeButton("Pen Size", event -> setPenWidth());
+        Button penDashButton = new Factory().makeButton("Pen Dash", event -> setPenDash());
         myVbox.getChildren().addAll(new Separator(), new Label("PEN COMMANDS"), myPenToggle,
 
         new HBox(myColorPicker, new Label("Pen Color")),
@@ -84,22 +88,6 @@ public class PenPane {
         }
     }
 
-    /**
-     * Button Factory
-     * 
-     * @param property
-     *            String label for button
-     * @param handler
-     *            EventHandler for the button
-     * @return Completed Button
-     */
-    private Button makeButton (String property, EventHandler<ActionEvent> handler) {
-        Button result = new Button();
-        String label = property;
-        result.setText(label);
-        result.setOnAction(handler);
-        return result;
-    }
 
     /**
      * Sets the Dash Style of the Pen
@@ -139,22 +127,7 @@ public class PenPane {
 
     }
 
-    /**
-     * ColorPicker Factory
-     * 
-     * @param property
-     *            String label for ColorPicker
-     * @param handler
-     *            EventHandler for ColorPicker
-     * @return Completed ColorPicker
-     */
-    private ColorPicker makeColorPicker (String property, EventHandler<ActionEvent> handler) {
-        ColorPicker result = new ColorPicker();
-        result.setOnAction(handler);
-        result.getStyleClass().add("split-button");
-        result.setPromptText(property);
-        return result;
-    }
+
 
     /**
      * Makes the menu for the types of Pen Styles

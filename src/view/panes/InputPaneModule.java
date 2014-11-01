@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import view.CommandString;
 import view.Constants;
+import view.Factory;
 
 /**
  * Subclass of Pane that implements a scrollable textfield that allows for user
@@ -17,6 +18,9 @@ import view.Constants;
  * by the user.
  *
  * @author Team14
+ * 
+ * This is my Masterpiece.
+ * Arihant Jain
  *
  */
 
@@ -38,10 +42,9 @@ public class InputPaneModule extends PaneModule {
         myScrollPane.setContent(myTextField);
         myTextField.setPrefColumnCount(70);
         myTextField.setOnKeyPressed(new SubmitHandler());
-        Button submit = new Button("Submit");
-        submit.setOnAction(event -> submit());
-        Button save = new Button("Save");
-        save.setOnAction(event -> save());
+        Button submit = new Factory().makeButton("Submit", event -> submit());
+        Button save = new Factory().makeButton("Submit", event -> submit());
+
         myHBox.getChildren().addAll(myScrollPane, submit, save);
     }
 
