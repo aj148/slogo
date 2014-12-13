@@ -1,0 +1,31 @@
+<map id="commands.Command.updateTurtle" name="commands.Command.updateTurtle">
+<area shape="rect" id="node2" href="$dd/dd6/classcommands_1_1_command.html#abafa69601e87c34d4453cf84349d6f9c" title="commands.Command.execute\lCommand" alt="" coords="302,854,522,895"/>
+<area shape="rect" id="node3" href="$d1/d79/classcommands_1_1_sum_command.html#a792945436d0c3ff1f58301fcc50f5ae1" title="commands.SumCommand.execute\lCommand" alt="" coords="605,5,856,46"/>
+<area shape="rect" id="node4" href="$d6/dc0/classcommands_1_1_repeat_command.html#a40fb82831e8b2beaa7e31913e46e15eb" title="commands.RepeatCommand.execute\lCommand" alt="" coords="599,70,863,111"/>
+<area shape="rect" id="node5" href="$dd/d82/classcommands_1_1_remainder_command.html#a99d4baf3f1b4a3c8d0cd69274380a2cf" title="commands.RemainderCommand.execute\lCommand" alt="" coords="587,135,875,177"/>
+<area shape="rect" id="node6" href="$df/df5/classcommands_1_1_minus_command.html#a82548bbb25a73194469e1ff81b19cf27" title="commands.MinusCommand.execute\lCommand" alt="" coords="602,201,859,242"/>
+<area shape="rect" id="node7" href="$d3/d37/classcommands_1_1_set_background_command.html#a91dc8e21948a301c55af1cef90b77962" title="commands.SetBackgroundCommand.execute\lCommand" alt="" coords="571,266,890,307"/>
+<area shape="rect" id="node8" href="$d8/dba/classcommands_1_1_product_command.html#a8bc20bc7c21a944405f599dbcfa57e67" title="commands.ProductCommand.execute\lCommand" alt="" coords="596,331,865,373"/>
+<area shape="rect" id="node9" href="$dd/d40/classcommands_1_1_quotient_command.html#a7e23b237cc68512dcbe6a65feb7c39e8" title="commands.QuotientCommand.execute\lCommand" alt="" coords="593,397,868,438"/>
+<area shape="rect" id="node10" href="$dc/d68/classcommands_1_1_make_variable_command.html#ad0e0974744cc969c12c67805c2460ef4" title="commands.MakeVariableCommand.execute\lCommand" alt="" coords="578,462,883,503"/>
+<area shape="rect" id="node11" href="$d8/ded/classcommands_1_1_difference_command.html#a0c34c43d3bb266ef3e48ae27be938a0f" title="commands.DifferenceCommand.execute\lCommand" alt="" coords="588,527,873,569"/>
+<area shape="rect" id="node12" href="$dd/d29/classcommands_1_1_clear_screen_command.html#a87e5eb0f4c3bb48ec0737da2aa431db3" title="commands.ClearScreenCommand.execute\lCommand" alt="" coords="581,593,880,634"/>
+<area shape="rect" id="node13" href="$d9/d35/classcommands_1_1_ask_command.html#ae4ba28c73ce0b5112e4032bd21a951f5" title="commands.AskCommand.execute\lCommand" alt="" coords="609,658,852,699"/>
+<area shape="rect" id="node14" href="$d3/d49/classcommands_1_1_if_else_command.html#a3b3d15925117d366a69f8ebd1dbc2dbc" title="commands.IfElseCommand.execute\lCommand" alt="" coords="604,723,857,765"/>
+<area shape="rect" id="node16" href="$d8/d57/classcommands_1_1_for_command.html#aeb06a37d7f9845eb546425bae6ea9f58" title="commands.ForCommand.execute\lCommand" alt="" coords="611,789,851,830"/>
+<area shape="rect" id="node17" href="$db/d38/classcommands_1_1_ask_with_command.html#a5ee6a090e94729d84ef423a454d446eb" title="commands.AskWithCommand.execute\lCommand" alt="" coords="595,854,866,895"/>
+<area shape="rect" id="node18" href="$d4/d02/classcommands_1_1_do_times_command.html#a1dd20e90975d905a1bce8f018e9f7f0a" title="commands.DoTimesCommand.execute\lCommand" alt="" coords="593,919,869,961"/>
+<area shape="rect" id="node19" href="$dd/de4/classcommands_1_1_custom_command.html#a5ad25438a49d3e4eeba835fefe8b730a" title="commands.CustomCommand.execute\lCommand" alt="" coords="595,985,866,1026"/>
+<area shape="rect" id="node20" href="$d6/daf/classcommands_1_1_set_shape_command.html#a59c440316cf9e732b5aa2f46def94e10" title="commands.SetShapeCommand.update\lTurtle" alt="" coords="592,1050,869,1091"/>
+<area shape="rect" id="node21" href="$d6/d11/classcommands_1_1_set_pen_dash_command.html#a320f3b8248e3e89b2338dfefbe73f8c7" title="commands.SetPenDashCommand.update\lTurtle" alt="" coords="584,1115,877,1157"/>
+<area shape="rect" id="node22" href="$dc/df3/classcommands_1_1_set_towards_command.html#ad82abd7dcaed57b3bdb3a4b87a91815a" title="commands.SetTowardsCommand.update\lTurtle" alt="" coords="587,1181,874,1222"/>
+<area shape="rect" id="node23" href="$d9/db5/classcommands_1_1_set_position_command.html#aba31c4887974831a6c0d9feac8316ee6" title="commands.SetPositionCommand.update\lTurtle" alt="" coords="587,1246,874,1287"/>
+<area shape="rect" id="node24" href="$dd/db2/classcommands_1_1_right_command.html#ae16ecb0da3e0a2049a7382d74f315cb6" title="commands.RightCommand.update\lTurtle" alt="" coords="607,1311,854,1353"/>
+<area shape="rect" id="node25" href="$dc/db3/classcommands_1_1_set_heading_command.html#a064fae1a815349b9efc6bd43f2371339" title="commands.SetHeadingCommand.update\lTurtle" alt="" coords="586,1377,875,1418"/>
+<area shape="rect" id="node26" href="$d2/dbb/classcommands_1_1_set_pen_size_command.html#aa8dbbb22c72842b2d6f50aa169a8404e" title="commands.SetPenSizeCommand.update\lTurtle" alt="" coords="587,1442,874,1483"/>
+<area shape="rect" id="node27" href="$d5/d21/classcommands_1_1_set_pen_color_command.html#a69a9c0161b8910c8fecc5ace219aeeb8" title="commands.SetPenColorCommand.update\lTurtle" alt="" coords="584,1507,877,1549"/>
+<area shape="rect" id="node28" href="$dc/d65/classcommands_1_1_left_command.html#abd466facd4b16e1c04a6578b4bf8e203" title="commands.LeftCommand.update\lTurtle" alt="" coords="611,1573,850,1614"/>
+<area shape="rect" id="node29" href="$d6/ddc/classcommands_1_1_backward_command.html#af0c4c6ac04bea1aa34b069a01c53888f" title="commands.BackwardCommand.update\lTurtle" alt="" coords="593,1638,868,1679"/>
+<area shape="rect" id="node30" href="$da/d4f/classcommands_1_1_forward_command.html#afe19b644a8fe0d46f3dbf19aef135364" title="commands.ForwardCommand.update\lTurtle" alt="" coords="599,1703,863,1745"/>
+<area shape="rect" id="node15" href="$d5/dad/classcommands_1_1_if_command.html#a0d92f20941c1e79cfb1e02e77f463e68" title="commands.IfCommand.execute\lCommand" alt="" coords="939,723,1165,765"/>
+</map>

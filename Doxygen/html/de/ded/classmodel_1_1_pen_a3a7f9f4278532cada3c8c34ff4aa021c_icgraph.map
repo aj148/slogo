@@ -1,0 +1,4 @@
+<map id="model.Pen.updateDash" name="model.Pen.updateDash">
+<area shape="rect" id="node2" href="$d6/d34/classmodel_1_1_turtle.html#ac921e31900a0f17df37554853aa7680a" title="model.Turtle.setPenDash" alt="" coords="227,12,408,39"/>
+<area shape="rect" id="node3" href="$d6/d11/classcommands_1_1_set_pen_dash_command.html#a320f3b8248e3e89b2338dfefbe73f8c7" title="commands.SetPenDashCommand.update\lTurtle" alt="" coords="456,5,749,46"/>
+</map>

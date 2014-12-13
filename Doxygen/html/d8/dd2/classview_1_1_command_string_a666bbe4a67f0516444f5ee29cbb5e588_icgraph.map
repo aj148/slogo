@@ -1,0 +1,28 @@
+<map id="view.CommandString.setCommand" name="view.CommandString.setCommand">
+<area shape="rect" id="node2" href="$d0/d5e/classview_1_1panes_1_1_history_pane_module.html#a09382cefa07872cdea931ba8897757e4" title="view.panes.HistoryPaneModule.addItem" alt="" coords="312,5,587,32"/>
+<area shape="rect" id="node4" href="$d0/d06/classview_1_1panes_1_1_turtle_controller_pane_module.html#a17968045f35b256d20da119dff9825db" title="view.panes.TurtleController\lPaneModule.angle" alt="" coords="1273,78,1463,119"/>
+<area shape="rect" id="node6" href="$d0/d18/classview_1_1panes_1_1_button_pane_module.html#a9383ad9a84c4c7db217f61cb1f64203a" title="view.panes.ButtonPaneModule.background\lColor" alt="" coords="302,131,597,173"/>
+<area shape="rect" id="node9" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#afa93d4769bd752fe33df3be53f584bf8" title="view.panes.PenPane.change\lPenColor" alt="" coords="678,498,879,539"/>
+<area shape="rect" id="node10" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#a093392cc7e9e908e5bd2b6f91a6a2d0f" title="view.panes.PenPane.PenPane" alt="" coords="987,447,1197,473"/>
+<area shape="rect" id="node11" href="$d0/d06/classview_1_1panes_1_1_turtle_controller_pane_module.html#a96e94da05841aa7343ac097728f14b06" title="view.panes.TurtleController\lPaneModule.makeTurtle" alt="" coords="1273,283,1463,325"/>
+<area shape="rect" id="node12" href="$d0/d06/classview_1_1panes_1_1_turtle_controller_pane_module.html#a7bcb51ee51afaa6fd0bac492d024b4ce" title="view.panes.TurtleController\lPaneModule.move" alt="" coords="354,221,545,262"/>
+<area shape="rect" id="node14" href="$d3/d9f/classview_1_1panes_1_1_input_pane_module.html#a1ab2a8da0203b89619af648aec997423" title="view.panes.InputPaneModule.save" alt="" coords="330,571,569,597"/>
+<area shape="rect" id="node16" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#aa1e66639fe9d5a43850c7a076129e0a4" title="view.panes.PenPane.setPenDash" alt="" coords="663,447,894,473"/>
+<area shape="rect" id="node17" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#ab5735f00ef7a3f0569fb667d0fbb385d" title="view.panes.PenPane.setPen\lStyle" alt="" coords="350,338,549,379"/>
+<area shape="rect" id="node19" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#ae74fd1dadc881ce65eefcb7bdc0095a9" title="view.panes.PenPane.setPen\lWidth" alt="" coords="350,403,549,445"/>
+<area shape="rect" id="node20" href="$d3/dc7/classview_1_1controllers_1_1_pane_controller.html#a5d1d9a5c7a1635c2c6c26e21862f6d59" title="view.controllers.PaneController.show\lError" alt="" coords="324,746,575,787"/>
+<area shape="rect" id="node23" href="$d3/d9f/classview_1_1panes_1_1_input_pane_module.html#af466f43b6cde72051115970753703086" title="view.panes.InputPaneModule.submit" alt="" coords="323,621,575,648"/>
+<area shape="rect" id="node25" href="$d8/daa/classview_1_1panes_1_1_turtle_selector_pane.html#ad83809df344e4af1f046629e336662e0" title="view.panes.TurtleSelector\lPane.toggleActiveTurtles" alt="" coords="358,811,541,853"/>
+<area shape="rect" id="node3" href="$d0/d5e/classview_1_1panes_1_1_history_pane_module.html#a3e7a421da9fa47db1c0049a830f8aa81" title="view.panes.HistoryPaneModule.update" alt="" coords="645,5,912,32"/>
+<area shape="rect" id="node5" href="$d0/d06/classview_1_1panes_1_1_turtle_controller_pane_module.html#a8b42010a92159b57095b40a80de1dfc7" title="view.panes.TurtleController\lPaneModule.TurtleControllerPane\lModule" alt="" coords="1513,159,1743,215"/>
+<area shape="rect" id="node7" href="$d0/d18/classview_1_1panes_1_1_button_pane_module.html#a5d69a336ac95020bfde0507bb018790d" title="view.panes.ButtonPaneModule.create\lPropertiesMenu" alt="" coords="649,107,909,149"/>
+<area shape="rect" id="node8" href="$d0/d18/classview_1_1panes_1_1_button_pane_module.html#aa101ed48e3d2a504329a82dc7bea4795" title="view.panes.ButtonPaneModule.\lButtonPaneModule" alt="" coords="983,107,1201,149"/>
+<area shape="rect" id="node13" href="$df/d2d/classview_1_1panes_1_1_turtle_controller_pane_module_1_1_move_handler.html#af119dbbc22106be7b578c2fd2e5abe09" title="view.panes.TurtleController\lPaneModule.MoveHandler.handle" alt="" coords="662,225,895,266"/>
+<area shape="rect" id="node15" href="$d3/d9f/classview_1_1panes_1_1_input_pane_module.html#a87801b5117be03d80c2a14b2bf9e5e6d" title="view.panes.InputPaneModule.\lInputPaneModule" alt="" coords="675,563,883,605"/>
+<area shape="rect" id="node18" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#aee0977bc29663b1fb656a34f6e7adb10" title="view.panes.PenPane.makeMenu" alt="" coords="666,345,891,372"/>
+<area shape="rect" id="node21" href="$d9/df7/classcontroller_1_1_controller.html#afdfa7f9e9a3fb5f6b73a6b8e2b2be8b5" title="controller.Controller.get\lInput" alt="" coords="693,746,864,787"/>
+<area shape="rect" id="node22" href="$d3/dc7/classview_1_1controllers_1_1_pane_controller.html#a7e6154aecb60d8f3bcb056a11e842764" title="view.controllers.PaneController.update" alt="" coords="960,753,1224,780"/>
+<area shape="rect" id="node24" href="$dd/d35/classview_1_1panes_1_1_input_pane_module_1_1_submit_handler.html#a4d5150ca53334e966f8179c66ca6625b" title="view.panes.InputPaneModule.\lSubmitHandler.handle" alt="" coords="675,629,883,670"/>
+<area shape="rect" id="node26" href="$d8/daa/classview_1_1panes_1_1_turtle_selector_pane.html#a41425164edccc3709e2f66ed462f8709" title="view.panes.TurtleSelector\lPane.getActiveTurtles" alt="" coords="687,811,870,853"/>
+<area shape="rect" id="node27" href="$d8/daa/classview_1_1panes_1_1_turtle_selector_pane.html#a93a77e509159e4a9684bd8356477a810" title="view.panes.TurtleSelector\lPane.newTurtle" alt="" coords="1001,807,1183,849"/>
+</map>

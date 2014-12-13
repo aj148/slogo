@@ -1,0 +1,4 @@
+<map id="model.Turtle.updateHeading" name="model.Turtle.updateHeading">
+<area shape="rect" id="node2" href="$dd/db2/classcommands_1_1_right_command.html#ae16ecb0da3e0a2049a7382d74f315cb6" title="commands.RightCommand.update\lTurtle" alt="" coords="257,5,503,46"/>
+<area shape="rect" id="node3" href="$dc/d65/classcommands_1_1_left_command.html#abd466facd4b16e1c04a6578b4bf8e203" title="commands.LeftCommand.update\lTurtle" alt="" coords="261,70,499,111"/>
+</map>

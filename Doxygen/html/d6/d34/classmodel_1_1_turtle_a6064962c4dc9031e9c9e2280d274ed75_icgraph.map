@@ -1,0 +1,5 @@
+<map id="model.Turtle.changeVisibility" name="model.Turtle.changeVisibility">
+<area shape="rect" id="node2" href="$de/d65/classcommands_1_1_is_showing_command.html#af2ed66a904379343ee62fe1650f79867" title="commands.IsShowingCommand.execute\lCommand" alt="" coords="256,5,539,46"/>
+<area shape="rect" id="node3" href="$d6/dc7/classcommands_1_1_show_turtle_command.html#a9d389b417342f8c9127e5945084ba981" title="commands.ShowTurtleCommand.update\lTurtle" alt="" coords="256,70,539,111"/>
+<area shape="rect" id="node4" href="$d1/de3/classcommands_1_1_hide_turtle_command.html#aa437cbf73ddf8a957cbd9c05ca034a19" title="commands.HideTurtleCommand.update\lTurtle" alt="" coords="259,135,536,177"/>
+</map>

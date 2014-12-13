@@ -1,0 +1,8 @@
+<map id="view.panes.ViewPaneModule" name="view.panes.ViewPaneModule">
+<area shape="rect" id="node3" href="$d3/d42/classmodel_1_1_model.html" title="model.Model" alt="" coords="1491,524,1595,551"/>
+<area shape="rect" id="node2" href="$df/dd6/classview_1_1panes_1_1_pane_module.html" title="view.panes.PaneModule" alt="" coords="741,47,913,73"/>
+<area shape="rect" id="node8" href="$df/d50/classmodel_1_1_turtle_set_manager.html" title="model.TurtleSetManager" alt="" coords="1119,619,1297,645"/>
+<area shape="rect" id="node5" href="$d3/d62/classmodel_1_1_variable_manager.html" title="model.VariableManager" alt="" coords="1121,696,1295,723"/>
+<area shape="rect" id="node21" href="$d7/da6/classview_1_1_turtle_draw.html" title="view.TurtleDraw" alt="" coords="767,491,886,517"/>
+<area shape="rect" id="node16" href="$d3/db7/classview_1_1controllers_1_1_image_palette.html" title="view.controllers.ImagePalette" alt="" coords="353,444,559,471"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="view.panes.ButtonPaneModule" name="view.panes.ButtonPaneModule">
+<area shape="rect" id="node2" href="$df/dd6/classview_1_1panes_1_1_pane_module.html" title="view.panes.PaneModule" alt="" coords="842,279,1014,305"/>
+<area shape="rect" id="node7" href="$db/db5/classview_1_1panes_1_1_view_pane_module.html" title="view.panes.ViewPaneModule" alt="" coords="1217,537,1418,564"/>
+<area shape="rect" id="node4" href="$d8/dd2/classview_1_1_command_string.html" title="view.CommandString" alt="" coords="1239,5,1396,32"/>
+<area shape="rect" id="node8" href="$d3/d42/classmodel_1_1_model.html" title="model.Model" alt="" coords="1672,851,1776,877"/>
+<area shape="rect" id="node13" href="$df/d50/classmodel_1_1_turtle_set_manager.html" title="model.TurtleSetManager" alt="" coords="1228,964,1407,991"/>
+<area shape="rect" id="node10" href="$d3/d62/classmodel_1_1_variable_manager.html" title="model.VariableManager" alt="" coords="1231,1033,1404,1060"/>
+<area shape="rect" id="node26" href="$d7/da6/classview_1_1_turtle_draw.html" title="view.TurtleDraw" alt="" coords="869,651,987,677"/>
+<area shape="rect" id="node21" href="$d3/db7/classview_1_1controllers_1_1_image_palette.html" title="view.controllers.ImagePalette" alt="" coords="454,565,661,592"/>
+<area shape="rect" id="node29" href="$df/d94/classview_1_1controllers_1_1_language_controller.html" title="view.controllers.Language\lController" alt="" coords="1224,209,1411,250"/>
+<area shape="rect" id="node30" href="$d8/dce/classcontroller_1_1_master_controller.html" title="controller.MasterController" alt="" coords="833,216,1023,243"/>
+<area shape="rect" id="node31" href="$d6/d95/classparser_1_1_parser.html" title="parser.Parser" alt="" coords="504,243,611,269"/>
+</map>

@@ -1,0 +1,37 @@
+<map id="commands.SetPositionCommand.updateTurtle" name="commands.SetPositionCommand.updateTurtle">
+<area shape="rect" id="node2" href="$dd/dd6/classcommands_1_1_command.html#abafa69601e87c34d4453cf84349d6f9c" title="commands.Command.execute\lCommand" alt="" coords="342,99,562,141"/>
+<area shape="rect" id="node35" href="$d6/d34/classmodel_1_1_turtle.html#a8594135f6eec9e475e8927ddeb012e25" title="model.Turtle.setXAndY" alt="" coords="370,187,534,213"/>
+<area shape="rect" id="node3" href="$df/d50/classmodel_1_1_turtle_set_manager.html#a9a65c0be3b9c21abaf0ebaa54e5b8484" title="model.TurtleSetManager.get\lActiveTurtles" alt="" coords="1259,41,1461,82"/>
+<area shape="rect" id="node4" href="$d3/d42/classmodel_1_1_model.html#a1a683ba5e58fcb3c8882c8e61df20dc0" title="model.Model.getTurtleManager" alt="" coords="1251,107,1469,133"/>
+<area shape="rect" id="node5" href="$d3/d42/classmodel_1_1_model.html#a76160d002c1e68b566307ac44356f6e5" title="model.Model.notifyView" alt="" coords="649,157,821,184"/>
+<area shape="rect" id="node34" href="$dd/dd6/classcommands_1_1_command.html#aec3e0f888945b1811fd739ecea212324" title="commands.Command.updateTurtle" alt="" coords="611,5,859,32"/>
+<area shape="rect" id="node6" href="$db/db5/classview_1_1panes_1_1_view_pane_module.html#aa2a1bf15bc036ee4237bf63749d85baf" title="view.panes.ViewPaneModule.updateView" alt="" coords="907,329,1186,356"/>
+<area shape="rect" id="node7" href="$d3/d42/classmodel_1_1_model.html#a54936407d7df5ab8ef3c0ae54bcdc0ed" title="model.Model.getBackground\lColor" alt="" coords="1257,289,1463,330"/>
+<area shape="rect" id="node8" href="$db/db5/classview_1_1panes_1_1_view_pane_module.html#ac94ee444587349ddad19b8caee500c9c" title="view.panes.ViewPaneModule.update\lBGColor" alt="" coords="1235,354,1485,395"/>
+<area shape="rect" id="node9" href="$db/db5/classview_1_1panes_1_1_view_pane_module.html#abe91f8bb732e99d762bdaba51ceae04b" title="view.panes.ViewPaneModule.toRGB" alt="" coords="1237,420,1483,447"/>
+<area shape="rect" id="node10" href="$df/d50/classmodel_1_1_turtle_set_manager.html#a9e215e93eccbed2ab9ebec6119cfe305" title="model.TurtleSetManager.get\lAllTurtles" alt="" coords="1259,471,1461,513"/>
+<area shape="rect" id="node11" href="$d3/d42/classmodel_1_1_model.html#af73e838aed2c068e8f7d31bfa1cc88d7" title="model.Model.getStamp" alt="" coords="1274,537,1446,564"/>
+<area shape="rect" id="node12" href="$db/db5/classview_1_1panes_1_1_view_pane_module.html#a44db6ae832af3ce470baa9406142b8cb" title="view.panes.ViewPaneModule.make\lStamps" alt="" coords="1239,589,1481,630"/>
+<area shape="rect" id="node19" href="$d3/d42/classmodel_1_1_model.html#a0a457f31350a460e11dc864463e0d8ff" title="model.Model.setStamp" alt="" coords="1275,655,1445,681"/>
+<area shape="rect" id="node20" href="$db/db5/classview_1_1panes_1_1_view_pane_module.html#a7ad9ad27137ffdf0ea96753a22da236b" title="view.panes.ViewPaneModule.erase\lStamps" alt="" coords="1239,158,1481,199"/>
+<area shape="rect" id="node22" href="$db/db5/classview_1_1panes_1_1_view_pane_module.html#ab55ce3511929b88a2cd1235eb694868f" title="view.panes.ViewPaneModule.update\lTurtle" alt="" coords="1235,223,1485,265"/>
+<area shape="rect" id="node13" href="$d7/da6/classview_1_1_turtle_draw.html#a939f4fdbdb66457c9dcee82eb4ae6d9c" title="view.TurtleDraw.drawTurtle" alt="" coords="1545,565,1730,592"/>
+<area shape="rect" id="node16" href="$d7/da6/classview_1_1_turtle_draw.html#a14678068d3fc9d3b6e1067bc372f6030" title="view.TurtleDraw.showTurtle" alt="" coords="1544,616,1731,643"/>
+<area shape="rect" id="node17" href="$d7/da6/classview_1_1_turtle_draw.html#a8c2cab38eb294b26aea1ae17595ba2a6" title="view.TurtleDraw.moveTurtle" alt="" coords="1542,464,1733,491"/>
+<area shape="rect" id="node18" href="$d7/da6/classview_1_1_turtle_draw.html#a5004a16526a67f090d7da45474b5136e" title="view.TurtleDraw.setAngle" alt="" coords="1549,515,1726,541"/>
+<area shape="rect" id="node14" href="$d6/d34/classmodel_1_1_turtle.html#a942dbeb1d7e2bc19b6870538c2c3a7d2" title="model.Turtle.getShape" alt="" coords="1822,536,1989,563"/>
+<area shape="rect" id="node15" href="$d3/db7/classview_1_1controllers_1_1_image_palette.html#a8a6620714bc12d5a00b97e99299a7040" title="view.controllers.ImagePalette.get\lImage" alt="" coords="1789,587,2021,629"/>
+<area shape="rect" id="node21" href="$d7/da6/classview_1_1_turtle_draw.html#acb97dedda080cb5ed17031d2b31adc2c" title="view.TurtleDraw.hideTurtle" alt="" coords="1546,8,1729,35"/>
+<area shape="rect" id="node23" href="$d6/d34/classmodel_1_1_turtle.html#ae79a1eae7eed55d121c3b85299ae14ba" title="model.Turtle.getID" alt="" coords="1568,312,1707,339"/>
+<area shape="rect" id="node24" href="$d6/d34/classmodel_1_1_turtle.html#a279f2bdb3fa955acdd52b7824ec3cd04" title="model.Turtle.getPenStatus" alt="" coords="1542,363,1733,389"/>
+<area shape="rect" id="node26" href="$d7/da6/classview_1_1_turtle_draw.html#a1325ca376115619f15f5014eb4c5ad2a" title="view.TurtleDraw.drawLine" alt="" coords="1549,413,1726,440"/>
+<area shape="rect" id="node27" href="$d6/d34/classmodel_1_1_turtle.html#a832234461564763f8330181b3c1163ff" title="model.Turtle.getPrevLocation" alt="" coords="1534,59,1741,85"/>
+<area shape="rect" id="node28" href="$d6/d34/classmodel_1_1_turtle.html#a2470b9b4ef48a261324047de8ebdc242" title="model.Turtle.getNewLocation" alt="" coords="1534,109,1741,136"/>
+<area shape="rect" id="node29" href="$d6/d34/classmodel_1_1_turtle.html#a19c059b1cbfbd4e8f046ec2403de3fb9" title="model.Turtle.getPenDash" alt="" coords="1546,160,1729,187"/>
+<area shape="rect" id="node31" href="$d6/d34/classmodel_1_1_turtle.html#a193c156784f783064ae533b619b6be6e" title="model.Turtle.getPenColor" alt="" coords="1546,211,1729,237"/>
+<area shape="rect" id="node33" href="$d6/d34/classmodel_1_1_turtle.html#a1c5d07962ede5fbfacc59413274d4300" title="model.Turtle.getHeading" alt="" coords="1548,261,1727,288"/>
+<area shape="rect" id="node25" href="$de/ded/classmodel_1_1_pen.html#afad4fb3e51847cacab72c036ddaa108f" title="model.Pen.getStatus" alt="" coords="1827,363,1984,389"/>
+<area shape="rect" id="node30" href="$de/ded/classmodel_1_1_pen.html#a6999f4af56377415621f193ef8600e27" title="model.Pen.getDash" alt="" coords="1831,160,1979,187"/>
+<area shape="rect" id="node32" href="$de/ded/classmodel_1_1_pen.html#a704af31474b10d17caf40773b7971826" title="model.Pen.getPenColor" alt="" coords="1819,211,1991,237"/>
+<area shape="rect" id="node36" href="$d6/d34/classmodel_1_1_turtle.html#aea80c2c6d24a504728574796d16d350b" title="model.Turtle.getmyCurr" alt="" coords="649,208,821,235"/>
+</map>

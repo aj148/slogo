@@ -1,0 +1,10 @@
+<map id="commands.Command.setParameters" name="commands.Command.setParameters">
+<area shape="rect" id="node2" href="$d9/d35/classcommands_1_1_ask_command.html#ae4ba28c73ce0b5112e4032bd21a951f5" title="commands.AskCommand.execute\lCommand" alt="" coords="332,5,575,46"/>
+<area shape="rect" id="node3" href="$d5/dad/classcommands_1_1_if_command.html#a0d92f20941c1e79cfb1e02e77f463e68" title="commands.IfCommand.execute\lCommand" alt="" coords="340,70,567,111"/>
+<area shape="rect" id="node4" href="$db/d38/classcommands_1_1_ask_with_command.html#a5ee6a090e94729d84ef423a454d446eb" title="commands.AskWithCommand.execute\lCommand" alt="" coords="318,135,589,177"/>
+<area shape="rect" id="node5" href="$d6/d95/classparser_1_1_parser.html#a62065d5ce26384c5dc62d3bb3242cd6e" title="parser.Parser.getCommand" alt="" coords="355,201,552,228"/>
+<area shape="rect" id="node6" href="$d6/d95/classparser_1_1_parser.html#aacbac8270cf4817504ddb495ba67863f" title="parser.Parser.parseInput" alt="" coords="666,151,843,177"/>
+<area shape="rect" id="node9" href="$d6/d95/classparser_1_1_parser.html#a5746ee23ade69654bd86c83981eb1e25" title="parser.Parser.makeListCommand" alt="" coords="637,201,872,228"/>
+<area shape="rect" id="node7" href="$d9/df7/classcontroller_1_1_controller.html#afdfa7f9e9a3fb5f6b73a6b8e2b2be8b5" title="controller.Controller.get\lInput" alt="" coords="920,143,1091,185"/>
+<area shape="rect" id="node8" href="$d3/dc7/classview_1_1controllers_1_1_pane_controller.html#a7e6154aecb60d8f3bcb056a11e842764" title="view.controllers.PaneController.update" alt="" coords="1139,151,1403,177"/>
+</map>

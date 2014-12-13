@@ -1,0 +1,6 @@
+<map id="commands.HeadingCommand.executeCommand" name="commands.HeadingCommand.executeCommand">
+<area shape="rect" id="node2" href="$dd/dd6/classcommands_1_1_command.html#a761bd86c36bd6e2d0c4145647c7a4a17" title="commands.Command.getFirst\lTurtle" alt="" coords="328,34,544,75"/>
+<area shape="rect" id="node5" href="$d6/d34/classmodel_1_1_turtle.html#a1c5d07962ede5fbfacc59413274d4300" title="model.Turtle.getHeading" alt="" coords="347,100,525,127"/>
+<area shape="rect" id="node3" href="$df/d50/classmodel_1_1_turtle_set_manager.html#a9a65c0be3b9c21abaf0ebaa54e5b8484" title="model.TurtleSetManager.get\lActiveTurtles" alt="" coords="600,5,803,46"/>
+<area shape="rect" id="node4" href="$d3/d42/classmodel_1_1_model.html#a1a683ba5e58fcb3c8882c8e61df20dc0" title="model.Model.getTurtleManager" alt="" coords="592,71,811,97"/>
+</map>

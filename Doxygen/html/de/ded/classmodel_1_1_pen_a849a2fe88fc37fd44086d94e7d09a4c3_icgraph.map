@@ -1,0 +1,5 @@
+<map id="model.Pen.setPenStatus" name="model.Pen.setPenStatus">
+<area shape="rect" id="node2" href="$d6/d34/classmodel_1_1_turtle.html#a2b9bbcfb9693e75c3f78e9f607684790" title="model.Turtle.changePen" alt="" coords="235,45,410,72"/>
+<area shape="rect" id="node3" href="$d4/d25/classcommands_1_1_pen_down_command.html#ab10d4e831bc5960fc78cc22de4596331" title="commands.PenDownCommand.update\lTurtle" alt="" coords="459,5,733,46"/>
+<area shape="rect" id="node4" href="$d1/d5d/classcommands_1_1_pen_up_command.html#ac5c86fc3bba70a2950d077189e09074a" title="commands.PenUpCommand.update\lTurtle" alt="" coords="468,70,724,111"/>
+</map>

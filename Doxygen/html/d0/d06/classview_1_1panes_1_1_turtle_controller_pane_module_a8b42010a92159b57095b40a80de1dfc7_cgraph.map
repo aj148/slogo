@@ -1,0 +1,18 @@
+<map id="view.panes.TurtleControllerPaneModule.TurtleControllerPaneModule" name="view.panes.TurtleControllerPaneModule.TurtleControllerPaneModule">
+<area shape="rect" id="node2" href="$d0/d06/classview_1_1panes_1_1_turtle_controller_pane_module.html#a17968045f35b256d20da119dff9825db" title="view.panes.TurtleController\lPaneModule.angle" alt="" coords="1155,119,1346,160"/>
+<area shape="rect" id="node4" href="$d8/daa/classview_1_1panes_1_1_turtle_selector_pane.html#abce6783e462daf08b6b7d4e0bf7c36d5" title="view.panes.TurtleSelector\lPane.getPane" alt="" coords="311,68,494,109"/>
+<area shape="rect" id="node5" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#a9cb7d40d529b904b253d08c8a575e4de" title="view.panes.PenPane.getPenPane" alt="" coords="287,134,518,161"/>
+<area shape="rect" id="node6" href="$d0/d06/classview_1_1panes_1_1_turtle_controller_pane_module.html#a714ad68e313bb0c547d8db1ec5f8c755" title="view.panes.TurtleController\lPaneModule.imageSelectorMaker" alt="" coords="285,236,520,277"/>
+<area shape="rect" id="node7" href="$d0/d06/classview_1_1panes_1_1_turtle_controller_pane_module.html#a51cea33522d3febb23e4f793c46fe412" title="view.panes.TurtleController\lPaneModule.makeButton" alt="" coords="601,112,791,153"/>
+<area shape="rect" id="node11" href="$d0/d06/classview_1_1panes_1_1_turtle_controller_pane_module.html#a96e94da05841aa7343ac097728f14b06" title="view.panes.TurtleController\lPaneModule.makeTurtle" alt="" coords="307,345,498,387"/>
+<area shape="rect" id="node17" href="$d0/d06/classview_1_1panes_1_1_turtle_controller_pane_module.html#a7bcb51ee51afaa6fd0bac492d024b4ce" title="view.panes.TurtleController\lPaneModule.move" alt="" coords="894,465,1085,507"/>
+<area shape="rect" id="node3" href="$d8/dd2/classview_1_1_command_string.html#a666bbe4a67f0516444f5ee29cbb5e588" title="view.CommandString.setCommand" alt="" coords="1395,323,1643,350"/>
+<area shape="rect" id="node8" href="$d0/d06/classview_1_1panes_1_1_turtle_controller_pane_module.html#a5d0d2db4864df8e55ce12229fe554e6a" title="view.panes.TurtleController\lPaneModule.doChoose" alt="" coords="601,177,791,219"/>
+<area shape="rect" id="node10" href="$d3/db7/classview_1_1controllers_1_1_image_palette.html#a0640e10f3afb56125adcdfbabc79bed4" title="view.controllers.ImagePalette.getBox" alt="" coords="568,243,824,270"/>
+<area shape="rect" id="node9" href="$d3/db7/classview_1_1controllers_1_1_image_palette.html#a1e9f7331f827c8890dcfb4f0e546af8f" title="view.controllers.ImagePalette.add\lImage" alt="" coords="872,177,1107,219"/>
+<area shape="rect" id="node12" href="$d8/daa/classview_1_1panes_1_1_turtle_selector_pane.html#a93a77e509159e4a9684bd8356477a810" title="view.panes.TurtleSelector\lPane.newTurtle" alt="" coords="605,345,787,387"/>
+<area shape="rect" id="node15" href="$d3/db7/classview_1_1controllers_1_1_image_palette.html#aac698bdcf6d03266bc67e4b689f5e1c6" title="view.controllers.ImagePalette.get\lCurrentImageID" alt="" coords="580,411,812,452"/>
+<area shape="rect" id="node16" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#a39943cd3fe8c57472a5381c5a17e2e16" title="view.panes.PenPane.newTurtle" alt="" coords="589,477,803,503"/>
+<area shape="rect" id="node13" href="$d8/daa/classview_1_1panes_1_1_turtle_selector_pane.html#a41425164edccc3709e2f66ed462f8709" title="view.panes.TurtleSelector\lPane.getActiveTurtles" alt="" coords="898,345,1081,387"/>
+<area shape="rect" id="node14" href="$d8/daa/classview_1_1panes_1_1_turtle_selector_pane.html#ad83809df344e4af1f046629e336662e0" title="view.panes.TurtleSelector\lPane.toggleActiveTurtles" alt="" coords="1159,345,1342,387"/>
+</map>

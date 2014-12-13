@@ -1,0 +1,10 @@
+<map id="view.panes.PenPane.PenPane" name="view.panes.PenPane.PenPane">
+<area shape="rect" id="node2" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#afa93d4769bd752fe33df3be53f584bf8" title="view.panes.PenPane.change\lPenColor" alt="" coords="562,5,763,46"/>
+<area shape="rect" id="node3" href="$d8/dd2/classview_1_1_command_string.html#a666bbe4a67f0516444f5ee29cbb5e588" title="view.CommandString.setCommand" alt="" coords="827,223,1075,249"/>
+<area shape="rect" id="node4" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#abc333a7f904415e7c1cc5e09d2505014" title="view.panes.PenPane.makeButton" alt="" coords="265,121,498,148"/>
+<area shape="rect" id="node5" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#a17ad2d4ab4a58ef46fb0ab09068d2e8b" title="view.panes.PenPane.makeColor\lPicker" alt="" coords="270,173,493,214"/>
+<area shape="rect" id="node6" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#aee0977bc29663b1fb656a34f6e7adb10" title="view.panes.PenPane.makeMenu" alt="" coords="269,239,494,265"/>
+<area shape="rect" id="node8" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#aa1e66639fe9d5a43850c7a076129e0a4" title="view.panes.PenPane.setPenDash" alt="" coords="547,281,778,308"/>
+<area shape="rect" id="node9" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#ae74fd1dadc881ce65eefcb7bdc0095a9" title="view.panes.PenPane.setPen\lWidth" alt="" coords="563,333,762,374"/>
+<area shape="rect" id="node7" href="$da/d64/classview_1_1panes_1_1_pen_pane.html#ab5735f00ef7a3f0569fb667d0fbb385d" title="view.panes.PenPane.setPen\lStyle" alt="" coords="563,215,762,257"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="model.TurtleSetManager.getStackLength" name="model.TurtleSetManager.getStackLength">
+<area shape="rect" id="node2" href="$d9/d35/classcommands_1_1_ask_command.html#ae4ba28c73ce0b5112e4032bd21a951f5" title="commands.AskCommand.execute\lCommand" alt="" coords="553,5,796,46"/>
+<area shape="rect" id="node3" href="$db/d38/classcommands_1_1_ask_with_command.html#a5ee6a090e94729d84ef423a454d446eb" title="commands.AskWithCommand.execute\lCommand" alt="" coords="539,83,810,125"/>
+<area shape="rect" id="node4" href="$df/d50/classmodel_1_1_turtle_set_manager.html#afda0d203a1b72aa246aadb8c2efaef8d" title="model.TurtleSetManager.regulate\lTurtleDepth" alt="" coords="256,50,491,91"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="commands.ThreeInputCommand" name="commands.ThreeInputCommand">
+<area shape="rect" id="node3" href="$d3/d49/classcommands_1_1_if_else_command.html" title="commands.IfElseCommand" alt="" coords="534,5,733,32"/>
+<area shape="rect" id="node4" href="$dc/d1e/classcommands_1_1_make_user_instruction_command.html" title="commands.MakeUserInstruction\lCommand" alt="" coords="519,57,748,98"/>
+<area shape="rect" id="node5" href="$d3/d37/classcommands_1_1_set_background_command.html" title="commands.SetBackgroundCommand" alt="" coords="502,123,765,149"/>
+<area shape="rect" id="node6" href="$d5/d21/classcommands_1_1_set_pen_color_command.html" title="commands.SetPenColorCommand" alt="" coords="511,173,755,200"/>
+<area shape="rect" id="node2" href="$dd/dd6/classcommands_1_1_command.html" title="commands.Command" alt="" coords="5,93,171,120"/>
+</map>

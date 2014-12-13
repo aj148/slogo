@@ -1,0 +1,5 @@
+<map id="model.TurtleSetManager.addTurtleCollection" name="model.TurtleSetManager.addTurtleCollection">
+<area shape="rect" id="node2" href="$d1/d53/classcommands_1_1_tell_command.html#a516b9cdfe48014e8b0d8b9275a886b8f" title="commands.TellCommand.execute\lCommand" alt="" coords="259,38,498,79"/>
+<area shape="rect" id="node3" href="$d9/d35/classcommands_1_1_ask_command.html#ae4ba28c73ce0b5112e4032bd21a951f5" title="commands.AskCommand.execute\lCommand" alt="" coords="561,5,804,46"/>
+<area shape="rect" id="node4" href="$db/d38/classcommands_1_1_ask_with_command.html#a5ee6a090e94729d84ef423a454d446eb" title="commands.AskWithCommand.execute\lCommand" alt="" coords="547,70,818,111"/>
+</map>

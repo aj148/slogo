@@ -1,0 +1,6 @@
+<map id="commands.CustomCommand" name="commands.CustomCommand">
+<area shape="rect" id="node2" href="$d6/d9f/classcommands_1_1_one_input_command.html" title="commands.OneInputCommand" alt="" coords="5,133,227,160"/>
+<area shape="rect" id="node3" href="$dd/dd6/classcommands_1_1_command.html" title="commands.Command" alt="" coords="73,5,237,32"/>
+<area shape="rect" id="node5" href="$db/d5d/classcommands_1_1_zero_input_command.html" title="commands.ZeroInputCommand" alt="" coords="149,83,376,109"/>
+<area shape="rect" id="node4" href="$da/d64/classcommands_1_1_list_command.html" title="commands.ListCommand" alt="" coords="169,184,356,211"/>
+</map>

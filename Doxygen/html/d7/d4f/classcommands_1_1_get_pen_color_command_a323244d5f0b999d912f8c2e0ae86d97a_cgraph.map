@@ -1,0 +1,7 @@
+<map id="commands.GetPenColorCommand.executeCommand" name="commands.GetPenColorCommand.executeCommand">
+<area shape="rect" id="node2" href="$dd/dd6/classcommands_1_1_command.html#a761bd86c36bd6e2d0c4145647c7a4a17" title="commands.Command.getFirst\lTurtle" alt="" coords="355,59,571,101"/>
+<area shape="rect" id="node5" href="$d6/d34/classmodel_1_1_turtle.html#a193c156784f783064ae533b619b6be6e" title="model.Turtle.getPenColor" alt="" coords="371,125,554,152"/>
+<area shape="rect" id="node3" href="$df/d50/classmodel_1_1_turtle_set_manager.html#a9a65c0be3b9c21abaf0ebaa54e5b8484" title="model.TurtleSetManager.get\lActiveTurtles" alt="" coords="627,5,829,46"/>
+<area shape="rect" id="node4" href="$d3/d42/classmodel_1_1_model.html#a1a683ba5e58fcb3c8882c8e61df20dc0" title="model.Model.getTurtleManager" alt="" coords="619,71,837,97"/>
+<area shape="rect" id="node6" href="$de/ded/classmodel_1_1_pen.html#a704af31474b10d17caf40773b7971826" title="model.Pen.getPenColor" alt="" coords="642,125,814,152"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="commands.OneInputCommand" name="commands.OneInputCommand">
+<area shape="rect" id="node3" href="$de/da1/classcommands_1_1_arc_tangent_command.html" title="commands.ArcTangentCommand" alt="" coords="495,5,731,32"/>
+<area shape="rect" id="node4" href="$d6/ddc/classcommands_1_1_backward_command.html" title="commands.BackwardCommand" alt="" coords="500,56,727,83"/>
+<area shape="rect" id="node5" href="$d8/d39/classcommands_1_1_cosine_command.html" title="commands.CosineCommand" alt="" coords="509,107,717,133"/>
+<area shape="rect" id="node6" href="$dd/de4/classcommands_1_1_custom_command.html" title="commands.CustomCommand" alt="" coords="506,157,721,184"/>
+<area shape="rect" id="node7" href="$da/d4f/classcommands_1_1_forward_command.html" title="commands.ForwardCommand" alt="" coords="506,208,721,235"/>
+<area shape="rect" id="node8" href="$dc/d65/classcommands_1_1_left_command.html" title="commands.LeftCommand" alt="" coords="519,259,708,285"/>
+<area shape="rect" id="node9" href="$df/df5/classcommands_1_1_minus_command.html" title="commands.MinusCommand" alt="" coords="512,309,715,336"/>
+<area shape="rect" id="node10" href="$d7/d78/classcommands_1_1_natural_log_command.html" title="commands.NaturalLogCommand" alt="" coords="496,360,731,387"/>
+<area shape="rect" id="node11" href="$d0/d69/classcommands_1_1_not_command.html" title="commands.NotCommand" alt="" coords="519,411,707,437"/>
+<area shape="rect" id="node12" href="$d0/d5d/classcommands_1_1_random_command.html" title="commands.RandomCommand" alt="" coords="504,461,723,488"/>
+<area shape="rect" id="node13" href="$dd/db2/classcommands_1_1_right_command.html" title="commands.RightCommand" alt="" coords="515,512,712,539"/>
+<area shape="rect" id="node14" href="$dc/db3/classcommands_1_1_set_heading_command.html" title="commands.SetHeadingCommand" alt="" coords="493,563,733,589"/>
+<area shape="rect" id="node15" href="$d6/d11/classcommands_1_1_set_pen_dash_command.html" title="commands.SetPenDashCommand" alt="" coords="491,613,735,640"/>
+<area shape="rect" id="node16" href="$d2/dbb/classcommands_1_1_set_pen_size_command.html" title="commands.SetPenSizeCommand" alt="" coords="494,664,733,691"/>
+<area shape="rect" id="node17" href="$d6/daf/classcommands_1_1_set_shape_command.html" title="commands.SetShapeCommand" alt="" coords="499,715,727,741"/>
+<area shape="rect" id="node18" href="$db/dbd/classcommands_1_1_sine_command.html" title="commands.SineCommand" alt="" coords="517,765,710,792"/>
+<area shape="rect" id="node19" href="$de/d19/classcommands_1_1_tangent_command.html" title="commands.TangentCommand" alt="" coords="506,816,721,843"/>
+<area shape="rect" id="node20" href="$d1/d53/classcommands_1_1_tell_command.html" title="commands.TellCommand" alt="" coords="521,867,705,893"/>
+<area shape="rect" id="node2" href="$dd/dd6/classcommands_1_1_command.html" title="commands.Command" alt="" coords="5,436,171,463"/>
+</map>

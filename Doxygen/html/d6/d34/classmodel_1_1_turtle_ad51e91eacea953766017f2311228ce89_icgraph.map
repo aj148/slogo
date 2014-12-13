@@ -1,0 +1,4 @@
+<map id="model.Turtle.updatePosition" name="model.Turtle.updatePosition">
+<area shape="rect" id="node2" href="$d6/ddc/classcommands_1_1_backward_command.html#af0c4c6ac04bea1aa34b069a01c53888f" title="commands.BackwardCommand.update\lTurtle" alt="" coords="253,5,528,46"/>
+<area shape="rect" id="node3" href="$da/d4f/classcommands_1_1_forward_command.html#afe19b644a8fe0d46f3dbf19aef135364" title="commands.ForwardCommand.update\lTurtle" alt="" coords="259,70,523,111"/>
+</map>

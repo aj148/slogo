@@ -1,0 +1,8 @@
+<map id="view.panes.ViewPaneModule.makeStamps" name="view.panes.ViewPaneModule.makeStamps">
+<area shape="rect" id="node2" href="$d7/da6/classview_1_1_turtle_draw.html#a939f4fdbdb66457c9dcee82eb4ae6d9c" title="view.TurtleDraw.drawTurtle" alt="" coords="299,41,485,68"/>
+<area shape="rect" id="node5" href="$d7/da6/classview_1_1_turtle_draw.html#a8c2cab38eb294b26aea1ae17595ba2a6" title="view.TurtleDraw.moveTurtle" alt="" coords="297,92,487,119"/>
+<area shape="rect" id="node6" href="$d7/da6/classview_1_1_turtle_draw.html#a5004a16526a67f090d7da45474b5136e" title="view.TurtleDraw.setAngle" alt="" coords="303,143,481,169"/>
+<area shape="rect" id="node7" href="$d7/da6/classview_1_1_turtle_draw.html#a14678068d3fc9d3b6e1067bc372f6030" title="view.TurtleDraw.showTurtle" alt="" coords="299,193,485,220"/>
+<area shape="rect" id="node3" href="$d3/db7/classview_1_1controllers_1_1_image_palette.html#a8a6620714bc12d5a00b97e99299a7040" title="view.controllers.ImagePalette.get\lImage" alt="" coords="536,5,768,46"/>
+<area shape="rect" id="node4" href="$d6/d34/classmodel_1_1_turtle.html#a942dbeb1d7e2bc19b6870538c2c3a7d2" title="model.Turtle.getShape" alt="" coords="569,71,735,97"/>
+</map>

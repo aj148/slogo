@@ -1,0 +1,4 @@
+<map id="model.Turtle.changePen" name="model.Turtle.changePen">
+<area shape="rect" id="node2" href="$d4/d25/classcommands_1_1_pen_down_command.html#ab10d4e831bc5960fc78cc22de4596331" title="commands.PenDownCommand.update\lTurtle" alt="" coords="230,5,503,46"/>
+<area shape="rect" id="node3" href="$d1/d5d/classcommands_1_1_pen_up_command.html#ac5c86fc3bba70a2950d077189e09074a" title="commands.PenUpCommand.update\lTurtle" alt="" coords="239,70,495,111"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="view.panes.ViewPaneModule.wrapping" name="view.panes.ViewPaneModule.wrapping">
+<area shape="rect" id="node2" href="$d6/d34/classmodel_1_1_turtle.html#a2470b9b4ef48a261324047de8ebdc242" title="model.Turtle.getNewLocation" alt="" coords="318,5,525,32"/>
+<area shape="rect" id="node3" href="$d6/d34/classmodel_1_1_turtle.html#a279f2bdb3fa955acdd52b7824ec3cd04" title="model.Turtle.getPenStatus" alt="" coords="326,56,517,83"/>
+<area shape="rect" id="node5" href="$d6/d34/classmodel_1_1_turtle.html#a08ec1722676d9f73587bf8996e20b9ee" title="model.Turtle.setPenStatus" alt="" coords="326,107,517,133"/>
+<area shape="rect" id="node6" href="$d6/d34/classmodel_1_1_turtle.html#a8594135f6eec9e475e8927ddeb012e25" title="model.Turtle.setXAndY" alt="" coords="339,157,503,184"/>
+<area shape="rect" id="node4" href="$de/ded/classmodel_1_1_pen.html#afad4fb3e51847cacab72c036ddaa108f" title="model.Pen.getStatus" alt="" coords="581,56,739,83"/>
+<area shape="rect" id="node7" href="$d6/d34/classmodel_1_1_turtle.html#aea80c2c6d24a504728574796d16d350b" title="model.Turtle.getmyCurr" alt="" coords="574,157,746,184"/>
+</map>

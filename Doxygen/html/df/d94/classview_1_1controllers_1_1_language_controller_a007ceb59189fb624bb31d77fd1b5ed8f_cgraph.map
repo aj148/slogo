@@ -1,0 +1,6 @@
+<map id="view.controllers.LanguageController.makeMenu" name="view.controllers.LanguageController.makeMenu">
+<area shape="rect" id="node2" href="$df/d94/classview_1_1controllers_1_1_language_controller.html#a28320ec7a669cf479a5a141b76805b1d" title="view.controllers.Language\lController.setLanguage" alt="" coords="240,23,427,65"/>
+<area shape="rect" id="node3" href="$d8/dce/classcontroller_1_1_master_controller.html#ab5fbb9e4dc0f267847333f3d8c9ba5ea" title="controller.MasterController.construct\lMasterController" alt="" coords="475,23,730,65"/>
+<area shape="rect" id="node4" href="$d8/dce/classcontroller_1_1_master_controller.html#a6872efed0600910c8ae37491e0f59a0e" title="controller.MasterController.constructSet" alt="" coords="779,5,1055,32"/>
+<area shape="rect" id="node5" href="$d6/d95/classparser_1_1_parser.html#a4f1e7ee432eb4d4377de4ce4202b139d" title="parser.Parser.resetParser" alt="" coords="826,56,1009,83"/>
+</map>
